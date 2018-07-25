@@ -1,0 +1,371 @@
+\documentclass[11pt]{book}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{8pt}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+
+\renewcommand*{\thefootnote}{\fnsymbol{footnote}}
+
+\setcounter{chapter}{1}
+
+\begin{document}
+
+\section*{A Levelized Comparison of \\ Pulsed and Steady-State Tokamaks}
+
+\let\cleardoublepage\relax \tableofcontents \newpage
+
+\chapter{Designing a Steady-State Tokamak}
+
+This chapter explores a simple model for designing steady-state tokamaks. In the next couple chapters, the model is formalized and then generalized to handle pulsed operation. These derivations highlight that the only difference between the two modes is how they generate their auxiliary plasma current: LHCD for steady-state operation and inductive sources when purely pulsed.
+
+Along the way, equations will be derived that get rather complicated. To remedy the situation, a distinction between floating and fixed values is now given, which will allow splitting most equations into fixed and floating parts. Fixed values -- i.e. the tokamak's major radius ($R_0$) and magnet strength ($B_0$), as well as the plasma's current ($I_P$), temperature ($\overline T$), and density ($\overline n$) -- are first-class variables in this model. Everything is derived to relate them. Fixed values, then, are the input of the code, which remain constant throughout an entire scan of reactors.  These include the geometric and profile parameters introduced next section. 
+
+\section{Defining Plasma Parameters}
+
+As mentioned previously, the zero-dimensional model derived here can closely approximate solutions from three-dimensional codes that might take weeks to run. The essence of boiling down three-dimensional behaviors to one dimensional profiles and zero-dimensional averaged values begins with defining the the most important plasma parameters. These are the: current (J), the temperature (T), and the density (n) of the plasma.
+
+Solving this problem most generally usually involves decoupling the geometry of the plasma from the shaping of nearly parabolic radial-profiles -- both of which will be explained shortly.
+
+\subsection{Understanding Tokamak Geometry}
+
+The first thing people see when they look at a tokamak is its geometry. How big is it? Is it stretched out like a tire or smooshed together like a bagel? If it were torn in two, would the halves look like circles, ovals, or triangles?
+
+These questions lend themselves to the three important geometry variables -- the inverse aspect ratio ($\epsilon$), the elongation ($\kappa$), and the triangularity ($\delta$). The inverse aspect ratio is a measure of how stretched out the device is, or formulaically:
+
+\begin{equation}
+	\label{eq:a}
+	a = \epsilon \cdot R_0
+\end{equation}
+
+This says that the minor radius (a), measured in meters, is related to the major radius of the machine ($R_0$). More tangibly, the minor radius is related to the two circles that come from tearing a bagel in two. The major radius is related to the overall circle of the bagel when viewing it from the top.
+
+The remaining two geometric parameters -- $\kappa$ and $\delta$ -- are related to the shape of torn sides. As the name hints, elongation ($\kappa$) is a measure of how stretched out the tokamak is vertically -- is the cross-section a circle or an oval? The triangularity ($\delta$) is then how much the cross-sections point outward from the center of the device. All three's effects can be seen in Fig. N.
+
+These geometric factors allow the volumetric and surface integrals for current, density, and temperature to be condensed to simple radial ones. The only remaining step is to define the radial profiles for these three quantities.
+
+\subsection{Prescribing Plasma Profiles}
+
+The first step in defining radial profiles is realizing that all three quantities are basically parabolas -- i.e. the temperature, density, and current are peaked at some radius (usually the center) and then decay to zero somewhere before the walls of the tokamak enclosure.
+
+\subsubsection{The Density Profile}
+
+To begin, density has the simplest profile. This is because it is relatively flat, remaining near the average value -- $\overline n$ -- throughout the body of the plasma until quickly decaying to zero near the edge of the plasma. For this reason, a parabolic profile with a very low peaking factor -- $\nu_n$ -- is well suited.
+
+\begin{equation}
+	n(\rho) = \overline n \cdot ( 1 + \nu_n ) \, \cdot ( 1 - \rho ^ 2 ) ^ {\nu_n}
+\end{equation}
+
+\subsubsection{The Temperature Profile}
+
+The use of a parabolic profile for the plasma temperature is slightly more dubious. This is because H-Mode plasmas are actually highly peaked at the center, decaying to a non-zero pedestal temperature near the edge before finally sharply dropping to zero. This model chooses to forego this pedestal representation for a simple parabolic one. Although the pedestal approach is discussed in the Appendix. Here again, $\overline T$ is the average value and $\nu_T$ is the peaking parameter.
+
+\begin{equation}
+	T(\rho) = \overline T \cdot ( 1 + \nu_T ) \, \cdot ( 1 - \rho ^ 2 ) ^ {\nu_T}
+\end{equation}
+
+\subsubsection{The Current Profile}
+
+The plasma current is the third profile and cannot safely be represented as a simple parabola. This is because having an adequate bootstrap current heavily relies on a profile peaked at some radius -- not at the center. This hollow profile can be modeled with the commonly given plasma internal inductance ($l_i$).
+
+Concretely, the current's hollow profile is described by:
+
+\begin{equation}
+	J(\rho) = \bar{J} \cdot \frac{ \gamma ^ 2 \cdot ( 1 - \rho ^ 2 ) \cdot e^{ \gamma \rho^2 } }{ e^\gamma - 1 - \gamma}
+\end{equation}
+
+Where $\gamma$ can be numerically solved from the plasma internal inductance through the following relations -- with $b_p$ representing the normalized poloidal magnetic field.
+
+\begin{equation}
+	l_i = \frac{4 \kappa}{1+\kappa^2}	 \int_0^1 b_p^2 \ \frac{d\rho}{\rho}
+\end{equation}
+
+\begin{equation}
+	\label{eq:b_p}
+	b_p(\rho) = \frac{ -e^{\gamma\rho^2} ( \gamma\rho^2 - 1 - \gamma ) - 1 - \gamma }{\rho \,( e^\gamma - 1 - \gamma ) }
+\end{equation}
+
+Combined, these three geometric parameters and profiles lay the foundation for this zero-dimensional fusion systems model.
+
+\section{Solving the Steady Current}
+
+As suggested, one of the most important equations in a fusion reactor is current balance. In steady-state operation, all of a plasma's current ($I_P$) must come from a combination of its own bootstrap current ($I_{BS}$), as well as auxiliary current drive ($I_{CD}$). This can be represented mathematically as:
+
+\begin{equation}
+	\tag{\ref{eq:ibal}}
+	I_P = I_{BS} + I_{CD}
+\end{equation}
+
+The goal then is to write equations for bootstrap current and driven current. This will make heavy use of the Greenwald density limit. Without spoiling too much, the steady current is shown to be only a function of temperature (i.e. independent of a tokamak's geometry and magnet strength). As will be point out then, a subtlety arises that will then bring a tokamak's configuration back into the picture -- self-consistency in the current drive efficiency ($\eta_{CD}$).
+
+\subsection{Enforcing the Greenwald Density Limit}
+
+The Greenwald density limit is ubiquitous in the fusion energy field. It sets a hard limit on the density and how it scales with current and reactor size. Although currently lacking a true first-principles theoretical explanation, it does have true meaning in the design context. Operate at too low a density and run the risk of never entering H-Mode. Run the density too low, and cause the tokamak's plasma to disrupt catastrophically!
+
+As no theoretical backing exists, the Greenwald density limit can simply be written (with citation) as:
+
+\begin{equation}
+	\hat n = N_G \frac{ I_P }{ \pi a^2}
+\end{equation}
+
+Here, $\hat n$ has units of $10^{20} \ \frac{\textnormal{particles}}{\textnormal{m}^3}$, $N_G$ is the Greenwald density fraction, $I_P$ is again the plasma current (in mega-amps) and $\pi$ has its usual meaning (3.141592653...). The final variable is the minor radius -- a -- which was previously defined through:
+
+\begin{equation}
+	\tag{\ref{eq:a}}
+	a = \epsilon \cdot R_0
+\end{equation}
+
+The next step is transforming the \emph{line-averaged} density ($\hat n$) into the \emph{volume-averaged} version ($\overline n$)
+ used in this model. Harnessing the simplicity of the density's parabolic profile allows this relation to be written in a closed form as:
+ 
+ \begin{equation}
+ 	\hat n = \frac{\sqrt{\pi}}{2} \cdot \left( \frac{\Gamma \left( \nu_n + 2 \right)}{\Gamma \left( \nu_n + \frac{3}{2} \right)} \right) \cdot \overline n 
+ \end{equation}
+ 
+ Where $\Gamma( \, \cdots)$ represents the gamma function -- the non-integer analogue of the factorial function.
+ 
+ Combining these pieces allows the averaged density to be written in standardized units (i.e. the ones we use) as:
+ 
+ \begin{equation}
+ 	\label{eq:greenwald}
+ 	\overline n = K_n \cdot \left( \frac{I_P}{R_0^2} \right)
+ \end{equation}
+ 
+ \begin{equation}
+ 	K_n = \frac{2 N_G}{\epsilon^2 \, \pi^{3/2} } \cdot \left( \frac{\Gamma \left( \nu_n + \frac{3}{2} \right)}{\Gamma \left( \nu_n + 2 \right)} \right)
+\end{equation}
+ 
+The format of the above equation pair will be used throughout the remainder of the paper. The top equation relates floating variables (i.e. $\overline n$, $I_P$, and $R_0$), while the fixed-value coefficient ($K_n$) lumps together: $N_G$, $\epsilon$, 2, $\pi$, and $\nu_n$.
+
+\subsection{Declaring the Bootstrap Current}
+
+The first term to define in current balance is the bootstrap current. This bootstrap current is a mechanism of tokamak plasmas that helps supply some of the current needed to keep a plasma stable. From a hand-waving perspective, it involves particles stuck in banana-shaped orbits on the outer edges of a tokamak behaving like racing-game style speed boosts that accelerate charged particles along their hooped-shaped race tracks.
+
+To get an equation for bootstrap current, we must first introduce the surface integral -- made possible from our previous choice of geometric parameters:
+
+\begin{equation}
+	Q_S = 2 \pi a^2 \kappa g \int_0^1 Q(\rho) \rho \, d\rho
+\end{equation}
+
+Here, Q is an arbitrary function of the normalized radius ($\rho$) and g is a geometric factor (of order 1):
+
+\begin{equation}
+	g = \frac{1}{8} \cdot \left( 9 - 2 \delta - 0.3 \left( 1 - \delta^2 \right)  \right)
+\end{equation}
+ 
+This allows the bootstrap current ($I_{BS}$) to be written in terms of the temperature and density profiles:
+
+\begin{equation}
+	I_{BS} = 2 \pi a^2 \kappa g \int_0^1 J_{BS} \, \rho \, d\rho
+\end{equation}
+
+\begin{equation}
+	J_{BS} = f\left( n , T , \frac{dn}{d\rho} , \frac{dT}{d\rho}  \right)
+\end{equation}
+ 
+For a more formal look into the $J_{BS}$ function, check the appendix section on pedestal temperatures. The point to make now is that $J_{BS}$ is a function of the profile's derivatives, leading to on major discrepancy in the model. As show later in the results, bootstrap fractions are often under-predicted by this model. This is due to parabolic profiles (i.e. for temperature) having much less steep declines near the edge (i.e. their derivatives) This implies that the area most positively impacted by a pedestal profile for temperature would be the plasma current.
+
+Getting back on track -- and without completeness -- the bootstrap current can now be written in proportionality form as:
+
+\begin{equation}
+	I_{BS} \propto \overline T \cdot \overline n \cdot \left( \frac{R_0^2}{I_P} \right)
+\end{equation}
+
+Recognizing that the last term is basically the inverse of the Greenwald density (see Eq. \ref{eq:greenwald}), allows the proportionality to be written in the following form. Note that this implies the bootstrap current is only a function of temperature!
+
+\begin{equation}
+	I_{BS} \propto K_n \cdot \overline T
+\end{equation}
+
+In standardized units, this proportionality can be written as a concrete relation of the form:
+
+\begin{equation}
+	\label{eq:ibs}
+	I_{BS} = K_{BS} \cdot \overline T
+\end{equation}
+
+\begin{equation}
+  K_{BS} = 4.879 \cdot  K_n \cdot \left( \, \frac{1+\kappa^2}{2} \, \right) \cdot \epsilon^{5/2} \cdot H_{BS}
+\end{equation}
+
+\begin{equation}
+  H_{BS} = ( 1 + \nu_n ) ( 1 + \nu_T ) ( \nu_n + 0.054 \nu_T ) \int_0^1 \frac{ \rho^{\,5/2} \, ( \, 1 - \rho^{\,2} \, )^{\, \nu_n + \nu_T - 1} }{b_p} \, d\rho
+\end{equation}
+
+Quickly noting, this $H_{BS}$ term serves as the analogue of fixed-value coefficients (i.e. $K_\square$) when they contain an integral. And $b_p$ represents the poloidal magnet strength given by Eq. \ref{eq:b_p}.
+
+\subsection{Deriving the Fusion Power}
+
+The next segue on our journey to solving the steady current is deriving the fusion power ($P_F$). This requires a more first-principles approach than those used up till now. As such, a quick background is given to motivate the parameters it adds -- i.e. the dilution factor ($f_{D}$) and the Bosch-Hale fusion reactivity ($\sigma v$).
+
+The natural place to start talking about fusion is the binding-energy per nucleon plot (see fig. N). As can be seen, the function reaches a maximum at binding-energy at the element, Iron (A=56). What this means practically is: every element lighter than iron can \emph{fuse} into a heavier one (i.e. hydrogens into helium), whereas every element heavier than iron can \emph{fission} into lighter ones (e.g. uranium into krypton and barium). This is what differentiates fission (uranium-fueled) reactors from fusion (hydrogen-fueled) ones. For fusion reactors, the most common reaction in a first-generation tokamak will be:
+
+\begin{equation}
+	{}^2H+ {}^3H \rightarrow {}^4 He + {}^1 n + E_F
+\end{equation}
+
+\begin{equation}
+	E_F = 17.6 \ \textnormal{MeV}
+\end{equation}
+
+What this reaction describes is two isotopes of hydrogen -- i.e. deuterium and tritium -- fusion into a heavier element, helium, while simultaneously ejecting a neutron. The entire energy of the fusion reaction ($E_F$) is 17.6 MeV, which is then divvied up 80-20 between the neutron and helium, respectively. Quantitatively, the helium (hereafter referred to as an alpha particle) receives 3.5 MeV.
+
+The final point to make before returning to the fusion power derivation is the main difference between the two fusion products: helium (i.e. the alpha particle) and the neutron. First, neutrons lack a charge -- they are neutral. This means they cannot be confined with magnetic fields. As such, They simply move in straight lines until they collide with other particles. As the tokamak is solid metal, the neutron is much more likely to collide there than the gaseous plasma, which is orders of magnitude less dense. Conversely, alpha particles are charged -- when stripped of their electrons -- and can therefore be kept within the plasma. What this means practically is that of the 17.6 MeV that comes from every fusion reaction, only 3.5 MeV remains inside the plasma (within the helium particle species).
+ 
+ Returning to the problem at hand, the fusion power -- in megawatts -- is given in Jeff Freidberg's book as:
+ 
+ \begin{equation}
+ 	\label{eq:pf_int}
+ 	P_F = \int E_F \, n_D \, n_T \, \langle \sigma v \rangle \, d \vec{\bold{r}}
+ \end{equation}
+ 
+ The $n_D$ and $n_T$ in this equation represent the density of the deuterium and tritium ions, respectively. Assuming a 50-50 mix of the two, they can be related to the electron density -- i.e. the one used in this model -- through the dilution factor:
+ 
+ \begin{equation}
+ 	n_D = n_T = f_D \cdot \left( \frac{n}{2} \right)
+ \end{equation}
+ 
+ The fusion reactivity, $\langle \sigma v \rangle$, is then a nonlinear function of the temperature, T, which the model approximates using the Bosch-Hale tabulation (described in the appendix). As this tabulated value appears inside an integral, it seems important to point out that the temperature is now the most difficult floating variable to handle -- over $R_0$, $B_0$, $\overline n$, and $I_P$. This will come into play when the model is formalized next chapter.
+ 
+ The next step in the derivation of fusion power is transforming the three-dimensional volume integral (see Eq. \ref{eq:pf_int}) into a one-dimensional radial one. First, the volume analogue of the previously given surface-area integral integral is:
+ 
+ \begin{equation}
+ 	Q_V = 4 \pi^2 R_0 a^2 \kappa g \int_0^1 Q(\rho) \rho \, d\rho
+ \end{equation}
+ 
+ Where again, Q is an arbitrary function of $\rho$ and g is a geometric factor approximately equal to one. The fusion power can now be written as:
+ 
+ \begin{equation}
+ 	P_F = \pi^2 E_F f_D^2 R_0 a^2 \kappa g \int_0^1 n^2 \langle \sigma v \rangle \rho \, d\rho
+ \end{equation}
+ 
+ In standardized units, this becomes:
+ 
+\begin{equation}
+	\label{eq:pf}
+	P_F = K_F \cdot \overline{n}^2 \cdot R_0^3  \cdot (\sigma v)
+\end{equation}
+
+\begin{equation}
+  K_F = 278.3 \cdot f_D^2 \cdot ( \epsilon^2 \kappa g )
+\end{equation}
+
+Where the fusion reactivity is now,
+
+\begin{equation}
+   (\sigma v) = 10^{21} \, (1+\nu_n)^2 \int\limits_0^1 ( 1 - \rho^2 ) ^ { \, 2 \nu_n} \langle \sigma v \rangle \, \rho \, d\rho
+\end{equation}
+
+As mentioned before, this fusion power is divvied up 80-20 between the neutron and alpha particle. These relations will come up shortly. For now, they can be described mathematically as:
+
+\begin{equation}
+	P_\alpha = 0.2 \cdot P_F
+\end{equation}
+
+\begin{equation}
+	P_n = 0.8 \cdot P_F
+\end{equation}
+
+At this point, the current drive needed for steady-state can now be defined.
+
+\subsection{Using Current Drive}
+
+As may have been lost along the way, the current mission is to define a formula for steady current -- from the current balance equation for steady-state tokamaks in H-Mode:
+
+\begin{equation}
+	\label{eq:ibal}
+	I_P = I_{BS} + I_{CD}
+\end{equation}
+
+In standardized units, the equation for the current drive is often given in the literature as:
+
+\begin{equation}
+	I_{CD} = \eta_{CD} \cdot \left( \frac{P_H}{\overline n R_0} \right)
+\end{equation}
+
+Here, $\eta_{CD}$ is the current drive efficiency with units $ \left(
+\frac{ \textnormal{MA} }{ \textnormal{MW-m}^2 } \right) $ and $P_H$ is the heating power in megawatts driven by LHCD (and absorbed by the plasma).
+
+Let it be known that driving current in a plasma is hard. Pulsed reactor designers (i.e. the European effort) think it is so difficult, the may even choose to ignore it completely -- focusing on only inductive sources that require downtime. A common current drive efficiency ($\eta_{CD}$) seen in many designs is $0.3 \pm 0.1 $ in the standard units. It is however inherently a function of all the plasma parameters -- this subtlety is put off until the discussion of self-consistency. For now it assumed to have some constant value.
+
+The remaining step is deriving an equation for driven current ($I_{CD}$) is a formula for the heating power ($P_H$). The way fusion systems models -- like this one -- handle the heating power is through the physics gain factor, Q. Sometimes referred to as the big Q, the value represents how many times over the heating power ($P_H$) is amplified as it is transformed into fusion power ($P_F$):
+
+\begin{equation}
+	P_H = \frac{P_F}{Q}
+\end{equation}
+
+Now, utilizing the previously defined Greenwald density and fusion power:
+
+ \begin{equation}
+ 	\tag{\ref{eq:greenwald}}
+ 	\overline n = K_n \cdot \left( \frac{I_P}{R_0^2} \right)
+ \end{equation}
+ 
+ \begin{equation}
+	\tag{\ref{eq:pf}}
+	P_F = K_F \cdot \overline{n}^2 \cdot R_0^3  \cdot (\sigma v)
+\end{equation}
+
+The current from LHCD can be written as:
+
+\begin{equation}
+	\label{eq:icd}
+	I_{CD} = K_{CD} \cdot I_P \cdot ( \sigma v )
+\end{equation}
+
+\begin{equation}
+	K_{CD} = \left( K_F K_n \right) \cdot \frac{\eta_{CD}}{Q}
+\end{equation}
+
+As $\eta_{CD}$ and Q appear within a fixed coefficient, it is implied they are both input values that remain constant during a solve. This subtlety is lifted when handling $\eta_{CD}$ self-consistently, which will be discussed shortly. However, even in that context, it proves beneficial to still think of it as a fixed variable.
+
+\subsection{Completing the Steady Current}
+
+As hinted along the way, the goal of this section has been to derive a simple formula for steady current ($I_P$). The problem started with current balance in a steady-state reactor:
+
+\begin{equation}
+	\tag{\ref{eq:ibal}}
+	I_P = I_{BS} + I_{CD}
+\end{equation}
+
+Two equations were then found for the bootstrap ($I_{BS}$) and driven ($I_{CD}$) current:
+
+\begin{equation}
+	\tag{\ref{eq:ibs}}
+	I_{BS} = K_{BS} \cdot \overline T
+\end{equation}
+
+\begin{equation}
+	\tag{\ref{eq:icd}}
+	I_{CD} = K_{CD} \cdot I_P \cdot ( \sigma v )
+\end{equation}
+
+Combining these three equations and solving for the total plasma current ($I_P$) -- in mega-amps -- yields:
+
+\begin{equation}
+	I_P = \frac{ K_{BS} \overline T }{ 1 - K_{CD} ( \sigma v ) }
+\end{equation}
+
+This is the answer we have been seeking!
+
+As mentioned before, this simple formula appears to only depend on temperature! Apparently, the plasma should have the same current at some temperature (i.e. $\overline T$ = 15 keV), regardless of the size of the machine or the strength of its magnets. This has the important corollary that each temperature maps to only one current value. As has become a mantra, the subtlety of this behavior lies in the self-consistency of the current-drive efficiency -- $\eta_{CD}$.
+
+\section{Handling Current Drive Self-Consistently}
+
+Although a thorough description of the wave theory behind lower-hybrid current drive (LHCD) is well outside the scope of this text, it does motivate the solving of a tokamak's major radius ($R_0$) and field strength ($B_0$). It also shows how what was apparently a simple problem has now transformed into a rather complex one -- a common occurrence when working with plasmas.
+
+The logic behind finding a self-consistent current-drive efficiency is starting at some plausible value (i.e. $\eta_{CD} = 0.3$), solving for the steady current -- $I_P = f(\overline T)$ -- and then somehow iteratively creeping towards a value deemed self-consistent. What this means is in addition to the solver described in the last section, there needs to be a black-box function the solution is piped through to get a better guess at $\eta_{CD}$. The black-box function we use is a variation of the Ehst-Karney model.
+
+As mentioned, a self-consistent $\eta_{CD}$ is found once a trip through the Ehst-Karney black-box results in the same $\eta_{CD}$ value as was piped in -- to some allowed level of error. As will be tackled in a later chapter, there are sometimes two (or more) values of $\eta_{CD}$ that are physically allowed. These physically allowed values are called the roots of $\eta_{CD}$. How to robustly find all roots and distinguish them (i.e. as high-drive and low-drive) will be put off till then.
+
+The final point to make about the steady current is that the Ehst-Karney model includes dependence on the tokamak configuration. Mathematically,
+
+\begin{equation}
+	\tilde \eta_{CD} = f( R_0, B_0, \overline n, \overline T, I_P )
+\end{equation}
+
+As such, to recalculate it after every solution of the steady current requires a value for both $B_0$ and $R_0$ -- the targets of this model's primary and secondary constraints. These will be the highlight of the next chapter.
+
+\end{document}

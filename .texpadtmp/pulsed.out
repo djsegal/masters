@@ -1,0 +1,12 @@
+\BOOKMARK [0][-]{chapter.4}{Designing a Pulsed Tokamak}{}% 1
+\BOOKMARK [1][-]{section.4.1}{Modeling Plasmas as Circuits}{chapter.4}% 2
+\BOOKMARK [2][-]{subsection.4.1.1}{Drawing the Circuit Diagram}{section.4.1}% 3
+\BOOKMARK [2][-]{subsection.4.1.2}{Plotting Pulse Profiles}{section.4.1}% 4
+\BOOKMARK [2][-]{subsection.4.1.3}{Specifying Circuit Variables}{section.4.1}% 5
+\BOOKMARK [1][-]{section.4.2}{Salvaging Flux Balance}{chapter.4}% 6
+\BOOKMARK [2][-]{subsection.4.2.1}{Rearranging the Circuit Equation}{section.4.2}% 7
+\BOOKMARK [2][-]{subsection.4.2.2}{Importing Poloidal Field Coils}{section.4.2}% 8
+\BOOKMARK [1][-]{section.4.3}{Improving Tokamak Geometry}{chapter.4}% 9
+\BOOKMARK [2][-]{subsection.4.3.1}{Defining Central Solenoid Dimensions}{section.4.3}% 10
+\BOOKMARK [2][-]{subsection.4.3.2}{Measuring Component Thicknesses}{section.4.3}% 11
+\BOOKMARK [2][-]{subsection.4.3.3}{Revisiting Central Solenoid Dimensions}{section.4.3}% 12

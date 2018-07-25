@@ -1,0 +1,21 @@
+\BOOKMARK [0][-]{chapter.3}{Formalizing the Fusion Systems Model}{}% 1
+\BOOKMARK [1][-]{section.3.1}{Explaining Fixed Variables}{chapter.3}% 2
+\BOOKMARK [1][-]{section.3.2}{Connecting Floating Variables}{chapter.3}% 3
+\BOOKMARK [2][-]{subsection.3.2.1}{The Plasma Temperature \205 T}{section.3.2}% 4
+\BOOKMARK [2][-]{subsection.3.2.2}{The Plasma Density \205 n}{section.3.2}% 5
+\BOOKMARK [2][-]{subsection.3.2.3}{The Plasma Current \205 IP}{section.3.2}% 6
+\BOOKMARK [2][-]{subsection.3.2.4}{The Tokamak Magnet Strength \205 B0}{section.3.2}% 7
+\BOOKMARK [2][-]{subsection.3.2.5}{The Tokamak Major Radius \205 R0}{section.3.2}% 8
+\BOOKMARK [1][-]{section.3.3}{Enforcing Power Balance}{chapter.3}% 9
+\BOOKMARK [2][-]{subsection.3.3.1}{Collecting Power Sources}{section.3.3}% 10
+\BOOKMARK [2][-]{subsection.3.3.2}{Approximating Radiation Losses}{section.3.3}% 11
+\BOOKMARK [2][-]{subsection.3.3.3}{Estimating Heat Conduction Losses}{section.3.3}% 12
+\BOOKMARK [2][-]{subsection.3.3.4}{Writing the Lawson Criterion}{section.3.3}% 13
+\BOOKMARK [2][-]{subsection.3.3.5}{Finalizing the Primary Constraint}{section.3.3}% 14
+\BOOKMARK [1][-]{section.3.4}{Collecting Secondary Constraints}{chapter.3}% 15
+\BOOKMARK [2][-]{subsection.3.4.1}{Introducing the Beta Limit}{section.3.4}% 16
+\BOOKMARK [2][-]{subsection.3.4.2}{Giving the Kink Safety Factor}{section.3.4}% 17
+\BOOKMARK [2][-]{subsection.3.4.3}{Working under the Wall Loading Limit}{section.3.4}% 18
+\BOOKMARK [2][-]{subsection.3.4.4}{Setting a Maximum Power Cap}{section.3.4}% 19
+\BOOKMARK [2][-]{subsection.3.4.5}{Listing the Heat Loading Limit}{section.3.4}% 20
+\BOOKMARK [1][-]{section.3.5}{Summarizing the Fusion Systems Model}{chapter.3}% 21

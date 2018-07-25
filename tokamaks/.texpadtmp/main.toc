@@ -1,0 +1,65 @@
+\contentsline {chapter}{\numberline {1}Introducing Fusion Reactors}{13}{chapter.1}
+\contentsline {section}{\numberline {1.1}Treating Fusion as a Science}{13}{section.1.1}
+\contentsline {section}{\numberline {1.2}Treating Fusion as a Business}{15}{section.1.2}
+\contentsline {section}{\numberline {1.3}Pricing a Fusion Reactor}{16}{section.1.3}
+\contentsline {chapter}{\numberline {2}Designing a Steady-State Tokamak}{19}{chapter.2}
+\contentsline {section}{\numberline {2.1}Defining Plasma Parameters}{19}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}Understanding Tokamak Geometry}{20}{subsection.2.1.1}
+\contentsline {subsection}{\numberline {2.1.2}Prescribing Plasma Profiles}{21}{subsection.2.1.2}
+\contentsline {subsubsection}{The Density Profile}{21}{section*.5}
+\contentsline {subsubsection}{The Temperature Profile}{21}{section*.6}
+\contentsline {subsubsection}{The Current Profile}{22}{section*.7}
+\contentsline {section}{\numberline {2.2}Solving the Steady Current}{22}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Enforcing the Greenwald Density Limit}{23}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}Declaring the Bootstrap Current}{24}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.2.3}Deriving the Fusion Power}{26}{subsection.2.2.3}
+\contentsline {subsection}{\numberline {2.2.4}Using Current Drive}{29}{subsection.2.2.4}
+\contentsline {subsection}{\numberline {2.2.5}Completing the Steady Current}{31}{subsection.2.2.5}
+\contentsline {section}{\numberline {2.3}Handling Current Drive Self-Consistently}{32}{section.2.3}
+\contentsline {chapter}{\numberline {3}Formalizing the Fusion Systems Model}{33}{chapter.3}
+\contentsline {section}{\numberline {3.1}Explaining Fixed Variables}{33}{section.3.1}
+\contentsline {section}{\numberline {3.2}Connecting Floating Variables}{34}{section.3.2}
+\contentsline {subsubsection}{The Plasma Temperature -- $\overline T$}{34}{section*.15}
+\contentsline {subsubsection}{The Plasma Density -- $\overline n$}{35}{section*.16}
+\contentsline {subsubsection}{The Plasma Current -- $I_P$}{35}{section*.17}
+\contentsline {subsubsection}{The Tokamak Magnet Strength -- $B_0$}{36}{section*.18}
+\contentsline {subsubsection}{The Tokamak Major Radius -- $R_0$}{36}{section*.19}
+\contentsline {section}{\numberline {3.3}Enforcing Power Balance}{37}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Collecting Power Sources}{37}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.2}Approximating Radiation Losses}{38}{subsection.3.3.2}
+\contentsline {subsection}{\numberline {3.3.3}Estimating Heat Conduction Losses}{40}{subsection.3.3.3}
+\contentsline {subsection}{\numberline {3.3.4}Writing the Lawson Criterion}{41}{subsection.3.3.4}
+\contentsline {subsection}{\numberline {3.3.5}Finalizing the Primary Constraint}{43}{subsection.3.3.5}
+\contentsline {section}{\numberline {3.4}Collecting Secondary Constraints}{46}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}Introducing the Beta Limit}{46}{subsection.3.4.1}
+\contentsline {subsection}{\numberline {3.4.2}Giving the Kink Safety Factor}{47}{subsection.3.4.2}
+\contentsline {subsection}{\numberline {3.4.3}Working under the Wall Loading Limit}{48}{subsection.3.4.3}
+\contentsline {subsection}{\numberline {3.4.4}Setting a Maximum Power Cap}{50}{subsection.3.4.4}
+\contentsline {subsection}{\numberline {3.4.5}Listing the Heat Loading Limit}{51}{subsection.3.4.5}
+\contentsline {section}{\numberline {3.5}Summarizing the Fusion Systems Model}{52}{section.3.5}
+\contentsline {chapter}{\numberline {4}Designing a Pulsed Tokamak}{55}{chapter.4}
+\contentsline {section}{\numberline {4.1}Modeling Plasmas as Circuits}{55}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Drawing the Circuit Diagram}{56}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}Plotting Pulse Profiles}{57}{subsection.4.1.2}
+\contentsline {subsubsection}{The Ramp-Up Phase -- RU}{58}{section*.28}
+\contentsline {subsubsection}{The Flattop Phase -- FT}{59}{section*.29}
+\contentsline {subsubsection}{The Ramp-Down Phase -- RD}{60}{section*.30}
+\contentsline {subsubsection}{The Dwell Phase -- DW}{60}{section*.31}
+\contentsline {subsection}{\numberline {4.1.3}Specifying Circuit Variables}{61}{subsection.4.1.3}
+\contentsline {subsubsection}{The Inductive Current -- $I_D$}{62}{section*.40}
+\contentsline {subsubsection}{The Central Solenoid Maximums -- $V_{max}$ and $I_{max}$}{62}{section*.41}
+\contentsline {subsubsection}{The Central Solenoid Inductance -- $L_1$}{63}{section*.42}
+\contentsline {subsubsection}{The Plasma Inductance -- $L_2$}{63}{section*.43}
+\contentsline {subsubsection}{The Mutual Inductance -- M}{64}{section*.44}
+\contentsline {subsubsection}{The Plasma Resistance -- $R_2$}{64}{section*.45}
+\contentsline {section}{\numberline {4.2}Salvaging Flux Balance}{65}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Rearranging the Circuit Equation}{65}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Importing Poloidal Field Coils}{67}{subsection.4.2.2}
+\contentsline {section}{\numberline {4.3}Improving Tokamak Geometry}{68}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Defining Central Solenoid Dimensions}{69}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Measuring Component Thicknesses}{69}{subsection.4.3.2}
+\contentsline {subsubsection}{The Minor Radius -- $a$}{70}{section*.48}
+\contentsline {subsubsection}{The Blanket Thickness -- $b$}{70}{section*.49}
+\contentsline {subsubsection}{The Toroidal Field Coil Thickness -- $c$}{70}{section*.50}
+\contentsline {subsubsection}{The Central Solenoid Thickness -- $d$}{71}{section*.51}
+\contentsline {subsection}{\numberline {4.3.3}Revisiting Central Solenoid Dimensions}{72}{subsection.4.3.3}

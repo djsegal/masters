@@ -1,0 +1,46 @@
+% -*- Mode:TeX -*-
+
+\documentclass[12pt,twoside]{mitthesis}
+
+%\setcounter{tocdepth}{3}
+%\setcounter{secnumdepth}{3}
+
+\usepackage{lgrind}
+\usepackage{cmap}
+\usepackage[T1]{fontenc}
+\pagestyle{plain}
+
+\usepackage{cleveref}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+%% This bit allows you to either specify only the files which you wish to
+%% process, or `all' to process all files which you \include.
+%% Krishna Sethuraman (1990).
+
+\begin{document}
+
+\include{cover}
+\pagestyle{plain}
+\include{contents}
+
+\include{intro}
+\include{steady}
+\include{model}
+\include{pulsed}
+
+%\include{chap1}
+%\include{chap2}
+
+\appendix
+
+%\include{appa}
+%\include{appb}
+
+\include{biblio}
+
+\end{document}

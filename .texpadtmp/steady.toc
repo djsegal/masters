@@ -1,0 +1,14 @@
+\contentsline {chapter}{\numberline {2}Designing a Steady-State Tokamak}{2}{chapter.2}
+\contentsline {section}{\numberline {2.1}Defining Plasma Parameters}{2}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}Understanding Tokamak Geometry}{3}{subsection.2.1.1}
+\contentsline {subsection}{\numberline {2.1.2}Prescribing Plasma Profiles}{4}{subsection.2.1.2}
+\contentsline {subsubsection}{The Density Profile}{4}{section*.3}
+\contentsline {subsubsection}{The Temperature Profile}{4}{section*.4}
+\contentsline {subsubsection}{The Current Profile}{4}{section*.5}
+\contentsline {section}{\numberline {2.2}Solving the Steady Current}{5}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Enforcing the Greenwald Density Limit}{6}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}Declaring the Bootstrap Current}{7}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.2.3}Deriving the Fusion Power}{9}{subsection.2.2.3}
+\contentsline {subsection}{\numberline {2.2.4}Using Current Drive}{11}{subsection.2.2.4}
+\contentsline {subsection}{\numberline {2.2.5}Completing the Steady Current}{13}{subsection.2.2.5}
+\contentsline {section}{\numberline {2.3}Handling Current Drive Self-Consistently}{13}{section.2.3}
