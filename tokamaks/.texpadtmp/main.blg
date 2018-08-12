@@ -1,6 +1,6 @@
 This is BibTeX, Version 0.99d (TeX Live 2017)
 Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
-The top-level auxiliary file: /Users/dan/Desktop/tokamaks/.texpadtmp/main.aux
+The top-level auxiliary file: /Users/dan/Desktop/thesis/tokamaks/.texpadtmp/main.aux
 A level-1 auxiliary file: cover.aux
 A level-1 auxiliary file: contents.aux
 A level-1 auxiliary file: intro.aux
@@ -8,48 +8,56 @@ A level-1 auxiliary file: steady.aux
 A level-1 auxiliary file: model.aux
 A level-1 auxiliary file: pulsed.aux
 A level-1 auxiliary file: biblio.aux
-The style file: plain.bst
-I found no \citation commands---while reading file /Users/dan/Desktop/tokamaks/.texpadtmp/main.aux
+The style file: unsrt.bst
 Database file #1: ../main.bib
-You've used 0 entries,
-            2118 wiz_defined-function locations,
-            511 strings with 4380 characters,
-and the built_in function-call counts, 20 in all, are:
-= -- 0
-> -- 0
-< -- 0
-+ -- 0
-- -- 0
-* -- 2
-:= -- 7
-add.period$ -- 0
-call.type$ -- 0
-change.case$ -- 0
+Warning--empty publisher in jeff
+Warning--empty institution in fusionfunding
+Warning--empty institution in doe87
+Warning--empty year in doe87
+Warning--empty institution in doe19
+Warning--empty year in doe19
+Warning--empty institution in fusionnever
+Warning--empty publisher in griffiths
+Warning--empty year in griffiths
+You've used 11 entries,
+            1791 wiz_defined-function locations,
+            520 strings with 6714 characters,
+and the built_in function-call counts, 3022 in all, are:
+= -- 141
+> -- 364
+< -- 2
++ -- 127
+- -- 116
+* -- 299
+:= -- 589
+add.period$ -- 30
+call.type$ -- 11
+change.case$ -- 12
 chr.to.int$ -- 0
-cite$ -- 0
-duplicate$ -- 0
-empty$ -- 1
-format.name$ -- 0
-if$ -- 1
+cite$ -- 20
+duplicate$ -- 81
+empty$ -- 185
+format.name$ -- 116
+if$ -- 568
 int.to.chr$ -- 0
-int.to.str$ -- 0
-missing$ -- 0
-newline$ -- 4
-num.names$ -- 0
-pop$ -- 0
+int.to.str$ -- 11
+missing$ -- 7
+newline$ -- 56
+num.names$ -- 11
+pop$ -- 47
 preamble$ -- 2
 purify$ -- 0
 quote$ -- 0
-skip$ -- 0
+skip$ -- 25
 stack$ -- 0
-substring$ -- 0
-swap$ -- 0
-text.length$ -- 0
+substring$ -- 47
+swap$ -- 9
+text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 0
-while$ -- 0
-width$ -- 0
-write$ -- 3
-(There was 1 error message)
+warning$ -- 9
+while$ -- 15
+width$ -- 13
+write$ -- 107
+(There were 9 warnings)

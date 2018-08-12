@@ -1,0 +1,269 @@
+\begin{tikzpicture}[]
+\begin{axis}[height = {101.6mm}, ylabel = {Annual Total Budget (billions 2018 \$)}, title = {Fusion Funding (Actual and Projected)}, xmin = {1975}, xmax = {2020}, ymax = {10}, xlabel = {Year}, {unbounded coords=jump, scaled x ticks = false, xticklabel style={rotate = 0}, xmajorgrids = true, xtick = {1980.0,1990.0,2000.0,2010.0,2020.0}, xticklabels = {1980,1990,2000,2010,2020}, xtick align = inside, axis lines* = left, scaled y ticks = false, yticklabel style={rotate = 0}, ymajorgrids = true, ytick = {0.0,2.0,4.0,6.0,8.0,10.0}, yticklabels = {0,2,4,6,8,10}, ytick align = inside, axis lines* = left,     xshift = 0.0mm,
+    yshift = 0.0mm,
+    axis background/.style={fill={rgb,1:red,1.00000000;green,1.00000000;blue,1.00000000}}
+}, ymin = {0}, width = {152.4mm}]\addplot+ [color = {rgb,1:red,0.00000000;green,0.60560316;blue,0.97868012},
+draw opacity=1.0,
+line width=1,
+solid,mark = none,
+mark size = 2.0,
+mark options = {
+    color = {rgb,1:red,0.00000000;green,0.00000000;blue,0.00000000}, draw opacity = 1.0,
+    fill = {rgb,1:red,0.00000000;green,0.60560316;blue,0.97868012}, fill opacity = 1.0,
+    line width = 1,
+    rotate = 0,
+    solid
+}]coordinates {
+(1985.0, 1.001836)
+(1986.0, 0.827367)
+(1987.0, 0.754179)
+(1988.0, 0.702929)
+(1989.0, 0.697497)
+(1990.0, 0.608102)
+(1991.0, 0.527899)
+(1992.0, 0.593976)
+(1993.0, 0.567297)
+(1994.0, 0.545463)
+(1995.0, 0.545963)
+(1996.0, 0.382175)
+(1997.0, 0.351267)
+(1998.0, 0.343818)
+(1999.0, 0.325482)
+(2000.0, 0.347117)
+(2001.0, 0.342814)
+(2002.0, 0.336267)
+(2003.0, 0.32825)
+(2004.0, 0.339832)
+(2005.0, 0.342925)
+(2006.0, 0.349302)
+(2007.0, 0.377075)
+(2008.0, 0.343662)
+(2009.0, 0.461341)
+(2010.0, 0.48051)
+(2011.0, 0.409602)
+(2012.0, 0.42938)
+(2013.0, 0.406833)
+(2014.0, 0.534818)
+(2015.0, 0.494834)
+(2016.0, 0.457833)
+(2017.0, 0.389125)
+(2018.0, 0.377419)
+};
+\addlegendentry{Actual Funding}
+\addplot+ [color = {rgb,1:red,0.00000000;green,0.00000000;blue,0.00000000},
+draw opacity=0.7,
+line width=1,
+dotted,mark = none,
+mark size = 2.0,
+mark options = {
+    color = {rgb,1:red,0.00000000;green,0.00000000;blue,0.00000000}, draw opacity = 0.7,
+    fill = {rgb,1:red,0.00000000;green,0.00000000;blue,0.00000000}, fill opacity = 0.7,
+    line width = 1,
+    rotate = 0,
+    solid
+}]coordinates {
+(1977, 1)
+(2018, 1)
+};
+\addlegendentry{``Fusion Never''}
+\addplot+ [color = {rgb,1:red,0.88887350;green,0.43564919;blue,0.27812294},
+draw opacity=1.0,
+line width=1,
+solid,mark = none,
+mark size = 2.0,
+mark options = {
+    color = {rgb,1:red,0.00000000;green,0.00000000;blue,0.00000000}, draw opacity = 1.0,
+    fill = {rgb,1:red,0.88887350;green,0.43564919;blue,0.27812294}, fill opacity = 1.0,
+    line width = 1,
+    rotate = 0,
+    solid
+}]coordinates {
+(1976.0, 0.61374)
+(1977.0, 1.05764)
+(1978.0, 1.1695799999999998)
+(1979.0, 1.12326)
+(1980.0, 1.2699399999999998)
+(1981.0, 1.48996)
+(1982.0, 1.55558)
+(1983.0, 1.5015399999999999)
+(1984.0, 1.59418)
+(1985.0, 1.6018999999999999)
+(1986.0, 1.9531599999999998)
+(1987.0, 2.2117799999999996)
+(1988.0, 2.2079199999999997)
+(1989.0, 2.18862)
+(1990.0, 2.36618)
+(1991.0, 2.77534)
+(1992.0, 2.63252)
+(1993.0, 2.55918)
+(1994.0, 2.65954)
+(1995.0, 2.316)
+(1996.0, 2.2040599999999997)
+(1997.0, 2.24652)
+(1998.0, 2.63638)
+(1999.0, 3.18064)
+(2000.0, 3.3002999999999996)
+(2001.0, 3.2269599999999996)
+(2002.0, 3.11502)
+(2003.0, 2.8100799999999997)
+(2004.0, 2.4665399999999997)
+(2005.0, 2.316)
+};
+\addlegendentry{Moderate Effort}
+\addplot+[draw=none, color = {rgb,1:red,0.88887350;green,0.43564919;blue,0.27812294},
+draw opacity=1.0,
+line width=0,
+solid,mark = *,
+mark size = 2.0,
+mark options = {
+    color = {rgb,1:red,0.00000000;green,0.00000000;blue,0.00000000}, draw opacity = 1.0,
+    fill = {rgb,1:red,0.88887350;green,0.43564919;blue,0.27812294}, fill opacity = 1.0,
+    line width = 1,
+    rotate = 0,
+    solid
+},forget plot] coordinates {
+(2005.0, 2.316)
+};
+\addplot+ [color = {rgb,1:red,0.24222430;green,0.64327509;blue,0.30444865},
+draw opacity=1.0,
+line width=1,
+solid,mark = none,
+mark size = 2.0,
+mark options = {
+    color = {rgb,1:red,0.00000000;green,0.00000000;blue,0.00000000}, draw opacity = 1.0,
+    fill = {rgb,1:red,0.24222430;green,0.64327509;blue,0.30444865}, fill opacity = 1.0,
+    line width = 1,
+    rotate = 0,
+    solid
+}]coordinates {
+(1976.0, 0.61374)
+(1977.0, 1.1734399999999998)
+(1978.0, 1.5825999999999998)
+(1979.0, 1.6598)
+(1980.0, 1.6482199999999998)
+(1981.0, 2.50128)
+(1982.0, 2.9143)
+(1983.0, 2.7598999999999996)
+(1984.0, 2.50128)
+(1985.0, 2.64796)
+(1986.0, 3.06484)
+(1987.0, 3.2230999999999996)
+(1988.0, 3.39294)
+(1989.0, 3.3775)
+(1990.0, 2.8795599999999997)
+(1991.0, 2.5360199999999997)
+(1992.0, 2.8100799999999997)
+(1993.0, 3.47014)
+(1994.0, 3.9757999999999996)
+(1995.0, 4.01826)
+(1996.0, 3.2887199999999996)
+(1997.0, 2.71358)
+(1998.0, 2.52444)
+};
+\addlegendentry{Aggressive Effort}
+\addplot+[draw=none, color = {rgb,1:red,0.24222430;green,0.64327509;blue,0.30444865},
+draw opacity=1.0,
+line width=0,
+solid,mark = *,
+mark size = 2.0,
+mark options = {
+    color = {rgb,1:red,0.00000000;green,0.00000000;blue,0.00000000}, draw opacity = 1.0,
+    fill = {rgb,1:red,0.24222430;green,0.64327509;blue,0.30444865}, fill opacity = 1.0,
+    line width = 1,
+    rotate = 0,
+    solid
+},forget plot] coordinates {
+(1998.0, 2.52444)
+};
+\addplot+ [color = {rgb,1:red,0.76444018;green,0.44411178;blue,0.82429754},
+draw opacity=1.0,
+line width=1,
+solid,mark = none,
+mark size = 2.0,
+mark options = {
+    color = {rgb,1:red,0.00000000;green,0.00000000;blue,0.00000000}, draw opacity = 1.0,
+    fill = {rgb,1:red,0.76444018;green,0.44411178;blue,0.82429754}, fill opacity = 1.0,
+    line width = 1,
+    rotate = 0,
+    solid
+}]coordinates {
+(1976.0, 0.61374)
+(1977.0, 1.2699399999999998)
+(1978.0, 1.68682)
+(1979.0, 2.0071999999999997)
+(1980.0, 2.7367399999999997)
+(1981.0, 3.51646)
+(1982.0, 3.66314)
+(1983.0, 3.2269599999999996)
+(1984.0, 3.9101799999999995)
+(1985.0, 4.269159999999999)
+(1986.0, 4.36952)
+(1987.0, 3.92176)
+(1988.0, 3.6168199999999997)
+(1989.0, 3.92948)
+(1990.0, 5.1299399999999995)
+(1991.0, 4.554799999999999)
+(1992.0, 3.59366)
+(1993.0, 2.8641199999999998)
+};
+\addlegendentry{Accelerated Effort}
+\addplot+[draw=none, color = {rgb,1:red,0.76444018;green,0.44411178;blue,0.82429754},
+draw opacity=1.0,
+line width=0,
+solid,mark = *,
+mark size = 2.0,
+mark options = {
+    color = {rgb,1:red,0.00000000;green,0.00000000;blue,0.00000000}, draw opacity = 1.0,
+    fill = {rgb,1:red,0.76444018;green,0.44411178;blue,0.82429754}, fill opacity = 1.0,
+    line width = 1,
+    rotate = 0,
+    solid
+},forget plot] coordinates {
+(1993.0, 2.8641199999999998)
+};
+\addplot+ [color = {rgb,1:red,0.67554396;green,0.55566233;blue,0.09423434},
+draw opacity=1.0,
+line width=1,
+solid,mark = none,
+mark size = 2.0,
+mark options = {
+    color = {rgb,1:red,0.00000000;green,0.00000000;blue,0.00000000}, draw opacity = 1.0,
+    fill = {rgb,1:red,0.67554396;green,0.55566233;blue,0.09423434}, fill opacity = 1.0,
+    line width = 1,
+    rotate = 0,
+    solid
+}]coordinates {
+(1976.0, 0.61374)
+(1977.0, 1.46294)
+(1978.0, 2.509)
+(1979.0, 4.9601)
+(1980.0, 6.28022)
+(1981.0, 6.1953)
+(1982.0, 7.781759999999999)
+(1983.0, 8.47656)
+(1984.0, 7.059939999999999)
+(1985.0, 4.423559999999999)
+(1986.0, 5.029579999999999)
+(1987.0, 7.2954)
+(1988.0, 8.302859999999999)
+(1989.0, 5.58156)
+(1990.0, 3.8021)
+};
+\addlegendentry{Maximum Effort}
+\addplot+[draw=none, color = {rgb,1:red,0.67554396;green,0.55566233;blue,0.09423434},
+draw opacity=1.0,
+line width=0,
+solid,mark = *,
+mark size = 2.0,
+mark options = {
+    color = {rgb,1:red,0.00000000;green,0.00000000;blue,0.00000000}, draw opacity = 1.0,
+    fill = {rgb,1:red,0.67554396;green,0.55566233;blue,0.09423434}, fill opacity = 1.0,
+    line width = 1,
+    rotate = 0,
+    solid
+},forget plot] coordinates {
+(1990.0, 3.8021)
+};
+\end{axis}
+
+\end{tikzpicture}

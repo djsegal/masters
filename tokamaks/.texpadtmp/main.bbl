@@ -1,5 +1,75 @@
 \newcommand{\noopsort}[1]{} \newcommand{\printfirst}[2]{#1}
   \newcommand{\singleletter}[1]{#1} \newcommand{\switchargs}[2]{#2#1}
-\begin{thebibliography}{}
+\begin{thebibliography}{10}
+
+\bibitem{eupulsed}
+W~Biel, M~Beckers, R~Kemp, R~Wenninger, and H~Zohm.
+\newblock {Systems code studies on the optimization of design parameters for a
+  pulsed DEMO tokamak reactor}, 2016.
+
+\bibitem{ussteady}
+C~E Kessel, M~S Tillack, F~Najmabadi, F~M Poli, K~Ghantous, N~Gorelenkov, X~R
+  Wang, D~Navaei, H~H Toudeshki, C~Koehly, L~El-Guebaly, J~P Blanchard, C~J
+  Martin, L~Mynsburge, P~Humrickhouse, M~E Rensink, T~D Rognlien, M~Yoda, S~I
+  Abdel-Khalik, M~D Hageman, B~H Mills, J~D Rader, D~L Sadowski, P~B Snyder,
+  H.~{St. John}, A~D Turnbull, L~M Waganer, S~Malang, and A~F Rowcliffe.
+\newblock {The ARIES advanced and conservative tokamak power plant study}.
+\newblock {\em Fusion Science and Technology}, 67(1):1--21, 2015.
+
+\bibitem{jeff}
+Jeffrey~P Freidberg.
+\newblock {\em {Plasma Physics and Fusion Energy}}, volume~1.
+\newblock 2007.
+
+\bibitem{fusionfunding}
+Stephen~O Dean.
+\newblock {Fusion Power by Magnetic Confinement Program Plan}.
+\newblock Technical Report~4, 1998.
+
+\bibitem{doe87}
+DOE.
+\newblock {FY 1987 Congressional Budget Request}.
+\newblock Technical report.
+
+\bibitem{doe19}
+DOE.
+\newblock {FY 2019 Congressional Budget Request}.
+\newblock Technical report.
+
+\bibitem{fusionnever}
+Marsha Freeman.
+\newblock {The True History of The U.S. Fusion Program}.
+\newblock Technical report, 2009.
+
+\bibitem{imode}
+D.~G. Whytea, A~E Hubbard, J~W Hughes, B~Lipschultz, J~E Rice, E~S Marmar,
+  M~Greenwald, I~Cziegler, A~Dominguez, T~Golfinopoulos, N~Howard, L.~Lin,
+  R.~M. McDermottb, M~Porkolab, M~L Reinke, J~Terry, N~Tsujii, S~Wolfe,
+  S~Wukitch, and Y~Lin.
+\newblock {I-mode: An H-mode energy confinement regime with L-mode particle
+  transport in Alcator C-Mod}.
+\newblock {\em Nuclear Fusion}, 50(10), 2010.
+
+\bibitem{enhanced}
+J.~W. Connor, T~Fukuda, X~Garbet, C~Gormezano, V~Mukhovatov, M~Wakatani,
+  M.~Greenwald, A.~G. Peeters, F.~Ryter, A.~C.C. Sips, R.~C. Wolf, E.~J. Doyle,
+  P.~Gohil, C.~M. Greenfield, J.~E. Kinsey, E.~Barbato, G.~Bracco, Yu~Baranov,
+  A.~Becoulet, P.~Buratti, L.~G. Ericsson, B.~Esposito, T.~Hellsten,
+  F.~Imbeaux, P.~Maget, V.~V. Parail, T~Fukuda, T.~Fujita, S.~Ide, Y.~Kamada,
+  Y.~Sakamoto, H.~Shirai, T.~Suzuki, T.~Takizuka, G.~M.D. Hogeweij,
+  Yu~Esipchuk, N.~Ivanov, N.~Kirneva, K.~Razumova, T.~S. Hahm, E.~J.
+  Synakowski, T.~Aniel, X~Garbet, G.~T. Hoang, X.~Litaudon, J.~Weiland,
+  B.~Unterberg, A.~Fukuyama, K.~Toi, S.~Lebedev, V.~Vershkov, and J.~E. Rice.
+\newblock {A review of internal transport barrier physics for steady-state
+  operation of tokamaks}, apr 2004.
+
+\bibitem{shear}
+K~C Shaing, A~Y Aydemir, W~A Houlberg, and M~C Zarnstorff.
+\newblock {Theory of Enhanced Reversed Shear Mode in Tokamaks}.
+\newblock {\em Physical Review Letters}, 80(24):5353--5356, 1998.
+
+\bibitem{griffiths}
+David~J. Griffiths.
+\newblock {\em {Introduction to electrodynamics}}.
 
 \end{thebibliography}

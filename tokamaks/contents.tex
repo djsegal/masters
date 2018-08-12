@@ -9,3 +9,10 @@
 \newpage
 \listoftables
 
+\newpage 
+
+\newcommand{\listequationsname}{List of Equations}
+\newlistof{myequations}{equ}{\listequationsname}
+\newcommand{\myequations}[1]{\addcontentsline{equ}{myequations}{\protect\numberline{\theequation} #1}}
+
+\listofmyequations
