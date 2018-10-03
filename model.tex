@@ -68,7 +68,7 @@ Where the constant happens to be 10 in one run, 15 for the next, and 30 in the f
 The cornerstone of this fusion systems model has always been the application of the Greenwald density limit from square one. It is for this reason -- as well as being a good approximation -- that a parabolic profile was rationalized over a pedestal (H-Mode) one. Repeated, the Greenwald density limit is:
 
 \begin{equation}
-	\label{eq:nbar}
+	\tag{\ref{eq:greenwald}}
 	\overline n = K_n \cdot \frac{I_P}{R_0^2}
 \end{equation}
 
@@ -79,7 +79,7 @@ This is an exceptionally simple relationship and why it guided the model. Unlike
 The plasma current is what separates steady-state from pulsed operation. From before, the steady current was found to be:
 
 \begin{equation}
-	\label{eq:steady}
+	\tag{\ref{eq:steady}}
 	I_P = \frac{K_{BS} \overline T}{1 - K_{CD} ( \sigma v ) }
 \end{equation}
 
@@ -167,6 +167,7 @@ The final source term then is the ohmic power ($P_\Omega$). Just as copper wires
 Here, the resistance of the plasma is unlike any material humans encounter on a daily basis -- it actually decreases with temperature. The fusion systems model handles the plasma resistance ($R_P$)  with the neoclassical Spitzer resistivity. Through equation,
 
 \begin{equation}
+	\label{eq:rp}
 	R_P = \frac{K_{RP}}{R_0 \overline T ^ {3/2}}
 \end{equation}
 
@@ -635,7 +636,7 @@ Before moving onto generalizing the steady current to model pulsed reactors, a q
 \end{equation}
 
 \begin{equation}
-	\tag{\ref{eq:nbar}}
+	\tag{\ref{eq:greenwald}}
 	\overline n = K_n \cdot \frac{I_P}{R_0^2}
 \end{equation}
 
