@@ -1,0 +1,80 @@
+\begin{tikzpicture}[]
+\begin{axis}[height = {101.6mm}, ylabel = {$B_{CS}$}, title = {Scylla Prototyping}, xmin = {0}, xmax = {4000}, ymax = {40}, xlabel = {$P_F$}, {unbounded coords=jump, scaled x ticks = false, xticklabel style={rotate = 0}, xmajorgrids = true, xtick = {0.0,1000.0,2000.0,3000.0,4000.0}, xticklabels = {0,1000,2000,3000,4000}, xtick align = inside, axis lines* = left, scaled y ticks = false, yticklabel style={rotate = 0}, ymajorgrids = true, ytick = {0.0,10.0,20.0,30.0,40.0}, yticklabels = {0,10,20,30,40}, ytick align = inside, axis lines* = left,     xshift = 0.0mm,
+    yshift = 0.0mm,
+    axis background/.style={fill={rgb,1:red,1.00000000;green,1.00000000;blue,1.00000000}}
+}, ymin = {0}, width = {152.4mm}]\addplot+ [color = {rgb,1:red,0.00000000;green,0.60560316;blue,0.97868012},
+draw opacity=1.0,
+line width=1,
+solid,mark = none,
+mark size = 2.0,
+mark options = {
+    color = {rgb,1:red,0.00000000;green,0.00000000;blue,0.00000000}, draw opacity = 1.0,
+    fill = {rgb,1:red,0.00000000;green,0.60560316;blue,0.97868012}, fill opacity = 1.0,
+    line width = 1,
+    rotate = 0,
+    solid
+},forget plot]coordinates {
+(2000.0000000000011, 36.09504763855253)
+(2125.000000000006, 25.806915216858876)
+(2250.0, 19.820699253230455)
+(2374.9999999999986, 16.052880784661486)
+(2500.0, 13.443356532784666)
+(2625.0, 11.515502742107898)
+(2750.000000000006, 10.02786582057371)
+(2874.9999999999986, 8.843830939830742)
+(3000.000000000003, 7.879377118279819)
+(3125.0000000000027, 7.079500168921477)
+};
+\addplot+ [color = {rgb,1:red,0.24222430;green,0.64327509;blue,0.30444865},
+draw opacity=1.0,
+line width=1,
+solid,mark = none,
+mark size = 2.0,
+mark options = {
+    color = {rgb,1:red,0.00000000;green,0.00000000;blue,0.00000000}, draw opacity = 1.0,
+    fill = {rgb,1:red,0.24222430;green,0.64327509;blue,0.30444865}, fill opacity = 1.0,
+    line width = 1,
+    rotate = 0,
+    solid
+},fill = {rgb,1:red,0.24222430;green,0.64327509;blue,0.30444865}, fill opacity=0.1,area legend]coordinates {
+(2000.0000000000011, 40.0)
+(2749.9999999999977, 40.0)
+(2749.9999999999977, 0.0)
+(2000.0000000000011, 0.0)
+(2000.0000000000011, 40.0)
+};
+\addlegendentry{Valid Region}
+\addplot+ [color = {rgb,1:red,0.88887350;green,0.43564919;blue,0.27812294},
+draw opacity=1.0,
+line width=1,
+solid,mark = none,
+mark size = 2.0,
+mark options = {
+    color = {rgb,1:red,0.00000000;green,0.00000000;blue,0.00000000}, draw opacity = 1.0,
+    fill = {rgb,1:red,0.88887350;green,0.43564919;blue,0.27812294}, fill opacity = 1.0,
+    line width = 1,
+    rotate = 0,
+    solid
+}]coordinates {
+(2200, 0)
+(2200, 40)
+};
+\addlegendentry{$P_F = 2200$}
+\addplot+[draw=none, color = {rgb,1:red,0.88887350;green,0.43564919;blue,0.27812294},
+draw opacity=1.0,
+line width=0,
+solid,mark = *,
+mark size = 2.0,
+mark options = {
+    color = {rgb,1:red,0.00000000;green,0.00000000;blue,0.00000000}, draw opacity = 1.0,
+    fill = {rgb,1:red,0.88887350;green,0.43564919;blue,0.27812294}, fill opacity = 1.0,
+    line width = 1,
+    rotate = 0,
+    solid
+}] coordinates {
+(2200.0, 21.858685980550945)
+};
+\addlegendentry{$B_{CS} = 21.86$}
+\end{axis}
+
+\end{tikzpicture}

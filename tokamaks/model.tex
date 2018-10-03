@@ -19,23 +19,39 @@
 
 \chapter{Formalizing the Fusion Systems Model}
 
-The goal of this chapter is to step back from the steady current and see the larger picture behind reactor design. As such, a more in-depth description of fixed and floating variables is given. The discussion of floating variables will then lend itself to describing the framework for this fusion systems model. As such, we will derive formulas for the radius and magnetic field of the tokamak. The current will remain a connecting piece while switching gears to pulsed tokamaks and comparing each operation's solving algorithm.
+The goal of this chapter is to take a step back from the steady current derivation and see the larger picture behind reactor design. As such, a more in-depth description of fixed and floating variables is given. The discussion of floating variables will then lend itself to describing the framework for this fusion systems model. As such, we will now need formulas for the radius and magnet strength of the tokamak. The current will then remain a connecting piece as we switch gears to pulsed tokamaks and compare the two schemes' underlying solvers.
 
 \section{Explaining Fixed Variables} 
 
-In this model, fixed variables are ones that remain constant while solving for a reactor. These include geometric scalings (i.e. $\epsilon$, $\delta$, $\kappa$), peaking parameters (i.e. $\nu_n$, $\nu_T$, $l_i$), and a slew of physics constants related to pulsed and steady-state design (e.g. Q, $N_G$, $f_D$). For a complete list of fixed variables, consult the appendix. Within this model, fixed variables are second-class variables. As such they often reside in fixed coefficients -- $K_\square$ -- which are treated as constants.
+In this model, fixed variables are ones that remain constant while solving for a reactor. These include geometric scalings (i.e. $\epsilon$, $\delta$, $\kappa$), profile parameters (i.e. $\nu_n$, $\nu_T$, $l_i$), and a slew of physics constants related to pulsed and steady-state design (e.g. Q, $N_G$, $f_D$). For a complete list of fixed variables, consult the appendix. The point to make now is that this model treats fixed variables as second-class objects. As such they often reside in fixed coefficients -- $K_\square$ -- which are treated as constants.
 
 \section{Connecting Floating Variables}
 
 Floating variables -- $\overline T$, $\overline n$, $I_P$, $R_0$, $B_0$ -- are first-class variables of this fusion systems model. They represent the fundamental properties of the plasma and tokamak (that constitute a fusion reactor). As such, they will be reintroduced one at a time, explaining how they fit into the model -- and which equation is capable of representing it.
 
-Bluntly, this fusion systems model is just a simple algebra problem: solve five equations with five unknowns (i.e. $\overline T$, $\overline n$, $I_P$, $R_0$, $B_0$). Although this naive approach would work, we can do a little better by wrangling these five equations down to just one. This was already done while deriving the steady current. It just happened that the current was not directly dependent on the tokamak size or magnet strength. 
+\begin{table}[h!]
+\centering	
+\caption{Floating Variables}
+\begin{tabular}{ c|c|c } 
+
+\textbf{Symbol} & \textbf{Name} & \textbf{Units} \\
+\hline
+$I_P$ & Plasma Current & MA \\ 
+$\overline{T}$ & Plasma Temperature & keV \\ 
+$\overline{n}$ & Electron Density & $10^{20} \, \textnormal{m}^{-3}$ \\ 
+$R_0$ &  Major Radius & m \\ 
+$B_0$ &  Magnetic Field & T \\ 
+
+\end{tabular}
+\end{table}
+
+Bluntly, this fusion systems model is just a simple algebra problem: solve five equations with five unknowns (i.e. $\overline T$, $\overline n$, $I_P$, $R_0$, $B_0$). Although this naive approach would work, we can do a little better by wrangling these five equations down to just one. This was already done while deriving the steady current. It just happened that the current was not directly dependent on the tokamak size ($R_0$) or magnet strength ($B_0$). 
 
 This will prove more challenging for the generalized current needed for pulsed operation. Even so, this equation will still be boiled down to one equation with a single unknown -- $I_P$. A solution to which can be solved much faster than the naive 5 equation approach. This is one reason the model is so fast. 
 
 \subsubsection{The Plasma Temperature -- $\overline T$}
 
-The plasma temperature, measured in keV (kilo-electron-volts), is one of the most finicky variables in the fusion systems model. It first proved troublesome when it was shown that a pedestal profile -- not a parabolic one used here -- would be needed for an accurate calculation of bootstrap current. The unusual tabulation for reactivity -- ($\sigma v$) -- used in fusion power only further exposed this nonlinearity.
+The plasma temperature, measured in keV (kilo-electron-volts), is one of the most finicky variables in the fusion systems model. It first proved troublesome when it was shown that a pedestal profile -- not a parabolic one used here -- would be needed for an accurate calculation of bootstrap current. The unusual tabulation for reactivity -- ($\sigma v$) -- which appeared in fusion power only further exposed this nonlinearity.
 
 Acknowledging that temperature is the most difficult to handle parameter prompts its use as the scanned variable. What this means practically is scanning temperatures produces curves of reactors. By example, a scan may be run over the average temperatures ($\overline T$): 10, 15, 20, 25, and 30 keV -- each corresponding to its own reactor. In equation form, this becomes:
 
@@ -43,8 +59,9 @@ Acknowledging that temperature is the most difficult to handle parameter prompts
 	\label{eq:tbar}
 	\overline T = const.
 \end{equation}
+\myequations{Scanned Temperature -- $\overline T$}
 
-Where the constant is 10 in one run, 15 in the next, and 30 for the fifth one.
+Where the constant happens to be 10 in one run, 15 for the next, and 30 in the fifth.
 
 \subsubsection{The Plasma Density -- $\overline n$}
 
@@ -55,7 +72,7 @@ The cornerstone of this fusion systems model has always been the application of 
 	\overline n = K_n \cdot \frac{I_P}{R_0^2}
 \end{equation}
 
-This is an exceptionally simple relationship and why it guided the model. Unlike the next three variables, it is actually used in their derivations. Therefore, any reactor found through this model is considered a \emph{Greenwaldian Reactor} -- one in H-Mode at the Greenwald density limit.
+This is an exceptionally simple relationship and why it guided the model. Unlike the next three variables, it is actually used in their derivations. Therefore, any reactor found through this model is considered a \emph{Greenwaldian Reactor} -- one in H-Mode held at the Greenwald density limit.
 
 \subsubsection{The Plasma Current -- $I_P$}
 
@@ -66,25 +83,36 @@ The plasma current is what separates steady-state from pulsed operation. From be
 	I_P = \frac{K_{BS} \overline T}{1 - K_{CD} ( \sigma v ) }
 \end{equation}
 
-This was found by setting the total current equal to the two sources of current: bootstrap and current drive. In fractional form,
+This was derived by setting the total current equal to the two sources of current: bootstrap and current drive. In fractional form,
 
 \begin{equation}
 	I_P = I_{BS} + I_{CD} \ \ \rightarrow \, \ \ 1 = f_{BS} + f_{CD}
 \end{equation}
 
-This says that the current fractions of bootstrap and current drive must sum to one. As shown next chapter, inductive sources can be included in this flux balance:
+This says that the current fractions of bootstrap and current drive must sum to one. As shown next chapter, inductive sources can be included into this current balance:
 
 \begin{equation}
-	1 = f_{BS} + f_{CD} + f_{IN}
+	1 = f_{BS} + f_{CD} + f_{ID}
 \end{equation}
 
-This equation shows how steady-state and pulsed operation can coexist. The final point to make is reducing the model to being purely pulsed -- i.e. neglecting the current drive:
+\begin{figure}
+	\centering
+	\begin{adjustbox}{width=0.75\textwidth}
+		\input{images/current_balance}
+	\end{adjustbox}
+%	\includegraphics[width=0.75\textwidth]{images/test_image}
+	\caption{Current Balance in a Tokamak} ~\\
+	\small In a tokamak, there needs to be a certain amount of current -- and that current has to come from somewhere. All good reactors have an adequate bootstrap current. What provides the remaining current is what distinguishes steady state from pulsed operation.
+	\label{fig:curbal}
+\end{figure}
+
+This equation shows how steady-state and pulsed operation can coexist (see \cref{fig:curbal}). The final point to make is reducing the model to being purely pulsed -- i.e. neglecting the current drive:
 
 \begin{equation}
-	1 = f_{BS} + f_{IN}
+	1 = f_{BS} + f_{ID}
 \end{equation}
 
-Therefore next chapter will generalize the steady current to allow pulsed operation. As steady current faced self-consistency issues with $\eta_{CD}$, this current will involve its own root solving problem -- the description of which will be given in the following two chapters.
+Therefore, the next chapter will generalize the steady current to allow pulsed operation. As steady current faced self-consistency issues with $\eta_{CD}$, this current will involve its own root solving conundrum -- the description of which will be given in the following two chapters.
 
 \subsubsection{The Tokamak Magnet Strength -- $B_0$}
 
@@ -92,11 +120,13 @@ The tokamak magnet strength has no obvious equation to eliminate it. With foresi
 
 \subsubsection{The Tokamak Major Radius -- $R_0$}
 
-Much like the magnet strength, the major radius has no obvious relation to express it. This is convenient, because the model still has yet to resolve one of its most pressing issues: physical and engineering-based constraints. This laundry list of requirements further restricts reactor space to the curves show in the results section. Collectively, these are referred to as the secondary constraints -- discussed later this chapter. By miracle, these constraints all just happen to depend on the size of the reactor. 
+Much like the magnet strength, the major radius has no obvious relation to express it. This is convenient, because the model still has yet to resolve one of its most pressing issues: physical and engineering-based constraints. This laundry list of requirements further restricts reactor space to the curves shown in the results section. Collectively, these are referred to as the secondary constraints -- discussed later this chapter. By miracle, these constraints all just happen to depend on the size of the reactor -- the reason they are chosen to substitute out the radius. 
 
 \section{Enforcing Power Balance}
 
-What separates a reactor from a toaster is power balance. It accounts for how the power going into a plasma's core exactly matches the power coming out of it. To approximate this conservation equation, two pairs of powers will be introduced: the sources and the sinks. The sources have already been introduced -- they include the alpha power ($P_\alpha$) and the heating power ($P_H$). The remaining two powers - the sinks -- appear as the radiation and heat conduction losses. Both of which are defined shortly. In equation form, power balance becomes:
+What separates a reactor from a toaster is power balance. It accounts for how the power going into a plasma's core exactly matches the power coming out of it. To approximate this conservation equation, two sets of power will be introduced: the sources and the sinks. 
+
+The sources have mainly been introduced for the most part -- they include the alpha power ($P_\alpha$) and the heating power ($P_H$), as well as the new ohmic power term ($P_\Omega$). The remaining two powers -- the sinks -- then appear through the radiation and heat conduction losses, and will be introduced shortly. In equation form, power balance becomes:
 
 \begin{equation}
 	\sum_{sources} P = \sum_{sinks} \, P
@@ -105,46 +135,65 @@ What separates a reactor from a toaster is power balance. It accounts for how th
 or expanded to fit this model:
 
 \begin{equation}
-	P_\alpha + P_H = P_{BR} + P_\kappa
+	\label{eq:power_balance}
+	P_\alpha + P_H + P_\Omega = P_{BR} + P_\kappa
 \end{equation}
 
-For clarity, the left-hand side of this equality are the sources. The remaining two are the sinks: the Bremsstrahlung radiation ($P_{BR}$) and the heat conduction losses ($P_\kappa$).
+For clarity, the left-hand side of this equality are the sources. Whereas the remaining two are the sinks: the Bremsstrahlung radiation ($P_{BR}$) and the heat conduction losses ($P_\kappa$).
 
 \subsection{Collecting Power Sources}
 
-As suggested, the two sources of power in a tokamak are: alpha power ($P_\alpha$) and auxiliary heating ($P_H$). From earlier, it was determined that alpha particles (i.e. Helium) carried 20\% of the total fusion power; or as we put it mathematically:
+As suggested, the two dominant sources of power in a tokamak are: alpha power ($P_\alpha$) and auxiliary heating ($P_H$). From earlier, it was determined that alpha particles (i.e. the helium) carries around 20\% of the total fusion power; or as we put it mathematically:
 
 \begin{equation}
 	\label{eq:palpha}
 	P_\alpha = \frac{P_F}{5}
 \end{equation}
 
-Additionally, it was determined that heating power is what eventually amplified into fusion power, or in equation form:
+Additionally, it was determined that the heating power is what was eventually amplified into fusion power -- or through equation:
 
 \begin{equation}
 	\label{eq:ph}
 	P_H = \frac{P_F}{Q}
 \end{equation}
 
-This allows the sources to be combined together with a new fixed coefficient:
+The final source term then is the ohmic power ($P_\Omega$). Just as copper wires in homes heat up as current runs through them, a fusion plasma heats by the same Ohmic process. From a simple circuits picture, the power across the plasma is related to its current and resistance -- in our standardized units -- through:
 
 \begin{equation}
-	P_{src} = P_\alpha + P_H = K_P \cdot P_F
+	\label{eq:pohmic_basic}
+	P_\Omega = 10^6 \cdot I_P^2 \cdot R_P
+\end{equation}
+
+Here, the resistance of the plasma is unlike any material humans encounter on a daily basis -- it actually decreases with temperature. The fusion systems model handles the plasma resistance ($R_P$)  with the neoclassical Spitzer resistivity. Through equation,
+
+\begin{equation}
+	R_P = \frac{K_{RP}}{R_0 \overline T ^ {3/2}}
 \end{equation}
 
 \begin{equation}
-	K_P = \frac{5 + Q}{5 \times Q}
+	K_{RP} = 5.6e{-8} \cdot \left( \frac{ Z_{eff} }{ \epsilon^2 \kappa } \right) \cdot \left( \frac{1}{ 1 - 1.31 \sqrt{ \epsilon } + 0.46 \epsilon } \right)
 \end{equation}
 
-The two sink terms are described next.
+Combined with the Greenwald limit, ohmic power can now be written more compactly as,
+
+\begin{equation}
+	\label{eq:pohmic}
+	P_\Omega = K_\Omega \cdot \left( \frac{ \overline n ^ 2 R_0^3 }{\overline T ^ {3/2}} \right)
+\end{equation}
+
+\begin{equation}
+	K_\Omega = 10^6 \cdot \frac{K_{RP}}{K_n^2}
+\end{equation}
+
+With the sources defined, we are now in a position to discuss the two sink terms used in this model's power balance.
 
 \subsection{Approximating Radiation Losses}
 
-All nuclear reactors emit radiation. From a power balance perspective, this means some power has to always be reserved to recoup from its losses -- measured in megawatts. In a fusion reactor, the three most important types of radiation are: Bremsstrahlung radiation, line radiation, and synchrotron radiation. Without going into too much detail, this model chooses to only model Bremsstrahlung radiation -- as it usually is the most dominant term in the plasma's core.
+All nuclear reactors emit radiation. From a power balance perspective, this means some power has to always be reserved to recoup from its losses -- measured in megawatts. In a fusion reactor, the three most important types of radiation are: Bremsstrahlung radiation, line radiation, and synchrotron radiation. 
 
-This radiation power term is therefore one area where the physics model could be greatly improved. Derived shortly, the Bremsstrahlung radiation is almost always the dominant source. However, adding the line-radiation would better handle impurities (i.e. when chunks of the tokamak fall into the plasma) and implementing synchrotron radiation would drive the values closer to real-world experiments (although a description of which is outside the scope of this text).
+Without going into too much detail, this model chooses to only model Bremsstrahlung radiation -- as it usually dominates within the plasma's core. However, adding the effects of line-radiation and synchrotron radiation would drive results closer to real-world experiments. For example, line-radiation would better account for the heavy impurities that appear as pieces of the tokamak fall into the plasma.
 
-Bremsstrahlung -- or breaking -- radiation is what occurs when a charged particle (e.g. an electron) is decelerated (e.g. by changing angle). In a tokamak, this happens all the time as charged particles are spun around and around the machine. As given in Jeff Freidberg's book, this value can be written as:
+To begin, Bremsstrahlung -- or breaking -- radiation is what occurs when a charged particle (e.g. an electron) is accelerated by some means. In a tokamak, this happens all the time as charged particles are flung around and around the machine.\footnote{This centripetal acceleration is akin to a child spinning a bucket as fast as they can without spilling even a drop of water.} As given in Jeff Freidberg's book, this term is described by:
 
 \begin{equation}
 	P_{BR} = \int S_{BR} \, d \vec{r}
@@ -158,9 +207,9 @@ For clarity, this is a volume integral where the radiation power density ($S_{BR
 
 The constants in the left set of parentheses all have their usual physics meanings (i.e. c is the speed of light and $m_e$ is the mass of an electron). What is new is the effective charge: $Z_{eff}$.
 
-The effective charge is a scheme for collapsing the charge that each particle has to a collective value. Fundamental charge, here, is what: neutrons lack, electrons and hydrogen have one of, and helium has two. As such, a plasma with a purely deuterium and tritium fuel would have an effective charge of one. This value would then quickly rise if a Tungsten tile -- with 74 units of fundamental charge -- were to fall from the inside of the tokamak into the plasma core.
+The effective charge is a scheme for collapsing the charge that each particle has to a collective value. Fundamental charge, here, is what: neutrons lack, electrons and hydrogen have one of, and helium has two. As such, a plasma with a purely deuterium and tritium fuel would have an effective charge of one. This value would then quickly rise if a Tungsten tile -- with 74 units of charge -- were to fall from the inside of the tokamak into the plasma core.
 
-Using the volume integral -- seen in the derivation of fusion power -- allows the Bremsstrahlung power to be written as standardized units as:
+Using the volume integral -- seen in the derivation of fusion power -- allows the Bremsstrahlung power to be written in standardized units as:
 
 \begin{equation}
 	\label{eq:pbr}
@@ -171,13 +220,13 @@ Using the volume integral -- seen in the derivation of fusion power -- allows th
 	K_{BR} = 0.1056 \, \frac{ (1+\nu_n)^2 \, (1+\nu_T)^{1/2} }{1+2 \, \nu_n + 0.5 \, \nu_T} \, Z_{eff} \, \epsilon^2 \, \kappa \, g
 \end{equation}
 
-This power term represents the radiation power losses in power balance. All that is needed now is heat conduction losses -- the hardest plasma behavior to model to date.
+This power term represents the radiation power losses involved in power balance. All that is needed now is a formula for heat conduction losses -- the hardest plasma behavior to model to date.
 
 \subsection{Estimating Heat Conduction Losses}
 
-Heat is energy that lacks direction on a microscopic level. Macroscopically, it generally moves from hotter areas to colder ones. As hinted by the plasma profile for temperature, heat emanates from the center of the plasma -- and migrates towards the inner surface of the tokamak. It therefore seems an important quantity to calculate when balancing power in a plasma's core.
+Heat is energy that lacks direction on a microscopic level. Macroscopically, it generally moves from hotter areas to colder ones. As hinted by the plasma profile for temperature, heat emanates from the center of the plasma and migrates towards the walls of the tokamak. It therefore seems an important quantity to calculate when balancing power in a plasma's core.
 
-The difficulty of estimating heat conduction, though, lies in the chaotic nature of plasmas -- no theory or computation today can properly model it. As such reactor designers have turned to experimentalists for empirical scaling laws based on the $\sim15$ strongest tokamaks in the world. These collective are called confinement time scalings, i.e. the ELMy H-Mode Scaling Law.
+The difficulty of estimating heat conduction, though, lies in the chaotic nature of plasmas -- no theory or computation today can properly model it. As such, reactor designers have turned towards experimentalists for empirical scaling laws based on the $\sim15$ strongest tokamaks in the world. These are collectively referred to as confinement time scalings, i.e. the ELMy H-Mode Scaling Law.
 
 The derivation of the heat conduction losses ($P_\kappa$) starts in a manner similar to the Bremsstrahlung radiation. To begin, an equation for $P_\kappa$ is given in Jeff Freidberg's book as:
 
@@ -185,9 +234,9 @@ The derivation of the heat conduction losses ($P_\kappa$) starts in a manner sim
 	P_\kappa = \frac{1}{\tau_E} \int U d \vec r
 \end{equation}
 
-This volume integral includes two new terms: the confinement time ($\tau_E$) and the internal energy (U). Before explaining these terms, a qualitative description is in order. As mentioned previously, the heat -- or microscopically random -- energy is captured by the internal energy (U). Then the confinement time ($\tau_E$) is how long it would take the heat to completely leave the device if the system were immediately turned off.
+This volume integral includes two new terms: the confinement time ($\tau_E$) and the internal energy (U). Before explaining these terms, a qualitative description is in order. As mentioned previously, the heat -- or microscopically random -- energy is captured by the internal energy (U). Then the confinement time ($\tau_E$) is how long it would take for the heat to completely leave the device if the system were suddenly turned off.
 
-A formula for confinement time will be delayed to the end of this section, when it is needed to solve for the magnetic field ($B_0$). Moving forward, the internal energy, U, has its typical physics meaning -- where all three species are assumed to be at the electron temperature (T):
+A formula for confinement time will be delayed till the end of this section, when it is needed to solve for the magnetic field ($B_0$). Whereas the internal energy, U, has its typical physics meaning -- with all three plasma species being held at the same temperature (T) as the electrons:
 
 \begin{equation}
 	U = \frac{3}{2} \left( n + n_D + n_T \right) T
@@ -210,22 +259,32 @@ Foregoing the mathematical rigor of previous sections, the equations here can be
 	K_\kappa = 0.4744 \, ( 1 + f_D ) \, \frac{ (1 + \nu_n) \, (1 + \nu_T) }{1 + \nu_n + \nu_T } \, ( \, \epsilon^2 \, \kappa \, g \, )
 \end{equation}
 
-Now that all four terms have been defined in power balance, the next step is expanding it and solving for the tokamak's toroidal magnetic field strength: $B_0$.
+Now that all five terms have been defined in power balance, the next step is expanding it and solving for the tokamak's toroidal magnetic field strength: $B_0$.
 
 \subsection{Writing the Lawson Criterion}
 
 Before locking in the primary constraint -- i.e. the magnet strength ($B_0$) equation from power balance -- it seems appropriate to take a detour and explain an intermediate solution: the Lawson Criterion. Within the fusion community, the Lawson Criterion is the cornerstone in any argument on the possibility of a design being used as a reactor (and not just some glorified toaster). 
 
-An equation for the Lawson Criterion is easily found in the literature as:
+An equation for the Lawson Criterion -- or \emph{triple product} -- is easily found in the literature as:
 
 \begin{equation}
 	\label{eq:lawson}
-	n \, \tau_E = \frac{ 60 }{ E_F } \cdot \frac{ T }{ \langle \sigma v \rangle }
+	n \cdot T \cdot \tau_E = \frac{ 60 }{ E_F } \cdot \frac{ T ^ 2 }{ \langle \sigma v \rangle }
 \end{equation}
 
-Similar to the steady current derived earlier, the right-hand side is only dependent on temperature. Further, as the left-hand side is a measure of difficult to achieve values, the goal is to minimize both sides. This occurs when the plasma temperature is around 15 keV -- a fact memorized by many fusion engineers. As will be seen, this is a simplified result of our mode. This is why $\overline T$ = 15 keV is not always the optimum temperature -- but usually is in the right neighborhood for reasonable reactor designs.
+Similar to the steady current derived earlier, the right-hand side is only dependent on temperature. Further, as the left-hand side is a measure of difficult to achieve parameters, the goal is to minimize both sides. This occurs when the plasma temperature is around 15 keV -- a fact memorized by many fusion engineers. As will be seen, this is a simplified result of our model. This is why $\overline T$ = 15 keV is not always the optimum temperature -- but usually is in the right neighborhood for reasonable reactor designs.
 
-As all the terms in power balance have already been defined, the starting point will be simply repeating the standardized equations for all four powers.
+\begin{figure}
+	\centering
+	\begin{adjustbox}{width=0.75\textwidth}
+		\input{images/lawson_criterion}
+	\end{adjustbox}
+%	\includegraphics[width=0.75\textwidth]{images/test_image}
+	\caption{Power Balance in a Reactor} ~\\
+	\small Power balance is what differentiates a reactor from a toaster. When cast as the Lawson Criterion for fusion, it explains why D-T plasmas often have a temperature around 15 keV.
+\end{figure}
+
+As all the terms in power balance have already been defined, the starting point will be simply repeating the standardized equations for all five included powers.
 
 \begin{equation}
 	\tag{\ref{eq:palpha}}
@@ -238,6 +297,11 @@ As all the terms in power balance have already been defined, the starting point 
 \end{equation}
 
 \begin{equation}
+	\tag{\ref{eq:pohmic}}
+	P_\Omega = K_\Omega \cdot \left( \frac{ \overline n ^ 2 R_0^3 }{\overline T ^ {3/2}} \right)
+\end{equation}
+
+\begin{equation}
 	\tag{\ref{eq:pbr}}
 	P_{BR} = K_{BR} \ \overline n ^ 2 \ \overline T ^ {1/2} R_0^3 
 \end{equation}
@@ -247,85 +311,106 @@ As all the terms in power balance have already been defined, the starting point 
 	P_\kappa = K_\kappa \, \frac{ R_0 ^ 3 \ \overline{n}  \ \overline{T}  }{\tau_E} 
 \end{equation}
 
+With the fusion power again being,
+
+\begin{equation}
+	\tag{\ref{eq:pf}}
+	P_F = K_F \cdot \overline{n}^2 \cdot R_0^3  \cdot (\sigma v)
+\end{equation}
+
 These can then be substituted into power balance:
 
 \begin{equation}
-	P_\alpha + P_H = P_{BR} + P_\kappa
+	\tag{\ref{eq:power_balance}}
+	P_\alpha + P_H + P_\Omega = P_{BR} + P_\kappa
 \end{equation}
 
-After a couple lines of algebra, power balance can be rewritten in a form analogous to the Lawson Criterion:
+After a couple lines of algebra, power balance can be rewritten in a form analogous to the triple product:
 
 \begin{equation}
 	\label{eq:ntaue}
-	 \overline{n}  \, \tau_E = \frac{ K_{law} \, \overline{T} }{ (\sigma v) - K_{rad} \, \overline{T}^{  \,1/2 } }
+	 \overline{n}  \cdot \overline{T} \cdot \tau_E = \frac{ K_\kappa \, \overline{T}^{\,2} }{ \left( K_P \, (\sigma v) +  K_{OH} \, \overline{T}^{  \,-3/2 } \right) - K_{BR} \, \overline{T}^{  \,1/2 } }
 \end{equation}
 
 \begin{equation}
-	K_{law} = \frac{K_\kappa}{K_{PF}}
-\end{equation}
-
-\begin{equation}
-	K_{rad} = \frac{K_{BR}}{K_{PF}}
-\end{equation}
-
-\begin{equation}
-	K_{PF} = K_P K_F
+	K_P = K_F \cdot \left( \frac{5 + Q}{5 \times Q} \right)
 \end{equation}
 
 As can be seen, this is remarkably similar to the simple Lawson Criterion:
 
 \begin{equation}
 	\tag{\ref{eq:lawson}}
-	n \, \tau_E = \frac{ 60 }{ E_F } \cdot \frac{ T }{ \langle \sigma v \rangle }
+	n \cdot T \cdot \tau_E = \frac{ 60 }{ E_F } \cdot \frac{ T ^ 2 }{ \langle \sigma v \rangle }
 \end{equation} 
 
-The main difference is this model does not ignore radiation losses completely. The inclusion of which sets a minimum temperature for a reactor to be physically realizable.\footnote{ The denominator of Eq \ref{eq:ntaue} has a discontinuity when the $K_{rad} \overline T ^ {\,1/2}$ term equals $( \sigma v )$. This temperature sets a barrier between real reactors (for temperatures higher than it) and impossible reactors -- at or below it.} With this intermediate relation in place, the goal is now to give a formula for the confinement time and solve it for the magnet strength ($B_0$) -- the Primary Constraint.
+The main difference is this model does not ignore ohmic power and radiation losses completely. The inclusion of radiation for example sometimes bars a range of temperatures from being physically realizable.\footnote{ The denominator of Eq \ref{eq:ntaue} has discontinuities when the $K_{BR} \, \overline{T}^{  \,1/2 }$ term exactly equals the parenthesised one. Therefore, valid reactors only exist outside the discontinuities, when the entire triple product is finite and positive. } With this intermediate relation in place, the goal is now to give a formula for the confinement time and solve it for the magnet strength ($B_0$) -- thus giving the Primary Constraint.
 
 \subsection{Finalizing the Primary Constraint}
 
 The goal now is to transform the Lawson Criterion into an equation for magnet strength ($B_0$). This choice to solve the equation for $B_0$ was completely arbitrary, only motivated by the foresight of how it fits into the fusion systems model. To solve the primary constraint, the confinement time scaling law will need to be introduced. At the end, a messy -- albeit highly useful -- relation will be the reward.
 
-The energy confinement time -- $\tau_E$ -- is one of the most elusive terms in all of fusion energy. It is an attempt to boil all the chaotic nature of plasmas into a simple measure of how fast its internal energy would be ejected from the tokamak if the device was instantaneously shut off. As such, reactor designers have turned toward experimentalists for empirical scalings based on the world's tokamaks. These all share the form:
+The energy confinement time -- $\tau_E$ -- is one of the most elusive terms in all of fusion energy. It is an attempt to boil down all the chaotic nature of plasmas into a simple measure of how fast its internal energy would be ejected from the tokamak if the device was instantaneously shut off. As such, reactor designers have turned toward experimentalists for empirical scalings based on the world's tokamaks. These all share the form:
 
 \begin{equation}
 	\tau_E = K_\tau \, H \, \frac{
-		I_M^{\,\alpha_I} \, R_0^{\,\alpha_R} \, a^{\,\alpha_a} \, \kappa^{\,\alpha_\kappa} \ \overline{n}_{20}^{\,\alpha_n} \, B_0^{\,\alpha_B} \, A^{\,\alpha_A}
-	}{ ( P_{src} ) ^ {\alpha_P} }
+		I_P^{\,\alpha_I} \, R_0^{\,\alpha_R} \, a^{\,\alpha_a} \, \kappa^{\,\alpha_\kappa} \ \overline{n}^{\,\alpha_n} \, B_0^{\,\alpha_B} \, A^{\,\alpha_A}
+	}{ P_L ^ {\,\alpha_P} }
 \end{equation}
 
-This mouthful of a formula is how the field actually designs machines. Let it be known, though, that this fit does a remarkable job having an error of less than 20\% on interpolated data. The new terms in this equation are: $K_\tau$, H, A, and the $\alpha_{\,\square}$ factors. 
+This mouthful of a formula is how the field actually designs machines. Let it be known, though, that these fits often do remarkable well, having relative errors less than 20\% on interpolated data. The new terms in this equation are: $P_L$, $K_\tau$, H, A, and the $\alpha_{\,\square}$ factors. 
 
-First, $K_\tau$ is simply a constant fit-makers use in their scalings. Next, H is the (H-Mode) scaling factor -- the analogue of $K_\tau$ used by reactor designers -- which can artificially boost the performance of machines (i.e. it helps with cheating). Continuing, A is the average mass number of the fuel source, in atomic mass units. For 50-50 D-T fuel, this is 2.5, as deuterium weighs two amus and tritium weights three. Lastly, the alpha factors (e.g. $\alpha_n$, $\alpha_a$, $\alpha_P$) are fitting parameters that represent each variable's relative importance. 
+First, the loss power is a metric used in the engineering community to quantify the power being transported out of the ``core'' of the plasma by charged particles (i.e. not neutrons). \cite{process} To optimize fits, experimentalists have defined this as a combination of the source power terms:
+
+\begin{equation}
+	\label{eq:pl}
+	P_L = P_\alpha + P_H + P_\Omega
+\end{equation}
+
+However, many have argued that the term should actually be replaced by its correct physics meaning -- the conductive heat loss power. As this model uses the ELMy H-Mode scaling law, which is standard in the field, this alternative definition will not be used:
+
+\begin{equation}
+	\tilde P_L \approx P_\kappa = P_\alpha + P_H + P_\Omega - P_{BR}
+\end{equation}
+
+Moving on, $K_\tau$ is simply a constant fit-makers use in their scalings. Next, H is the (H-Mode) scaling factor -- the analogue of $K_\tau$ used by reactor designers. This H factor can be used to artificially boost the confinement of machines (i.e. it adds a little magic). Continuing, A is the average mass number of the fuel source, in atomic mass units. For a 50-50 D-T fuel, this is 2.5, as deuterium weighs two amus and tritium weighs three. Lastly, the alpha factors (e.g. $\alpha_n$, $\alpha_a$, $\alpha_P$) are fitting parameters that represent each variable's relative importance. 
 
 For ELMy H-Mode this confinement scaling can be written as:
 
 \begin{equation}
 	\tau_E = 0.145 \, H \, \frac{
-		I_M^{0.93} \, R_0^{1.39} \, a^{0.58} \, \kappa^{0.78} \ \overline{n}_{20}^{\, 0.41} \, B_0^{0.15} \, A^{0.19}
-	}{ ( P_{src} ) ^ {0.69} }
+		I_P^{0.93} \, R_0^{1.39} \, a^{0.58} \, \kappa^{0.78} \ \overline{n}^{\, 0.41} \, B_0^{0.15} \, A^{0.19}
+	}{ P_L ^ {\,0.69} }
 \end{equation}
 
-One final remark to make before moving on is that even these fits have subtleties. The value of $\kappa$, for example, may have a slightly different geometric meaning. And the exact definition of source power -- $P_{src}$ -- introduces an even larger area of discrepancy. 
-
-Returning to the problem at hand, this model's Lawson Criterion (eq. \ref{eq:ntaue}) can be simplified after expanding the left-hand side -- $\overline n \tau_E $ using the Greenwald density and a confinement time scaling law. Albeit a little cumbersome, this can be wrangled into an equation for $B_0$!
+Where similar ones can be given for L-Mode, I-Mode, etc. One final remark to make before moving on is that even these fits have subtleties. The value of $\kappa$, for example, may have a slightly different geometric meaning from reactor to reactor. And the exact definition of loss power -- $P_L$ -- introduces an even larger area of discrepancy.  Although not actually used, a better fit for our model might be one from the author:
 
 \begin{equation}
+	\tilde \tau_E = 0.092 \, H \frac{  
+		\left( I_P^{0.91} R_0^{1.44} B_0 ^ {0.24} \,\overline T ^ {\,0.11} \right) \cdot \left( \epsilon ^ {0.22} A^{0.22}  \kappa ^ {0.54} \right) }{ \tilde P_L ^ {\, 0.55} }	
+\end{equation}
+
+Returning to the problem at hand, this model's Lawson Criterion (eq. \ref{eq:ntaue}) can be simplified after expanding the left-hand side using the Greenwald density and a confinement time scaling law. Albeit a little cumbersome, this can be wrangled into an equation for $B_0$!
+
+\begin{equation}
+	\label{eq:b_0_power}
+	\tcbhighmath{
 	B_0 = \left( \frac{ G_{PB} }{ K_{PB} } \cdot \left( I_P^{\,\alpha_I^*} \, R_0^{ \alpha_R^* } \right)^{-1} \right) ^ { \frac{1}{ \alpha_B } }
+	}
 \end{equation}
 
 \begin{equation}
-	G_{PB} = \frac{ \overline{T} \cdot  (\sigma v) ^ {\alpha_P} } { (\sigma v) - K_{rad} \, \overline{T}^{  \,1/2 } }
+	G_{PB} = \frac{ \overline{T} }{ \left( \, K_P (\sigma v) + K_\Omega  \, \overline{T}^{  \,-3/2 } - K_{BR} \, \overline{T}^{  \,1/2 } \, \right) ^ { ( 1 - \alpha_P ) } }
 \end{equation}
 
 \begin{equation}
-	K_{PB} = H \cdot \left( \frac{ K_\tau  }{ K_{law} } \right) \cdot \frac{ \left( K_{G} \right)^{\alpha_n^*} }{ ( K_{PF} ) ^ {\alpha_P} } \cdot \left( 
+	K_{PB} = H \cdot \left( \frac{ K_\tau K_n^{\alpha_n^*}}{K_\kappa } \right) \cdot \left( 
      \epsilon^{\,\alpha_a} \, \kappa^{\,\alpha_\kappa} \, A^{\,\alpha_A}\right)
 \end{equation}
 
 Where we have added new starred alpha values for the density, current, and major radius:
 
 \begin{equation}
-  \alpha_n^* = 1+\alpha_n-2\alpha_P
+  \alpha_n^* = 1 + \alpha_n - 2 \alpha_P
 \end{equation}
 
 \begin{equation}
@@ -333,20 +418,55 @@ Where we have added new starred alpha values for the density, current, and major
 \end{equation}
 
 \begin{equation}
-  \alpha_R^* = \alpha_R+ \alpha_a +\alpha_P-2 (1+\alpha_n )
+  \alpha_R^* = \alpha_R + \alpha_a - 2  \alpha_n^* - 3 \alpha_p
 \end{equation}
 
-This equation for $B_0$ -- derived from power balance -- is the primary constraint of our reactor designs. It is the first step in connecting the plasma (i.e. $\overline n$, $\overline T$, and $I_P$) with the tokamak (i.e. $B_0$ and $R_0$). The remaining step is finding an equation -- or in this case, equations -- for the major radius of the device. These equations will collectively be referred to as: the Secondary Constraints.
+This equation for $B_0$ -- derived from power balance -- is the primary constraint of our reactor designs. It is the first step in connecting the plasma (i.e. $\overline n$, $\overline T$, and $I_P$) with the tokamak (i.e. $B_0$ and $R_0$). The remaining step is finding an equation -- or in this case, equations -- for the major radius of the device. These equations will collectively be referred to as: the Secondary Constraints. 
+
+\subsection{Exploring the Freidberg Criterion}
+
+Before moving onto the Secondary Constraint, it is worth noting that this power balance equation can be written in a triple product form analogous to the Lawson Criterion. For this reason, we will refer to it as the Freidberg Triple Product:
+
+\begin{equation}
+	R_0^{ \alpha_R^* } \cdot B_0^{\,\alpha_B} \cdot I_P^{\,\alpha_I^*} = \frac{ G_{PB} }{ K_{PB} }
+\end{equation}
+
+\begin{figure*}[h]
+    \centering
+    \hfill 
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+		\begin{adjustbox}{width=\textwidth}
+			\Large
+			\input{images/freidberg_criterion_unbroken}
+		\end{adjustbox}
+        \caption{Reactors without Discontinuity}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+		\begin{adjustbox}{width=\textwidth}
+			\Large
+			\input{images/freidberg_criterion_broken}
+		\end{adjustbox}
+        \caption{Reactors with Discontinuity}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\
+    \caption{Freidberg Triple Product} ~\\
+    \small The Freidberg Triple Product builds on the original Lawson Criterion by incorporating empirical scalings, such as confinement time and the Greenwald density.
+\end{figure*}
+
+As is readily apparent, this has a shape similar to the Lawson Criterion. Quickly noting, the goal is operate when the right-hand side is at a minimum. This corresponds to when the left-hand side is also minimized -- where each term represents one of the difficult to achieve quantities of a fusion reactor.
 
 \section{Collecting Secondary Constraints}
 
-As of now, the only missing equation within our list of fixed variables -- i.e. $R_0$, $B_0$, $\overline T$, $\overline n$, and $I_P$ -- is for the major radius of the tokamak. This equation will come from around five potential limits, either physical or engineering-based. Each limit will correspond to its own curve in reactor space. As will be shown, many of these reactors will be invalid (as they violate each other's secondary constraints).
+As of now, the only missing equation within our list of fixed variables -- i.e. $R_0$, $B_0$, $\overline T$, $\overline n$, and $I_P$ -- is for the major radius of the tokamak. This equation will come from around five potential limits, each either physical or engineering-based. These limits will then correspond to different curves through reactor space. As will be shown, many of these reactors will be invalid (as they violate at least one of the other limits).
 
-Before tackling teh subject of finding reactors that exist on the fine line of satysfying all secondary constraints, it is essential to collect them one-by-one. These are: the Troyon Beta Limit, the Kink Safety Factor, the Wall Loading Limit, the Power Cap Constraint, and the Heat Loading Limit. The goal of this section is to solve each of these constraints for the major radius. As with the primary constraint, this choice of solving for $R_0$ was completely arbitrary. It just so happens that each limit described here depends on the size of a reactor.
+Before tackling the subject of finding reactors that exist on the fine line of satisfying every secondary constraints, though, it is essential to collect them one-by-one. These are: the Troyon Beta Limit, the Kink Safety Factor, the Wall Loading Limit, the Power Cap Constraint, and the Heat Loading Limit. The goal of this section is to solve for each of these constraints on the major radius. As with the primary constraint, this choice of solving for $R_0$ was completely arbitrary. It just so happens that each limit described here depends on the size of a reactor -- which is not true for the magnetic field strength.
 
 \subsection{Introducing the Beta Limit}
 
-The Beta Limit is the most important secondary constraint -- especially for steady-state reactors. It sets a maximum on the amount of pressure a plasma is willing to tolerate. As with future secondary constraints, literature-based equations will be transformed into formulas for $R_0$, each with some limiting quantity that can be handled as a fixed variable -- as $\beta_N$ will be used shortly.
+The Beta Limit is the most important secondary constraint -- especially for steady-state reactors. It sets a maximum on the amount of pressure a plasma is willing to tolerate. As with future secondary constraints, literature-based equations will be transformed into formulas for $R_0$, each with some limiting quantity that can be handled by a fixed variable -- as $\beta_N$ will be used shortly.
 
 The starting point for the beta limit is to define the important plasma physics quantity: $\beta$ -- the plasma beta. This value is a ratio between a plasma's internal pressure and the pressure exerted on it by the tokamak's magnetic configuration. Mathematically,
 
@@ -361,7 +481,7 @@ Using this model's temperature and density profiles, the volume-averaged pressur
   \overline{p} = 0.1581 \, ( 1 + f_D ) \, \frac{ (1 + \nu_n) \, (1 + \nu_T) }{1 + \nu_n + \nu_T } \, \overline{n} \ \overline{T}
 \end{equation}
 
-Moving forward, the final step is plugging this defniiton for plasma beta into the physics-based Troyon Beta Limit. Although outside the scope of this text, it is a stability limit set by treating plasmas as a charge-carrying fluid. This equation can be written in the following form, where $\beta_N$ is the normalized plasma beta -- i.e. a fixed variable in this model usually set between 2\% and 4\%.
+Moving forward, the final step is plugging this definition for plasma beta into the physics-based Troyon Beta Limit. Although outside the scope of this text, it is a stability limit set by treating plasmas as charge-carrying fluids. This equation can be written in the following form, where $\beta_N$ is the normalized plasma beta -- i.e. a fixed variable in this model usually set between 2\% and 4\%.
 
 \begin{equation}
 	\beta = \beta_N \frac{ I_P }{ a B_0 }
@@ -370,20 +490,20 @@ Moving forward, the final step is plugging this defniiton for plasma beta into t
 Substituting the plasma $\beta$ from eq. \ref{eq:beta}, into this relation results in the model's first equation for tokamak radius:
 
 \begin{equation}
-  R_0 B_0 = K_{TB} \overline{T} 
+  R_0 = \frac{ K_{TB} \overline{T} }{ B_0 }
 \end{equation}
 
 \begin{equation}
-  K_{TB} = 4.027e{-2} \, ( K_G ) \left( \frac{\epsilon}{\beta_N} \right)  ( 1 + f_D ) \, \frac{ (1 + \nu_n) \, (1 + \nu_T) }{1 + \nu_n + \nu_T }
+  K_{TB} = 4.027e{-2} \, ( K_n ) \left( \frac{\epsilon}{\beta_N} \right)  ( 1 + f_D ) \, \frac{ (1 + \nu_n) \, (1 + \nu_T) }{1 + \nu_n + \nu_T }
 \end{equation}
 
-As mentioned, this is often the dominating constraint in a steady-state reactor. The dominating constraint for pulsed designs -- the kink safety factor -- will be the focus of the next subsection.
+As mentioned, this is often the dominating constraint in a steady-state reactor. The often dominating constraint for pulsed designs -- the kink safety factor -- will be the focus of the next subsection.
 
 \subsection{Giving the Kink Safety Factor}
 
-Just like how the Troyon Beta Limit set a fluids-based maximum on plasma pressure, the Kink Safety Factor sets one for a plasma's current. This constraint usually only appears in pulsed designs, as it is assumed that getting to this current in steady-state (with only LHCD) would prove extremely unpractical.
+Just like how the Troyon Beta Limit set a fluids-based maximum on plasma pressure, the Kink Safety Factor sets one for the plasma's current. This constraint usually only appears in pulsed designs, as it is assumed that getting to this current in steady-state (with only LHCD) would prove extremely unpractical.
 
-The starting point again is an equation from the literature for the kink condition:
+The starting point, again, is an equation from the literature for the kink condition:
 
 \begin{equation}
 	q_{95} = 5 \epsilon^2 f_q \cdot  \frac{ R_0 B_0 }{ I_P }
@@ -405,11 +525,11 @@ Combined, the kink safety factor can now be written in standardized units as:
   K_{SF} = \frac{q_{95}}{5 \epsilon^2 f_q}
 \end{equation}
 
-This relation is the secondary constraint important for most pulsed reactor designs. As with the Beta Limit, the two are derived by plasma physics alone. The remaining secondary constraints, however, are engineering-based in origin -- these include: the Wall Loading Limit, the Power Cap Constraint, and the Heat Loading Limit. Each will be defined shortly.
+This relation is the secondary constraint important for most pulsed reactor designs. As with the Beta Limit, the two are derived through plasma physics alone. The remaining secondary constraints, however, are engineering-based in origin -- these include: the Wall Loading Limit, the Power Cap Constraint, and the Heat Loading Limit. Each will be defined shortly.
 
 \subsection{Working under the Wall Loading Limit}
 
-The first engineering-based secondary constraint -- the wall loading limit -- will prove to be an important quantity when determining the magnet strength at which reactor cost first starts to increase. As hinted, its definition is nuclear engineering in origin: it is a measure of the maximum neutron damage a tokamak's walls can take over the lifetime of the machine.
+The first engineering-based secondary constraint -- the wall loading limit -- will prove to be an important quantity when determining the magnet strength at which reactor costs first start to increase. As hinted, its definition originates from nuclear engineering concerns: it is a measure of the maximum neutron damage a tokamak's walls can take over the lifetime of the machine.
 
 The first step in deriving a secondary constraint for wall loading is a description of the problem it models. In a reactor, fusion reactions typically make high-energy neutrons -- at 14.1 MeV -- that continually blast the inner wall of the tokamak. Therefore a quick-and-dirty metric would be limiting the amount of neutron power that can be unloaded on the surface area of a tokamak. This can be written as:
 
@@ -417,13 +537,13 @@ The first step in deriving a secondary constraint for wall loading is a descript
 	P_W = \frac{ P_n }{ S_P }
 \end{equation}
 
-Here, $S_P$ is the surface area of the tokamak's inner wall and $P_n$ is the neutron power derived in the subsection on fusion power. The quantity, $P_W$, then served a role analogous to $\beta_N$ for the beta limit and $q_{95}$ for the kink safety factor -- it is a fixed variable representing the maximum allowed wall loading. For fusion reactors, $P_W$ is assumed to be around 2-4 $\frac{\textnormal{MW}}{\textnormal{m}^2}$. It will be shown that the wall loading limit is important in any tokamak -- regardless of operating mode (i.e. steady-state or pulsed).
+Here, $S_P$ is the surface area of the tokamak's inner wall and $P_n$ is the neutron power derived in the subsection on fusion power. The quantity, $P_W$, then serves a role analogous to $\beta_N$ for the beta limit and $q_{95}$ for the kink safety factor -- it is a fixed variable representing the maximum allowed wall loading. For fusion reactors, $P_W$ is assumed to be around 2-4 $\frac{\textnormal{MW}}{\textnormal{m}^2}$. It will be shown that the wall loading limit is important in any tokamak -- regardless of operating mode (i.e. steady-state or pulsed).
 
 \begin{equation}
 	S_P = 4 \pi^2 a_P R_0 \cdot \frac{ \left( 1 + \frac{2}{\pi} \left( \kappa_P^2 -1 \right) \right) }{ \kappa_P }
 \end{equation}
 
-With the surface area dimensions being subscripted by P's.
+In this surface area equation, the various dimensions are subscripted by P's.
 
 \begin{equation}
 	a_P = 1.04 \, a
@@ -449,19 +569,19 @@ Finishing this secondary constraint, the Wall Loading limit can be written in st
 
 \subsection{Setting a Maximum Power Cap}
 
-As opposed to the previous three secondary constraints, the maximum power cap is more a rule of thumb. Because no reactor -- coal, solar, or otherwise -- has a 2500 MW reactor, neither should fusion. It makes sense from a practical position after realizing the long history of tokamaks being delayed, underfunded, or completely canceled. Mathematically, this has the simple form:
+As opposed to the previous three secondary constraints, the maximum power cap is more of a rule of thumb. Because no reactor -- coal, solar, or otherwise -- has a 4000 MW reactor, neither should fusion. It makes sense from a practical position after realizing the long history of tokamaks being delayed, underfunded, or completely canceled. Mathematically, this has the simple form:
 
 \begin{equation}
 	P_E \le P_{CAP}
 \end{equation}
 
-Here, $P_{CAP}$ is the maximum allowed power output of the reactor. Similar to the other limiting quantities, $P_{CAP}$ is treated as a fixed variable (i.e. set to 2500 MW). The electrical power output of the reactor ($P_E$) is then related to the fusion power through:
+Here, $P_{CAP}$ is the maximum allowed power output of the reactor. Similar to the other limiting quantities, $P_{CAP}$ is treated as a fixed variable (i.e. set to 4000 MW). The electrical power output of the reactor ($P_E$) is then related to the fusion power through:
 
 \begin{equation}
 	P_E = 1.273 \, \eta_T \cdot P_F
 \end{equation}
 
-The constant in front (1.273) represents some extra power the reactor makes as more fuel is bred when the fusion neutrons pass through a tokamak (inside its blanket). The variable $\eta_T$ is the thermal efficiency of the reactor -- usually around 40\%.
+The constant in front (i.e. 1.273) represents some extra power the reactor makes as more fuel is bred when the fusion neutrons pass through a tokamak (inside its blanket). The variable $\eta_T$ is the thermal efficiency of the reactor -- usually around 40\%.
 
 Next, substituting in for fusion power and solving for the tokamak's major radius results in:
 
@@ -473,18 +593,18 @@ Next, substituting in for fusion power and solving for the tokamak's major radiu
 	K_{PC} = K_F K_n^2 \cdot \left( \frac{ 1.273 \, \eta_T }{ P_{max} } \right)
 \end{equation}
 
-This secondary constraint can be used to create curves of reactors, although it is mainly used as a stopping point for designs -- i.e. if you get to the power-cap regime, you have gone too far. This is different then the next constraint, which is basically a glorified warning sign in the contemporary tokamak paradigm.
+This secondary constraint can be used to create curves of reactors, although it is mainly used as a stopping point for designs -- i.e. if you get to the power-cap regime, you have gone too far. This is different then the next constraint, which is basically a glorified warning sign in the contemporary tokamak design paradigm.
 
 \subsection{Listing the Heat Loading Limit}
 
-Plasmas are hot. The commonly given fact is one electron volt is around $20\textnormal{,}000 \, {}^\circ$F. Although a bit deceptive, melting a tokamak is an all too real concern. The problem is there is currently no solution to this problem. Although researchers have explored various types of heat divertors, none have been shown to withstand the gigawatts of heat emitted from a reactor-size tokamak. Further, as it is not as glamorous as plasma physics, attempts to tackle the problem head-on have often gone unfunded.
+Plasmas are hot. The commonly given fact is one electron volt is around $20\textnormal{,}000 \, {}^\circ$F. Although a tad deceptive, melting a tokamak is an all too real concern. The problem is there is currently no solution to this problem. Although researchers have explored various types of heat divertors, none have been shown to withstand the gigawatts of heat emitted from a reactor-size tokamak. Further, as it is not as glamorous as plasma physics, attempts to tackle the problem head-on have often gone unfunded.
 
-As such, this model takes the approach that we are no worse than the rest of the field. We almost completely ignore the heat load limit and just refer to it at the end, saying "and then the magical divertor will have to deal with solar corona levels of heat." After which, discussion will quickly be redirect to happier concerns.
+As such, this model takes the approach that we are no worse than the rest of the field. We almost completely ignore the heat load limit and just refer to it at the end, saying "and then the magical divertor will have to deal with solar corona levels of heat." After which, discussion will quickly be redirected to happier concerns.
 
 For thoroughness though, a secondary constraint will still be derived. The first step is giving the heat load limit commonly found in the literature:
 
 \begin{equation}
-  q_{DV} = K_{DV}  \frac{ P_F \, I_P^{\,1.2} }{ R_0^{\,2.2} }
+  q_{DV} = \frac{ K_{DV} }{ K_F} \cdot \frac{ P_F \, I_P^{\,1.2} }{ R_0^{\,2.2} }
 \end{equation}
 
 \begin{equation}
@@ -498,7 +618,7 @@ After a simple rearrangement and substitution for fusion power, this becomes:
 \end{equation}
 
 \begin{equation}
-	K_{DH} = \left( \, \frac{ K_{DV} K_F K_n^2 }{ q_{DV} } \, \right) ^ {\frac{1}{3.2}}
+	K_{DH} = \left( \, \frac{ K_{DV} K_n^2 }{ q_{DV} } \, \right) ^ {\frac{1}{3.2}}
 \end{equation}
 
 At this point all the secondary constraints have been defined. The next step is taking a step back and motivating the derivation of a current equation suitable for pulsed tokamaks.
@@ -526,7 +646,7 @@ The next variable handled was the steady current:
 	I_P = \frac{K_{BS} \overline T}{1 - K_{CD} ( \sigma v ) }
 \end{equation}
 
-As was mentioned before, this only directly depends on temperature, but is strongly affected by a tokamak's configuration -- $R_0$ and $B_0$ - through the current drive efficiency ($\eta_{CD}$). For pulsed reactors, this equation proves too simple as it ignores inductive current. To remedy this situation, current balance will be revisited next chapter. The main point to make now is the $R_0$ and $B_0$ dependence will now be explicit.
+As was mentioned before, this only directly depends on temperature, but is strongly affected by a tokamak's configuration -- $R_0$ and $B_0$ - through the current drive efficiency ($\eta_{CD}$). For pulsed reactors, this equation proves too simple as it ignores inductive current. To remedy this situation, current balance will be revisited next chapter. The main point to make now, though, is that the $R_0$ and $B_0$ dependence will be made explicit.
 
 Moving on, the remaining equations were the primary and secondary constraints for $B_0$ and $R_0$, respectively. It was through these relations that a tokamak's configuration was brought into the fold. The choice of solving the two constraints for their respective variables was completely arbitrary -- motivated only by foresight of how they fit into the model. Without repeating them now, they served as the proper vehicles for closing the system of equations. The next step now is to learn how to generalize the current formula and design a pulsed tokamak.
 

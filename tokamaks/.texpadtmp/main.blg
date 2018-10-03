@@ -7,6 +7,8 @@ A level-1 auxiliary file: intro.aux
 A level-1 auxiliary file: steady.aux
 A level-1 auxiliary file: model.aux
 A level-1 auxiliary file: pulsed.aux
+A level-1 auxiliary file: appa.aux
+A level-1 auxiliary file: appb.aux
 A level-1 auxiliary file: biblio.aux
 The style file: unsrt.bst
 Database file #1: ../main.bib
@@ -19,45 +21,45 @@ Warning--empty year in doe19
 Warning--empty institution in fusionnever
 Warning--empty publisher in griffiths
 Warning--empty year in griffiths
-You've used 11 entries,
+You've used 15 entries,
             1791 wiz_defined-function locations,
-            520 strings with 6714 characters,
-and the built_in function-call counts, 3022 in all, are:
-= -- 141
-> -- 364
+            547 strings with 7946 characters,
+and the built_in function-call counts, 4244 in all, are:
+= -- 197
+> -- 521
 < -- 2
-+ -- 127
-- -- 116
-* -- 299
-:= -- 589
-add.period$ -- 30
-call.type$ -- 11
-change.case$ -- 12
++ -- 181
+- -- 166
+* -- 418
+:= -- 822
+add.period$ -- 40
+call.type$ -- 15
+change.case$ -- 16
 chr.to.int$ -- 0
-cite$ -- 20
-duplicate$ -- 81
-empty$ -- 185
-format.name$ -- 116
-if$ -- 568
+cite$ -- 24
+duplicate$ -- 108
+empty$ -- 261
+format.name$ -- 166
+if$ -- 803
 int.to.chr$ -- 0
-int.to.str$ -- 11
-missing$ -- 7
-newline$ -- 56
-num.names$ -- 11
-pop$ -- 47
+int.to.str$ -- 15
+missing$ -- 9
+newline$ -- 74
+num.names$ -- 15
+pop$ -- 63
 preamble$ -- 2
 purify$ -- 0
 quote$ -- 0
-skip$ -- 25
+skip$ -- 41
 stack$ -- 0
-substring$ -- 47
-swap$ -- 9
+substring$ -- 78
+swap$ -- 13
 text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 9
-while$ -- 15
-width$ -- 13
-write$ -- 107
+while$ -- 21
+width$ -- 17
+write$ -- 145
 (There were 9 warnings)

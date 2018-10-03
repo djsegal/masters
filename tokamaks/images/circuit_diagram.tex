@@ -1,0 +1,7 @@
+\begin{circuitikz}
+\draw (-1, 2) to [L,l_=$L_1$] (-1, -2) to (-5.5,-2) to [V,l=$V_1$, invert] (-5.5,2) to [short, i_=$I_1$] (-1,2);
+\draw (+1,2) to [short, i_<=$I_2$]  (+5.5,2) to [R=$R_2$] (+5.5,-2) to (+1, -2) to [L,l_=$L_2$, invert] (+1, 2);
+\draw (0, 1.25) node {$\bold{M}$};
+\draw (+0.1, -0.6) to (+0.1, +0.6);
+\draw (-0.1, -0.6) to (-0.1, +0.6);
+\end{circuitikz}

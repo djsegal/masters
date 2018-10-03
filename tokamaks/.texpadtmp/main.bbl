@@ -72,4 +72,31 @@ K~C Shaing, A~Y Aydemir, W~A Houlberg, and M~C Zarnstorff.
 David~J. Griffiths.
 \newblock {\em {Introduction to electrodynamics}}.
 
+\bibitem{greenwald}
+Martin Greenwald.
+\newblock {Density limits in toroidal plasmas}, 2002.
+
+\bibitem{itercd}
+J~Jacquinot, )~Jet, S~Putvinski, )~Jct, G~Bosia, {Jct )}, A~Fukuyama, U~)
+  Okayama, R~Hemsworth, Cea {Cadarache )}, S~Konovalov, Rrc {Kurchatov )}, W~M
+  Nevins, {Llnl )}, F~Perkins, K~A Rasumova, Rrc-) Kurchatov, F~Romanelli,
+  Enea-) Frascati, K~Tobita, {Jaeri )}, K~Ushigusa, J~W Van, U~Dam, V~{Texas
+  )}, Rrc Vdovin, S~{Kurchatov )}, R~Zweben, Erm Koch, Kms-) Brussels, J.-G
+  W{\'{e}}growe, Cea-) Cadarache, V~V Alikaev, B~Beaumont, A~B{\'{e}}coulet,
+  S~Bern-Abei, {Pppl )}, V~P Bhatnagar, Ec~{Brussels )}, S~Br{\'{e}}mond, and
+  M~D Carter.
+\newblock {Chapter 6: Plasma auxiliary heating and current drive}.
+\newblock {\em ITER Physics Basis Editors Nucl. Fusion}, 39, 1999.
+
+\bibitem{ehstkarney}
+D~A Ehst and C~F~F Karney.
+\newblock {Approximate formula for radiofrequency current drive efficiency with
+  magnetic trapping}, 1991.
+
+\bibitem{process}
+M~Kovari, R~Kemp, H~Lux, P~Knight, J~Morris, and D~J Ward.
+\newblock {" PROCESS " : A systems code for fusion power plants—Part 1:
+  Physics}.
+\newblock {\em Fusion Engineering and Design}, 89(12):3054--3069, 2014.
+
 \end{thebibliography}

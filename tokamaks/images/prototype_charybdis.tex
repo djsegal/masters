@@ -1,0 +1,85 @@
+\begin{tikzpicture}[]
+\begin{axis}[height = {101.6mm}, ylabel = {$H$}, title = {Charybdis Prototyping}, xmin = {0}, xmax = {4000}, ymax = {2}, xlabel = {$P_F$}, {unbounded coords=jump, scaled x ticks = false, xticklabel style={rotate = 0}, xmajorgrids = true, xtick = {0.0,1000.0,2000.0,3000.0,4000.0}, xticklabels = {0,1000,2000,3000,4000}, xtick align = inside, axis lines* = left, scaled y ticks = false, yticklabel style={rotate = 0}, ymajorgrids = true, ytick = {0.0,0.5,1.0,1.5,2.0}, yticklabels = {0.0,0.5,1.0,1.5,2.0}, ytick align = inside, axis lines* = left,     xshift = 0.0mm,
+    yshift = 0.0mm,
+    axis background/.style={fill={rgb,1:red,1.00000000;green,1.00000000;blue,1.00000000}}
+}, ymin = {0}, width = {152.4mm}]\addplot+ [color = {rgb,1:red,0.00000000;green,0.60560316;blue,0.97868012},
+draw opacity=1.0,
+line width=1,
+solid,mark = none,
+mark size = 2.0,
+mark options = {
+    color = {rgb,1:red,0.00000000;green,0.00000000;blue,0.00000000}, draw opacity = 1.0,
+    fill = {rgb,1:red,0.00000000;green,0.60560316;blue,0.97868012}, fill opacity = 1.0,
+    line width = 1,
+    rotate = 0,
+    solid
+},forget plot]coordinates {
+(750.0000000000116, 1.8972184092758761)
+(1124.999969608723, 1.7506524458233907)
+(1250.0000000000036, 1.7146365661670513)
+(1375.0000003242515, 1.6832630152224932)
+(1499.9999999999966, 1.6552971636393694)
+(1624.9999999999964, 1.6301311874544056)
+(1750.0000000000039, 1.6068915074334138)
+(1875.0, 1.5860084620457868)
+(1999.9999999999984, 1.5668241466473378)
+(2124.9999999999973, 1.549110746558915)
+(2249.999999999994, 1.5326824742337426)
+(2375.0000000000045, 1.5173859201188262)
+(2500.0000000000027, 1.5030930095360349)
+(2625.0000000000027, 1.4896957666774107)
+(2749.9999999999977, 1.4771023580955864)
+};
+\addplot+ [color = {rgb,1:red,0.24222430;green,0.64327509;blue,0.30444865},
+draw opacity=1.0,
+line width=1,
+solid,mark = none,
+mark size = 2.0,
+mark options = {
+    color = {rgb,1:red,0.00000000;green,0.00000000;blue,0.00000000}, draw opacity = 1.0,
+    fill = {rgb,1:red,0.24222430;green,0.64327509;blue,0.30444865}, fill opacity = 1.0,
+    line width = 1,
+    rotate = 0,
+    solid
+},fill = {rgb,1:red,0.24222430;green,0.64327509;blue,0.30444865}, fill opacity=0.1,area legend]coordinates {
+(2000.0000000000011, 2.0)
+(2749.9999999999977, 2.0)
+(2749.9999999999977, 0.0)
+(2000.0000000000011, 0.0)
+(2000.0000000000011, 2.0)
+};
+\addlegendentry{Valid Region}
+\addplot+ [color = {rgb,1:red,0.88887350;green,0.43564919;blue,0.27812294},
+draw opacity=1.0,
+line width=1,
+solid,mark = none,
+mark size = 2.0,
+mark options = {
+    color = {rgb,1:red,0.00000000;green,0.00000000;blue,0.00000000}, draw opacity = 1.0,
+    fill = {rgb,1:red,0.88887350;green,0.43564919;blue,0.27812294}, fill opacity = 1.0,
+    line width = 1,
+    rotate = 0,
+    solid
+}]coordinates {
+(2200, 0)
+(2200, 2)
+};
+\addlegendentry{$P_F = 2200$}
+\addplot+[draw=none, color = {rgb,1:red,0.88887350;green,0.43564919;blue,0.27812294},
+draw opacity=1.0,
+line width=0,
+solid,mark = *,
+mark size = 2.0,
+mark options = {
+    color = {rgb,1:red,0.00000000;green,0.00000000;blue,0.00000000}, draw opacity = 1.0,
+    fill = {rgb,1:red,0.88887350;green,0.43564919;blue,0.27812294}, fill opacity = 1.0,
+    line width = 1,
+    rotate = 0,
+    solid
+}] coordinates {
+(2200.0, 1.5391328521582182)
+};
+\addlegendentry{$H = 1.54$}
+\end{axis}
+
+\end{tikzpicture}

@@ -12,15 +12,24 @@
 
 \usepackage[superscript]{cite}
 
-\usepackage{cleveref}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{hyperref}
 
 \usepackage{tocloft}
+
 \usepackage{tikz} 
 \usepackage{pgfplots}
+
+\usepackage{empheq}
+\usepackage[siunitx,cuteinductors,americanvoltages,americancurrents]{circuitikz}
+\usepackage{xfrac}
+
 \usepackage{adjustbox}
+
+\usepackage{subcaption}
+
+\usepackage[capitalise]{cleveref}
 
 \usepackage[symbol, flushmargin, hang, perpage]{footmisc}
 \renewcommand{\thefootnote}{\fnsymbol{footnote}}
@@ -28,6 +37,19 @@
 \usepackage[most]{tcolorbox}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{6pt}
+
+\newcommand{\listequationsname}{List of Equations}
+\newlistof{myequations}{equ}{\listequationsname}
+\newcommand{\myequations}[1]{\addcontentsline{equ}{myequations}{\protect\numberline{\theequation} \ \ \, #1}}
+
+\makeatletter
+\DeclareRobustCommand{\volume}{\text{\volumedash}V}
+\newcommand{\volumedash}{%
+  \makebox[0pt][l]{%
+    \ooalign{\hfil\hphantom{$\m@th V$}\hfil\cr\kern0.08em--\hfil\cr}%
+  }%
+}
+\makeatother
 
 %% This bit allows you to either specify only the files which you wish to
 %% process, or `all' to process all files which you \include.
@@ -49,9 +71,10 @@
 
 \appendix
 
-%\include{appa}
-%\include{appb}
+\include{appa}
+\include{appb}
 
 \include{biblio}
 
 \end{document}
+ 
