@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  4 OCT 2018 16:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  4 OCT 2018 16:45
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1933,26 +1933,29 @@ l.161 \begin{equation}
 <to be read again> 
                    \relax 
 l.161 \begin{equation}
-                       [96] [97]pdfTeX warning (ext4): destination with the same identifier (name{equation.5.2.3}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.172 \begin{equation}
-                      pdfTeX warning (ext4): destination with the same identifier (name{equation.5.2.3}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.172 \begin{equation}
-                      pdfTeX warning (ext4): destination with the same identifier (name{equation.5.2.3}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.172 \begin{equation}
-                      pdfTeX warning (ext4): destination with the same identifier (name{equation.5.2.3}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.172 \begin{equation}
-                      )
-Underfull \vbox (badness 10000) has occurred while \output is active []
+                      
+Underfull \vbox (badness 6658) has occurred while \output is active []
 
- [98] [99]
+ [96] [97]pdfTeX warning (ext4): destination with the same identifier (name{equation.5.2.3}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.174 \begin{equation}
+                      pdfTeX warning (ext4): destination with the same identifier (name{equation.5.2.3}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.174 \begin{equation}
+                      pdfTeX warning (ext4): destination with the same identifier (name{equation.5.2.3}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.174 \begin{equation}
+                      pdfTeX warning (ext4): destination with the same identifier (name{equation.5.2.3}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.174 \begin{equation}
+                      
+Underfull \vbox (badness 2237) has occurred while \output is active []
+
+ [98]) [99]
 \openout2 = `appa.aux'.
 
  (./appa.tex [100
@@ -2078,15 +2081,13 @@ LaTeX Font Warning: Size substitutions with differences
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 77.
  ) 
 Here is how much of TeX's memory you used:
- 65717 strings out of 492995
- 1651325 string characters out of 6132704
- 3738907 words of memory out of 5000000
- 67640 multiletter control sequences out of 15000+600000
- 43130 words of font info for 138 fonts, out of 8000000 for 9000
+ 65712 strings out of 492995
+ 1651264 string characters out of 6132704
+ 3738865 words of memory out of 5000000
+ 67638 multiletter control sequences out of 15000+600000
+ 42444 words of font info for 137 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  63i,22n,109p,10377b,2584s stack positions out of 5000i,500n,10000p,200000b,80000s
-pdfTeX warning (dest): name{Hfootnote.7} has been referenced but does not exist, replaced by a fixed one
-
 pdfTeX warning (dest): name{Hfootnote.6} has been referenced but does not exist, replaced by a fixed one
 
 pdfTeX warning (dest): name{Hfootnote.5} has been referenced but does not exist, replaced by a fixed one
@@ -2100,11 +2101,11 @@ pdfTeX warning (dest): name{Hfootnote.2} has been referenced but does not exist,
 pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist, replaced by a fixed one
 
 {/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2017/texmf-dist/fo
-nts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb>
-Output written on /Users/dan/Desktop/thesis/.texpadtmp/main.pdf (116 pages, 1082719 bytes).
+nts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb>
+Output written on /Users/dan/Desktop/thesis/.texpadtmp/main.pdf (116 pages, 1071224 bytes).
 PDF statistics:
- 1673 PDF objects out of 1728 (max. 8388607)
- 1471 compressed objects within 15 object streams
- 566 named destinations out of 1000 (max. 500000)
+ 1670 PDF objects out of 1728 (max. 8388607)
+ 1469 compressed objects within 15 object streams
+ 565 named destinations out of 1000 (max. 500000)
  709 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -77,7 +77,7 @@
 \contentsline {subsection}{\numberline {5.2.2}Minimizing Derived Quantities}{95}{subsection.5.2.2}
 \contentsline {subsection}{\numberline {5.2.3}Pinning Floating Variables}{96}{subsection.5.2.3}
 \contentsline {subsubsection}{Scenario I -- Match for $\overline T$}{98}{section*.102}
-\contentsline {subsubsection}{Scenario I -- Solve for $I_P$}{98}{section*.103}
+\contentsline {subsubsection}{Scenario II -- Solve for $I_P$}{98}{section*.103}
 \contentsline {section}{\numberline {5.3}Wrapping up the Logic}{99}{section.5.3}
 \contentsline {chapter}{\numberline {A}Plasma Profiles}{101}{appendix.A}
 \contentsline {section}{\numberline {A.1}Density -- $n$}{101}{section.A.1}

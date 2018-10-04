@@ -65,7 +65,6 @@ Although being rather cumbersome, this equation actually remains relatively simp
 Where the equations defined up to this point in the chapter are shared among all fusion reactors, the remaining two equations needed to close the system must be chosen by the user. These user-supplied equations come in three flavors: limits, derived quantities, and floating variables. By convention, we enforce that at least one limit must be used -- the other constraint can then come from any of the three defined collections.
 
 \begin{table}[hb]
-\label{table:eq}
 \caption[Main Equation Bank]{Main Equation Bank \\ \small To close the system of equations for potential reactors, different equations can be used to lock down tokamak designs. These include physics and engineering limits (L), as well as ways to set floating (F) or derived (D) variables to constant values.}
 \begin{spacing}{1.5}
 \begin{tabular}{lccccc}
@@ -89,6 +88,7 @@ Magnetic Energy ($W_M$) & D & $\sfrac{ (W_M)_{const} }{ K_{WM} }$ & 3 & 2 & 0 \\
 Cost per Watt ($C_W$) & D & $ (C_W)_{const} \cdot \left( \sfrac{ K_F K_n ^ 2 ( \sigma v ) }{ K_{WM} } \right)$ & 4 & 2 & -2 \\
 \end{tabular}
 \end{spacing}
+\label{table:eq}
 \end{table}
 
 \subsection{Rehashing the Limits}
@@ -165,7 +165,9 @@ Next, the equation for $\overline n$ -- shown in \cref{table:eq} -- is just a si
 
 As was assumed earlier, this is sort of a default equation for the systems model. By this, we mean reactor curves can be created by scanning over temperatures, i.e. set $\overline T = 5 \ \textnormal{keV}$ in one run, 10 in the next, etc. This temperature equation also brings up a subtlety of the model, as it does not depend on current, radius, or magnet strength.
 
-The algorithm that motivated this generalized equation approach most notably bifurcates in the situation where the closure equation does not depend on $R_0$, $B_0$, or $I_P$ (i.e. the temperature equation). The two scenarios are given in \cref{eq:case_1_R,eq:case_1_B,eq:case_1_I,eq:case_1_gamma,eq:case_2_R,eq:case_2_B} -- where at least $R_0$ and $B_0$ are substituted out of the system. In the temperature case, $I_P$ is not needed to be explicitly removed. Concretely, the root solve for the temperature  scenario is for the current, whereas it is for the temperature in all other cases.\footnote{ The nomenclature in the code is a \emph{match} for Scenario I (i.e. root solving for plasma temperature), and a \emph{solve} for Scenario II (i.e. root solving for plasma current). }
+The algorithm that motivated this generalized equation approach most notably bifurcates in the situation where the closure equation does not depend on $R_0$, $B_0$, or $I_P$ (i.e. the temperature equation). The two scenarios are given in \cref{eq:case_1_R,eq:case_1_B,eq:case_1_I,eq:case_1_gamma,eq:case_2_R,eq:case_2_B,eq:case_2_gamma} -- where at least $R_0$ and $B_0$ are substituted out of the system. In the temperature case, $I_P$ is not needed to be explicitly removed. 
+
+Concretely, the root solve for the temperature  scenario is for the current, whereas it is for the temperature in all other cases. The nomenclature in the code is a \emph{match} for Scenario I (i.e. root solving for plasma temperature), and a \emph{solve} for Scenario II (i.e. root solving for plasma current).
 
 \subsubsection{Scenario I -- Match for $\overline T$}
 
@@ -199,7 +201,7 @@ The algorithm that motivated this generalized equation approach most notably bif
 	\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ( \gamma_{R,1} \, \gamma_{B,3} \, \gamma_{I,2} +  \gamma_{R,2} \, \gamma_{B,1} \, \gamma_{I,3} + \gamma_{R,3} \, \gamma_{B,2} \, \gamma_{I,1} ) \nonumber
 \end{gather}
 
-\subsubsection{Scenario I -- Solve for $I_P$}
+\subsubsection{Scenario II -- Solve for $I_P$}
 
 \begin{equation}
 	\label{eq:case_2_R}
@@ -224,4 +226,12 @@ The algorithm that motivated this generalized equation approach most notably bif
 
 \section{Wrapping up the Logic} 
 
+As stated at the beginning of the chapter, this systems model basically boils down to a simple 5 equation/5 unknown algebra problem. The Greenwald density was implicitly used in the initial derive to simplify the logic. The current balance was then delegated to be the root solve equation. Lastly, three equations were needed to remove the major radius and magnet strength, as well as either the current or temperature. These 16 equations were given in \cref{table:eq} with the generalized solution given in \cref{eq:case_1_R,eq:case_1_B,eq:case_1_I,eq:case_1_gamma,eq:case_2_R,eq:case_2_B,eq:case_2_gamma}.
+
+This now sets the stage for the most interesting part of the document -- the results. In true Dickens fashion, they will come in several forms. The first result type we will encounter will be temperature scans. These allow us to validate the model by comparing it to several designs from the literature. These will use the Scenario II solver.
+
+Moving onto examples of the Scenario I solver are sensitivity studies and Monte Carlo samplings. The simple one variable sensitivities will reveal local trends from sweeping various fixed (i.e. input) variables -- namely H, $\kappa$, $B_{CS}$, etc. Whereas the samplings will highlight global trends as many fixed/input variables are allowed to vary simultaneously.
+
+ These Scenario I flavors are further subdivided in regards to the nature of their closure equation. The first flavor comes from finding so called two limit solutions, which live at the point where the beta and kink (or wall) limits are just marginally satisfied. The second main type is then minimum cost reactors -- measured in either capital cost or cost-per-watt. These will be used in depth next chapter.
+ 
 %\end{document}
