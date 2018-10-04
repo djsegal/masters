@@ -7,6 +7,7 @@ A level-1 auxiliary file: intro.aux
 A level-1 auxiliary file: steady.aux
 A level-1 auxiliary file: model.aux
 A level-1 auxiliary file: pulsed.aux
+A level-1 auxiliary file: code.aux
 A level-1 auxiliary file: appa.aux
 A level-1 auxiliary file: appb.aux
 A level-1 auxiliary file: biblio.aux
@@ -23,7 +24,7 @@ Warning--empty publisher in griffiths
 Warning--empty year in griffiths
 You've used 15 entries,
             1791 wiz_defined-function locations,
-            547 strings with 7928 characters,
+            548 strings with 7936 characters,
 and the built_in function-call counts, 4244 in all, are:
 = -- 197
 > -- 521

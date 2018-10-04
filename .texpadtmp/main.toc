@@ -70,11 +70,20 @@
 \contentsline {subsection}{\numberline {4.5.1}Recovering the Steady Current}{86}{subsection.4.5.1}
 \contentsline {subsection}{\numberline {4.5.2}Extracting the Pulsed Current}{87}{subsection.4.5.2}
 \contentsline {subsection}{\numberline {4.5.3}Rationalizing the Generalized Current}{88}{subsection.4.5.3}
-\contentsline {chapter}{\numberline {A}Plasma Profiles}{91}{appendix.A}
-\contentsline {section}{\numberline {A.1}Density -- $n$}{91}{section.A.1}
-\contentsline {section}{\numberline {A.2}Temperature -- $T$}{93}{section.A.2}
-\contentsline {section}{\numberline {A.3}Pressure -- $p$}{95}{section.A.3}
-\contentsline {section}{\numberline {A.4}Bootstrap Current -- $f_{BS}$}{95}{section.A.4}
-\contentsline {section}{\numberline {A.5}Reactivity -- $(\sigma v)$}{97}{section.A.5}
-\contentsline {section}{\numberline {A.6}Volume Averaged Powers}{99}{section.A.6}
-\contentsline {chapter}{\numberline {B}Plot Bestiary}{101}{appendix.B}
+\contentsline {chapter}{\numberline {5}Completing the Systems Model}{91}{chapter.5}
+\contentsline {section}{\numberline {5.1}Describing a Simple Algebra}{91}{section.5.1}
+\contentsline {section}{\numberline {5.2}Generalizing Previous Equations}{93}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Rehashing the Limits}{94}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.2}Minimizing Derived Quantities}{95}{subsection.5.2.2}
+\contentsline {subsection}{\numberline {5.2.3}Pinning Floating Variables}{96}{subsection.5.2.3}
+\contentsline {subsubsection}{Scenario I -- Match for $\overline T$}{98}{section*.102}
+\contentsline {subsubsection}{Scenario I -- Solve for $I_P$}{98}{section*.103}
+\contentsline {section}{\numberline {5.3}Wrapping up the Logic}{99}{section.5.3}
+\contentsline {chapter}{\numberline {A}Plasma Profiles}{101}{appendix.A}
+\contentsline {section}{\numberline {A.1}Density -- $n$}{101}{section.A.1}
+\contentsline {section}{\numberline {A.2}Temperature -- $T$}{103}{section.A.2}
+\contentsline {section}{\numberline {A.3}Pressure -- $p$}{105}{section.A.3}
+\contentsline {section}{\numberline {A.4}Bootstrap Current -- $f_{BS}$}{105}{section.A.4}
+\contentsline {section}{\numberline {A.5}Reactivity -- $(\sigma v)$}{107}{section.A.5}
+\contentsline {section}{\numberline {A.6}Volume Averaged Powers}{109}{section.A.6}
+\contentsline {chapter}{\numberline {B}Plot Bestiary}{111}{appendix.B}
