@@ -112,7 +112,7 @@ This equation shows how steady-state and pulsed operation can coexist (see \cref
 	1 = f_{BS} + f_{ID}
 \end{equation}
 
-Therefore, the next chapter will generalize the steady current to allow pulsed operation. As steady current faced self-consistency issues with $\eta_{CD}$, this current will involve its own root solving conundrum -- the description of which will be given in the following two chapters.
+Therefore, the next chapter will generalize the steady current to allow pulsed operation, and then simplify it to the purely pulsed case. Just as steady current faced self-consistency issues with $\eta_{CD}$, this current will also involve its own root solving conundrum -- the description of which will be given in the following two chapters.
 
 \subsubsection{The Tokamak Magnet Strength -- $B_0$}
 
@@ -237,13 +237,13 @@ The derivation of the heat conduction losses ($P_\kappa$) starts in a manner sim
 
 This volume integral includes two new terms: the confinement time ($\tau_E$) and the internal energy (U). Before explaining these terms, a qualitative description is in order. As mentioned previously, the heat -- or microscopically random -- energy is captured by the internal energy (U). Then the confinement time ($\tau_E$) is how long it would take for the heat to completely leave the device if the system were suddenly turned off.
 
-A formula for confinement time will be delayed till the end of this section, when it is needed to solve for the magnetic field ($B_0$). Whereas the internal energy, U, has its typical physics meaning -- with all three plasma species being held at the same temperature (T) as the electrons:
+A formula for confinement time will be delayed till the end of this section, when it is needed to solve for the magnetic field ($B_0$). The internal energy (U), however, can be given now as it has its typical physics meaning. This assumes that all three plasma species are held nearly at the same temperature (T) as the electrons:
 
 \begin{equation}
 	U = \frac{3}{2} \left( n + n_D + n_T \right) T
 \end{equation}
 
-Here again, $n_D$ and $n_T$ -- the density of deuterium and tritium, respectively -- are related to the electron density (used in this model) through the dilution factor, assuming a 50-50 mix of D-T fuel:
+Here again, $n_D$ and $n_T$ -- the density of deuterium and tritium, respectively -- are related to the electron density (used in this model) through the dilution factor, which assumes a 50-50 mix of D-T fuel:
 
 \begin{equation}
 	n_D = n_T = f_D \cdot \left( \, \frac{n}{2} \, \right)
@@ -375,7 +375,7 @@ However, many have argued that the term should actually be replaced by its corre
 
 Moving on, $K_\tau$ is simply a constant fit-makers use in their scalings. Next, H is the (H-Mode) scaling factor -- the analogue of $K_\tau$ used by reactor designers. This H factor can be used to artificially boost the confinement of machines (i.e. it adds a little magic). Continuing, A is the average mass number of the fuel source, in atomic mass units. For a 50-50 D-T fuel, this is 2.5, as deuterium weighs two amus and tritium weighs three. Lastly, the alpha factors (e.g. $\alpha_n$, $\alpha_a$, $\alpha_P$) are fitting parameters that represent each variable's relative importance. 
 
-For ELMy H-Mode this confinement scaling can be written as:
+For ELMy H-Mode, this confinement scaling can be written as:
 
 \begin{equation}
 	\tau_E = 0.145 \, H \, \frac{
@@ -400,7 +400,7 @@ Returning to the problem at hand, this model's Lawson Criterion (eq. \ref{eq:nta
 \end{equation}
 
 \begin{equation}
-	G_{PB} = \frac{ \overline{T} }{ \left( \, K_P (\sigma v) + K_\Omega  \, \overline{T}^{  \,-3/2 } - K_{BR} \, \overline{T}^{  \,1/2 } \, \right) ^ { ( 1 - \alpha_P ) } }
+	G_{PB} = \frac{ \overline{T} \cdot \left( \, K_P (\sigma v) + K_\Omega  \, \overline{T}^{  \,-3/2 } \, \right) ^ { \alpha_P } }{ \left( \, K_P (\sigma v) + K_\Omega  \, \overline{T}^{  \,-3/2 } - K_{BR} \, \overline{T}^{  \,1/2 } \, \right) }
 \end{equation}
 
 \begin{equation}
@@ -422,7 +422,13 @@ Where we have added new starred alpha values for the density, current, and major
   \alpha_R^* = \alpha_R + \alpha_a - 2  \alpha_n^* - 3 \alpha_p
 \end{equation}
 
-This equation for $B_0$ -- derived from power balance -- is the primary constraint of our reactor designs. It is the first step in connecting the plasma (i.e. $\overline n$, $\overline T$, and $I_P$) with the tokamak (i.e. $B_0$ and $R_0$). The remaining step is finding an equation -- or in this case, equations -- for the major radius of the device. These equations will collectively be referred to as: the Secondary Constraints. 
+Again, if the alternate definition for heat loss ($\tilde P$) were used, another definition for $G_{PB}$ would arise. Repeated though, these tilded values are not actually used:
+
+\begin{equation}
+	\tilde G_{PB} = \frac{ \overline{T} }{ \left( \, K_P (\sigma v) + K_\Omega  \, \overline{T}^{  \,-3/2 } - K_{BR} \, \overline{T}^{  \,1/2 } \, \right) ^ { ( 1 - \alpha_P ) } }
+\end{equation}
+
+This equation for $B_0$ -- derived from power balance -- is the primary constraint of our reactor designs. It is the first step in connecting the plasma (i.e. $\overline n$, $\overline T$, and $I_P$) with the tokamak (i.e. $B_0$ and $R_0$). The remaining step is finding an equation -- or in this case, equations -- for the major radius of the device. These radius equations will collectively be referred to as: the Secondary Constraints. 
 
 \subsection{Exploring the Freidberg Criterion}
 
@@ -458,7 +464,7 @@ Before moving onto the Secondary Constraint, it is worth noting that this power 
     \small The Freidberg Triple Product builds on the original Lawson Criterion by incorporating empirical scalings, such as confinement time and the Greenwald density.
 \end{figure*}
 
-As is readily apparent, this has a shape similar to the Lawson Criterion. Quickly noting, the goal is operate when the right-hand side is at a minimum. This corresponds to when the left-hand side is also minimized -- where each term represents one of the difficult to achieve quantities of a fusion reactor.
+As is readily apparent, this has a shape similar to the Lawson Criterion. Again, the goal is operate when the right-hand side reaches an approximate minimum. This corresponds to when the left-hand side is also minimized -- where each term represents one of the difficult to achieve quantities of a fusion reactor.
 
 \section{Collecting Secondary Constraints}
 

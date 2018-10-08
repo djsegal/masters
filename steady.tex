@@ -122,7 +122,7 @@ To begin, density has the simplest profile. This is because it is relatively fla
 
 \subsubsection{The Temperature Profile}
 
-The use of a parabolic profile for the plasma temperature is slightly more dubious. This is because H-Mode plasmas are actually highly peaked at the center, decaying to a non-zero pedestal temperature near the edge before finally dropping sharply to zero. This model chooses to forego the pedestal representation for a simple parabolic one -- although the pedestal approach is discussed in the Appendix. Analogous to the density, $\overline T$ is the average value and $\nu_T$ is the peaking parameter.
+The use of a parabolic profile for the plasma temperature is slightly more dubious. This is because H-Mode plasmas are actually highly peaked at the center, decaying to a non-zero pedestal temperature near the edge before finally dropping sharply to zero. This model chooses to forego the pedestal representation for a simple parabolic one -- although the pedestal approach is discussed in the \cref{chapter:profiles}. Analogous to the density, $\overline T$ is the average value and $\nu_T$ is the peaking parameter.
 
 \begin{equation}
 	T(\rho) = \overline T \cdot ( 1 + \nu_T ) \, \cdot ( 1 - \rho ^ 2 ) ^ {\nu_T}
@@ -364,7 +364,7 @@ What this reaction describes is two isotopes of hydrogen -- i.e. deuterium and t
 
 The final point to make before returning to the fusion power derivation is the main difference between the two fusion products: helium (i.e. the alpha particle) and the neutron. First, neutrons lack a charge -- they are neutral. This means they cannot be confined with magnetic fields. As such, they simply move in straight lines until they collide with other particles. As the structure of a tokamak is mainly metal, the neutron is much more likely to collide there than the gaseous plasma, which is orders of magnitude less dense. Conversely, alpha particles are charged -- when stripped of their electrons -- and can therefore be kept within the plasma using magnets. What this means practically is that of the 17.6 MeV that comes from every fusion reaction, only 3.5 MeV remains inside the plasma (within the helium particle species).
  
- Returning to the problem at hand, the fusion power -- in megawatts -- is given in Jeff Freidberg's book through the following volume integral:
+ Returning to the problem at hand, the fusion power -- in megawatts -- is given in Jeff Freidberg's textbook through the following volume integral:
  
  \begin{equation}
  	\label{eq:pf_int}
@@ -480,7 +480,7 @@ The current from LHCD can be written as:
 	K_{CD} = \left( K_F K_n \right) \cdot \frac{\eta_{CD}}{Q}
 \end{equation}
 
-As $\eta_{CD}$ and Q appear within a fixed coefficient, it is implied that both remain constant throughout a solve. This subtlety is lifted when handling $\eta_{CD}$ self-consistently, which will be discussed shortly. However, even in that context, it proves beneficial to still think of $\eta_{CD}$ as a sequence of fixed variable.
+As $\eta_{CD}$ and Q appear within a fixed coefficient, it is implied that both remain constant throughout a solve. This subtlety is lifted when handling $\eta_{CD}$ self-consistently, which will be discussed shortly. However, even in that context, it proves beneficial to still think of $\eta_{CD}$ as a sequence of fixed variables.
 
 \subsection{Completing the Steady Current}
 
@@ -519,9 +519,9 @@ As mentioned before, this simple formula appears to only depend on temperature! 
 
 \section{Handling Current Drive Self-Consistently}
 
-Although a thorough description of the wave theory behind lower-hybrid current drive (LHCD) is well outside the scope of this text, it does motivate the solving of a tokamak's major radius ($R_0$) and field strength ($B_0$). It also shows how what was once a simple problem has now transformed into a rather complex one -- a common issue with plasmas.
+Although a thorough description of the wave theory behind lower-hybrid current drive (LHCD) is well outside the scope of this text, it does motivate the solving of a tokamak's major radius ($R_0$) and field strength ($B_0$). It also shows how what was once a simple problem has now transformed into a rather complex one -- a common occurrence with plasmas.
 
-The logic behind finding a self-consistent current-drive efficiency is starting at some plausible value (i.e. $\eta_{CD} = 0.3$), solving for the steady current -- i.e. $I_P = f(\overline T)$ -- and then somehow iteratively creeping towards a value deemed self-consistent. What this means is that in addition to the solver described in the last section, there needs to be a black-box function the solutions are piped through to get a better guesses at $\eta_{CD}$. The black-box function we use is a variation of the Ehst-Karney model. \cite{ehstkarney}
+The logic behind finding a self-consistent current-drive efficiency is starting at some plausible value (i.e. $\eta_{CD} = 0.3$), solving for the steady current -- i.e. $I_P = f(\overline T)$ -- and then somehow iteratively creeping towards a value deemed self-consistent. What this means is that in addition to the solver described in the last section, there needs to be a black-box function that solutions are piped through to get a better guesses at $\eta_{CD}$. The black-box function we use is a variation of the Ehst-Karney model. \cite{ehstkarney}
 
 As mentioned, a self-consistent $\eta_{CD}$ is found once a trip through the Ehst-Karney black-box results in the same $\eta_{CD}$ as was piped in -- to some tolerable level of error. This consistency incorporates an explicit dependence on the tokamak configuration. Mathematically,
 

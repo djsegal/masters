@@ -1,0 +1,468 @@
+%\documentclass[11pt]{book}
+%
+%\setlength{\parindent}{0pt}
+%\setlength{\parskip}{8pt}
+%
+%\usepackage{amsmath}
+%\usepackage{amssymb}
+%\usepackage{hyperref}
+%\usepackage{cleveref}
+%
+%\renewcommand*{\thefootnote}{\fnsymbol{footnote}}
+%
+%\setcounter{chapter}{3}
+%
+%\begin{document}
+%
+%\section*{A Levelized Comparison of \\ Pulsed and Steady-State Tokamaks}
+%
+%\let\cleardoublepage\relax \tableofcontents \newpage
+
+\chapter{Presenting the Code Results}
+
+\section{Validating Code with other Models}
+
+\newpage 
+
+\subsection{Comparing with the PSFC Arc Reactor}
+
+\begin{figure*}[h!]
+    \centering
+    \hfill 
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/arc_B_0_vs_R_0}
+    \end{adjustbox}
+        \caption{$R_0$ vs $B_0$}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/arc_T_bar_vs_I_P}
+    \end{adjustbox}
+        \caption{$I_P$ vs $\overline T$}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\
+    \caption{Arc Model Comparison} ~\\
+\end{figure*}
+
+\begin{table}[h!]
+\centering  
+\caption{Arc Variables}
+\hfill
+\begin{subtable}[t]{0.4\textwidth}
+\centering  
+\caption{Input Variables} ~\\
+\begin{tabular}{ c|c } 
+
+Input            & Value           \\
+\hline
+$H$              & 1.8             \\
+$Q$              & 13.6            \\
+$N_{G}$          & 0.67            \\
+$\epsilon$       & 0.3333          \\
+$\kappa_{95}$    & 1.84            \\
+$\delta_{95}$    & 0.333           \\
+$\nu_{n}$        & 0.385           \\
+$\nu_{T}$        & 0.929           \\
+$l_{i}$          & 0.67            \\
+$A$              & 2.5             \\
+$Z_{eff}$        & 1.2             \\
+$f_{D}$          & 0.9             \\
+$\tau_{FT}$      & 1.6e9           \\
+$B_{CS}$         & 12.77           \\
+
+\end{tabular}
+\end{subtable}
+\hfill
+\begin{subtable}[t]{0.5\textwidth}
+\centering  
+\caption{Output Variables} ~\\
+\begin{tabular}{ c|c|c } 
+
+Output           & Original         & Fussy.jl        \\
+\hline
+$R_{0}$          & 3.3              & 3.382           \\
+$B_{0}$          & 9.2              & 9.505           \\
+$I_{P}$          & 7.8              & 8.766           \\
+$\overline n$    & 1.3              & 1.291           \\
+$\overline T$    & 14.0             & 16.78           \\
+$\beta_{N}$       & 0.0259           & 0.0259          \\
+$q_{95}$         & 7.2              & 6.127           \\
+$P_{W}$          & 2.5              & 2.215           \\
+$f_{BS}$         & 0.63             & 0.5588          \\
+$f_{CD}$         & 0.37             & 0.4412          \\
+$f_{IN}$         & -              & -             \\
+$\volume$         & 141.0            & 157.4           \\
+$P_{F}$          & 525.0            & 725.9           \\
+$\eta_{CD}$      & 0.321            & 0.3164          \\
+
+\end{tabular}
+\end{subtable}
+\hfill
+\hfill
+\end{table}
+
+\newpage
+
+\subsection{Contrasting with the Aries Act Studies}
+
+\newpage 
+
+\subsubsection{Act I -- Advanced Physics and Engineering}
+
+\begin{figure*}[h!]
+    \centering
+    \hfill 
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/act_1_B_0_vs_R_0}
+    \end{adjustbox}
+        \caption{$R_0$ vs $B_0$}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/act_1_T_bar_vs_I_P}
+    \end{adjustbox}
+        \caption{$I_P$ vs $\overline T$}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\
+    \caption{Aries Act I Model Comparison} ~\\
+\end{figure*}
+
+\begin{table}[h!]
+\centering  
+\caption{Act I Variables}
+\hfill
+\begin{subtable}[t]{0.4\textwidth}
+\centering  
+\caption{Input Variables} ~\\
+\begin{tabular}{ c|c } 
+
+Input            & Value           \\
+\hline
+$H$              & 1.65            \\
+$Q$              & 42.5            \\
+$N_{G}$          & 1.0             \\
+$\epsilon$       & 0.25            \\
+$\kappa_{95}$    & 2.1             \\
+$\delta_{95}$    & 0.4             \\
+$\nu_{n}$        & 0.27            \\
+$\nu_{T}$        & 1.15            \\
+$l_{i}$          & 0.35906         \\
+$A$              & 2.5             \\
+$Z_{eff}$        & 2.11            \\
+$f_{D}$          & 0.75            \\
+$\tau_{FT}$      & 1.6e9           \\
+$B_{CS}$         & 12.77           \\
+
+\end{tabular}
+\end{subtable}
+\hfill
+\begin{subtable}[t]{0.5\textwidth}
+\centering  
+\caption{Output Variables} ~\\
+\begin{tabular}{ c|c|c } 
+
+Output           & Original         & Fussy.jl        \\
+\hline
+$R_{0}$          & 6.25             & 6.226           \\
+$B_{0}$          & 6.0              & 5.956           \\
+$I_{P}$          & 10.95            & 10.78           \\
+$\overline n$    & 1.3              & 1.288           \\
+$\overline T$    & 20.6             & 17.2            \\
+$\beta_{N}$       & 0.0427           & 0.0427          \\
+$q_{95}$         & 4.5              & 3.993           \\
+$P_{W}$          & 2.45             & 2.004           \\
+$f_{BS}$         & 0.91             & 0.906           \\
+$f_{CD}$         & 0.09             & 0.094           \\
+$f_{IN}$         & -              & -             \\
+$\volume$         & 582.0            & 621.4           \\
+$P_{F}$          & 1813           & 1865          \\
+$\eta_{CD}$      & 0.188            & 0.1853          \\
+
+\end{tabular}
+\end{subtable}
+\hfill
+\hfill
+\end{table}
+
+\newpage 
+
+\subsubsection{Act II -- Conservative Physics and Engineering}
+
+\begin{figure*}[h!]
+    \centering
+    \hfill 
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/act_2_B_0_vs_R_0}
+    \end{adjustbox}
+        \caption{$R_0$ vs $B_0$}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/act_2_T_bar_vs_I_P}
+    \end{adjustbox}
+        \caption{$I_P$ vs $\overline T$}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\
+    \caption{Aries Act II Model Comparison} ~\\
+\end{figure*}
+
+\begin{table}[h!]
+\centering  
+\caption{Act II Variables}
+\hfill
+\begin{subtable}[t]{0.4\textwidth}
+\centering  
+\caption{Input Variables} ~\\
+\begin{tabular}{ c|c } 
+
+Input            & Value           \\
+\hline
+$H$              & 1.22            \\
+$Q$              & 25.0            \\
+$N_{G}$          & 1.3             \\
+$\epsilon$       & 0.25            \\
+$\kappa_{95}$    & 1.964           \\
+$\delta_{95}$    & 0.42            \\
+$\nu_{n}$        & 0.41            \\
+$\nu_{T}$        & 1.15            \\
+$l_{i}$          & 0.60275         \\
+$A$              & 2.5             \\
+$Z_{eff}$        & 2.12            \\
+$f_{D}$          & 0.74            \\
+$\tau_{FT}$      & 1.6e9           \\
+$B_{CS}$         & 12.77           \\
+
+\end{tabular}
+\end{subtable}
+\hfill
+\begin{subtable}[t]{0.5\textwidth}
+\centering  
+\caption{Output Variables} ~\\
+\begin{tabular}{ c|c|c } 
+
+Output           & Original         & Fussy.jl        \\
+\hline
+$R_{0}$          & 9.75             & 10.22           \\
+$B_{0}$          & 8.75             & 9.051           \\
+$I_{P}$          & 13.98            & 14.84           \\
+$\overline n$    & 0.86             & 0.8191          \\
+$\overline T$    & 17.8             & 17.39           \\
+$\beta_{N}$       & 0.026            & 0.0225          \\
+$q_{95}$         & 8.0              & 6.561           \\
+$P_{W}$          & 1.46             & 1.46            \\
+$f_{BS}$         & 0.77             & 0.658           \\
+$f_{CD}$         & 0.23             & 0.342           \\
+$f_{IN}$         & -              & -             \\
+$\volume$         & 2209           & 2559          \\
+$P_{F}$          & 2637           & 3460          \\
+$\eta_{CD}$      & 0.256            & 0.307           \\
+
+\end{tabular}
+\end{subtable}
+\hfill
+\hfill
+\end{table}
+
+\newpage
+
+\subsection{Benchmarking with the Process DEMO Designs}
+
+\newpage 
+
+\subsubsection{DEMO Steady -- A Steady-State ITER Successor}
+
+\begin{figure*}[h!]
+    \centering
+    \hfill 
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/demo_steady_B_0_vs_R_0}
+    \end{adjustbox}
+        \caption{$R_0$ vs $B_0$}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/demo_steady_T_bar_vs_I_P}
+    \end{adjustbox}
+        \caption{$I_P$ vs $\overline T$}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\
+    \caption{Demo Steady Model Comparison} ~\\
+\end{figure*}
+
+\begin{table}[h!]
+\centering  
+\caption{Demo Steady Variables}
+\hfill
+\begin{subtable}[t]{0.4\textwidth}
+\centering  
+\caption{Input Variables} ~\\
+\begin{tabular}{ c|c } 
+
+Input            & Value           \\
+\hline
+$H$              & 1.4             \\
+$Q$              & 24.46           \\
+$N_{G}$          & 1.2             \\
+$\epsilon$       & 0.385           \\
+$\kappa_{95}$    & 1.8             \\
+$\delta_{95}$    & 0.333           \\
+$\nu_{n}$        & 0.3972          \\
+$\nu_{T}$        & 0.9187          \\
+$l_{i}$          & 0.9             \\
+$A$              & 2.856           \\
+$Z_{eff}$        & 4.708           \\
+$f_{D}$          & 0.7366          \\
+$\tau_{FT}$      & 1.6e9           \\
+$B_{CS}$         & 12.85           \\
+
+\end{tabular}
+\end{subtable}
+\hfill
+\begin{subtable}[t]{0.5\textwidth}
+\centering  
+\caption{Output Variables} ~\\
+\begin{tabular}{ c|c|c } 
+
+Output           & Original         & Fussy.jl        \\  
+\hline
+$R_{0}$          & 7.5              & 8.154           \\
+$B_{0}$          & 5.627            & 6.307           \\
+$I_{P}$          & 21.63            & 30.93           \\
+$\overline n$    & 0.8746           & 1.048           \\
+$\overline T$    & 18.07            & 27.83           \\
+$\beta_{N}$       & 0.038            & 0.038           \\
+$q_{95}$         & 4.405            & 3.761           \\
+$P_{W}$          & 1.911            & 4.151           \\
+$f_{BS}$         & 0.611            & 0.4241          \\
+$f_{CD}$         & 0.389            & 0.5759          \\
+$f_{IN}$         & -              & -             \\
+$\volume$         & 2217           & 2879          \\
+$P_{F}$          & 3255           & 8971          \\
+$\eta_{CD}$      & 0.4152           & -          \\
+
+\end{tabular}
+\end{subtable}
+\hfill
+\hfill
+\end{table}
+
+\newpage 
+
+\subsubsection{DEMO Pulsed -- A Pulsed ITER Successor}
+
+\begin{figure*}[h!]
+    \centering
+    \hfill 
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/demo_pulsed_B_0_vs_R_0}
+    \end{adjustbox}
+        \caption{$R_0$ vs $B_0$}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/demo_pulsed_T_bar_vs_I_P}
+    \end{adjustbox}
+        \caption{$I_P$ vs $\overline T$}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\
+    \caption{Demo Pulsed Model Comparison} ~\\
+\end{figure*}
+
+\begin{table}[h!]
+\centering  
+\caption{Demo Pulsed Variables}
+\hfill
+\begin{subtable}[t]{0.4\textwidth}
+\centering  
+\caption{Input Variables} ~\\
+\begin{tabular}{ c|c } 
+
+Input            & Value           \\
+\hline
+$H$              & 1.1             \\
+$Q$              & 39.86           \\
+$N_{G}$          & 1.2             \\
+$\epsilon$       & 0.3226          \\
+$\kappa_{95}$    & 1.59            \\
+$\delta_{95}$    & 0.333           \\
+$\nu_{n}$        & 0.27            \\
+$\nu_{T}$        & 1.094           \\
+$l_{i}$          & 1.155           \\
+$A$              & 2.735           \\
+$Z_{eff}$        & 2.584           \\
+$f_{D}$          & 0.7753          \\
+$\tau_{FT}$      & 7273          \\
+$B_{CS}$         & 12.77           \\
+
+\end{tabular}
+\end{subtable}
+\hfill
+\begin{subtable}[t]{0.5\textwidth}
+\centering  
+\caption{Output Variables} ~\\
+\begin{tabular}{ c|c|c } 
+
+Output           & Original         & Fussy.jl        \\
+\hline
+$R_{0}$          & 9.072            & 8.1             \\
+$B_{0}$          & 5.667            & 5.48            \\
+$I_{P}$          & 19.6             & 19.26           \\
+$\overline n$    & 0.7983           & 0.9795          \\
+$\overline T$    & 13.06            & 13.28           \\
+$\beta_{N}$       & 0.0259           & 0.0259          \\
+$q_{95}$         & 3.247            & 2.853           \\
+$P_{W}$          & 1.05             & 1.466           \\
+$f_{BS}$         & 0.348            & 0.1637          \\
+$f_{CD}$         & 0.096            & 0.1062          \\
+$f_{IN}$         & 0.557            & 0.7302          \\
+$\volume$         & 2502           & 1751          \\
+$P_{F}$          & 2037           & 2376          \\
+$\eta_{CD}$      & 0.2721           & -     
+
+\end{tabular}
+\end{subtable}
+\hfill
+\hfill
+\end{table}
+
+\section{Developing Prototype Reactors}
+
+\begin{figure}[h!]
+\centering
+\input{images/pulsed_vs_steady.tex}
+\caption{How to Build a Fusion Reactor} ~ \\
+\small As is convention in fusion engineering, a good design only relies on one miracle. For steady-state reactors, we assume we can get better confinement -- by increasing $H$. While in the pulsed case, the miracle is assuming strong magnets for the central solenoid -- $B_{CS}$.
+\label{fig:circuit_diagram}
+\end{figure}
+
+%\end{document}
