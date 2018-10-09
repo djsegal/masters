@@ -89,11 +89,13 @@
 \contentsline {subsubsection}{DEMO Steady -- A Steady-State ITER Successor}{110}{section*.113}
 \contentsline {subsubsection}{DEMO Pulsed -- A Pulsed ITER Successor}{111}{section*.116}
 \contentsline {section}{\numberline {6.2}Developing Prototype Reactors}{112}{section.6.2}
-\contentsline {chapter}{\numberline {A}Plasma Profiles}{113}{appendix.A}
-\contentsline {section}{\numberline {A.1}Density -- $n$}{113}{section.A.1}
-\contentsline {section}{\numberline {A.2}Temperature -- $T$}{115}{section.A.2}
-\contentsline {section}{\numberline {A.3}Pressure -- $p$}{117}{section.A.3}
-\contentsline {section}{\numberline {A.4}Bootstrap Current -- $f_{BS}$}{117}{section.A.4}
-\contentsline {section}{\numberline {A.5}Reactivity -- $(\sigma v)$}{119}{section.A.5}
-\contentsline {section}{\numberline {A.6}Volume Averaged Powers}{121}{section.A.6}
-\contentsline {chapter}{\numberline {B}Plot Bestiary}{123}{appendix.B}
+\contentsline {subsection}{\numberline {6.2.1}Navigating around Charybdis}{114}{subsection.6.2.1}
+\contentsline {subsection}{\numberline {6.2.2}Pinning down Proteus}{115}{subsection.6.2.2}
+\contentsline {chapter}{\numberline {A}Plasma Profiles}{117}{appendix.A}
+\contentsline {section}{\numberline {A.1}Density -- $n$}{117}{section.A.1}
+\contentsline {section}{\numberline {A.2}Temperature -- $T$}{119}{section.A.2}
+\contentsline {section}{\numberline {A.3}Pressure -- $p$}{121}{section.A.3}
+\contentsline {section}{\numberline {A.4}Bootstrap Current -- $f_{BS}$}{121}{section.A.4}
+\contentsline {section}{\numberline {A.5}Reactivity -- $(\sigma v)$}{123}{section.A.5}
+\contentsline {section}{\numberline {A.6}Volume Averaged Powers}{125}{section.A.6}
+\contentsline {chapter}{\numberline {B}Plot Bestiary}{127}{appendix.B}

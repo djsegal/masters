@@ -530,12 +530,194 @@ $\eta_{CD}$      & 0.2721           & -
 
 \section{Developing Prototype Reactors}
 
+Now that the model used in Fussy.jl has been tested against other fusion systems codes in the field, we will develop our own prototype reactors. Because this paper is about making a levelized comparison of pulsed and steady-state tokamaks, we will develop middle-of-the-road reactors that only differ by operating mode. 
+
+The steady-state prototype, Charybdis, is the obvious choice to start with -- as the model was tested against four of these typed reactors. It was also pointed out that the model did remarkably well when recreating ARC. As the authors share many of the ARC team's philosophies, Charybdis uses fixed parameters very similar to them.
+
+Next, although led to believe Charybdis' pulsed twin reactor -- Proteus -- would be created by a simple flip of the switch, it was a slight oversimplification. The first difference is that the pulsed twin, Proteus, is assumed to be purely pulsed: $\eta_{CD} = 0$. Further, the bootstrap current is much less important than it was for steady-state tokamaks. This corresponds to a current profile peaked at the origin -- i.e. a parabola. Numerically, this is done by raising $l_i$ from around 5.5 to 6.
+
+The final difference creates the largest change in the twin reactors: the choice of miracle. As hinted several times before, the H factor is a common way designers artificially boost the confinement of their machines. This H value will thus be the miracle for Charybdis, the steady-state prototype. Next, as the main conclusion of this paper is to state the advantages of high magnetic field, a free way to boost a central solenoid using HTS coils will be employed.
+
+Opposite the order of how they were designed, the goal now is to lock down a value of $B_{CS}$ for Proteus and then use it to set the H factor for Charybdis. This selection algorithm is depicted in \cref{fig:selection}. For Proteus, the point locked down was $B_{CS} = 20 \ \textnormal{T}$, which occurred at a fusion power ($P_F$) of around 1250 MW. As shown in the cost curve, this was at a point where the ratio between the minimum capital cost and the minimum cost-per-watt saturated. This choice of a 1250 MW reactor then led to Charybdis having an H factor of 1.7.
+
 \begin{figure}[h!]
 \centering
 \input{images/pulsed_vs_steady.tex}
 \caption{How to Build a Fusion Reactor} ~ \\
 \small As is convention in fusion engineering, a good design only relies on one miracle. For steady-state reactors, we assume we can get better confinement -- by increasing $H$. While in the pulsed case, the miracle is assuming strong magnets for the central solenoid -- $B_{CS}$.
-\label{fig:circuit_diagram}
+\label{fig:selection}
 \end{figure}
+
+\clearpage
+
+\newpage
+
+\subsection{Navigating around Charybdis}
+
+\begin{figure*}[h!]
+    \centering
+    \hfill 
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/charybdis_R_0_vs_B_0}
+    \end{adjustbox}
+        \caption{Charybdis Reactor}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/arc_R_0_vs_B_0}
+    \end{adjustbox}
+        \caption{Arc Reactor}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\
+    \caption{Steady State Prototype Comparison} ~\\
+\end{figure*}
+
+\begin{table}[h!]
+\centering  
+\caption{Charybdis Variables}
+\hfill
+\begin{subtable}[t]{0.4\textwidth}
+\centering  
+\caption{Input Variables} ~\\
+\begin{tabular}{ c|c } 
+
+Input            & Value           \\
+\hline
+$H$              & 1.7              \\
+$Q$              & 25.0             \\
+$N_{G}$          & 0.9              \\
+$\epsilon$       & 0.3              \\
+$\kappa_{95}$    & 1.8              \\
+$\delta_{95}$    & 0.35             \\
+$\nu_{n}$        & 0.4              \\
+$\nu_{T}$        & 1.1              \\
+$l_{i}$          & 0.5579         \\
+$A$              & 2.5              \\
+$Z_{eff}$        & 1.75             \\
+$f_{D}$          & 0.9              \\
+$\tau_{FT}$      & 1.6e9            \\
+$B_{CS}$         & 12.0             \\
+
+\end{tabular}
+\end{subtable}
+\hfill
+\begin{subtable}[t]{0.5\textwidth}
+\centering  
+\caption{Output Variables} ~\\
+\begin{tabular}{ c|c } 
+
+Output           & Value       \\
+\hline
+$R_{0}$          & 4.13            \\
+$B_{0}$          & 10.28            \\
+$I_{P}$          & 8.98            \\
+$\overline n$    & 1.47            \\
+$\overline T$    & 15.81           \\
+$\beta_{N}$       & 0.028            \\
+$q_{95}$         & 6.089            \\
+$P_{W}$          & 3.003            \\
+$f_{BS}$         & 0.723           \\
+$f_{CD}$         & 0.277           \\
+$f_{IN}$         & 0.0              \\
+$\volume$         & 225.5            \\
+$P_{F}$          & 1294           \\
+$\eta_{CD}$      & 0.291           \\
+
+\end{tabular}
+\end{subtable}
+\hfill
+\hfill
+\end{table}
+
+\newpage 
+
+\subsection{Pinning down Proteus}
+
+\begin{figure*}[h!]
+    \centering
+    \hfill 
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/proteus_R_0_vs_B_0}
+    \end{adjustbox}
+        \caption{Proteus Reactor}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/demo_pulsed_R_0_vs_B_0}
+    \end{adjustbox}
+        \caption{Demo Pulsed Reactor}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\
+    \caption{Pulsed Prototype Comparison} ~\\
+\end{figure*}
+
+\begin{table}[h!]
+\centering  
+\caption{Proteus Variables}
+\hfill
+\begin{subtable}[t]{0.4\textwidth}
+\centering  
+\caption{Input Variables} ~\\
+\begin{tabular}{ c|c } 
+
+Input            & Value           \\
+\hline
+$H$              & 1.0              \\
+$Q$              & 25.0             \\
+$N_{G}$          & 0.9              \\
+$\epsilon$       & 0.3              \\
+$\kappa_{95}$    & 1.8              \\
+$\delta_{95}$    & 0.35             \\
+$\nu_{n}$        & 0.4              \\
+$\nu_{T}$        & 1.1              \\
+$l_{i}$          & 0.6328         \\
+$A$              & 2.5              \\
+$Z_{eff}$        & 1.75             \\
+$f_{D}$          & 0.9              \\
+$\tau_{FT}$      & 7200           \\
+$B_{CS}$         & 20.0             \\
+
+\end{tabular}
+\end{subtable}
+\hfill
+\begin{subtable}[t]{0.5\textwidth}
+\centering  
+\caption{Output Variables} ~\\
+\begin{tabular}{ c|c } 
+
+Output           & Value       \\
+\hline
+$R_{0}$          & 6.11             \\
+$B_{0}$          & 4.93            \\
+$I_{P}$          & 15.54            \\
+$\overline n$    & 1.16            \\
+$\overline T$    & 11.25            \\
+$\beta_{N}$       & 0.028            \\
+$q_{95}$         & 2.5              \\
+$P_{W}$          & 1.763            \\
+$f_{BS}$         & 0.2675           \\
+$f_{CD}$         & 0.0              \\
+$f_{IN}$         & 0.7325           \\
+$\volume$         & 732.6            \\
+$P_{F}$          & 1667           \\
+$\eta_{CD}$      & 0.0              \\
+
+\end{tabular}
+\end{subtable}
+\hfill
+\hfill
+\end{table}
 
 %\end{document}

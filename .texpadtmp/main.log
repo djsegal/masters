@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  8 OCT 2018 20:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  9 OCT 2018 14:43
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1178,14 +1178,7 @@ File: pgflibraryfadings.code.tex 2008/02/07 v3.0.1a (rcs-revision 1.3)
 \c@equdepth=\count306
 \cftbeforeequtitleskip=\skip103
 \cftafterequtitleskip=\skip104
- (/Users/dan/Desktop/thesis/.texpadtmp/main.aux (/Users/dan/Desktop/thesis/.texpadtmp/cover.aux) (/Users/dan/Desktop/thesis/.texpadtmp/contents.aux) (/Users/dan/Desktop/thesis/.texpadtmp/intro.aux) (/Users/dan/Desktop/thesis/.texpadtmp/steady.aux) (/Users/dan/Desktop/thesis/.texpadtmp/model.aux) (/Users/dan/Desktop/thesis/.texpadtmp/pulsed.aux) (/Users/dan/Desktop/thesis/.texpadtmp/code.aux) (/Users/dan/Desktop/thesis/.texpadtmp/results.aux
-
-LaTeX Warning: Label `fig:circuit_diagram' multiply defined.
-
-
-LaTeX Warning: Label `fig:circuit_diagram@cref' multiply defined.
-
-) (/Users/dan/Desktop/thesis/.texpadtmp/appa.aux) (/Users/dan/Desktop/thesis/.texpadtmp/appb.aux) (/Users/dan/Desktop/thesis/.texpadtmp/biblio.aux))
+ (/Users/dan/Desktop/thesis/.texpadtmp/main.aux (/Users/dan/Desktop/thesis/.texpadtmp/cover.aux) (/Users/dan/Desktop/thesis/.texpadtmp/contents.aux) (/Users/dan/Desktop/thesis/.texpadtmp/intro.aux) (/Users/dan/Desktop/thesis/.texpadtmp/steady.aux) (/Users/dan/Desktop/thesis/.texpadtmp/model.aux) (/Users/dan/Desktop/thesis/.texpadtmp/pulsed.aux) (/Users/dan/Desktop/thesis/.texpadtmp/code.aux) (/Users/dan/Desktop/thesis/.texpadtmp/results.aux) (/Users/dan/Desktop/thesis/.texpadtmp/appa.aux) (/Users/dan/Desktop/thesis/.texpadtmp/appb.aux) (/Users/dan/Desktop/thesis/.texpadtmp/biblio.aux))
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 58.
@@ -1979,15 +1972,24 @@ Overfull \hbox (7.59392pt too wide) in paragraph at lines 349--350
 \T1/cmr/m/n/12 Mode scal-ing law. As shown in their pa-per, they ac-tu-ally sub-tract out a Bremsstrahlung
  []
 
-[109] (./images/comparisons/demo_steady_R_0_vs_B_0.tex) (./images/comparisons/demo_steady_I_P_vs_T_bar.tex) [110] (./images/comparisons/demo_pulsed_R_0_vs_B_0.tex) (./images/comparisons/demo_pulsed_I_P_vs_T_bar.tex) (./images/pulsed_vs_steady.tex)
-Overfull \hbox (5.76518pt too wide) in paragraph at lines 1031--536
+[109] (./images/comparisons/demo_steady_R_0_vs_B_0.tex) (./images/comparisons/demo_steady_I_P_vs_T_bar.tex) [110] (./images/comparisons/demo_pulsed_R_0_vs_B_0.tex) (./images/comparisons/demo_pulsed_I_P_vs_T_bar.tex) [111] (./images/pulsed_vs_steady.tex)
+Overfull \hbox (5.76518pt too wide) in paragraph at lines 1031--546
  [][] 
  []
 
-[111]) [112]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[112] [113] (./images/comparisons/charybdis_R_0_vs_B_0.tex) (./images/comparisons/arc_R_0_vs_B_0.tex) [114
+
+] (./images/comparisons/proteus_R_0_vs_B_0.tex) (./images/comparisons/demo_pulsed_R_0_vs_B_0.tex)) [115]
 \openout2 = `appa.aux'.
 
- (./appa.tex
+ (./appa.tex [116
+
+
+
+]
 Appendix A.
 (./images/plasma_profiles.tex) (./images/temperature_profiles.tex)
 
@@ -1998,11 +2000,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 30.
 
-[113
-
-
-
-]
+[117]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 77.
@@ -2014,13 +2012,13 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [114]
+ [118]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [115]
+ [119]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [116]
+ [120]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 161.
@@ -2044,10 +2042,10 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 
 Underfull \vbox (badness 7151) has occurred while \output is active []
 
- [117]
+ [121]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [118]
+ [122]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 247.
@@ -2060,7 +2058,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 247.
 
-[119]
+[123]
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
@@ -2075,26 +2073,26 @@ Underfull \hbox (badness 10000) in paragraph at lines 348--349
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [120] [121] [122])
+ [124] [125] [126])
 \openout2 = `appb.aux'.
 
  (./appb.tex
 Appendix B.
-[123
+[127
 
 
 
 
-] [124] [125])
+] [128] [129])
 \openout2 = `biblio.aux'.
 
- (./biblio.tex (/Users/dan/Desktop/thesis/.texpadtmp/main.bbl [126
+ (./biblio.tex (/Users/dan/Desktop/thesis/.texpadtmp/main.bbl [130
 
 
 
 
 
-] [127])) [128]
+] [131])) [132]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 78.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 78.
  (/Users/dan/Desktop/thesis/.texpadtmp/main.aux (/Users/dan/Desktop/thesis/.texpadtmp/cover.aux) (/Users/dan/Desktop/thesis/.texpadtmp/contents.aux) (/Users/dan/Desktop/thesis/.texpadtmp/intro.aux) (/Users/dan/Desktop/thesis/.texpadtmp/steady.aux) (/Users/dan/Desktop/thesis/.texpadtmp/model.aux) (/Users/dan/Desktop/thesis/.texpadtmp/pulsed.aux) (/Users/dan/Desktop/thesis/.texpadtmp/code.aux) (/Users/dan/Desktop/thesis/.texpadtmp/results.aux) (/Users/dan/Desktop/thesis/.texpadtmp/appa.aux) (/Users/dan/Desktop/thesis/.texpadtmp/appb.aux) (/Users/dan/Desktop/thesis/.texpadtmp/biblio.aux))
@@ -2107,16 +2105,13 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 2.90001pt have occurred.
 
-
-LaTeX Warning: There were multiply-defined labels.
-
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 78.
  ) 
 Here is how much of TeX's memory you used:
- 67363 strings out of 492995
- 1700323 string characters out of 6132704
- 3739787 words of memory out of 5000000
- 69191 multiletter control sequences out of 15000+600000
+ 67662 strings out of 492995
+ 1708938 string characters out of 6132704
+ 3739851 words of memory out of 5000000
+ 69470 multiletter control sequences out of 15000+600000
  42444 words of font info for 137 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  63i,23n,109p,10377b,2584s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2136,10 +2131,10 @@ pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist,
 
 {/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2017/texmf-dist/fo
 nts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb>
-Output written on /Users/dan/Desktop/thesis/.texpadtmp/main.pdf (128 pages, 1127941 bytes).
+Output written on /Users/dan/Desktop/thesis/.texpadtmp/main.pdf (132 pages, 1143163 bytes).
 PDF statistics:
- 1808 PDF objects out of 2073 (max. 8388607)
- 1594 compressed objects within 16 object streams
- 612 named destinations out of 1000 (max. 500000)
- 757 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1847 PDF objects out of 2073 (max. 8388607)
+ 1628 compressed objects within 17 object streams
+ 622 named destinations out of 1000 (max. 500000)
+ 773 words of extra memory for PDF output out of 10000 (max. 10000000)
 
