@@ -1,0 +1,151 @@
+\begin{tikzpicture}[]
+\begin{axis}[height = {101.6mm}, ylabel = {${h}_{CS}$}, title = {Demo Steady}, xmin = {0.0}, xmax = {3.36}, ymax = {20.0}, xlabel = {${H}$}, {unbounded coords=jump, scaled x ticks = false, xticklabel style={rotate = 0}, xmajorgrids = true, xtick = {0.0,1.0,2.0,3.0}, xticklabels = {0,1,2,3}, xtick align = inside, axis lines* = left, scaled y ticks = false, yticklabel style={rotate = 0}, ymajorgrids = true, ytick = {0.0,5.0,10.0,15.0,20.0}, yticklabels = {0,5,10,15,20}, ytick align = inside, axis lines* = left,     xshift = 0.0mm,
+    yshift = 0.0mm,
+    axis background/.style={fill={rgb,1:red,1.00000000;green,1.00000000;blue,1.00000000}}
+, colorbar style={title=}}, ymin = {0.0}, width = {152.4mm}]\addplot+ [color = {rgb,1:red,0.88887350;green,0.43564919;blue,0.27812294},
+draw opacity=0.7,
+line width=3,
+dotted,mark = none,
+mark size = 2.0,
+mark options = {
+    color = {rgb,1:red,0.00000000;green,0.00000000;blue,0.00000000}, draw opacity = 0.7,
+    fill = {rgb,1:red,0.88887350;green,0.43564919;blue,0.27812294}, fill opacity = 0.7,
+    line width = 1,
+    rotate = 0,
+    solid
+}]coordinates {
+(1.19, 16.60877799119408)
+(1.26, 15.22463442728083)
+(1.33, 14.263204803140702)
+(1.4, 13.576016512334608)
+(1.47, 13.096641742116725)
+};
+\addlegendentry{$wall$}
+\addplot+ [color = {rgb,1:red,0.24222430;green,0.64327509;blue,0.30444865},
+draw opacity=0.7,
+line width=1,
+solid,mark = none,
+mark size = 2.0,
+mark options = {
+    color = {rgb,1:red,0.00000000;green,0.00000000;blue,0.00000000}, draw opacity = 0.7,
+    fill = {rgb,1:red,0.24222430;green,0.64327509;blue,0.30444865}, fill opacity = 0.7,
+    line width = 1,
+    rotate = 0,
+    solid
+}]coordinates {
+(1.05, 21.75382545838422)
+(1.12, 18.506634612651595)
+(1.19, 16.609327874631223)
+(1.26, 15.223761498521844)
+(1.33, 14.261330085023557)
+(1.4, 13.573257859325462)
+(1.47, 13.093002156164468)
+(1.54, 12.798004938167521)
+(1.61, 12.552798293633959)
+(1.68, 12.328919290366343)
+(1.75, 12.12332583058789)
+(1.82, 11.933609734745334)
+(1.89, 11.757826047881723)
+(1.96, 11.594377101018946)
+(2.03, 11.441925732325362)
+(2.1, 11.299345485938316)
+(2.17, 11.165707645627279)
+(2.24, 11.040163981623461)
+(2.31, 10.921974246368954)
+(2.38, 10.810555271990568)
+(2.45, 10.70533084581406)
+(2.52, 10.605811757368365)
+(2.59, 10.511531724015748)
+(2.66, 10.422150047591986)
+(2.73, 10.337289013274638)
+(2.8, 10.25662977312091)
+};
+\addlegendentry{$cost$}
+\addplot+ [color = {rgb,1:red,0.76444018;green,0.44411178;blue,0.82429754},
+draw opacity=0.7,
+line width=1,
+solid,mark = none,
+mark size = 2.0,
+mark options = {
+    color = {rgb,1:red,0.00000000;green,0.00000000;blue,0.00000000}, draw opacity = 0.7,
+    fill = {rgb,1:red,0.76444018;green,0.44411178;blue,0.82429754}, fill opacity = 0.7,
+    line width = 1,
+    rotate = 0,
+    solid
+}]coordinates {
+(1.05, 21.757616526932324)
+(1.12, 18.508067181947347)
+(1.19, 16.603459781091964)
+(1.26, 15.223761502044056)
+(1.33, 14.261330086132846)
+(1.4, 13.573257858264752)
+(1.47, 13.093002151635545)
+(1.54, 12.798004936211033)
+(1.61, 12.552798292953476)
+(1.68, 12.328919292152754)
+(1.75, 12.12332583190571)
+(1.82, 11.933609736462252)
+(1.89, 11.757826048181254)
+(1.96, 11.59437710146104)
+(2.03, 11.441931353558356)
+(2.1, 11.299365060722543)
+(2.17, 11.16571940620241)
+(2.24, 11.040168386398594)
+(2.31, 10.921994322168654)
+(2.38, 10.810568920827048)
+(2.45, 10.705338413134228)
+(2.52, 10.60581175703139)
+(2.59, 10.511551161949907)
+(2.66, 10.422164405325024)
+(2.73, 10.337298542818312)
+(2.8, 10.25663471083457)
+};
+\addlegendentry{$W_M$}
+\addplot+ [color = {rgb,1:red,0.67554396;green,0.55566233;blue,0.09423434},
+draw opacity=1.0,
+line width=1,
+dashed,mark = none,
+mark size = 2.0,
+mark options = {
+    color = {rgb,1:red,0.00000000;green,0.00000000;blue,0.00000000}, draw opacity = 1.0,
+    fill = {rgb,1:red,0.67554396;green,0.55566233;blue,0.09423434}, fill opacity = 1.0,
+    line width = 1,
+    rotate = 0,
+    solid
+},forget plot]coordinates {
+(1.4, 0.0)
+(1.4, 20.0)
+};
+\addplot+ [color = {rgb,1:red,0.00000048;green,0.66575898;blue,0.68099695},
+draw opacity=1.0,
+line width=1,
+dashed,mark = none,
+mark size = 2.0,
+mark options = {
+    color = {rgb,1:red,0.00000000;green,0.00000000;blue,0.00000000}, draw opacity = 1.0,
+    fill = {rgb,1:red,0.00000048;green,0.66575898;blue,0.68099695}, fill opacity = 1.0,
+    line width = 1,
+    rotate = 0,
+    solid
+},forget plot]coordinates {
+(0.0, 0.0)
+(0.0, 20.0)
+};
+\addplot+ [color = {rgb,1:red,0.00000048;green,0.66575898;blue,0.68099695},
+draw opacity=1.0,
+line width=1,
+dashed,mark = none,
+mark size = 2.0,
+mark options = {
+    color = {rgb,1:red,0.00000000;green,0.00000000;blue,0.00000000}, draw opacity = 1.0,
+    fill = {rgb,1:red,0.00000048;green,0.66575898;blue,0.68099695}, fill opacity = 1.0,
+    line width = 1,
+    rotate = 0,
+    solid
+},forget plot]coordinates {
+(2.8, 0.0)
+(2.8, 20.0)
+};
+\end{axis}
+
+\end{tikzpicture}
