@@ -20,11 +20,29 @@
 
 \chapter{Presenting the Code Results}
 
+Now that our fusion systems model has been formulated and completed, the next logical step is to code it up and run it to produce interesting data. To this, the code for this document -- Fussy.jl -- is available at \href{https://github.com/djsegal/Fussy.jl}{github.com/djsegal/Fussy.jl} (with a short guide given in the Appendix). The results will be given shortly.
+
+Before accosting the reader with some twenty plots and tables, though, it makes sense to first warn them what they are getting into. This chapter has three sections. The first is an attempt to test how good the model is by comparing it with other codes in the field.\cite{arc,eupulsed,process}. Next, we will develop two prototype reactors that pit steady-state against pulsed operation on a levelized playing field.
+
+This chapter will then conclude with a discussion on how best to lower the costs of a tokamak reactor. In line with the MIT mission, this will highlight how using stronger magnets leads to more compact, efficient machines. The new piece of insight, then, is how to optimally incorporate high-temperature superconducting (HTS) tape technology -- the miracle found in the ARC design family. 
+
+Without spoiling too much for the reader, we will show that HTS tape should be used in the TF coils for steady-state tokamaks (i.e. $B_0$), whereas it should only be appear in the central solenoid (i.e. $B_{CS}$) for pulsed ones! This is a fundamentally new result.
+
 \section{Validating Code with other Models}
+
+When you develop a new model, the first thing you have to do is validate that it makes sensical results. The goal is not to go overboard by: comparing it with too many models or requiring perfect matches with all their results. To this, we will compare Fussy.jl with five designs coming from three separate research teams. Hopefully casting a wide enough net through reactor-space to prove sufficient. It should be noted that for how simple this model is, it does a remarkable job matching these more sophisticated frameworks. It also highlights how discrepancies arise in this highly non-linear computational problem.
+
+The first reactor design that will provide a basis for comparison is the ARC reactor. As it was also designed by MIT researchers, the fit is shown to be almost exact. This of course probably involves a fair amount of inherent biases stemming from how the ecosystem operates and produces engineers -- most notably as the core of this code comes from Jeff's ongoing interest in the problem.
+
+The next set of reactor designs come from the ARIES four-act study. The ARIES team is a United States effort to reexplore the problem of designing a fusion reactor around once a decade. The most recent study focused on how tokamaks shape up as you assume optimistic and conservative physics and engineering parameters. Although our model recovers their results, it does highlight one peculiarity of their algorithm -- reliance on the minimum achievable value of H.
+
+The final series of reactors comes from the major codebase used among European fusion systems experts: PROCESS. As such, this group actually gives an example for pulsed vs. steady-state tokamaks. Although these designs have the most discrepancies with our model, discussion will be given that remedy some of the shortcomings. These basically boil down to: alternative definitions for heat loss appearing in the ELMy H-Mode Scaling, as well as the simplified nature of our flux balance equation -- which only accounts for central solenoid and PF coil source terms. 
 
 \newpage 
 
 \subsection{Comparing with the PSFC Arc Reactor}
+
+As mentioned, this model matches the results from the ARC design almost perfectly. This probably stems from how both models were developed within the MIT community.  The points to make now, though, is even with how well the results match, there are two notable discrepancies: the fusion power ($P_F$) and bootstrap current fraction ($f_{BS}$). These mainly arise from the use of simple parabolic profiles for temperature.
 
 \begin{figure*}[h!]
     \centering
@@ -33,7 +51,7 @@
         \centering
     \begin{adjustbox}{width=\textwidth}
       \Large
-      \input{images/comparisons/arc_B_0_vs_R_0}
+      \input{images/comparisons/arc_R_0_vs_B_0}
     \end{adjustbox}
         \caption{$R_0$ vs $B_0$}
     \end{subfigure}
@@ -42,7 +60,7 @@
         \centering
     \begin{adjustbox}{width=\textwidth}
       \Large
-      \input{images/comparisons/arc_T_bar_vs_I_P}
+      \input{images/comparisons/arc_I_P_vs_T_bar}
     \end{adjustbox}
         \caption{$I_P$ vs $\overline T$}
     \end{subfigure}
@@ -64,7 +82,7 @@ Input            & Value           \\
 $H$              & 1.8             \\
 $Q$              & 13.6            \\
 $N_{G}$          & 0.67            \\
-$\epsilon$       & 0.3333          \\
+$\epsilon$       & 0.333          \\
 $\kappa_{95}$    & 1.84            \\
 $\delta_{95}$    & 0.333           \\
 $\nu_{n}$        & 0.385           \\
@@ -86,20 +104,20 @@ $B_{CS}$         & 12.77           \\
 
 Output           & Original         & Fussy.jl        \\
 \hline
-$R_{0}$          & 3.3              & 3.382           \\
-$B_{0}$          & 9.2              & 9.505           \\
-$I_{P}$          & 7.8              & 8.766           \\
-$\overline n$    & 1.3              & 1.291           \\
-$\overline T$    & 14.0             & 16.78           \\
-$\beta_{N}$       & 0.0259           & 0.0259          \\
-$q_{95}$         & 7.2              & 6.127           \\
-$P_{W}$          & 2.5              & 2.215           \\
-$f_{BS}$         & 0.63             & 0.5588          \\
-$f_{CD}$         & 0.37             & 0.4412          \\
+$R_{0}$          & 3.3              & 3.4           \\
+$B_{0}$          & 9.2              & 9.5           \\
+$I_{P}$          & 7.8              & 8.8           \\
+$\overline n$    & 1.3              & 1.3           \\
+$\overline T$    & 14.0             & 16.8           \\
+$\beta_{N}$       & 0.026           & -          \\
+$q_{95}$         & 7.2              & 6.1           \\
+$P_{W}$          & 2.5              & 2.2           \\
+$f_{BS}$         & 0.63             & 0.56          \\
+$f_{CD}$         & 0.37             & 0.44          \\
 $f_{IN}$         & -              & -             \\
-$\volume$         & 141.0            & 157.4           \\
-$P_{F}$          & 525.0            & 725.9           \\
-$\eta_{CD}$      & 0.321            & 0.3164          \\
+$\volume$         & 141            & 157           \\
+$P_{F}$          & 525            & 726           \\
+$\eta_{CD}$      & 0.321            & 0.316          \\
 
 \end{tabular}
 \end{subtable}
@@ -111,9 +129,48 @@ $\eta_{CD}$      & 0.321            & 0.3164          \\
 
 \subsection{Contrasting with the Aries Act Studies}
 
+Moving on, the Aries Act study focuses on how steady-state reactors would look under both a conservative and optimistic perspective. This is highlighted in \cref{fig:act_h_cost}, which shows how costs decreases as the H factor is allowed to increase. Notice that for every value of H, the ACT I study (i.e. the optimistic act) has a lower cost than the design from ACT II (i.e. the conservative one).
+
+This figure also highlights another peculiarity of the ARIES study -- a reliance on the minimum possible value of H. Note that just left of the reactor point on both plots is a highly erratic portion of the curve. As such, if even a slightly smaller value of H were used in either case, a quite distinct reactor would occur. This is not a robust way to design machines. A better approach would be to build with some safety factor -- i.e at a slightly more magical version of H. This can be seen in ARC's H-Sweep.
+
+\begin{figure*}[h!]
+    \centering
+    \hfill 
+    \begin{subfigure}[t]{0.4\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/act_1_C_W_vs_H}
+    \end{adjustbox}
+        \caption{Act I H Sweep}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.4\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/act_2_C_W_vs_H}
+    \end{adjustbox}
+        \caption{Act II H Sweep}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\
+    \begin{subfigure}[t]{0.4\textwidth}
+        \centering
+		\begin{adjustbox}{width=\textwidth}
+			\Large
+			\input{images/sensitivities/arc_C_W_vs_H}
+		\end{adjustbox}
+        \caption{Arc H Sweep}
+    \end{subfigure} ~\\ ~\\ ~\\
+    \caption{Act Studies Cost Dependence on the H Factor} ~\\    
+	\label{fig:act_h_cost}
+\end{figure*}
+
 \newpage 
 
 \subsubsection{Act I -- Advanced Physics and Engineering}
+
+Act 1 is the ARIES study that assumes advanced physics and engineering design parameters. Although this paper's model does a good job matching the results from their paper, it does show what optimistic design really means. As can be seen, this design actually only surpasses the minimum possible toroidal field strength by as less than a Tesla! Practically, this means the reactor is barely realizable.
 
 \begin{figure*}[h!]
     \centering
@@ -122,7 +179,7 @@ $\eta_{CD}$      & 0.321            & 0.3164          \\
         \centering
     \begin{adjustbox}{width=\textwidth}
       \Large
-      \input{images/comparisons/act_1_B_0_vs_R_0}
+      \input{images/comparisons/act_1_R_0_vs_B_0}
     \end{adjustbox}
         \caption{$R_0$ vs $B_0$}
     \end{subfigure}
@@ -131,7 +188,7 @@ $\eta_{CD}$      & 0.321            & 0.3164          \\
         \centering
     \begin{adjustbox}{width=\textwidth}
       \Large
-      \input{images/comparisons/act_1_T_bar_vs_I_P}
+      \input{images/comparisons/act_1_I_P_vs_T_bar}
     \end{adjustbox}
         \caption{$I_P$ vs $\overline T$}
     \end{subfigure}
@@ -158,7 +215,7 @@ $\kappa_{95}$    & 2.1             \\
 $\delta_{95}$    & 0.4             \\
 $\nu_{n}$        & 0.27            \\
 $\nu_{T}$        & 1.15            \\
-$l_{i}$          & 0.35906         \\
+$l_{i}$          & 0.359         \\
 $A$              & 2.5             \\
 $Z_{eff}$        & 2.11            \\
 $f_{D}$          & 0.75            \\
@@ -175,20 +232,20 @@ $B_{CS}$         & 12.77           \\
 
 Output           & Original         & Fussy.jl        \\
 \hline
-$R_{0}$          & 6.25             & 6.226           \\
-$B_{0}$          & 6.0              & 5.956           \\
+$R_{0}$          & 6.25             & 6.23           \\
+$B_{0}$          & 6.0              & 6.0           \\
 $I_{P}$          & 10.95            & 10.78           \\
-$\overline n$    & 1.3              & 1.288           \\
+$\overline n$    & 1.3              & 1.3           \\
 $\overline T$    & 20.6             & 17.2            \\
-$\beta_{N}$       & 0.0427           & 0.0427          \\
-$q_{95}$         & 4.5              & 3.993           \\
-$P_{W}$          & 2.45             & 2.004           \\
-$f_{BS}$         & 0.91             & 0.906           \\
-$f_{CD}$         & 0.09             & 0.094           \\
+$\beta_{N}$       & 0.0427           & -          \\
+$q_{95}$         & 4.5              & 4.0           \\
+$P_{W}$          & 2.45             & 2.00           \\
+$f_{BS}$         & 0.91             & 0.91           \\
+$f_{CD}$         & 0.09             & 0.09           \\
 $f_{IN}$         & -              & -             \\
 $\volume$         & 582.0            & 621.4           \\
 $P_{F}$          & 1813           & 1865          \\
-$\eta_{CD}$      & 0.188            & 0.1853          \\
+$\eta_{CD}$      & 0.188            & 0.185          \\
 
 \end{tabular}
 \end{subtable}
@@ -200,6 +257,8 @@ $\eta_{CD}$      & 0.188            & 0.1853          \\
 
 \subsubsection{Act II -- Conservative Physics and Engineering}
 
+ARIES more conservative design -- Act II -- is much more like ARC in nature. From the plots, its obvious the paper's model is basically right on top of the reactor curve made using Fussy.jl.  Much like ARC, too, it shows how the model overestimates fusion power and underestimates bootstrap fraction due to the selection of a pedestal profile for plasma temperature.
+
 \begin{figure*}[h!]
     \centering
     \hfill 
@@ -207,7 +266,7 @@ $\eta_{CD}$      & 0.188            & 0.1853          \\
         \centering
     \begin{adjustbox}{width=\textwidth}
       \Large
-      \input{images/comparisons/act_2_B_0_vs_R_0}
+      \input{images/comparisons/act_2_R_0_vs_B_0}
     \end{adjustbox}
         \caption{$R_0$ vs $B_0$}
     \end{subfigure}
@@ -216,7 +275,7 @@ $\eta_{CD}$      & 0.188            & 0.1853          \\
         \centering
     \begin{adjustbox}{width=\textwidth}
       \Large
-      \input{images/comparisons/act_2_T_bar_vs_I_P}
+      \input{images/comparisons/act_2_I_P_vs_T_bar}
     \end{adjustbox}
         \caption{$I_P$ vs $\overline T$}
     \end{subfigure}
@@ -261,15 +320,15 @@ $B_{CS}$         & 12.77           \\
 Output           & Original         & Fussy.jl        \\
 \hline
 $R_{0}$          & 9.75             & 10.22           \\
-$B_{0}$          & 8.75             & 9.051           \\
+$B_{0}$          & 8.75             & 9.05           \\
 $I_{P}$          & 13.98            & 14.84           \\
-$\overline n$    & 0.86             & 0.8191          \\
-$\overline T$    & 17.8             & 17.39           \\
-$\beta_{N}$       & 0.026            & 0.0225          \\
-$q_{95}$         & 8.0              & 6.561           \\
-$P_{W}$          & 1.46             & 1.46            \\
-$f_{BS}$         & 0.77             & 0.658           \\
-$f_{CD}$         & 0.23             & 0.342           \\
+$\overline n$    & 0.86             & 0.82          \\
+$\overline T$    & 17.8             & 17.4           \\
+$\beta_{N}$       & 0.026            & 0.023          \\
+$q_{95}$         & 8.0              & 6.6           \\
+$P_{W}$          & 1.46             & -            \\
+$f_{BS}$         & 0.77             & 0.66           \\
+$f_{CD}$         & 0.23             & 0.34           \\
 $f_{IN}$         & -              & -             \\
 $\volume$         & 2209           & 2559          \\
 $P_{F}$          & 2637           & 3460          \\
@@ -285,9 +344,21 @@ $\eta_{CD}$      & 0.256            & 0.307           \\
 
 \subsection{Benchmarking with the Process DEMO Designs}
 
+The PROCESS team's prospective designs for successors to ITER constitute the final set of model comparisons: the steady-state and pulsed DEMO reactors. As this paper is designed to compare these modes of operation, this study proves most fruitful. It also highlights how common model decisions can dramatically alter what reactors come out of the solvers.
+
+The first discrepancy is how the PROCESS team defines the loss term in the ELMy H-Mode scaling law. As shown in their paper, they actually subtract out a Bremsstrahlung component, while leaving the fitting coefficients the same. \cite{process} After modifying Fussy.jl to incorporate this definition, the steady-state reactor is easily reproducible in $R_0$ -- $B_0$ slice of reactor space.
+
+Unlike the steady-state cause, however, the modified power loss term does not fix the pulsed case, as it actually draws the reactor curves further from the design from their paper. As such, it is flux balance that is now the main source of discrepancy between the two models. This makes sense, as this model uses highly simplified source terms -- namely neglecting anything but the central solenoid and PF coils (as well as ignoring crucial physics for these two components).
+
+Even acknowledging the differences between the two models, Fussy.jl still does remarkably well at reproducing their much more sophisticated coding framework. The final point to make is about selecting optimum points to build as the floating variables are allowed to make curves through reactor space. Up to this point, only steady-state tokamak designs have been explored. In every single one of these, the paper values have been very close to the point where the beta curves and wall loading curves cross. This is because they all result in the minimum cost-per-watt. 
+
+For pulsed designs, on the other hand, kink curves start to appear for low magnetic field strengths. Just as beta-wall intersections were optimum places to design for low cost-per-watt ($C_W$) reactors, these beta-kink intersections will prove to be the place where minimum capital cost ($W_M$) reactors usually occur.
+
 \newpage 
 
 \subsubsection{DEMO Steady -- A Steady-State ITER Successor}
+
+Hands down, this DEMO Steady reactor is the worst modeled reactor using Fussy.jl. As mentioned previously, though, some of the discrepancy was removed by using the PROCESS team's modified version of heat loss. This heavily corrected the $R_0$ -- $B_0$ curve, but had no effect on the $I_P$ -- $\overline T$ one. An interesting aside, these curves actually show that the steady current is independent of secondary constraint (as discussed).
 
 \begin{figure*}[h!]
     \centering
@@ -296,7 +367,7 @@ $\eta_{CD}$      & 0.256            & 0.307           \\
         \centering
     \begin{adjustbox}{width=\textwidth}
       \Large
-      \input{images/comparisons/demo_steady_B_0_vs_R_0}
+      \input{images/comparisons/demo_steady_R_0_vs_B_0}
     \end{adjustbox}
         \caption{$R_0$ vs $B_0$}
     \end{subfigure}
@@ -305,7 +376,7 @@ $\eta_{CD}$      & 0.256            & 0.307           \\
         \centering
     \begin{adjustbox}{width=\textwidth}
       \Large
-      \input{images/comparisons/demo_steady_T_bar_vs_I_P}
+      \input{images/comparisons/demo_steady_I_P_vs_T_bar}
     \end{adjustbox}
         \caption{$I_P$ vs $\overline T$}
     \end{subfigure}
@@ -349,16 +420,16 @@ $B_{CS}$         & 12.85           \\
 
 Output           & Original         & Fussy.jl        \\  
 \hline
-$R_{0}$          & 7.5              & 8.154           \\
+$R_{0}$          & 7.5              & 8.2           \\
 $B_{0}$          & 5.627            & 6.307           \\
 $I_{P}$          & 21.63            & 30.93           \\
 $\overline n$    & 0.8746           & 1.048           \\
 $\overline T$    & 18.07            & 27.83           \\
-$\beta_{N}$       & 0.038            & 0.038           \\
+$\beta_{N}$       & 0.038            & -           \\
 $q_{95}$         & 4.405            & 3.761           \\
 $P_{W}$          & 1.911            & 4.151           \\
-$f_{BS}$         & 0.611            & 0.4241          \\
-$f_{CD}$         & 0.389            & 0.5759          \\
+$f_{BS}$         & 0.611            & 0.424          \\
+$f_{CD}$         & 0.389            & 0.576          \\
 $f_{IN}$         & -              & -             \\
 $\volume$         & 2217           & 2879          \\
 $P_{F}$          & 3255           & 8971          \\
@@ -374,6 +445,8 @@ $\eta_{CD}$      & 0.4152           & -          \\
 
 \subsubsection{DEMO Pulsed -- A Pulsed ITER Successor}
 
+This pulsed version of DEMO is the only reactor in our collection that is not run in steady-state. As such, it may be the most important one. The first thing that is abundantly clear is that this design actually has no valid wall loading portion -- only a kink and beta curve exist! Even so, the results match pretty well. It should be noted, though, that this current drive is treated as an input and not solved self-consistently.
+
 \begin{figure*}[h!]
     \centering
     \hfill 
@@ -381,7 +454,7 @@ $\eta_{CD}$      & 0.4152           & -          \\
         \centering
     \begin{adjustbox}{width=\textwidth}
       \Large
-      \input{images/comparisons/demo_pulsed_B_0_vs_R_0}
+      \input{images/comparisons/demo_pulsed_R_0_vs_B_0}
     \end{adjustbox}
         \caption{$R_0$ vs $B_0$}
     \end{subfigure}
@@ -390,7 +463,7 @@ $\eta_{CD}$      & 0.4152           & -          \\
         \centering
     \begin{adjustbox}{width=\textwidth}
       \Large
-      \input{images/comparisons/demo_pulsed_T_bar_vs_I_P}
+      \input{images/comparisons/demo_pulsed_I_P_vs_T_bar}
     \end{adjustbox}
         \caption{$I_P$ vs $\overline T$}
     \end{subfigure}
@@ -434,17 +507,17 @@ $B_{CS}$         & 12.77           \\
 
 Output           & Original         & Fussy.jl        \\
 \hline
-$R_{0}$          & 9.072            & 8.1             \\
-$B_{0}$          & 5.667            & 5.48            \\
-$I_{P}$          & 19.6             & 19.26           \\
+$R_{0}$          & 9.07            & 8.10             \\
+$B_{0}$          & 5.67            & 5.48            \\
+$I_{P}$          & 19.6             & 19.3           \\
 $\overline n$    & 0.7983           & 0.9795          \\
 $\overline T$    & 13.06            & 13.28           \\
-$\beta_{N}$       & 0.0259           & 0.0259          \\
+$\beta_{N}$       & 0.0259           & -          \\
 $q_{95}$         & 3.247            & 2.853           \\
-$P_{W}$          & 1.05             & 1.466           \\
-$f_{BS}$         & 0.348            & 0.1637          \\
-$f_{CD}$         & 0.096            & 0.1062          \\
-$f_{IN}$         & 0.557            & 0.7302          \\
+$P_{W}$          & 1.05             & 1.47           \\
+$f_{BS}$         & 0.348            & 0.164          \\
+$f_{CD}$         & 0.096            & 0.106          \\
+$f_{IN}$         & 0.557            & 0.730          \\
 $\volume$         & 2502           & 1751          \\
 $P_{F}$          & 2037           & 2376          \\
 $\eta_{CD}$      & 0.2721           & -     
