@@ -554,6 +554,8 @@ Opposite the order of how they were designed, the goal now is to lock down a val
 
 \subsection{Navigating around Charybdis}
 
+The Charybdis reactor is the steady-state twin developed for this paper. As mentioned, its parameters are similar to the ARC design. This is shown in \cref{fig:charybdis}, where the two $R_0$ -- $B_0$ curves are almost interchangeable. Before moving on, it proves useful to note that the optimum place to build on these curves is where the two intersect -- as it minimizes costs.
+
 \begin{figure*}[h!]
     \centering
     \hfill 
@@ -576,6 +578,7 @@ Opposite the order of how they were designed, the goal now is to lock down a val
     \end{subfigure}
     \hfill \hfill ~\\ ~\\ ~\\
     \caption{Steady State Prototype Comparison} ~\\
+    \label{fig:charybdis}
 \end{figure*}
 
 \begin{table}[h!]
@@ -638,6 +641,8 @@ $\eta_{CD}$      & 0.291           \\
 \newpage 
 
 \subsection{Pinning down Proteus}
+
+The pulsed twin reactor, Proteus, highlights the effects o f a high field central solenoid. When compared to the Pulsed Demo design, the $R_0$ -- $B_0$ curves look far more favorable -- i.e. each machine built at a certain magnet strength would be more compact (and cheaper). An interesting facet of Proteus is that it exhibits all three used limits: kink, beta, and wall.
 
 \begin{figure*}[h!]
     \centering
@@ -719,5 +724,9 @@ $\eta_{CD}$      & 0.0              \\
 \hfill
 \hfill
 \end{table}
+
+\section{Learning from the Data}
+
+Now that the model has been properly vetted and prototypes designed, we can explore how pulsed and steady-state tokamaks scale. Fitting with the Dickens theme, there will be three mostly independent results. The first result will explore how to minimize costs for a reactor by choosing optimum design points. The next will be an argument for how to properly utilize the HTS magnet technology in component design. Lastly, we will take a cursory look at the other parameters capable of lowering machine costs.
 
 %\end{document}
