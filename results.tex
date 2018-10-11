@@ -729,4 +729,170 @@ $\eta_{CD}$      & 0.0              \\
 
 Now that the model has been properly vetted and prototypes designed, we can explore how pulsed and steady-state tokamaks scale. Fitting with the Dickens theme, there will be three mostly independent results. The first result will explore how to minimize costs for a reactor by choosing optimum design points. The next will be an argument for how to properly utilize the HTS magnet technology in component design. Lastly, we will take a cursory look at the other parameters capable of lowering machine costs.
 
+\subsection{Picking a Design Point}
+
+With more than twenty design parameters, finding the most efficient reactor is a fool's errand. Intuition building aside, finding good reactors becomes much more feasible when only focusing on floating variables -- i.e. when keeping fixed variables constant. This method, for example, is how all the $R_0$ -- $B_0$ curves have been produced this chapter. Once these curves are produced, it is up to the user to choose which reactor on them to build. However, the guiding metric usually involves lowering some cost, either: capital cost or cost-per-watt.
+
+Regardless of reactor type, most efficient tokamaks operate near the beta limit -- where plasma pressure is greatest. Besides being a regime highly sensitive to magnetic field strength, the beta limit is a constraint that occurs on every reactor (seen by the authors). This beta limit is usually nested between the kink limit to lower $B_0$ values and wall loading to higher ones. Understanding these regimes is the first step towards building an intuition favoring efficient machines.
+
+\begin{figure}
+\centering
+\begin{adjustbox}{width=0.75\textwidth}
+	\input{images/limit_regimes}
+\end{adjustbox}
+\caption{Limit Regimes as function of $B_0$}
+\end{figure}
+
+Now that the beta limit curve has been designated as the most efficient regime to operate in (usually), the goal is to select which reactor on it is the best one to build. Starting with the easier of the two, the optimum design point for steady-state reactors is the point where wall loading first starts to dominate design. Here, engineering concerns cause the reactor to start increasing in size and cost -- which is bad. This conclusion is justified by the cost curves for all five reactors in this paper. As these show, it is also where these reactor designers pinned down their tokamaks.\footnote{ Simply stated, the optimum reactor for steady-state tokamaks is one that just barely satisfies the beta and wall loading limit simultaneously -- i.e. where the two curves cross. }
+
+\begin{figure*}
+    \centering
+    \hfill 
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+		\begin{adjustbox}{width=\textwidth}
+			\Large
+			\input{images/comparisons/charybdis_C_W_vs_B_0}
+		\end{adjustbox}
+        \caption{Charybdis}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+		\begin{adjustbox}{width=\textwidth}
+			\Large
+			\input{images/comparisons/arc_C_W_vs_B_0}
+		\end{adjustbox}
+        \caption{Arc}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill 
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+		\begin{adjustbox}{width=\textwidth}
+			\Large
+			\input{images/comparisons/act_1_C_W_vs_B_0}
+		\end{adjustbox}
+        \caption{Act I}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+		\begin{adjustbox}{width=\textwidth}
+			\Large
+			\input{images/comparisons/act_2_C_W_vs_B_0}
+		\end{adjustbox}
+        \caption{Act II}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\
+    \caption{Steady State Cost Curves}
+    \label{fig:steady_cost}
+\end{figure*}
+
+The problem of selecting an optimum design is more difficult for the pulsed case. This is mainly due to the kink limit regime being actually achievable. Following the conclusion from steady-state reactors would be an oversimplification because there are actually two costs relevant to reactors: capital cost and cost-per-watt. These beta-wall reactors are actually the points often best for minimizing cost-per-watt (i.e. your rate of return). The new beta-kink reactors, then, lead to cheap to build machines -- ones with a minimum capital cost. These conclusions are shown in \cref{fig:pulsed_costs}.
+
+\begin{figure*}
+    \centering
+    \hfill 
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+		\begin{adjustbox}{width=\textwidth}
+			\Large
+			\input{images/comparisons/proteus_C_W_vs_B_0}
+		\end{adjustbox}
+        \caption{Proteus Cost-per-Watt}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+		\begin{adjustbox}{width=\textwidth}
+			\Large
+			\input{images/comparisons/proteus_W_M_vs_B_0}
+		\end{adjustbox}
+        \caption{Proteus Capital Cost}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill 
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+		\begin{adjustbox}{width=\textwidth}
+			\Large
+			\input{images/comparisons/demo_pulsed_C_W_vs_B_0}
+		\end{adjustbox}
+        \caption{Demo Pulsed Cost-per-Watt}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+		\begin{adjustbox}{width=\textwidth}
+			\Large
+			\input{images/comparisons/demo_pulsed_W_M_vs_B_0}
+		\end{adjustbox}
+        \caption{Demo Pulsed Capital Cost}
+    \end{subfigure}	
+    \hfill \hfill ~\\ ~\\ ~\\
+    \caption{Pulsed Cost Curves}
+    \label{fig:pulsed_costs}
+\end{figure*}
+
+Summarizing the conclusions of this subsection, the beta limit is usually the best constraint to operate at. For lowering the cost-per-watt, a reactor should always be run at the highest magnetic field strength ($B_0$) that satisfies the beta limit. This most often occurs when wall loading takes over (for steady-state reactors) or reactors start being physically unrealizable (for pulsed ones). Building cheap to build reactors -- i.e. minimizing capital cost -- then actually proved to make pulsed design one of trade-offs. This is because the beta-kink curve intersection produces a low capital cost reactor, but at the price of operating at a subpar cost-per-watt. Designers should therefore balance the two cost metrics.
+
+\subsection{Utilizing High Field Magnets}
+
+The main conclusion for this paper is that high field magnets are the way to go to build an efficient, compact fusion reactor. In line with the MIT ARC effort, these high fields will be built with high-temperature superconducting (HTS) tape. This innovation is set to double the strength of conventional magnets. The real question is how best to use it.
+
+At a very simple level, there are two main places strong magnets can be employed: the toroidal fields ($B_0$) and the central solenoid ($B_{CS}$). The easier mode of operation to start with is steady-state. This is because steady-state tokamaks do not rely on a central solenoid for the profitability of their machines. Further, the cost curves in \cref{fig:steady_cost} show that all these designs would benefit from toroidal fields ($B_0$) not achievable with conventional magnets -- which can only reach around 10 T on a good day.
+
+The more interesting result is that pulsed reactors gain no real benefit from using HTS toroidal field magnets. Within the modern paradigm (i.e. D-T fuel, H-Mode, etc), pulsed reactors never have to exceed the limits of inexpensive, copper magnets. The place HTS can really help is with the central solenoid, which governs how long a pulse can last. Further, the effect of improving the central solenoid saturates within the range accessible to HTS tape. Again, HTS would be more than adequate for the modern paradigm.
+
+\begin{figure*}
+    \centering
+    \hfill 
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+		\begin{adjustbox}{width=\textwidth}
+			\Large
+			\input{images/samplings/proteus_C_W_vs_B_0}
+		\end{adjustbox}
+        \caption{Proteus $B_0$ Sampling}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+		\begin{adjustbox}{width=\textwidth}
+			\Large
+			\input{images/samplings/proteus_C_W_vs_B_CS}
+		\end{adjustbox}
+        \caption{Proteus $B_{CS}$ Sampling}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill 
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+		\begin{adjustbox}{width=\textwidth}
+			\Large
+			\input{images/samplings/demo_pulsed_C_W_vs_B_0}
+		\end{adjustbox}
+        \caption{Demo Pulsed $B_0$ Sampling}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+		\begin{adjustbox}{width=\textwidth}
+			\Large
+			\input{images/samplings/demo_pulsed_C_W_vs_B_CS}
+		\end{adjustbox}
+        \caption{Demo Pulsed $B_{CS}$ Sampling}
+    \end{subfigure}	
+    \hfill \hfill ~\\ ~\\ ~\\
+    \caption{Pulsed Monte Carlo Sampling}
+    \label{fig:pulsed_samplings}
+\end{figure*}
+
+Rehashing this section, HTS tape is the best way to lower the cost of fusion reactors at a commercial scale. For steady-state reactors, HTS works best in the toroidal field coils ($B_0$), while the tape would fare better in the central solenoid ($B_{CS}$) of pulsed reactors. Further, both effects saturate within the range of this HTS tape, rendering more sophisticated magnetic technology unnecessary. HTS is truly the answer to affordable fusion energy.
+
+\subsection{Looking at Design Alternatives}
+
+
+
 %\end{document}
