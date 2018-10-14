@@ -356,6 +356,7 @@ The energy confinement time -- $\tau_E$ -- is one of the most elusive terms in a
 	\tau_E = K_\tau \, H \, \frac{
 		I_P^{\,\alpha_I} \, R_0^{\,\alpha_R} \, a^{\,\alpha_a} \, \kappa^{\,\alpha_\kappa} \ \overline{n}^{\,\alpha_n} \, B_0^{\,\alpha_B} \, A^{\,\alpha_A}
 	}{ P_L ^ {\,\alpha_P} }
+	\label{eq:tau_gen}
 \end{equation}
 
 This mouthful of a formula is how the field actually designs machines. Let it be known, though, that these fits often do remarkable well, having relative errors less than 20\% on interpolated data. The new terms in this equation are: $P_L$, $K_\tau$, H, A, and the $\alpha_{\,\square}$ factors. 
@@ -381,13 +382,14 @@ For ELMy H-Mode, this confinement scaling can be written as:
 	\tau_E = 0.145 \, H \, \frac{
 		I_P^{0.93} \, R_0^{1.39} \, a^{0.58} \, \kappa^{0.78} \ \overline{n}^{\, 0.41} \, B_0^{0.15} \, A^{0.19}
 	}{ P_L ^ {\,0.69} }
+	\label{eq:tau_h}
 \end{equation}
 
 Where similar ones can be given for L-Mode, I-Mode, etc. One final remark to make before moving on is that even these fits have subtleties. The value of $\kappa$, for example, may have a slightly different geometric meaning from reactor to reactor. And the exact definition of loss power -- $P_L$ -- introduces an even larger area of discrepancy.  Although not actually used, a better fit for our model might be one from the author:
 
 \begin{equation}
-	\tilde \tau_E = 0.092 \, H \frac{  
-		\left( I_P^{0.91} R_0^{1.44} B_0 ^ {0.24} \,\overline T ^ {\,0.11} \right) \cdot \left( \epsilon ^ {0.22} A^{0.22}  \kappa ^ {0.54} \right) }{ \tilde P_L ^ {\, 0.55} }	
+	\tilde \tau_E = 0.08 \, H \frac{  
+		\left( R_0^{1.49} B_0 ^ {0.3} I_P^{0.93} \right) \cdot \left( \epsilon ^ {0.17} A^{0.23}  \kappa ^ {0.56} \right) }{ \tilde P_L ^ {\, 0.54} }	
 \end{equation}
 
 Returning to the problem at hand, this model's Lawson Criterion (eq. \ref{eq:ntaue}) can be simplified after expanding the left-hand side using the Greenwald density and a confinement time scaling law. Albeit a little cumbersome, this can be wrangled into an equation for $B_0$!

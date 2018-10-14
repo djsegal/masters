@@ -1,0 +1,94 @@
+%\documentclass[11pt]{book}
+%
+%\setlength{\parindent}{0pt}
+%\setlength{\parskip}{8pt}
+%
+%\usepackage{amsmath}
+%\usepackage{amssymb}
+%\usepackage{hyperref}
+%\usepackage{cleveref}
+%
+%\renewcommand*{\thefootnote}{\fnsymbol{footnote}}
+%
+%\setcounter{chapter}{3}
+%
+%\begin{document}
+%
+%\section*{A Levelized Comparison of \\ Pulsed and Steady-State Tokamaks}
+%
+%\let\cleardoublepage\relax \tableofcontents \newpage
+
+\chapter{Planning Future Work}
+
+This model may run and produce interesting results, but there is always more to do. This chapter explores three potential fusion reactors that could help guid real world designs. It then goes into a laundry list of model improvements.
+
+The three reactors covered are: a stellarator (Ladon), a steady-state/pulsed hybrid (Janus), and a tokamak capable of reaching H, L, and I modes (Daedalus). 
+
+\section{Incorporating Stellarator Technology -- Ladon}
+
+A stellarator is, at a basic level, a tokamak helically twisted along the length of its major circle. For a long time they were dismissed because of the difficulty involved in building spiraled magnets.  Recent technological improvements, though, have eased this situation -- as seen with the Wendelstein 7-X device in Germany. The problem now is engrained in the missing scaling laws stemming from a lack of machines and, more fundamentally, data points.
+
+\begin{figure}
+	\centering
+	\begin{adjustbox}{width=0.75\textwidth}
+		\input{images/stellarator}
+	\end{adjustbox}
+%	\includegraphics[width=0.75\textwidth]{images/test_image}
+	\caption{Cut-Away of Stellarator Reactor} ~\\
+\end{figure}
+
+Optimistically, expanding this model would just involve developing a new confinement time scaling law and replacing the Greenwald density limit. The reason the Greenwald density limit is no longer important is because stability is much easier to maintain in a stellarator. Most likely, the density limit will now be governed by Bremsstrahlung radiation. If this were the case, each equation would need to be redivided using it. Ladon would be the reactor built using this enhancement.
+
+\section{Making a Hybrid Reactor -- Janus}
+
+The next interesting reactor would be a hybrid tokamak incorporating pulsed and steady-state operation, codenamed: Janus. Fundamentally, this would mean current would come from both LHCD (steady-state) and inductive (pulsed) sources. This was actually used in Demo Pulsed, but the current drive was not handled self-consistently. Coupling these two current sources could reduce reliance on bootstrap current and lead to much more compact machines.
+
+\begin{figure}
+	\centering
+	\begin{adjustbox}{width=0.75\textwidth}
+		\input{images/current_balance}
+	\end{adjustbox}
+%	\includegraphics[width=0.75\textwidth]{images/test_image}
+	\caption{Current Balance in a Tokamak} ~\\
+	\small In a tokamak, there needs to be a certain amount of current -- and that current has to come from somewhere. All good reactors have an adequate bootstrap current. What provides the remaining current is what distinguishes steady state from pulsed operation.
+\end{figure}
+
+The arguments against this are mainly technical: why build two difficult auxiliary systems when one is needed -- especially when they probably work against each other. Although rational, the argument implicitly assumes a current is achievable through only one source (i.e. either through LHCD or from a central solenoid). Using two may allow for larger plasma currents.
+
+\section{Bridging Confinement Scalings -- Daedalus}
+
+The final potential reactor -- Daedalus -- is designed to colelct as many scaling laws as possible. As a baseline, it should be able to run in H-Mode, L-Mode, and I-Mode. Because L-Mode is available on any machine, the first step is building under H-Mode. The goal then is to find reactors that can also reach I-Mode -- thus improving the scaling law's fit and making the  actual reactor more cost effective.
+
+Repeated below are the three confinement scaling laws, as well as the generalized formula. As should be noted, the I-Mode scaling currently lacks a true radial dependence -- as it has only been found on two machines. This is one reason Daedalus would be so valuable.
+
+\begin{equation}
+  \tau_E^G = K_\tau \, H \, \frac{
+    I_P^{\,\alpha_I} \, R_0^{\,\alpha_R} \, a^{\,\alpha_a} \, \kappa^{\,\alpha_\kappa} \ \overline{n}^{\,\alpha_n} \, B_0^{\,\alpha_B} \, A^{\,\alpha_A}
+  }{ P_L ^ {\,\alpha_P} }
+  \tag{\ref{eq:tau_gen}}
+\end{equation}
+
+\begin{equation}
+  \tau_E^H = 0.145 \, H \, \frac{
+    I_P^{0.93} \, R_0^{1.39} \, a^{0.58} \, \kappa^{0.78} \ \overline{n}^{\, 0.41} \, B_0^{0.15} \, A^{0.19}
+  }{ P_L ^ {\,0.69} }
+  \tag{\ref{eq:tau_h}}
+\end{equation}
+
+\begin{equation}
+  \tau_E^L = 0.048\, H \, \frac{
+    I_P^{0.85} \, R_0^{1.2} \, a^{0.3} \, \kappa^{0.5} \ \overline{n}^{\, 0.1} \, B_0^{0.2} \, A^{0.5} }{ P_L ^ {\,0.5} }
+\end{equation}
+
+\begin{equation}
+  \tau_E^I = \frac{ 0.014 \, H }{ 0.68 ^ {\lambda_R} \cdot 0.22 ^ {\lambda_a} } \cdot \frac{ I_P^{0.69} \, R_0^{\lambda_R} \, a^{\lambda_a} \, \kappa^{0.0} \ \overline{n}^{\, 0.17} \, B_0^{0.77} \, A^{0.0} }{ P_L ^ {\,0.29} }
+\end{equation}
+
+\begin{equation}
+	\lambda_R + \lambda_a = 2.2
+\end{equation}
+
+Before moving on, it is important to reemphasize that the I-Mode scaling law is not battle-tested . It is the target of ongoing research at the MIT PSFC.
+
+
+%\end{document}

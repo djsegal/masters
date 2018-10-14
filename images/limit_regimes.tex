@@ -1,8 +1,8 @@
 \begin{tikzpicture}[]
-\begin{axis}[height = {101.6mm}, ylabel = {}, title = {Reactor Limit Regimes}, xmin = {0.0}, xmax = {8.0}, ymax = {1.0}, xlabel = {$B_0$}, {unbounded coords=jump, scaled x ticks = false, xticklabel style={rotate = 0}, xmajorgrids = false, xtick = {2,6}, xticklabels = {$low$,$high$}, xtick align = inside, axis lines* = left, scaled y ticks = false, yticklabel style={rotate = 0}, ymajorticks=false, ymajorgrids = false, axis lines* = left,     xshift = 0.0mm,
+\begin{axis}[height = {101.6mm}, ylabel = {}, title = {Reactor Limit Regimes}, xmin = {-0.005}, xmax = {8.015}, ymax = {1.0015}, xlabel = {$B_0$}, {unbounded coords=jump, scaled x ticks = false, xticklabel style={rotate = 0}, xmajorgrids = false, xtick = {2,6}, xticklabels = {$low$,$high$}, xtick align = inside, axis lines* = left, scaled y ticks = false, yticklabel style={rotate = 0}, ymajorticks=false, ymajorgrids = false, axis lines* = left,     xshift = 0.0mm,
     yshift = 0.0mm,
     axis background/.style={fill={rgb,1:red,1.00000000;green,1.00000000;blue,1.00000000}}
-, colorbar style={title=}}, ymin = {0.0}, width = {152.4mm}]\addplot+ [color = {rgb,1:red,0.67554396;green,0.55566233;blue,0.09423434},
+, colorbar style={title=}}, ymin = {0}, width = {152.4mm}]\addplot+ [color = {rgb,1:red,0.67554396;green,0.55566233;blue,0.09423434},
 draw opacity=1.0,
 line width=1,
 solid,mark = none,
@@ -92,6 +92,36 @@ mark options = {
 (6.75, 0.6)
 (5.25, 0.6)
 (5.25, 0.4)
+};
+\addplot+ [color = {rgb,1:red,0.50196078;green,0.50196078;blue,0.50196078},
+draw opacity=1.0,
+line width=1,
+dashed,mark = none,
+mark size = 2.0,
+mark options = {
+    color = {rgb,1:red,0.00000000;green,0.00000000;blue,0.00000000}, draw opacity = 1.0,
+    fill = {rgb,1:red,0.50196078;green,0.50196078;blue,0.50196078}, fill opacity = 1.0,
+    line width = 1,
+    rotate = 0,
+    solid
+},forget plot]coordinates {
+(1.0, 0.65)
+(7.0, 0.65)
+};
+\addplot+ [color = {rgb,1:red,0.50196078;green,0.50196078;blue,0.50196078},
+draw opacity=1.0,
+line width=1,
+dashed,mark = none,
+mark size = 2.0,
+mark options = {
+    color = {rgb,1:red,0.00000000;green,0.00000000;blue,0.00000000}, draw opacity = 1.0,
+    fill = {rgb,1:red,0.50196078;green,0.50196078;blue,0.50196078}, fill opacity = 1.0,
+    line width = 1,
+    rotate = 0,
+    solid
+},forget plot]coordinates {
+(1.0, 0.35)
+(7.0, 0.35)
 };
 \node at (axis cs:2, 0.5) [,
 color={rgb,1:red,0.00000000;green,0.00000000;blue,0.00000000}, draw opacity=1.0,

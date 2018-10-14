@@ -114,7 +114,7 @@ $q_{95}$         & 7.2              & 6.1           \\
 $P_{W}$          & 2.5              & 2.2           \\
 $f_{BS}$         & 0.63             & 0.56          \\
 $f_{CD}$         & 0.37             & 0.44          \\
-$f_{IN}$         & -              & -             \\
+$f_{ID}$         & -              & -             \\
 $\volume$         & 141            & 157           \\
 $P_{F}$          & 525            & 726           \\
 $\eta_{CD}$      & 0.321            & 0.316          \\
@@ -242,7 +242,7 @@ $q_{95}$         & 4.5              & 4.0           \\
 $P_{W}$          & 2.45             & 2.00           \\
 $f_{BS}$         & 0.91             & 0.91           \\
 $f_{CD}$         & 0.09             & 0.09           \\
-$f_{IN}$         & -              & -             \\
+$f_{ID}$         & -              & -             \\
 $\volume$         & 582.0            & 621.4           \\
 $P_{F}$          & 1813           & 1865          \\
 $\eta_{CD}$      & 0.188            & 0.185          \\
@@ -329,7 +329,7 @@ $q_{95}$         & 8.0              & 6.6           \\
 $P_{W}$          & 1.46             & -            \\
 $f_{BS}$         & 0.77             & 0.66           \\
 $f_{CD}$         & 0.23             & 0.34           \\
-$f_{IN}$         & -              & -             \\
+$f_{ID}$         & -              & -             \\
 $\volume$         & 2209           & 2559          \\
 $P_{F}$          & 2637           & 3460          \\
 $\eta_{CD}$      & 0.256            & 0.307           \\
@@ -430,7 +430,7 @@ $q_{95}$         & 4.405            & 3.761           \\
 $P_{W}$          & 1.911            & 4.151           \\
 $f_{BS}$         & 0.611            & 0.424          \\
 $f_{CD}$         & 0.389            & 0.576          \\
-$f_{IN}$         & -              & -             \\
+$f_{ID}$         & -              & -             \\
 $\volume$         & 2217           & 2879          \\
 $P_{F}$          & 3255           & 8971          \\
 $\eta_{CD}$      & 0.4152           & -          \\
@@ -517,7 +517,7 @@ $q_{95}$         & 3.247            & 2.853           \\
 $P_{W}$          & 1.05             & 1.47           \\
 $f_{BS}$         & 0.348            & 0.164          \\
 $f_{CD}$         & 0.096            & 0.106          \\
-$f_{IN}$         & 0.557            & 0.730          \\
+$f_{ID}$         & 0.557            & 0.730          \\
 $\volume$         & 2502           & 1751          \\
 $P_{F}$          & 2037           & 2376          \\
 $\eta_{CD}$      & 0.2721           & -     
@@ -627,7 +627,7 @@ $q_{95}$         & 6.089            \\
 $P_{W}$          & 3.003            \\
 $f_{BS}$         & 0.723           \\
 $f_{CD}$         & 0.277           \\
-$f_{IN}$         & 0.0              \\
+$f_{ID}$         & 0.0              \\
 $\volume$         & 225.5            \\
 $P_{F}$          & 1294           \\
 $\eta_{CD}$      & 0.291           \\
@@ -714,7 +714,7 @@ $q_{95}$         & 2.5              \\
 $P_{W}$          & 1.763            \\
 $f_{BS}$         & 0.2675           \\
 $f_{CD}$         & 0.0              \\
-$f_{IN}$         & 0.7325           \\
+$f_{ID}$         & 0.7325           \\
 $\volume$         & 732.6            \\
 $P_{F}$          & 1667           \\
 $\eta_{CD}$      & 0.0              \\
@@ -852,6 +852,50 @@ The more interesting result is that pulsed reactors gain no real benefit from us
         \centering
 		\begin{adjustbox}{width=\textwidth}
 			\Large
+			\input{images/sensitivities/proteus_C_W_vs_B_CS}
+		\end{adjustbox}
+        \caption{Proteus Cost-per-Watt}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+		\begin{adjustbox}{width=\textwidth}
+			\Large
+			\input{images/sensitivities/proteus_P_F_vs_B_CS}
+		\end{adjustbox}
+        \caption{Proteus Fusion Power}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill 
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+		\begin{adjustbox}{width=\textwidth}
+			\Large
+			\input{images/sensitivities/demo_pulsed_C_W_vs_B_CS}
+		\end{adjustbox}
+        \caption{Demo Pulsed Cost-per-Watt}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+		\begin{adjustbox}{width=\textwidth}
+			\Large
+			\input{images/sensitivities/demo_pulsed_P_F_vs_B_CS}
+		\end{adjustbox}
+        \caption{Demo Pulsed Fusion Power}
+    \end{subfigure}	
+    \hfill \hfill ~\\ ~\\ ~\\
+    \caption{Pulsed $B_{CS}$ Sensitivity}
+    \label{fig:pulsed_sensitivities}
+\end{figure*}
+
+\begin{figure*}
+    \centering
+    \hfill 
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+		\begin{adjustbox}{width=\textwidth}
+			\Large
 			\input{images/samplings/proteus_C_W_vs_B_0}
 		\end{adjustbox}
         \caption{Proteus $B_0$ Sampling}
@@ -893,6 +937,285 @@ Rehashing this section, HTS tape is the best way to lower the cost of fusion rea
 
 \subsection{Looking at Design Alternatives}
 
+Even in this relatively simple fusion model, there are more than twenty fixed/input variable knobs a designer can tune to improve reactor feasibility. Many have practical limits, such as being physically realizable or fitting within the ELMy H-Mode database. Thus, the goal of this section is subsection is to investigate some of the more interesting results. Although many more plots are available in the appendix.
 
+\subsubsection{Capitalizing the Bootstrap Current}
+
+Besides artificially enhancing a plasmas confinement with the H-factor, steady-state reactor designers may also heavily rely on high bootstrap currents. This is because bootstrap current is the portion you do not have to pay for. The research camp most focused on this miracle is General Atomic's DIII-D in San Diego. This miracle relies on tailoring current profiles to be extremely hollow.
+
+Quickly reasoning this camp's thought process are two sets of plots. The first plot highlights how the cheapest possible steady-state designs have bootstrap fractions approaching unity -- they use almost no current drive. This makes sense as current drive is extremely cost prohibitive (i.e. why people consider pulsed tokamaks).
+
+\begin{figure*}
+    \centering
+    \hfill 
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+		\begin{adjustbox}{width=\textwidth}
+			\Large
+			\input{images/samplings/charybdis_C_W_vs_l_i}
+		\end{adjustbox}
+        \caption{Charybdis $l_i$ Sampling}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+		\begin{adjustbox}{width=\textwidth}
+			\Large
+			\input{images/samplings/arc_C_W_vs_l_i}
+		\end{adjustbox}
+        \caption{Arc $l_i$ Sampling}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill 
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+		\begin{adjustbox}{width=\textwidth}
+			\Large
+			\input{images/samplings/act_1_C_W_vs_l_i}
+		\end{adjustbox}
+        \caption{Act I $l_i$ Sampling}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+		\begin{adjustbox}{width=\textwidth}
+			\Large
+			\input{images/samplings/act_2_C_W_vs_l_i}
+		\end{adjustbox}
+        \caption{Act II $l_i$ Sampling}
+    \end{subfigure}	
+    \hfill \hfill ~\\ ~\\ ~\\
+    \caption{Internal Inductance Monte Carlo Sampling}
+    \label{fig:inductance_samplings}
+\end{figure*}
+
+The next plot is the parameters that specifies a current profile's peak radius: $l_i$. As can be seen, the current peak approaches the outer edge of the plasma as $l_i$ decreases. This in turn boosts the bootstrap fraction closer to one -- leading to inexpensive reactors.
+
+\begin{figure*}
+    \centering
+    \hfill 
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+		\begin{adjustbox}{width=\textwidth}
+			\Large
+			\input{images/sensitivities/arc_rho_m_vs_l_i}
+		\end{adjustbox}
+        \caption{Arc Peak Radius}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+		\begin{adjustbox}{width=\textwidth}
+			\Large
+			\input{images/sensitivities/arc_f_BS_vs_l_i}
+		\end{adjustbox}
+        \caption{Arc Bootstrap Fraction}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill 
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+		\begin{adjustbox}{width=\textwidth}
+			\Large
+			\input{images/sensitivities/act_1_rho_m_vs_l_i}
+		\end{adjustbox}
+        \caption{Act I Peak Radius}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+		\begin{adjustbox}{width=\textwidth}
+			\Large
+			\input{images/sensitivities/act_1_f_BS_vs_l_i}
+		\end{adjustbox}
+        \caption{Act I Bootstrap Fraction}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill 
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+		\begin{adjustbox}{width=\textwidth}
+			\Large
+			\input{images/sensitivities/act_2_rho_m_vs_l_i}
+		\end{adjustbox}
+        \caption{Act II Peak Radius}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+		\begin{adjustbox}{width=\textwidth}
+			\Large
+			\input{images/sensitivities/act_2_f_BS_vs_l_i}
+		\end{adjustbox}
+        \caption{Act II Bootstrap Fraction}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \caption{Internal Inductance Monte Carlo Sampling}
+    \label{fig:inductance_samplings}
+\end{figure*}
+
+\subsubsection{Contextualizing the H-Factor}
+
+From before, increasing the H-factor always led to more cost effective steady-state reactors. This is because the enhanced confinement allows for smaller machines. This was already heavily explored in \cref{fig:act_h_cost}. The same cannot be said for pulsed reactors.
+
+For pulsed reactors, increasing H always reduces capital cost, but may actually increase the cost-per-watt. The reason for this is because fusion powers are much smaller in pulsed machines. This interesting result demonstrates the unusual behaviors of highly non-linear systems: masterclass intuition may not match model results.
+
+\begin{figure*}
+    \centering
+    \hfill 
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+		\begin{adjustbox}{width=\textwidth}
+			\Large
+			\input{images/sensitivities/proteus_C_W_vs_H}
+		\end{adjustbox}
+        \caption{Proteus Cost-per-Watt}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+		\begin{adjustbox}{width=\textwidth}
+			\Large
+			\input{images/sensitivities/demo_pulsed_C_W_vs_H}
+		\end{adjustbox}
+        \caption{Demo Pulsed Cost-per-Watt}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill 
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+		\begin{adjustbox}{width=\textwidth}
+			\Large
+			\input{images/sensitivities/proteus_W_M_vs_H}
+		\end{adjustbox}
+        \caption{Proteus Capital Cost}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+		\begin{adjustbox}{width=\textwidth}
+			\Large
+			\input{images/sensitivities/demo_pulsed_W_M_vs_H}
+		\end{adjustbox}
+        \caption{Demo Pulsed Capital Cost}
+    \end{subfigure}	
+    \hfill \hfill ~\\ ~\\ ~\\
+    \hfill 
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+		\begin{adjustbox}{width=\textwidth}
+			\Large
+			\input{images/sensitivities/proteus_P_F_vs_H}
+		\end{adjustbox}
+        \caption{Proteus Fusion Power}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+		\begin{adjustbox}{width=\textwidth}
+			\Large
+			\input{images/sensitivities/demo_pulsed_P_F_vs_H}
+		\end{adjustbox}
+        \caption{Demo Pulsed Fusion Power}
+    \end{subfigure}	
+    \hfill \hfill ~\\ ~\\ ~\\
+    \caption{Pulsed H Sensitivities}
+    \label{fig:pulsed_h}
+\end{figure*}
+
+\subsubsection{Showcasing the Current Drive Efficiency}
+
+The last exploration is less about building an efficient machine and more about understanding the self-consistent current drive efficiency in steady-state tokamaks. Using the Ehst-Karney model coupled with Jeff's textbook leads to a remarkably simple and accurate solver. The model captures the physics almost spot on for the different designs.\footnote{ It did, however, not converge for the DEMO steady reactor. This is probably due to lack of self-consistency for $\eta_{CD}$ in their systems framework. }
+
+\begin{figure*}
+    \centering
+    \hfill 
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+		\begin{adjustbox}{width=\textwidth}
+			\Large
+			\input{images/comparisons/charybdis_eta_CD_vs_B_0}
+		\end{adjustbox}
+        \caption{Charybdis}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+		\begin{adjustbox}{width=\textwidth}
+			\Large
+			\input{images/comparisons/arc_eta_CD_vs_B_0}
+		\end{adjustbox}
+        \caption{Arc}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill 
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+		\begin{adjustbox}{width=\textwidth}
+			\Large
+			\input{images/comparisons/act_1_eta_CD_vs_B_0}
+		\end{adjustbox}
+        \caption{Act I}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+		\begin{adjustbox}{width=\textwidth}
+			\Large
+			\input{images/comparisons/act_2_eta_CD_vs_B_0}
+		\end{adjustbox}
+        \caption{Act II}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\
+    \caption{Steady State Current Drive Efficiency}
+    \label{fig:steady_eta_CD}
+\end{figure*}
+
+In a similar fashion as the bootstrap fraction results, the variable that most captures how to directly maximize $\eta_{CD}$ is the LHCD laser launch angle, $\theta_{wave}$. When below $90 ^{\circ}$ it is considered outside launch, whereas up to $135 ^{\circ}$ is considered inside launch. Notably, these curves are not monotonic, there is an optimum launching angle.
+
+\begin{figure*}[h!]
+    \centering
+    \hfill 
+    \begin{subfigure}[t]{0.4\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/act_1_eta_CD_vs_wave_theta}
+    \end{adjustbox}
+        \caption{Charybdis}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.4\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/act_2_eta_CD_vs_wave_theta}
+    \end{adjustbox}
+        \caption{Arc}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\
+    \hfill 
+    \begin{subfigure}[t]{0.4\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/act_1_eta_CD_vs_wave_theta}
+    \end{adjustbox}
+        \caption{Act I}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.4\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/act_2_eta_CD_vs_wave_theta}
+    \end{adjustbox}
+        \caption{Act II}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\
+    \caption{Current Drive Efficiency vs Launch Angle}
+\end{figure*}
+
+It should be noted that the launch angle was not found to have a major impact. This may be a due to an oversimplification of the model.
 
 %\end{document}
