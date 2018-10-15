@@ -30,10 +30,7 @@ A stellarator is, at a basic level, a tokamak helically twisted along the length
 
 \begin{figure}
 	\centering
-	\begin{adjustbox}{width=0.75\textwidth}
-		\input{images/stellarator}
-	\end{adjustbox}
-%	\includegraphics[width=0.75\textwidth]{images/test_image}
+	\includegraphics[width=0.75\textwidth]{images/stellarator}
 	\caption{Cut-Away of Stellarator Reactor} ~\\
 \end{figure}
 
@@ -88,7 +85,30 @@ Repeated below are the three confinement scaling laws, as well as the generalize
 	\lambda_R + \lambda_a = 2.2
 \end{equation}
 
-Before moving on, it is important to reemphasize that the I-Mode scaling law is not battle-tested . It is the target of ongoing research at the MIT PSFC.
+A final point to make is remphasizing that the I-Mode scaling law is not battle-tested . It is the target of ongoing research at the MIT PSFC.
 
+\section{Addressing Model Shortcomings}
+
+Before moving on to the final conclusions, we will give a quick recap of the more audacious simplifications used within this fusion systems framework. These include: approximating temperature profiles as simple parabolas, neglecting all radiation except Bremsstrahlung, and handling flux sources at too basic a level.
+
+\subsection{Incorporating Pedestal Temperature Profiles}
+
+The most dubious simplification in the code at this point is modeling temperature profiles as parabolas. Although these parabolas work for densities and L-Mode plasma temperatures, the same cannot be said about H-Mode temperatures. This is because they have a distinct pedestal region on the outer edge of the plasma.
+
+The usage of pedestal temperatures -- discussed in the appendix -- improves two aspects of the model: the fusion power and the bootstrap current. These were shown in the results to be over-calculated and underestimated, respectively. Pedestals, having a lower core temperature, would decrease the total fusion power. As well, they would boost bootstrap current due to the quick drop near the plasma's edge (i.e. they have a large derivative there). 
+
+These improvements could easily be added to the code, because temperature was addressed as a difficult parameter to handle from the beginning.
+
+\subsection{Expanding the Radiation Loss Term}
+
+The next area that would be improved by more sophisticated theory would be the radiation loss term. From before, it was pointed out that the Bremsstrahlung radiation was the dominant term within the plasma core and, therefore, provided a first-order approximation. Drawing the radiation losses closer to real world values would involve adding line radiation and synchrotron radiation. The former of which would be needed as high-Z impurities become more important.
+
+\subsection{Taking Flux Sources Seriously}
+
+The final oversimplification in the model deals with the flux sources involved in a pulsed reactor -- almost at every level. First, the derivation of flux balance started with a simple transformer between a solenoid primary and a plasma secondary. Even this initial step is probably too simple.
+
+After we developed an equation for flux balance, we compared it to ones in the literature (i.e. PROCESS) to build confidence in the model. To draw this equation closer to theirs, we then added a PF coil contribution a posteriori. This implicitly ignored coupling between most of the components. Thus leading to another source of error for the model. Moreover, this formula for PF coil contribution was much simpler than ones found in other fusion systems codes.
+
+Even though this model may be simple, it does remarkably well at matching more sophisticated codes -- and does so fast. These were all just ways to draw results closer to real world values.
 
 %\end{document}
