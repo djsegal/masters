@@ -440,10 +440,30 @@ reserved.\par\permission}}
   \signature{Certified by}{#1 \\ #2 \\ Thesis Supervisor}}
   \setbox\@abstractsupervisor\vbox{\unvbox\@abstractsupervisor
   \vskip\baselineskip \def\baselinestretch{1}\@normalsize 
-  \par\noindent Thesis Supervisor: #1 \\ Title: #2}}
+  \par\noindent Thesis Supervisor: #1 \\ Title: #2 of Nuclear Science and Engineering}}
+
+\newbox\@titlereader  \newbox\@abstractreader
+
+\def\reader#1#2{\setbox\@titlereader\vbox
+  {\unvbox\@titlereader \vskip 10pt% plus 1fil minus 1fil
+  \def\baselinestretch{1}\large
+  \signature{Certified by}{#1 \\ #2 \\ Thesis Reader}}
+  \setbox\@abstractreader\vbox{\unvbox\@abstractreader
+  \vskip\baselineskip \def\baselinestretch{1}\@normalsize 
+  \par\noindent Thesis Reader: #1 \\ Title: #2}}
 
 % department chairman, not thesis committee chairman
-\def\chairman#1#2{\gdef\@chairmanname{#1}\gdef\@chairmantitle{#2}}
+%\def\chairman#1#2{\gdef\@chairmanname{#1}\gdef\@chairmantitle{#2}}
+
+\newbox\@titlechairman  \newbox\@abstracchairman
+
+\def\chairman#1#2{\setbox\@titlechairman\vbox
+  {\unvbox\@titlechairman \vskip 10pt% plus 1fil minus 1fil
+  \def\baselinestretch{1}\large
+  \signature{Accepted by}{#1 \\ #2 \\ Chair, Department Committee on Graduate Students}}
+  \setbox\@abstracchairman\vbox{\unvbox\@abstracchairman
+  \vskip\baselineskip \def\baselinestretch{1}\@normalsize 
+  \par\noindent Chairman: #1 \\ Title: #2}}
 
 %% `upcase' documentclass option: \choosecase is defined either as a dummy or
 %% a macro to change the (expanded) argument to uppercase.
@@ -475,7 +495,11 @@ at the
 \unvbox\@titlesupervisor
 \par
 \vfill
-\signature{Accepted by}{\@chairmanname \\ \@chairmantitle}
+\unvbox\@titlereader
+\par
+\vfill
+\unvbox\@titlechairman
+\par 
 \vfill
 \end{titlepage}}
 
