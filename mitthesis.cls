@@ -440,7 +440,7 @@ reserved.\par\permission}}
   \signature{Certified by}{#1 \\ #2 \\ Thesis Supervisor}}
   \setbox\@abstractsupervisor\vbox{\unvbox\@abstractsupervisor
   \vskip\baselineskip \def\baselinestretch{1}\@normalsize 
-  \par\noindent Thesis Supervisor: #1 \\ Title: #2 of Nuclear Science and Engineering}}
+  \par\noindent Thesis Supervisor: #1 \\ Title: Professor of Nuclear Science and Engineering (Emeritus)}}
 
 \newbox\@titlereader  \newbox\@abstractreader
 
