@@ -20,7 +20,7 @@
 
 \chapter{Presenting the Code Results}
 
-Now that our fusion systems model has been formulated and completed, the next logical step is to code it up and run it to produce interesting data. To this, the code for this document -- Fussy.jl -- is available at \href{https://github.com/djsegal/Fussy.jl}{github.com/djsegal/Fussy.jl} (with a short guide given in the Appendix). The results will be given shortly.
+Now that our fusion systems model has been formulated and completed, the next logical step is to code it up and run it to produce interesting data. To this, the code for this document -- Fusion.jl -- is available at \href{http://git.io/tokamak}{git.io/tokamak} (with a short guide given in the Appendix). The results will be given shortly.
 
 Before accosting the reader with some twenty plots and tables, though, it makes sense to first warn them what they are getting into. This chapter has three sections. The first is an attempt to test how good the model is by comparing it with other codes in the field.\cite{arc,eupulsed,process}. Next, we will develop two prototype reactors that pit steady-state against pulsed operation on a levelized playing field.
 
@@ -30,7 +30,7 @@ Without spoiling too much for the reader, we will show that HTS tape should be u
 
 \section{Validating Code with other Models}
 
-When you develop a new model, the first thing you have to do is validate that it makes sensical results. The goal is not to go overboard by: comparing it with too many models or requiring perfect matches with all their results. To this, we will compare Fussy.jl with five designs coming from three separate research teams. Hopefully casting a wide enough net through reactor-space to prove sufficient. It should be noted that for how simple this model is, it does a remarkable job matching these more sophisticated frameworks. It also highlights how discrepancies arise in this highly non-linear computational problem.
+When you develop a new model, the first thing you have to do is validate that it makes sensical results. The goal is not to go overboard by: comparing it with too many models or requiring perfect matches with all their results. To this, we will compare Fusion.jl with five designs coming from three separate research teams. Hopefully casting a wide enough net through reactor-space to prove sufficient. It should be noted that for how simple this model is, it does a remarkable job matching these more sophisticated frameworks. It also highlights how discrepancies arise in this highly non-linear computational problem.
 
 The first reactor design that will provide a basis for comparison is the ARC reactor. As it was also designed by MIT researchers, the fit is shown to be almost exact. This of course probably involves a fair amount of inherent biases stemming from how the ecosystem operates and produces engineers -- most notably as the core of this code comes from Jeff's ongoing interest in the problem.
 
@@ -102,7 +102,7 @@ $B_{CS}$         & 12.77           \\
 \caption{Output Variables} ~\\
 \begin{tabular}{ c|c|c } 
 
-Output           & Original         & Fussy.jl        \\
+Output           & Original         & Fusion.jl        \\
 \hline
 $R_{0}$          & 3.3              & 3.4           \\
 $B_{0}$          & 9.2              & 9.5           \\
@@ -230,7 +230,7 @@ $B_{CS}$         & 12.77           \\
 \caption{Output Variables} ~\\
 \begin{tabular}{ c|c|c } 
 
-Output           & Original         & Fussy.jl        \\
+Output           & Original         & Fusion.jl        \\
 \hline
 $R_{0}$          & 6.25             & 6.23           \\
 $B_{0}$          & 6.0              & 6.0           \\
@@ -257,7 +257,7 @@ $\eta_{CD}$      & 0.188            & 0.185          \\
 
 \subsubsection{Act II -- Conservative Physics and Engineering}
 
-ARIES more conservative design -- Act II -- is much more like ARC in nature. From the plots, its obvious the paper's model is basically right on top of the reactor curve made using Fussy.jl.  Much like ARC, too, it shows how the model overestimates fusion power and underestimates bootstrap fraction due to the selection of a pedestal profile for plasma temperature.
+ARIES more conservative design -- Act II -- is much more like ARC in nature. From the plots, its obvious the paper's model is basically right on top of the reactor curve made using Fusion.jl.  Much like ARC, too, it shows how the model overestimates fusion power and underestimates bootstrap fraction due to the selection of a pedestal profile for plasma temperature.
 
 \begin{figure*}[h!]
     \centering
@@ -317,7 +317,7 @@ $B_{CS}$         & 12.77           \\
 \caption{Output Variables} ~\\
 \begin{tabular}{ c|c|c } 
 
-Output           & Original         & Fussy.jl        \\
+Output           & Original         & Fusion.jl        \\
 \hline
 $R_{0}$          & 9.75             & 10.22           \\
 $B_{0}$          & 8.75             & 9.05           \\
@@ -346,11 +346,11 @@ $\eta_{CD}$      & 0.256            & 0.307           \\
 
 The PROCESS team's prospective designs for successors to ITER constitute the final set of model comparisons: the steady-state and pulsed DEMO reactors. As this paper is designed to compare these modes of operation, this study proves most fruitful. It also highlights how common model decisions can dramatically alter what reactors come out of the solvers.
 
-The first discrepancy is how the PROCESS team defines the loss term in the ELMy H-Mode scaling law. As shown in their paper, they actually subtract out a Bremsstrahlung component, while leaving the fitting coefficients the same. \cite{process} After modifying Fussy.jl to incorporate this definition, the steady-state reactor is easily reproducible in $R_0$ -- $B_0$ slice of reactor space.
+The first discrepancy is how the PROCESS team defines the loss term in the ELMy H-Mode scaling law. As shown in their paper, they actually subtract out a Bremsstrahlung component, while leaving the fitting coefficients the same. \cite{process} After modifying Fusion.jl to incorporate this definition, the steady-state reactor is easily reproducible in $R_0$ -- $B_0$ slice of reactor space.
 
 Unlike the steady-state cause, however, the modified power loss term does not fix the pulsed case, as it actually draws the reactor curves further from the design from their paper. As such, it is flux balance that is now the main source of discrepancy between the two models. This makes sense, as this model uses highly simplified source terms -- namely neglecting anything but the central solenoid and PF coils (as well as ignoring crucial physics for these two components).
 
-Even acknowledging the differences between the two models, Fussy.jl still does remarkably well at reproducing their much more sophisticated coding framework. The final point to make is about selecting optimum points to build as the floating variables are allowed to make curves through reactor space. Up to this point, only steady-state tokamak designs have been explored. In every single one of these, the paper values have been very close to the point where the beta curves and wall loading curves cross. This is because they all result in the minimum cost-per-watt. 
+Even acknowledging the differences between the two models, Fusion.jl still does remarkably well at reproducing their much more sophisticated coding framework. The final point to make is about selecting optimum points to build as the floating variables are allowed to make curves through reactor space. Up to this point, only steady-state tokamak designs have been explored. In every single one of these, the paper values have been very close to the point where the beta curves and wall loading curves cross. This is because they all result in the minimum cost-per-watt. 
 
 For pulsed designs, on the other hand, kink curves start to appear for low magnetic field strengths. Just as beta-wall intersections were optimum places to design for low cost-per-watt ($C_W$) reactors, these beta-kink intersections will prove to be the place where minimum capital cost ($W_M$) reactors usually occur.
 
@@ -358,7 +358,7 @@ For pulsed designs, on the other hand, kink curves start to appear for low magne
 
 \subsubsection{DEMO Steady -- A Steady-State ITER Successor}
 
-Hands down, this DEMO Steady reactor is the worst modeled reactor using Fussy.jl. As mentioned previously, though, some of the discrepancy was removed by using the PROCESS team's modified version of heat loss. This heavily corrected the $R_0$ -- $B_0$ curve, but had no effect on the $I_P$ -- $\overline T$ one. An interesting aside, these curves actually show that the steady current is independent of secondary constraint (as discussed).
+Hands down, this DEMO Steady reactor is the worst modeled reactor using Fusion.jl. As mentioned previously, though, some of the discrepancy was removed by using the PROCESS team's modified version of heat loss. This heavily corrected the $R_0$ -- $B_0$ curve, but had no effect on the $I_P$ -- $\overline T$ one. An interesting aside, these curves actually show that the steady current is independent of secondary constraint (as discussed).
 
 \begin{figure*}[h!]
     \centering
@@ -418,7 +418,7 @@ $B_{CS}$         & 12.85           \\
 \caption{Output Variables} ~\\
 \begin{tabular}{ c|c|c } 
 
-Output           & Original         & Fussy.jl        \\  
+Output           & Original         & Fusion.jl        \\  
 \hline
 $R_{0}$          & 7.5              & 8.2           \\
 $B_{0}$          & 5.627            & 6.307           \\
@@ -505,7 +505,7 @@ $B_{CS}$         & 12.77           \\
 \caption{Output Variables} ~\\
 \begin{tabular}{ c|c|c } 
 
-Output           & Original         & Fussy.jl        \\
+Output           & Original         & Fusion.jl        \\
 \hline
 $R_{0}$          & 9.07            & 8.10             \\
 $B_{0}$          & 5.67            & 5.48            \\
@@ -530,7 +530,7 @@ $\eta_{CD}$      & 0.2721           & -
 
 \section{Developing Prototype Reactors}
 
-Now that the model used in Fussy.jl has been tested against other fusion systems codes in the field, we will develop our own prototype reactors. Because this paper is about making a levelized comparison of pulsed and steady-state tokamaks, we will develop middle-of-the-road reactors that only differ by operating mode. 
+Now that the model used in Fusion.jl has been tested against other fusion systems codes in the field, we will develop our own prototype reactors. Because this paper is about making a levelized comparison of pulsed and steady-state tokamaks, we will develop middle-of-the-road reactors that only differ by operating mode. 
 
 The steady-state prototype, Charybdis, is the obvious choice to start with -- as the model was tested against four of these typed reactors. It was also pointed out that the model did remarkably well when recreating ARC. As the authors share many of the ARC team's philosophies, Charybdis uses fixed parameters very similar to them.
 
