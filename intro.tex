@@ -118,19 +118,16 @@ It serves as a cornerstone for comparing the entire landscape of tokamak reactor
 
 \section{Modeling a Fusion Reactor}
 
-\# todo: bridge intro to rest of paper
+Before reactors can be costed, they have to be modeled. Therefore the first half of this thesis is devoted to the theory behind tokamak design. A priority is placed mored on a physicist's intuition than an engineer's costing rigor. This is justified by the nonlinearities inherent to the fusion systems and rationalized by this paper's results matching more sophisticated frameworks with high fidelity.
 
-\begin{enumerate}
-	\item MIT campaign for High-Field Reactors
-	\item Simple, quick model that matches higher dimensional codes
-	\item Motivated by a desire for intuition over preciseness
-	\item Desire to not explicitly solve elliptic integrals of the wrong kind in the complex plane
-	\item Although cost stated as important, start over from square one
-	\item Do steady-state and then pulsed and show they're basically the same
-	\item the main conclusion is HTS is the best weapon we got
-	\item jeffs quote: "by definition, mfe requires magnets"
-	\item steady state : hts toroidal field magnets :: pulsed : hts central solenoid
-	\item i.e. just use copper in steady-state no matter what
-\end{enumerate}
+What makes this paper's model different from others in the field is the generalized handling of both modes of tokamak operation: pulsed and steady-state. This was necessitated by a desire to compare the two modes on a level playing field. What this shows is that both pulsed and steady-state tokamaks could make for profitable fusion reactors -- assuming some technological advancements.
 
-%\end{document}
+Magnetic confinement fusion, by definition, requires strong magnets for plasma confinement. This is why MIT has championed high-field designs for the better part of the last century. In their latest effort, the PSFC team has explored new high-temperature superconducting (HTS) tape capable of doubling the maximum achievable field strength. What this paper shows is that this logic is indeed correct and that HTS tape is all that is needed to build optimum reactors.
+
+More concretely, this paper shows that new HTS tape technology is capable of lower both pulsed and steady-state tokamak costs. Further, the benefits of doubling magnet strength bring the situation to a realm of significantly diminished rates of return. HTS is thus the end goal for the conventional D-T fusion paradigm. 
+
+Moreover, this model shows that HTS is best utilized in different components for pulsed and steady-state operation. Steady-state tokamaks favor HTS use in the D-shaped magnets that circle the machine (i.e. the TF coils). Pulsed devices, on the other hand, benefit when HTS is employed in the central solenoid -- which produces most of the reactor's inductive current. A corollary of this is conventional copper magnets (i.e. inexpensive ones) can be used for pulsed TF coils, as their improved confinement saturates at much lower field strengths.
+
+Now that the problem has been thoroughly introduced, we will go over the theory behind steady-state and, then, pulsed tokamaks. A couple segues will be taken along the way to show how the model can be incorporated into a fusion systems code. This code -- Fusion.jl -- is the topic of an appendix chapter and is freely available at:
+ 
+{\centering \href{http://git.io/tokamak}{git.io/tokamak} \par }
