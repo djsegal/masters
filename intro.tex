@@ -21,7 +21,7 @@
 
 The goal of fusion energy research is to build a profitable nuclear reactor. It has long been joked though that fusion power will always be 20-50 years away. This paper lays a framework for exploring reactor space for functional, efficient designs -- based on the last half-century of the world's experiments. Due to the speed and simplicity of the model, hundreds of reactors can be explored in minutes (outpacing the domestic program slightly).
 
-With this proposed model, interesting reactors can be pinpointed long before engineers hit the blueprints. This should help shorten the time till a profitable reactor, as well as illuminate ways to improve modern plasma theory.
+With this proposed model, interesting reactors can be pinpointed long before engineers hit the blueprints. This should help shorten the time till a profitable reactor, as well as illuminate ways to improve modern plasma theory. Further, it verifies the reasoning of MIT's PSFC to invest in high field, high-temperature superconducting (HTS) tape -- as this technology would lead to much smaller devices.
 
 \section{Treating Fusion  as a Science}
 
@@ -31,12 +31,12 @@ When people talk about fusion, they usually talk about plasma physics, and when 
 	\centering
 	\includegraphics[width=0.75\textwidth]{images/fusion_reactor}
 	\caption{Cut-Away of Tokamak Reactor} ~\\
-	\small The three main components of a magnetic fusion reactor are: the tokamak structure, the plasma fuel, and the superconducting solenoid at the center.
+	\small The three main components of a magnetic fusion reactor are: the tokamak structure, the plasma fuel, and the spring-like solenoid at the center.
 \end{figure}
 
-A tokamak is one of the leading candidates for a profitable fusion reactor. It shares the shape of a doughnut, using magnets to keep a hula hoop of plasma swirling inside it. The difficulty of keeping this plasma swirling though, is that it does not enjoy being spun too fast or squeezed to hard. Conversely, the tokamak housing the plasma does not like taking too much of a beating or being scaled to T-Rex sized proportions. This sets the stage for tokamak reactor design -- building on the various plasma physics and nuclear engineering constraints of the day. 
+A tokamak is one of the leading candidates for a profitable fusion reactor. It shares the shape of a doughnut, using magnets to keep a hula hoop of plasma swirling inside it. The difficulty of keeping this plasma swirling though, is that it does not enjoy being spun too fast or squeezed too hard. Conversely, the tokamak housing the plasma does not like taking too much of a beating or being scaled to T-Rex sized proportions. This sets the stage for tokamak reactor design -- building on the various plasma physics and nuclear engineering constraints of the day. 
 
-One of the most contentious points of building a tokamak, however, is whether it will be run in: pulsed (the European approach \cite{eupulsed}) or steady-state (the United States effort \cite{ussteady}) operation. Here, pulsed operation refers to how a reactor is turned on and off periodically -- around ten times a day. Whereas, steady state machines are meant to be left on nearly the entirety of their 50-year campaigns.
+One of the most contentious points of building a tokamak, however, is whether it will be run as: pulsed (the European approach \cite{eupulsed}) or steady-state (the United States effort \cite{ussteady}). Here, pulsed operation refers to how a reactor is turned on and off periodically -- around ten times a day. Whereas, steady state machines are meant to be left on nearly the entirety of their 50-year campaigns. These behaviors are shown in \cref{fig:pulses}.
 
 \begin{figure}
 	\centering
@@ -46,17 +46,18 @@ One of the most contentious points of building a tokamak, however, is whether it
 %	\includegraphics[width=0.85\textwidth]{images/test_image}
 	\caption{Comparison of Pulsed and Steady-State Current} ~\\
 	\small Inside a pulsed reactor, current is ramped up and down several times a day -- with breaks in-between. Steady state reactors are meant to stay on for weeks, months, or years.
+	\label{fig:pulses}
 \end{figure}
 
 These two modes of operation, \emph{pulsed} and \emph{steady-state}, greatly influence the design through the current balance equation (derived later). What this means practically is tokamaks need current to spin their plasma hoops at some required speed and this current has to come from somewhere. Luckily, the plasma naturally enjoys spinning and provides some assistance through the bootstrap current. The remaining current must then be produced by external means.
 
-The source of external current drive is what distinguishes pulsed from steady-state devices. Steady-state devices provide the required current assistance either through lasers or particle beams -- this paper's model focuses on a type of laser assistance called lower-hybrid current drive (LHCD). \cite{jeff} Pulsed machines, on the other hand, rely on inductive sources -- which by definition require cycles of charging and discharging several times a day.
+The source of external current drive is what distinguishes pulsed from steady-state devices. Steady-state devices provide the required current assistance either through lasers or particle beams -- this paper's model focusing on a type of laser assistance called lower-hybrid current drive (LHCD). \cite{jeff} Pulsed machines, on the other hand, rely on inductive sources -- which by definition require cycles of charging and discharging several times a day.\footnote{ These inductive sources are akin to a battery on a laptop that must be recharged every so often. }
 
-The goal of this document is to show that pulsed and steady-state operation are actually two sides of the same coin. This yields the simple conclusion that a single comprehensive model can run both modes at the flip of a switch. It even opens the opportunity of a hybrid reactor that exists somewhere between the two.
+The goal of this document is to show that pulsed and steady-state operation are actually two sides of the same coin. This yields the simple conclusion that a single comprehensive model can run both modes at the flip of a switch. It even opens the opportunity of a hybrid reactor that exists somewhere in between the two.
 
 \section{Treating Fusion as a Business}
 
-Plasmas may be interesting, but that is not why countries build billion dollar research experiments. The ultimate goal of fusion research is to develop an energy resource that competes with coal and other base-load power sources (e.g. from hydroelectric and nuclear fission power plants). The problem is plasmas are chaotic and hard to contain, while tokamaks are expensive and slow to build. This perfect match has long put the field's project timeline to that of \emph{fusion never}. \cite{fusionfunding}
+Plasmas may be interesting, but that is not why countries build billion dollar research experiments. The ultimate goal of fusion research is to develop an energy resource that competes with coal and other base-load power sources (e.g. from hydroelectric and nuclear fission power plants). The problem is plasmas are chaotic and hard to contain, while tokamaks are expensive and slow to build. This perfect match has long put the field's projected timeline to that of \emph{fusion never}. \cite{fusionfunding}
 
 \begin{figure}[h]
 	\centering
@@ -65,7 +66,7 @@ Plasmas may be interesting, but that is not why countries build billion dollar r
 	\end{adjustbox}
 %	\includegraphics[width=0.75\textwidth]{images/test_image}
 	\caption{Fusion Never Funding Timeline} ~\\
-	\small Comparison of Projected Timelines of Fusion from 1976 with Actual DOE Budgets. \cite{doe87, doe19} \\ The dotted line is popularly referred to as  ``Fusion Never.'' \cite{fusionnever}
+	\small Comparison of Projected Timelines of Fusion from 1976 with Actual DOE Budgets. \cite{doe87, doe19} \\ The dotted line is popularly referred to in the community as ``Fusion Never.'' \cite{fusionnever}
 \end{figure}
 
 The major problem with containing a plasma in a reactor is that a plasma does not want to be contained. Since the early days of fusion research, plasmas have often found escape mechanisms. When presented with a magnetic bottle, they found their way out the top. In a tokamak, they attack the outer edges like an overinflated tire-tube. Fusion energy has seemed to remain a Tantalizing effort -- within arms reach, but staunchly guarded by a shroud of instabilities.
@@ -82,30 +83,32 @@ The two most widely used rules of thumb within the fusion design community are: 
 %	\includegraphics[width=0.75\textwidth]{images/test_image}
 	\caption{H-Mode Confinement Time Scaling} ~\\
 	\small This plot shows how well the ELMy H-Mode Scaling Law does for fitting $\tau_E$ to the ITER98 database of global tokamaks. For most values, the fit is at least 80\% accurate.
+	\label{fig:elmy}
 \end{figure}
 
-The use of the ELMy H-Mode scaling law also brings up another subtlety in the field. To measure the movement of energy within a plasma, scaling relations are needed that correlate to specific modes of plasma behavior -- i.e. ones that can robustly be found by device technicians. Currently, people rank H-Mode scalings over L-Mode (because H stands for high confinement and L stands for low). However, people often seek out other modes that can reliably be found on other machines. These go by names like: I-Mode (i.e. intermediate confinement), Enhanced H-Mode, and Reversed Shear modes. \cite{imode,enhanced,shear}
+The use of the ELMy H-Mode scaling law also brings up another subtlety in the field. To measure the movement of energy within a plasma, scaling relations are needed that correlate to specific modes of plasma behavior -- i.e. ones that can robustly be found on a device by technicians. Currently, people rank H-Mode scalings over L-Mode ones (because H stands for high confinement and L stands for low). However, people often seek out other modes that can reliably be found on other machines. These go by names like: I-Mode (i.e. intermediate confinement), Enhanced H-Mode, and Reversed Shear modes. \cite{imode,enhanced,shear}
 
-Without going into too much detail, these alternate modes can be extremely valuable, as they often lead to cheaper reactor designs (than the ones made under H-Mode scaling). The problem, however, is often not finding a better performing mode on a single machine, but robustly finding it on other ones. This is important, because finding a mode on multiple machines is what allows new scaling relations to be produced and refined.\footnote{ In H-Mode and L-Mode's favor, they have been found on every machine that should see them. }
+Without going into too much detail, these alternate modes can be extremely valuable, as they often lead to more attractive reactors (than those made under H-Mode scalings). The problem, however, is often not finding a better performing mode on a single machine, but robustly finding it on other ones. This is important, because finding a mode on multiple machines is what allows new scaling relations to be produced and refined.\footnote{ In H-Mode and L-Mode's favor, they have been found on every machine that should see them. }
 
 \section{Pricing a Fusion Reactor}
 
-To compare tokamaks used as fusion reactors the obvious metrics to use are costs. ITER -- the second most expensive experiment today (only behind the LHC) -- has a history rich in countries backing out for high price tags and rejoining only when they are finally lowered. \cite{jeff} The problem is \$20B is a lot of money and 20 years is a long time. Moreover, approximating true costs becomes even trickier when designers the need to project (or neglect)  economies-of-scale for expensive components, e.g. the magnets.
+To compare tokamaks used as fusion reactors the obvious metrics are costs. ITER -- the second most expensive experiment today (only behind the LHC) -- has a history rich in countries backing out for high price tags and rejoining only when they finally get lowered. \cite{jeff} The problem is \$20B is a lot of money and 20 years is a long time. Moreover, approximating true costs becomes even trickier when designers need to project (or neglect)  economies-of-scale for expensive components, such as the magnets and irradiated materials.
 
-As such, this paper adopts stand-ins for the conventional capital cost and cost-per-watt metrics. This is done for simplicity -- for both modeling reasons as well as conveying the two metrics to physicists. To begin, the relevant approximation for capital cost -- how much a tokamak reactor costs to build -- is the magnetic energy. \cite{griffiths}
-
+As such, this paper adopts stand-ins for the conventional capital cost and cost-per-watt metrics. This is done for simplicity, for both: modeling reasons as well as conveying the two metrics to physicists. To begin, the relevant approximation for capital cost -- how much a tokamak costs to build -- is the magnetic energy. \cite{griffiths}
 \begin{equation}
 	W_M \propto R^3 B^2
 \end{equation}
 \myequations{Magnetic Energy -- $W_M$}
 
-In this magnetic energy proportion relation, the tokamak's major radius -- R -- is involved in a volumetric term and B is the strength (in Teslas) of the hooped shape magnetic field that lays nested within the plasma's shell (near its core). This quantity simply states that the two surefire ways to make a machine more expensive to build are: making it larger and using stronger magnets.
+In this magnetic energy proportion relation, the tokamak's major radius -- R -- is involved in a volumetric term ($R^3$) and B is the strength (in Teslas) of the hooped shape magnetic field that lays nested within the plasma's shell (near its core). This quantity simply states that the two surefire ways to make a machine more expensive to build are: making it larger and using stronger magnets.
 
-The next metric, the cost-per-watt, is defined by dividing the capital cost (i.e. the magnetic energy) by the main source of power output. In a tokamak, this is assumed to be fusion power, which relies on light elements (i.e. two Hydrogens) fusing into a heavier one (i.e. one Helium), thereby releasing enough energy to offset the expense of causing it to happen in the first place. Although fusion power will not be defined till later, it does highlight the fact that this measure of cost-per-watt actually has units of time!\footnote{As energy per unit watt has units of time (i.e seconds).}
+The next metric, the cost-per-watt, is defined by dividing the capital cost (i.e. the magnetic energy) by the main source of power output. This quantity measures how profitable a reactor will be once it is built. In a tokamak, the main power output is assumed to be fusion power, which relies on light elements (i.e. two Hydrogens) fusing into a heavier one (i.e. one Helium) -- hopefully releasing enough energy to offset the expense of causing it to happen in the first place. Although fusion power will not be defined till later, it does highlight the fact that this measure of cost-per-watt actually has units of time!\footnote{As energy per unit watt has units of time (i.e seconds).}
 
-The final piece of the costing puzzle is a duty factor that levelizes the comparison of pulsed and steady-state tokamaks. As pulsed machines may be off 20\% of the time, their fusion power output should be reduced by that percentage. This is accounted for in the duty factor, which is simply the ratio of the flattop -- the time when pulsed machines are approximately held at steady-state -- to the entire length of a pulsed. In pulsed machines, the entire pulse includes charging the inductive sources as well as flushing out the tokamak between runs. These non-flattop portions of time can last around thirty minutes (where the reactor makes no money). As steady-state machines lack these non-flattop portions, their duty factors are rightfully one.
+The final piece of the costing puzzle is a duty factor that levelizes the comparison of pulsed and steady-state tokamaks. As pulsed machines may be off 20\% of the time, their fusion power output should be reduced by that percentage. This is accounted for in the duty factor, which is simply the ratio of the flattop -- the time when pulsed machines are approximately held at steady-state -- to the entire length of the pulse. 
 
-Summarizing, the cost-per-watt coupled with the duty factor gives an ad hoc pricing metric, $C_W$, given by:
+In pulsed machines, the entire pulse includes charging the inductive sources as well as flushing out the tokamak between runs. These non-flattop portions of time can last around thirty minutes (where the reactor makes no money). As steady-state machines lack these non-flattop portions, their duty factors are rightfully one. Analysis in \cref{section:pulse} and discussion with several researchers, however, show that the same will probably hold true for a pulsed reactor, too.
+
+Summarizing, the cost-per-watt coupled with the duty factor provides an ad hoc pricing metric, $C_W$, given by:
 
 \begin{equation}
 	\tcboxmath{
@@ -114,20 +117,74 @@ Summarizing, the cost-per-watt coupled with the duty factor gives an ad hoc pric
 \end{equation}
 \myequations{Cost per Watt -- $C_W$}
 
-It serves as a cornerstone for comparing the entire landscape of tokamak reactors -- whether they run in pulsed or steady-state operation. Although not a true engineering cost metric (i.e. in dollars per watt), it does provide an obvious physics meaning. Coupled with the magnetic energy stand-in for capital cost, profitable and inexpensive can now be easily pinpointed.
+It serves as a cornerstone for comparing the entire landscape of tokamak reactors -- whether they run in pulsed or steady-state operation. Although not a true engineering cost metric (i.e. in dollars per watt), it does provide an obvious physics meaning. Coupled with the magnetic energy stand-in for capital cost, these two costs allow researchers to pinpoint profitable and inexpensive tokamaks within reactor space.
 
 \section{Modeling a Fusion Reactor}
 
-Before reactors can be costed, they have to be modeled. Therefore the first half of this thesis is devoted to the theory behind tokamak design. A priority is placed more on a physicist's intuition than an engineer's costing rigor. This is justified by the nonlinearities inherent to the fusion systems and rationalized by this paper's results matching more sophisticated frameworks with high fidelity.
+Before reactors can be costed, though, they have to be modeled. Therefore the first half of this thesis is devoted to the theory behind tokamak design. A priority is placed more on a physicist's intuition than an engineer's costing rigor. This is justified by the nonlinearities inherent to the fusion systems and rationalized by this paper's results matching more sophisticated frameworks with high fidelity.
 
 What makes this paper's model different from others in the field is the generalized handling of both modes of tokamak operation: pulsed and steady-state. This was necessitated by a desire to compare the two modes on a level playing field. What this shows is that both pulsed and steady-state tokamaks could make for profitable fusion reactors -- assuming some technological advancements.
 
-Magnetic confinement fusion, by definition, requires strong magnets for plasma confinement. This is why MIT has championed high-field designs for the better part of the last century. In their latest effort, the PSFC team has explored new high-temperature superconducting (HTS) tape capable of doubling the maximum achievable field strength. What this paper shows is that this logic is indeed correct and that HTS tape is all that is needed to build optimum reactors.
+One technological advancement that could lead to major wins is improving magnet components. This is why MIT has championed high-field designs for the better part of the last century. In their latest effort, the PSFC team has explored new high-temperature superconducting (HTS) tape capable of doubling the maximum achievable field strength. What this paper shows is that this logic is indeed correct and that HTS tape is all that is needed to build optimum reactors.
 
-More concretely, this paper shows that new HTS tape technology is capable of lowering both pulsed and steady-state tokamak costs. Further, the benefits of doubling magnet strength bring the situation to a realm of significantly diminished rates of return. HTS is thus the end goal for the conventional D-T fusion paradigm. 
+More concretely, this paper shows that new HTS tape technology is capable of lowering both pulsed and steady-state tokamak costs. Further, the benefits of doubling the magnet strength bring the situation to a realm of significantly diminished rates of return. HTS is thus the end goal for the conventional D-T fusion paradigm. 
 
-Moreover, this model shows that HTS is best utilized in different components for pulsed and steady-state operation. Steady-state tokamaks favor HTS use in the D-shaped magnets that circle the machine (i.e. the TF coils). Pulsed devices, on the other hand, benefit when HTS is employed in the central solenoid -- which produces most of the reactor's inductive current. A corollary of this is conventional copper magnets (i.e. inexpensive ones) can be used for pulsed TF coils, as their improved confinement saturates at much lower field strengths.
+Moreover, this model shows that HTS is best utilized in different components for pulsed and steady-state operation. Steady-state tokamaks favor HTS use in the D-shaped magnets that circle the machine (i.e. the TF coils). Whereas pulsed devices would benefit from employing HTS in the central solenoid -- that produces most of a reactor's inductive current. A corollary of this is conventional copper magnets (i.e. inexpensive ones) can be used for pulsed TF coils, as their improved confinement saturates at much lower field strengths.
 
 Now that the problem has been thoroughly introduced, we will go over the theory behind steady-state and, then, pulsed tokamaks. A couple segues will be taken along the way to show how the model can be incorporated into a fusion systems code. This code -- Fussy.jl -- is the topic of an appendix chapter and is freely available at:
  
 {\centering \href{http://git.io/tokamak}{git.io/tokamak} \par }
+
+\clearpage
+
+\newpage
+
+\begin{figure*}
+    \centering
+    \hfill 
+    \begin{subfigure}[t]{0.42\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/charybdis_C_W_vs_B_0}
+    \end{adjustbox}
+        \caption{Toroidal Field Sensitivity}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.48\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/samplings/charybdis_C_W_vs_B_0}
+    \end{adjustbox}
+        \caption{Toroidal Field Samplings}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\
+    \caption{Steady State Magnet Components} ~\\
+    \label{fig:charybdis}
+\end{figure*}
+
+\begin{figure*}
+    \centering
+    \hfill 
+    \begin{subfigure}[t]{0.42\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/proteus_C_W_vs_B_CS.tex}
+    \end{adjustbox}
+        \caption{Solenoid Strength Sensitivity}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.48\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/samplings/proteus_C_W_vs_B_0}
+    \end{adjustbox}
+        \caption{Toroidal Field Samplings}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\
+    \caption{Pulsed Magnet Components} ~\\
+    \label{fig:charybdis}
+\end{figure*}
