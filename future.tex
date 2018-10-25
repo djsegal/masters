@@ -20,7 +20,7 @@
 
 \chapter{Planning Future Work}
 
-This model may run and produce interesting results, but there is always more to do. This chapter explores three potential fusion reactors that could help guid real world designs. It then goes into a laundry list of model improvements.
+This model may run and produce interesting results, but there is always more to do. This chapter explores three potential fusion reactors that could help guide real world designs. It then goes into a laundry list of possible model improvements.
 
 The three reactors covered are: a stellarator (Ladon), a steady-state/pulsed hybrid (Janus), and a tokamak capable of reaching H, L, and I modes (Daedalus). 
 
@@ -50,13 +50,13 @@ The next interesting reactor would be a hybrid tokamak incorporating pulsed and 
 	\small In a tokamak, there needs to be a certain amount of current -- and that current has to come from somewhere. All good reactors have an adequate bootstrap current. What provides the remaining current is what distinguishes steady state from pulsed operation.
 \end{figure}
 
-The arguments against this are mainly technical: why build two difficult auxiliary systems when one is needed -- especially when they probably work against each other. Although rational, the argument implicitly assumes a current is achievable through only one source (i.e. either through LHCD or from a central solenoid). Using two may allow for larger plasma currents.
+The arguments against this are mainly technical: why build two difficult auxiliary systems when one is needed -- especially when they probably work against each other. Although rational, the argument implicitly assumes a current is achievable through only one source (i.e. either through LHCD or from a central solenoid). Using two may allow for stronger plasma currents.
 
 \section{Bridging Confinement Scalings -- Daedalus}
 
-The final potential reactor -- Daedalus -- is designed to colelct as many scaling laws as possible. As a baseline, it should be able to run in H-Mode, L-Mode, and I-Mode. Because L-Mode is available on any machine, the first step is building under H-Mode. The goal then is to find reactors that can also reach I-Mode -- thus improving the scaling law's fit and making the  actual reactor more cost effective.
+The final potential reactor -- Daedalus -- is designed to collect as many scaling laws as possible. As a baseline, it should be able to run in H-Mode, L-Mode, and I-Mode. Because L-Mode is available on any machine, the first step is building under H-Mode. The goal then is to find reactors that can also reach I-Mode -- thus improving the scaling law's fit and making the  actual reactor more cost effective.
 
-Repeated below are the three confinement scaling laws, as well as the generalized formula. As should be noted, the I-Mode scaling currently lacks a true radial dependence -- as it has only been found on two machines. This is one reason Daedalus would be so valuable.
+Presented below are the three confinement scaling laws, as well as the generalized formula. As should be noted, the I-Mode scaling currently lacks a true radial dependence -- as it has only been found on two machines. This is one reason Daedalus would be so valuable.
 
 \begin{equation}
   \tau_E^G = K_\tau \, H \, \frac{
@@ -71,21 +71,18 @@ Repeated below are the three confinement scaling laws, as well as the generalize
   }{ P_L ^ {\,0.69} }
   \tag{\ref{eq:tau_h}}
 \end{equation}
-
 \begin{equation}
   \tau_E^L = 0.048\, H \, \frac{
     I_P^{0.85} \, R_0^{1.2} \, a^{0.3} \, \kappa^{0.5} \ \overline{n}^{\, 0.1} \, B_0^{0.2} \, A^{0.5} }{ P_L ^ {\,0.5} }
 \end{equation}
-
 \begin{equation}
   \tau_E^I = \frac{ 0.014 \, H }{ 0.68 ^ {\lambda_R} \cdot 0.22 ^ {\lambda_a} } \cdot \frac{ I_P^{0.69} \, R_0^{\lambda_R} \, a^{\lambda_a} \, \kappa^{0.0} \ \overline{n}^{\, 0.17} \, B_0^{0.77} \, A^{0.0} }{ P_L ^ {\,0.29} }
 \end{equation}
-
 \begin{equation}
 	\lambda_R + \lambda_a = 2.2
 \end{equation}
 
-A final point to make is remphasizing that the I-Mode scaling law is not battle-tested . It is the target of ongoing research at the MIT PSFC.
+A final point to make is reemphasizing that the I-Mode scaling law is not battle-tested. It is the target of ongoing research at the MIT PSFC.
 
 \section{Addressing Model Shortcomings}
 
@@ -105,10 +102,10 @@ The next area that would be improved by more sophisticated theory would be the r
 
 \subsection{Taking Flux Sources Seriously}
 
-The final oversimplification in the model deals with the flux sources involved in a pulsed reactor -- almost at every level. First, the derivation of flux balance started with a simple transformer between a solenoid primary and a plasma secondary. Even this initial step is probably too simple.
+The final oversimplification in the model deals with the flux sources involved in a pulsed reactor -- existing at almost every level. First, the derivation of flux balance started with a simple transformer between a solenoid primary and a plasma secondary. Even this initial step is probably too simple.
 
 After we developed an equation for flux balance, we compared it to ones in the literature (i.e. PROCESS) to build confidence in the model. To draw this equation closer to theirs, we then added a PF coil contribution a posteriori. This implicitly ignored coupling between most of the components. Thus leading to another source of error for the model. Moreover, this formula for PF coil contribution was much simpler than ones found in other fusion systems codes.
 
-Even though this model may be simple, it does remarkably well at matching more sophisticated codes -- and does so fast. These were all just ways to draw results closer to real world values.
+Even though this model may be extremely simple, it does remarkably well at matching more sophisticated codes -- and does so at a much faster pace. These suggestions were all just ways to draw results closer to real world values.
 
 %\end{document}
