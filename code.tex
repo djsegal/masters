@@ -20,20 +20,20 @@
 
 \chapter{Completing the Systems Model}
 
-As opposed to previous chapters, this one will focus on the numerics behind the fusion systems model. This will then naturally segue into a discussion of how plots are made and should be interpreted. The remaining chapters will then decouple the dissemination of results and their analytic conclusions.
+As opposed to previous chapters, this one will focus on the numerics behind the fusion systems model. This will then naturally segue into a discussion of how plots are made and should be interpreted. The remaining chapters will then decouple the dissemination of results from their analytic conclusions.
 
 \section{Describing a Simple Algebra}
 
-Boiled down, the systems model is a simple algebra problem -- given five equations, solve for five unknowns. The goal is then to pick the five equations that best represent modern fusion reactor design. This selection should also be done in such a way that actually reduces the system of equations to a simple univariate root solving equation (i.e. one equation with one unknown). As will be shown in the results, this model does remarkably well: matching year long modeling campaigns in seconds.
+Boiled down, the systems model used here is a simple algebra problem -- given five equations, solve for five unknowns. The goal is then to pick the five equations that best represent modern fusion reactor design. This selection should also be done in such a way that actually reduces the system of equations to a simple univariate root solving equation (i.e. one equation with one unknown). As will be shown in the results, this model does remarkably well: matching year-long modeling campaigns in seconds.
 
-The logical place to start in a discussion of this algebra problem is with the three equations fundamental to all reactor-grade tokamaks -- both in steady-state and pulsed operation. These are: the Greenwald density limit, power balance, and current balance. The Greenwald density's importance was hinted early on when it was used to simplify every equation derive thereafter. The two balance equations prove slightly more dubious.
+The logical place to start in a discussion of this algebra problem is with the three equations fundamental to all reactor-grade tokamaks -- both in steady-state and pulsed operation. These are: the Greenwald density limit, power balance, and current balance. The Greenwald density's importance was hinted early on when it was used to simplify every equation derived thereafter. 
 
 \begin{equation}
 	\tag{\ref{eq:greenwald}}
 	\overline n = K_n \cdot \frac{I_P}{R_0^2}
 \end{equation}
 
-As was shown previously, current balance -- the stability requirement for tokamaks -- was most peculiar. It brought forth the notion of self-consistency for steady-state machines and a highly-coupled multi-root equation for pulsed ones. As such, this equation stands as the one everything else will be substituted into to setup for a univariate root solve.
+The two balance equations prove slightly more dubious. As was shown previously, current balance -- the stability requirement for tokamaks -- was most peculiar. It brought forth the notion of self-consistency for steady-state machines and a highly-coupled multi-root equation for pulsed ones. As such, this equation stands as the one everything else will be substituted into to setup for a univariate root solve.
 
 \begin{equation}
 	\tag{\ref{eq:gen_ip}}
@@ -62,7 +62,7 @@ Although being rather cumbersome, this equation actually remains relatively simp
 
 \section{Generalizing Previous Equations}
 
-Where the equations defined up to this point in the chapter are shared among all fusion reactors, the remaining two equations needed to close the system must be chosen by the user. These user-supplied equations come in three flavors: limits, derived quantities, and floating variables. By convention, we enforce that at least one limit must be used -- the other constraint can then come from any of the three defined collections.
+Where the equations defined up to this point in the chapter are shared among all fusion reactors, the remaining two equations -- needed to close the system -- must be chosen by the user. These user-supplied equations come in three flavors: limits, derived quantities, and floating variables. By convention, we enforce that at least one limit must be used. The other constraint can then come from any of the three defined collections, which we will refer to as the closure equation.
 
 \begin{table}[hb]
 \caption[Main Equation Bank]{Main Equation Bank \\ \small To close the system of equations for potential reactors, different equations can be used to lock down tokamak designs. These include physics and engineering limits (L), as well as ways to set floating (F) or derived (D) variables to constant values.}
@@ -93,15 +93,15 @@ Cost per Watt ($C_W$) & D & $ (C_W)_{const} \cdot \left( \sfrac{ K_F K_n ^ 2 ( \
 
 \subsection{Rehashing the Limits}
 
-The limits category is simply a rebranding of the secondary constraints given previously. These were the physics derived limits from MHD theory -- i.e. the beta limit ($\beta_N$) and the kink safety factor ($q_{95}$) -- which for clarity, set maximums on the allowed plasma pressure and velocity, respectively. Additionally, there were engineering limits from: wall loading, heat loading, and maximum power capacity. For this paper, wall loading from neutrons ($P_W$) is assumed to be important, whereas the other two are not allowed to explicitly guide designs.
+The limits category is simply a rebranding of the secondary constraints given previously. These include the physics derived limits from MHD theory -- i.e. the beta limit ($\beta_N$) and the kink safety factor ($q_{95}$) -- which for clarity, set maximums on the allowed plasma pressure and velocity, respectively. Additionally, there were several engineering limits also described: wall loading, heat loading, and maximum power capacity. For this paper, wall loading from neutrons ($P_W$) is assumed to be important, whereas the other two engineering limits are not allowed to explicitly guide designs.
 
 Combined all these limits, as well as the yet to be defined float and derived equations, are given in \cref{table:eq}. These share a remarkably similar form to power balance when put into a generalized, separable state. This hints at why the major radius ($R_0$), the toroidal field strength ($B_0$), and the plasma current ($I_P$) can easily be separated and substituted out of the current balance equation.
 
-Before moving on, it proves useful to explain the two limits not used to explicitly guide reactor design -- divertor heat loading and a maximum power capacity. The simpler of the two to reason is the heat loading limit. Although removing the gigawatts of heat is extremely difficult, it remains an unsolved problem worthy of its own research machine, but currently neglected financially. As such, it is only kept to provide a human-interpreted  measure of difficulty. The power cap, on the other hand, is just handled informally. If a reactor surpasses it (i.e. $ P_E > 4000 MW $), it is considered invalid.
+Before moving on, it proves useful to explain the two limits not used to explicitly guide reactor design -- divertor heat loading and the maximum power capacity. The simpler of the two to reason is the heat loading limit. Although removing the gigawatts of heat is extremely difficult, it remains an unsolved problem worthy of its own research machine, but currently neglected financially. As such, it is only kept to provide a human-interpreted  measure of difficulty. The power cap, on the other hand, is just handled informally. If a reactor surpasses it (i.e. $ P_E > 4000 MW $), it is considered invalid.
 
 While the maximum power cap informally sets a maximum major radius for a machine, there also exists an implicit minimum major radius. This minimum occurs due to the hole-size constraint -- i.e. at some point there is no longer enough room on the inside of the machine to store the central solenoid, blanket, and TF coils.
 
-At this point, we can now explain how various quantities in the systems model can be set to user-given constant values. This basically allows users to treat one floating variable as a fixed one (e.g. the temperature).
+At this point, we can now explain how various quantities in the systems model can be set to user-given constant values. This basically allows users to treat one floating variable as a fixed one (e.g. the temperature and bootstrap fraction).
 
 \subsection{Minimizing Derived Quantities} 
 
@@ -112,7 +112,7 @@ Whereas the limits from the previous section represented constraints with real p
 	R_0^{\, \gamma_R} \cdot B_0^{\, \gamma_B} \cdot I_P^{\, \gamma_I} = G( \overline T )
 \end{equation}
 
-What this collection of variables is really useful for, though, is finding minimum cost reactors -- both in a capital context as well as a cost-per-watt one. Without boring the reader, this is done in a three stage process. First, some valid reactor is found: it does not matter if it is good, just valid. This of course can be found by systematically throwing darts at a dart board. 
+What this collection of variables is really useful for, though, is finding minimum cost reactors -- both in a capital context as well as a cost-per-watt one. Without boring the reader, this is done in a three stage process. First, some valid reactor is found: it does not matter if it is good, just valid. This of course can be found by systematically throwing darts at a dart board -- see \cref{fig:step_one}
 
 \begin{figure}[h]
 \centering
@@ -123,7 +123,7 @@ What this collection of variables is really useful for, though, is finding minim
 \label{fig:step_one}
 \end{figure}
 
-After a valid reactor is found, its cost is recorded leading to a drill-down stage. In this step, the cost is continuously halved until a valid one cannot be found. Once this invalid reactor is reached, it sets a bound on the minimum cost reactor. As such, the final stage is a simple bisection step where the minimum cost is honed down to some acceptable margin of error -- see \cref{fig:minimize}.
+After a valid reactor is found, its cost is recorded leading to a drill-down stage. In this step, the cost is continuously halved until a valid reactor cannot be found. Once this invalid reactor is reached, it sets a bound on the minimum cost reactor. As such, the final stage is a simple bisection step where the minimum cost is honed down to some acceptable margin of error -- see \cref{fig:minimize}.
 
 \begin{figure*}
     \centering
@@ -230,8 +230,8 @@ As stated at the beginning of the chapter, this systems model basically boils do
 
 This now sets the stage for the most interesting part of the document -- the results. In true Dickens fashion, they will come in several forms. The first result type we will encounter will be temperature scans. These allow us to validate the model by comparing it to several designs from the literature. These will use the Scenario II solver.
 
-Moving onto examples of the Scenario I solver are sensitivity studies and Monte Carlo samplings. The simple one variable sensitivities will reveal local trends from sweeping various fixed (i.e. input) variables -- namely H, $\kappa$, $B_{CS}$, etc. Whereas the samplings will highlight global trends as many fixed/input variables are allowed to vary simultaneously.
+Moving onto examples of the Scenario I matcher are sensitivity studies and Monte Carlo samplings. The simple one variable sensitivities will reveal local trends from sweeping various fixed (i.e. input) variables -- namely H, $\kappa$, $B_{CS}$, etc. Whereas the samplings will highlight global trends as many fixed/input variables are allowed to vary simultaneously.
 
- These Scenario I flavors are further subdivided in regards to the nature of their closure equation. The first flavor comes from finding so called two limit solutions, which live at the point where the beta and kink (or wall) limits are just marginally satisfied. The second main type is then minimum cost reactors -- measured in either capital cost or cost-per-watt. These will be used in depth next chapter.
+ These Scenario I flavors are further subdivided in regards to the nature of their closure equation. The first flavor comes from finding so called two limit solutions, which live at the point where the beta and kink (or wall) limits are just marginally satisfied. The second main type is then minimum cost reactors -- measured in either a capital cost or cost-per-watt context. These will be used in depth next chapter.
  
 %\end{document}
