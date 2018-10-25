@@ -1,6 +1,6 @@
 \chapter{Simulating with Fussy.jl}
 
-Fussy.jl is a \underline{fus}ion \underline{sy}stems code written using the Julia language. The reason for choosing Julia over say Matlab and Python was due to metaprogramming concerns and its tight-knit  computational community, respectively. Incorporating the model used throughout this paper, the code is quick to run and matches more sophisticated frameworks with high fidelity.
+Fussy.jl is a 0-D \underline{fus}ion \underline{sy}stems code written using the Julia language. The reason for choosing Julia over say Matlab and Python was due to metaprogramming concerns and its tight-knit  computational community, respectively. Incorporating the model used throughout this paper, the code is quick to run and matches more sophisticated frameworks with high fidelity.
 
 This chapter will be broken down into three steps. The first is getting a user up and running with the code. Once the user gets to this point, hopefully they will wonder how the code is structured. This will be the second step. The final step will be explaining the various functions callable on reactor objects -- the atomic data structure for Fussy.jl.
 
@@ -21,8 +21,8 @@ Currently the Fussy.jl codebase is written using \texttt{v0.6}, but should be \t
 Once the Fussy.jl package has been cloned into your Julia package library, you should be able to access it through the Julia REPL or a Jupyter notebook. You can now reproduce every plot in this text. A quick test to see if your code works is: \\
 
 \texttt{using Fussy \\
-cur\_reactor = Reactor(10) \\ \\
-@assert cur\_reactor.T\_bar == 10
+cur\_reactor = Reactor(15) \\ \\
+@assert cur\_reactor.T\_bar == 15
 }
 
 \section{Sorting out the Codebase}
@@ -43,21 +43,21 @@ Reactors are the most atomic data structure in this fusion systems model. They s
 
 \subsubsection{The Scan Structure}
 
-A Scan object is a collection of reactors made from scanning a list of temperatures. For example, a scan of five temperatures from 5 keV to 25 keV would result in several arrays of five reactors. Most often, one of these lists would correspond to beta reactors, one to kink reactors, and one to wall loading reactors. There may then be fewer than five reactors in a list if some of the reactors are invalid or frankly unsolvable.
+A Scan object is a collection of reactors made from scanning a list of temperatures. For example, a scan of five temperatures from 5 keV to 25 keV would result in several arrays of five reactors. Most often, one of these lists would correspond to beta reactors, one to kink reactors, and one to wall loading reactors. There may then be fewer than five reactors in a list if some of the reactors are invalid or fundamentally unsolvable.
 
-This is the data structure that produces the various comparison plots in the results section.
+This is the data structure that produces the various comparison plots in the results.
 
 \subsubsection{The Sensitivity Structure}
 
-Sensitivity studies are how computationalists test the effect of changing a variable over multiple values -- i.e. do a 20\% sensitivity around the H factor. Like Scans, Sensitivities store various lists of reactors, each corresponding to an interesting data point. These include limit reactors where the beta limit and kink limit are just satisfied or the beta limit and wall loading are just satisfied. Additionally, they include the minimum capital cost reactors and the minimum cost-per-watt ones. 
+Sensitivity studies are how computationalists test the effect of changing a variable over multiple values -- i.e. do a 20\% sensitivity around the H factor. Like Scans, Sensitivities store various lists of reactors, each corresponding to an interesting data point. These include limit reactors where the beta limit and kink limit are just satisfied or when the beta limit and wall loading are just satisfied. Additionally, they include the minimum capital cost reactors and the minimum cost-per-watt ones. 
 
 \subsubsection{The Sampling Structure}
 
-The Sampling struct was created to do simple Monte Carlo runs over a reactor's fixed values. While sensitivities only allow one variable to change at a time, samplings randomly assign a list of variables to some neighborhood of possible values. These are how the colorful scatter plots are made. Succinctly, where sensitivity studies show local changes to variables, Monte Carlo samplings show global trends in reactor design.
+The Sampling struct was created to do simple Monte Carlo runs over a reactor's fixed values. While sensitivities only allow one variable to change at a time, samplings randomly assign a list of variables to some neighborhood of possible values. These are how the scatter plots are made. Succinctly, where sensitivity studies show local changes to variables, Monte Carlo samplings show global trends in reactor design.
 
 \subsubsection{The Equation Structure}
 
-In order to store the various equations from \cref{table:eq} is the Equation Struct. It stores the $\gamma$ exponents for: $R_0$, $B_0$, and $I_P$. It also stores the function representing G($\overline T$). Repeated these are the unknowns in:
+In order to store the various equations from \cref{table:eq} is the Equation Struct. It stores the $\gamma$ exponents for: $R_0$, $B_0$, and $I_P$. -- as well as the function representing G($\overline T$). Repeated these are the unknowns in:
 
 \begin{equation}
 	\tag{\ref{eq:rbi}}
@@ -72,7 +72,7 @@ The step up from the Equation struct are the Equation Sets. These collections of
 
 \subsection{Referencing Input Decks and Solutions}
 
-With more than twenty fixed variables in the model, the range of tokamak reactors is basically infinite. To help users build a net of designs to explore reactor space are seven input decks. These are the ones given in the results: Arc, Act I/II, Demo Steady/Pulsed, Proteus and Charybdis. Coupled with the non-prototype reactors are solution reactors that store various quantities from the original paper (e.g. $P_F$, $f_{BS}$, $R_0$). These are how the comparison tables were constructed.
+With more than twenty fixed variables in the model, the range of tokamak reactors is basically infinite. To help users build a net of designs to explore reactor space are seven input decks. These are the ones given in the results: Arc, Act I /II, Demo Steady/Pulsed, Proteus and Charybdis. Coupled with the non-prototype reactors are solution reactors that store various quantities from the original papers (e.g. $P_F$, $f_{BS}$, $R_0$). These are how the comparison tables were constructed.
 
 \subsection{Acknowledging Utility Functions}
 
@@ -90,7 +90,7 @@ Now that a majority of the files have been discussed, we can turn to the reactor
 
 \section{Delving into Reactor Methods}
 
-The reactor is the most atomic data structure in this model. It therefore makes sense that it has many instance methods. These include all the coefficients, fluxes, powers, etc. It also includes methods that solve a reactor, perform a match on some field's value, or convert $\eta_{CD}$ to self-consistency. The various subdirectories within the \texttt{src/methods/reactors} folder will now be discussed.
+The reactor is the most atomic data structure in this model. It therefore makes sense that it has many instance methods. These include all the coefficients, fluxes, powers, etc. It also includes methods that solve a reactor, perform a match on some field's value, or converge $\eta_{CD}$ to self-consistency. The various subdirectories within the \texttt{src/methods/reactors} folder will now be discussed.
 
 \subsubsection{Calculations}
 
@@ -110,10 +110,10 @@ The next collection of reactor methods are the various profiles. Most obviously,
 
 \subsubsection{Geometries}
 
-Additionally, there are many geometric relations. These include the various tokamak thicknesses: a, b, c, d -- as well as the radius and height of the central solenoid. This group also includes the volume, perimeter, surface area, and cross-sectional area. As well as the many subscripted fields. For example, the elongation (i.e. $\kappa_{95}$) includes the following alternative definitions: $\kappa_X$, $\kappa_P$, and $\kappa_\tau$
+Additionally, there are many geometric relations. These include the various tokamak thicknesses: a, b, c, d -- as well as the radius and height of the central solenoid. This group also includes the volume, perimeter, surface area, and cross-sectional area. It also includes the many subscripted fields. For example, the elongation (i.e. $\kappa_{95}$) includes the following alternative definitions: $\kappa_X$, $\kappa_P$, and $\kappa_\tau$
 
 \subsubsection{Formulas}
 
-The final set of reactor methods are formulas that do not really fit anywhere else. If a method is not related to geometry, power, calculations, etc, it ends up here. For example, this group includes: $\beta_N$, $f_{BS}$, $C_W$, and $\tau_E$. Total, there are around 25 formulas.
+The final set of reactor methods are formulas that do not really fit anywhere else. If a method is not related to geometry, power, calculations, etc, it ends up here. For example, this group includes: $\beta_N$, $f_{BS}$, $C_W$, and $\tau_E$. Total, there are around 25 formulas -- as of the writing of this document.
 
 At this point, you should now be an expert Fussy.jl user. Good luck!
