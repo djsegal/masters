@@ -62,10 +62,10 @@ Although being rather cumbersome, this equation actually remains relatively simp
 
 \section{Generalizing Previous Equations}
 
-Where the equations defined up to this point in the chapter are shared among all fusion reactors, the remaining two equations -- needed to close the system -- must be chosen by the user. These user-supplied equations come in three flavors: limits, derived quantities, and floating variables. By convention, we enforce that at least one limit must be used. The other constraint can then come from any of the three defined collections, which we will refer to as the closure equation.
+Where the equations defined up to this point in the chapter are shared among all fusion reactors, the remaining two equations -- needed to close the system -- must be chosen by the user. These user-supplied equations come in three flavors: limits, \replaced{intermediate}{derived} quantities, and \replaced{dynamic}{floating} variables. By convention, we enforce that at least one limit must be used. The other constraint can then come from any of the three defined collections, which we will refer to as the closure equation.
 
 \begin{table}[hb]
-\caption[Main Equation Bank]{Main Equation Bank \\ \small To close the system of equations for potential reactors, different equations can be used to lock down tokamak designs. These include physics and engineering limits (L), as well as ways to set floating (F) or derived (D) variables to constant values.}
+\caption[Main Equation Bank]{Main Equation Bank \\ \small To close the system of equations for potential reactors, different equations can be used to lock down tokamak designs. These include physics and engineering limits (L), as well as ways to set \replaced{dynamic (D)}{floating (F)} or \replaced{intermediate (I)}{derived (D)} variables to constant values.}
 \begin{spacing}{1.5}
 \begin{tabular}{lccccc}
  Variable & Category & G($\overline T$)  & $\gamma_R$ & $\gamma_B$ & $\gamma_{I}$ \\ \hline
@@ -75,17 +75,17 @@ Kink ($q_{95}$) & L & $K_{KF} $ & 1 & 1 & -1 \\
 Wall Loading ($P_W$) & L & $K_{WL} ( \sigma v )^{\sfrac{1}{3}} $ & 1 & 0 & -$\sfrac{2}{3}$ \\
 Power Cap ($P_E$) & L & $K_{PC} ( \sigma v ) $ & 1 & 0 & -2 \\
 Heat Loading ($q_{DV}$) & L & $K_{DV} ( \sigma v )^{\sfrac{1}{3.2}} $ & 1 & 0 & -1 \\
-Major Radius ($R_0$) & F & $(R_0)_{const}$ & 1 & 0 & 0 \\
-Magnet Strength ($B_0$) & F & $(B_0)_{const}$ & 0 & 1 & 0 \\
-Plasma Current ($I_P$) & F & $(I_P)_{const}$ & 0 & 0 & 1 \\
-Plasma Temperature ($\overline T$) & F & $\sfrac{ (\overline T)_{const} }{ \, \overline T }$ & 0 & 0 & 0 \\
-Electron Density ($\overline n$) & F & $\sfrac{ (\overline n)_{const} }{ K_n }$ & -2 & 0 & 1 \\
-Plasma Pressure ($\overline p$) & D & $\sfrac{ (\overline p)_{const} }{ K_n K_{nT} \overline T }$ & -2 & 0 & 1 
+Major Radius ($R_0$) & D & $(R_0)_{const}$ & 1 & 0 & 0 \\
+Magnet Strength ($B_0$) & D & $(B_0)_{const}$ & 0 & 1 & 0 \\
+Plasma Current ($I_P$) & D & $(I_P)_{const}$ & 0 & 0 & 1 \\
+Plasma Temperature ($\overline T$) & D & $\sfrac{ (\overline T)_{const} }{ \, \overline T }$ & 0 & 0 & 0 \\
+Electron Density ($\overline n$) & D & $\sfrac{ (\overline n)_{const} }{ K_n }$ & -2 & 0 & 1 \\
+Plasma Pressure ($\overline p$) & I & $\sfrac{ (\overline p)_{const} }{ K_n K_{nT} \overline T }$ & -2 & 0 & 1 
 \\
-Bootstrap Current ($f_{BS}$) & D & $\sfrac{ ( f_{BS} )_{const} }{ K_{BS} \overline T }$ & 0 & 0 & -1 \\
-Fusion Power ($P_F$) & D & $\sfrac{ (P_F)_{const} }{ K_F K_n ^ 2 ( \sigma v ) }$ & -1 & 0 & 2 \\
-Magnetic Energy ($W_M$) & D & $\sfrac{ (W_M)_{const} }{ K_{WM} }$ & 3 & 2 & 0 \\
-Cost per Watt ($C_W$) & D & $ (C_W)_{const} \cdot \left( \sfrac{ K_F K_n ^ 2 ( \sigma v ) }{ K_{WM} } \right)$ & 4 & 2 & -2 \\
+Bootstrap Current ($f_{BS}$) & I & $\sfrac{ ( f_{BS} )_{const} }{ K_{BS} \overline T }$ & 0 & 0 & -1 \\
+Fusion Power ($P_F$) & I & $\sfrac{ (P_F)_{const} }{ K_F K_n ^ 2 ( \sigma v ) }$ & -1 & 0 & 2 \\
+Magnetic Energy ($W_M$) & I & $\sfrac{ (W_M)_{const} }{ K_{WM} }$ & 3 & 2 & 0 \\
+Cost per Watt ($C_W$) & I & $ (C_W)_{const} \cdot \left( \sfrac{ K_F K_n ^ 2 ( \sigma v ) }{ K_{WM} } \right)$ & 4 & 2 & -2 \\
 \end{tabular}
 \end{spacing}
 \label{table:eq}
@@ -95,17 +95,17 @@ Cost per Watt ($C_W$) & D & $ (C_W)_{const} \cdot \left( \sfrac{ K_F K_n ^ 2 ( \
 
 The limits category is simply a rebranding of the secondary constraints given previously. These include the physics derived limits from MHD theory -- i.e. the beta limit ($\beta_N$) and the kink safety factor ($q_{95}$) -- which for clarity, set maximums on the allowed plasma pressure and velocity, respectively. Additionally, there were several engineering limits also described: wall loading, heat loading, and maximum power capacity. For this paper, wall loading from neutrons ($P_W$) is assumed to be important, whereas the other two engineering limits are not allowed to explicitly guide designs.
 
-Combined all these limits, as well as the yet to be defined float and derived equations, are given in \cref{table:eq}. These share a remarkably similar form to power balance when put into a generalized, separable state. This hints at why the major radius ($R_0$), the toroidal field strength ($B_0$), and the plasma current ($I_P$) can easily be separated and substituted out of the current balance equation.
+Combined all these limits, as well as the yet to be defined \replaced{dynamic}{float} and \replaced{intermediate}{derived} equations, are given in \cref{table:eq}. These share a remarkably similar form to power balance when put into a generalized, separable state. This hints at why the major radius ($R_0$), the toroidal field strength ($B_0$), and the plasma current ($I_P$) can easily be separated and substituted out of the current balance equation.
 
 Before moving on, it proves useful to explain the two limits not used to explicitly guide reactor design -- divertor heat loading and the maximum power capacity. The simpler of the two to reason is the heat loading limit. Although removing the gigawatts of heat is extremely difficult, it remains an unsolved problem worthy of its own research machine, but currently neglected financially. As such, it is only kept to provide a human-interpreted  measure of difficulty. The power cap, on the other hand, is just handled informally. If a reactor surpasses it (i.e. $ P_E > 4000 MW $), it is considered invalid.
 
 While the maximum power cap informally sets a maximum major radius for a machine, there also exists an implicit minimum major radius. This minimum occurs due to the hole-size constraint -- i.e. at some point there is no longer enough room on the inside of the machine to store the central solenoid, blanket, and TF coils.
 
-At this point, we can now explain how various quantities in the systems model can be set to user-given constant values. This basically allows users to treat one floating variable as a fixed one (e.g. the temperature and bootstrap fraction).
+At this point, we can now explain how various quantities in the systems model can be set to user-given constant values. This basically allows users to treat one \replaced{dynamic}{floating} variable as a \replaced{static}{fixed} one (e.g. the temperature and bootstrap fraction).
 
-\subsection{Minimizing Derived Quantities} 
+\subsection{Minimizing \replaced{Intermediate}{Derived} Quantities} 
 
-Whereas the limits from the previous section represented constraints with real physics and engineering repercussions, the derived quantities here are just used to find when reactors reach certain user-supplied values. Most notable are the capital cost (through the magnetic energy -- $W_M$) and the cost-per-watt ($C_W$). The model also, however, allows easily setting values for the bootstrap fraction, plasma pressure, and fusion power. As mentioned previously, they are given in \cref{table:eq} through a generalized representation of the form:
+Whereas the limits from the previous section represented constraints with real physics and engineering repercussions, the \replaced{intermediate}{derived} quantities here are just used to find when reactors reach certain user-supplied values. Most notable are the capital cost (through the magnetic energy -- $W_M$) and the cost-per-watt ($C_W$). The model also, however, allows easily setting values for the bootstrap fraction, plasma pressure, and fusion power. As mentioned previously, they are given in \cref{table:eq} through a generalized representation of the form:
 
 \begin{equation}
 	\tag{\ref{eq:rbi}}
@@ -147,9 +147,9 @@ After a valid reactor is found, its cost is recorded leading to a drill-down sta
     \label{fig:minimize} 
 \end{figure*}
 
-\subsection{Pinning Floating Variables} 
+\subsection{Pinning \replaced{Dynamic}{Floating} Variables} 
 
-The remaining collection of closure equations is for the five floating variables in the systems model: $R_0$, $B_0$, $\overline n$, $\overline T$, and $I_P$. As we are making equations of the following form, the formulas for $R_0$, $B_0$, and $I_P$ are trivial.
+The remaining collection of closure equations is for the five \replaced{dynamic}{floating} variables in the systems model: $R_0$, $B_0$, $\overline n$, $\overline T$, and $I_P$. As we are making equations of the following form, the formulas for $R_0$, $B_0$, and $I_P$ are trivial.
 
 \begin{equation}
 	\tag{\ref{eq:rbi}}
@@ -230,7 +230,7 @@ As stated at the beginning of the chapter, this systems model basically boils do
 
 This now sets the stage for the most interesting part of the document -- the results. In true Dickens fashion, they will come in several forms. The first result type we will encounter will be temperature scans. These allow us to validate the model by comparing it to several designs from the literature. These will use the Scenario II solver.
 
-Moving onto examples of the Scenario I matcher are sensitivity studies and Monte Carlo samplings. The simple one variable sensitivities will reveal local trends from sweeping various fixed (i.e. input) variables -- namely H, $\kappa$, $B_{CS}$, etc. Whereas the samplings will highlight global trends as many fixed/input variables are allowed to vary simultaneously.
+Moving onto examples of the Scenario I matcher are sensitivity studies and Monte Carlo samplings. The simple one variable sensitivities will reveal local trends from sweeping various \replaced{static}{fixed} (i.e. input) variables -- namely H, $\kappa$, $B_{CS}$, etc. Whereas the samplings will highlight global trends as many \replaced{static}{fixed}/input variables are allowed to vary simultaneously.
 
  These Scenario I flavors are further subdivided in regards to the nature of their closure equation. The first flavor comes from finding so called two limit solutions, which live at the point where the beta and kink (or wall) limits are just marginally satisfied. The second main type is then minimum cost reactors -- measured in either a capital cost or cost-per-watt context. These will be used in depth next chapter.
  

@@ -19,19 +19,19 @@
 
 \chapter{Formalizing the Systems Model}
 
-The goal of this chapter is to take a step back from the steady current derivation and see the larger picture behind reactor design. As such, a more in-depth description of fixed and floating variables is given. This discussion of floating variables will then lend itself to a description of the framework underpinning the fusion systems model. As such, we will now need formulas for the radius and magnet strength of the tokamak. Moving forward, the current will then remain a connecting piece as we switch gears to pulsed tokamaks and compare the two schemes' underlying solvers.
+The goal of this chapter is to take a step back from the steady current derivation and see the larger picture behind reactor design. As such, a more in-depth description of \replaced{static}{fixed} and \replaced{dynamic}{floating} variables is given. This discussion of \replaced{dynamic}{floating} variables will then lend itself to a description of the framework underpinning the fusion systems model. As such, we will now need formulas for the radius and magnet strength of the tokamak. Moving forward, the current will then remain a connecting piece as we switch gears to pulsed tokamaks and compare the two schemes' underlying solvers.
 
-\section{Explaining Fixed Variables} 
+\section{Explaining \replaced{Static}{Fixed} Variables} 
 
-In this model, fixed variables are ones that remain constant while solving for a reactor. These include geometric scalings (i.e. $\epsilon$, $\delta$, $\kappa$), profile parameters (i.e. $\nu_n$, $\nu_T$, $l_i$), and a slew of physics constants related to pulsed and steady-state design (e.g. Q, $N_G$, $f_D$). For a complete list of fixed variables, consult the appendix. The point to make now is that this model treats fixed variables as second-class objects. As such they often reside in fixed coefficients -- $K_\square$ -- which are treated as constants.
+In this model, \replaced{static}{fixed} variables are ones that remain constant while solving for a reactor. These include geometric scalings (i.e. $\epsilon$, $\delta$, $\kappa$), profile parameters (i.e. $\nu_n$, $\nu_T$, $l_i$), and a slew of physics constants related to pulsed and steady-state design (e.g. Q, $N_G$, $f_D$). For a complete list of \replaced{static}{fixed} variables, consult the appendix. The point to make now is that this model treats \replaced{static}{fixed} variables as second-class objects. As such they often reside in \replaced{static}{fixed} coefficients -- $K_\square$ -- which are treated as constants.
 
-\section{Connecting Floating Variables}
+\section{Connecting \replaced{Dynamic}{Floating} Variables}
 
-Floating variables -- $\overline T$, $\overline n$, $I_P$, $R_0$, $B_0$ -- are the first-class variables of this fusion systems model. They represent the fundamental properties of a plasma and tokamak (which constitute a fusion reactor). As such, they will be reintroduced one at a time, explaining how they fit into the model -- and which equation is capable of representing it.
+\replaced{Dynamic}{Floating} variables -- $\overline T$, $\overline n$, $I_P$, $R_0$, $B_0$ -- are the first-class variables of this fusion systems model. They represent the fundamental properties of a plasma and tokamak (which constitute a fusion reactor). As such, they will be reintroduced one at a time, explaining how they fit into the model -- and which equation is capable of representing it.
 
 \begin{table}[h!]
 \centering	
-\caption{Floating Variables}
+\caption{Dynamic Variables}
 \begin{tabular}{ c|c|c } 
 
 \textbf{Symbol} & \textbf{Name} & \textbf{Units} \\
@@ -40,9 +40,9 @@ $I_P$ & Plasma Current & MA \\
 $\overline{T}$ & Plasma Temperature & keV \\ 
 $\overline{n}$ & Electron Density & $10^{20} \, \textnormal{m}^{-3}$ \\ 
 $R_0$ &  Major Radius & m \\ 
-$B_0$ &  Magnetic Field & T \\ 
-
+$B_0$ &  Magnetic Field & T
 \end{tabular}
+\label{table:dynamic}
 \end{table}
 
 Bluntly, this fusion systems model is a simple algebra problem: solve five equations with five unknowns (i.e. $\overline T$, $\overline n$, $I_P$, $R_0$, $B_0$). Although this naive approach would work, we can do a little better by wrangling these five equations down to just one. This was already done while deriving the steady current. It just happened that the current was not directly dependent on the tokamak size ($R_0$) or magnet strength ($B_0$). 
@@ -471,7 +471,7 @@ As is readily apparent, this has a shape similar to the Lawson Criterion. Again,
 
 \section{Collecting Secondary Constraints}
 
-As of now, the only missing equation within our list of fixed variables -- i.e. $R_0$, $B_0$, $\overline T$, $\overline n$, and $I_P$ -- is for the major radius of the tokamak. This equation will come from around five potential limits, each either physical or engineering-based. These limits will then correspond to different curves through reactor space. As will be shown, many of these reactors will be invalid (as they violate at least one of the other limits).
+As of now, the only missing equation within our list of \replaced{static}{fixed} variables -- i.e. $R_0$, $B_0$, $\overline T$, $\overline n$, and $I_P$ -- is for the major radius of the tokamak. This equation will come from around five potential limits, each either physical or engineering-based. These limits will then correspond to different curves through reactor space. As will be shown, many of these reactors will be invalid (as they violate at least one of the other limits).
 
 Before tackling the subject of finding reactors that exist on the fine line of satisfying every secondary constraints, though, it is essential to collect them one-by-one. These are: the Troyon Beta Limit, the Kink Safety Factor, the Wall Loading Limit, the Power Cap Constraint, and the Heat Loading Limit. 
 
@@ -479,7 +479,7 @@ The goal of this section is to solve for each of these constraints on the major 
 
 \subsection{Introducing the Beta Limit}
 
-The Beta Limit is the most important secondary constraint -- especially for steady-state reactors. It sets a maximum on the amount of pressure a plasma is willing to tolerate. As with future secondary constraints, literature-based equations will be transformed into formulas for $R_0$. Each will then contain some limiting quantity that can be handled by a fixed variable -- as $\beta_N$ will be used shortly.
+The Beta Limit is the most important secondary constraint -- especially for steady-state reactors. It sets a maximum on the amount of pressure a plasma is willing to tolerate. As with future secondary constraints, literature-based equations will be transformed into formulas for $R_0$. Each will then contain some limiting quantity that can be handled by a \replaced{static}{fixed} variable -- as $\beta_N$ will be used shortly.
 
 The starting point for the beta limit is to define the important plasma physics quantity: $\beta$ -- the plasma beta. This value is a ratio between a plasma's internal pressure and the pressure exerted on it by the tokamak's magnetic configuration. Mathematically, \cite{jeff}
 
@@ -494,7 +494,7 @@ Using this model's temperature and density profiles, the volume-averaged pressur
   \overline{p} = 0.1581 \, ( 1 + f_D ) \, \frac{ (1 + \nu_n) \, (1 + \nu_T) }{1 + \nu_n + \nu_T } \, \overline{n} \ \overline{T}
 \end{equation}
 
-Moving forward, the final step is plugging this definition for plasma beta into the physics-based Troyon Beta Limit. Although outside the scope of this text, it is a stability limit set by treating plasmas as charge-carrying fluids. This equation can be written in the following form, where $\beta_N$ is the normalized plasma beta -- i.e. a fixed variable usually set between 2\% and 4\%. \cite{hartmann}
+Moving forward, the final step is plugging this definition for plasma beta into the physics-based Troyon Beta Limit. Although outside the scope of this text, it is a stability limit set by treating plasmas as charge-carrying fluids. This equation can be written in the following form, where $\beta_N$ is the normalized plasma beta -- i.e. a \replaced{static}{fixed} variable usually set between 2\% and 4\%. \cite{hartmann}
 
 \begin{equation}
 	\beta = \beta_N \frac{ I_P }{ a B_0 }
@@ -552,7 +552,7 @@ The first step in deriving a secondary constraint for wall loading is a descript
 	P_W = \frac{ P_n }{ S_P }
 \end{equation}
 
-Here, $S_P$ is the surface area of the tokamak's inner wall and $P_n$ is the neutron power derived in the subsection on fusion power. The quantity, $P_W$, then serves a role analogous to $\beta_N$ for the beta limit and $q_{95}$ for the kink safety factor -- it is a fixed variable representing the maximum allowed wall loading. For fusion reactors, $P_W$ is assumed to be around 2-4 $\frac{\textnormal{MW}}{\textnormal{m}^2}$. It will be shown that the wall loading limit is important in any tokamak -- regardless of operating mode (i.e. steady-state or pulsed).
+Here, $S_P$ is the surface area of the tokamak's inner wall and $P_n$ is the neutron power derived in the subsection on fusion power. The quantity, $P_W$, then serves a role analogous to $\beta_N$ for the beta limit and $q_{95}$ for the kink safety factor -- it is a \replaced{static}{fixed} variable representing the maximum allowed wall loading. For fusion reactors, $P_W$ is assumed to be around 2-4 $\frac{\textnormal{MW}}{\textnormal{m}^2}$. It will be shown that the wall loading limit is important in any tokamak -- regardless of operating mode (i.e. steady-state or pulsed).
 
 For completeness, the surface area can be defined through:
 
@@ -593,7 +593,7 @@ As opposed to the previous three secondary constraints, the maximum power cap is
 	P_E \le P_{CAP}
 \end{equation}
 
-Here, $P_{CAP}$ is the maximum allowed power output of the reactor. Similar to the other limiting quantities, $P_{CAP}$ is treated as a fixed variable (i.e. set to 4000 MW). The electrical power output of the reactor ($P_E$) is then related to the fusion power through: \cite{jeff}
+Here, $P_{CAP}$ is the maximum allowed power output of the reactor. Similar to the other limiting quantities, $P_{CAP}$ is treated as a \replaced{static}{fixed} variable (i.e. set to 4000 MW). The electrical power output of the reactor ($P_E$) is then related to the fusion power through: \cite{jeff}
 
 \begin{equation}
 	P_E = 1.273 \, \eta_T \cdot P_F

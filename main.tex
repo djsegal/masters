@@ -29,6 +29,9 @@
 
 \usepackage{subcaption}
 
+\usepackage{lineno}
+\linenumbers
+
 \usepackage[capitalise]{cleveref}
 
 \usepackage[symbol, flushmargin, hang, perpage]{footmisc}
@@ -57,7 +60,16 @@
 
 \pgfplotsset{compat=1.3}
 
+%\usepackage[final]{changes}
+\usepackage{changes}
+
+\includeonly{pulsed,biblio}
+
+\let\vec\mathbf
+
 \begin{document}
+
+\listofchanges
 
 \include{cover}
 \pagestyle{plain}
@@ -74,8 +86,12 @@
 
 \appendix
 
+\include{variables}
 \include{fussy}
+\include{power}
 \include{appa}
+\include{surfaces}
+\include{bootstrap}
 
 \include{biblio}
 

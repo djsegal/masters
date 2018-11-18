@@ -1,0 +1,142 @@
+\chapter{Determining Plasma Flux Surfaces}
+
+\label{chapter:flux}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.75\textwidth]{images/fusion_reactor}
+	\caption{Cut-Away of Tokamak Reactor} ~\\
+	\small The three main components of a magnetic fusion reactor are: the tokamak structure, the plasma fuel, and the spring-like solenoid at the center.
+\end{figure}
+
+\section{Flux Surface Coordinates}
+
+We begin with the shape of the outer plasma surface (i.e. the 95\% flux surface) written in terms of normalized coordinates x and y as follows -- with $\alpha$ being an angle-like coordinate:
+\begin{equation}
+	R = R_0 + a x( \alpha )
+\end{equation}
+\begin{equation}
+	Z = a y( \alpha )
+\end{equation}
+\begin{equation}
+	0 \le \alpha \le 2 \pi
+\end{equation}
+
+The surface representation can now be written as:
+\begin{equation}
+	\label{eq:xalpha}
+	x(\alpha) = c_0 + c_1 \cos(\alpha) + c_2 \cos(2\alpha) + c_3 \cos(3\alpha)
+\end{equation}
+\begin{equation}
+	\label{eq:yalpha}
+	y(\alpha) = \kappa \sin(\alpha)
+\end{equation}
+
+The constraints determining $c_j$ -- for $j = 1,2,3$ -- are chosen as:
+\begin{equation}
+	x(0) = 1
+\end{equation}
+\begin{equation}
+	x(\pi) = -1
+\end{equation}
+\begin{equation}
+	x\left(\frac{\pi}{2}\right) = -\delta
+\end{equation}
+\begin{equation}
+	x_{\alpha\alpha}(\pi) = 0.3 \cdot ( 1 - \delta ^2 )
+\end{equation}
+
+The last constraint, which is related to the surface curvature at $\alpha = \pi$, is chosen to make sure that the surface is always convex. A trial and error empirical fit resulted in the choice $x_{\alpha\alpha}(\pi) = 0.3 \cdot ( 1 - \delta ^2 )$. The constraint relations are easily evaluated and then solved, leading to values for the $c_j$,
+\begin{equation}
+	c_0 = { - \frac{ \delta }{ 2 } }
+\end{equation}
+\begin{equation}
+	c_1 = g
+\end{equation}
+\begin{equation}
+	c_2 = { \frac{ \delta }{ 2 } }
+\end{equation}
+\begin{equation}
+	c_3 = 1 - g
+\end{equation}
+
+Here, g is a shaping parameter approximately equal to one:
+\begin{equation}
+	g = \frac{9 - 2 \delta - 0.3 \cdot ( 1 - \delta ^2 ) }{8}
+\end{equation}
+
+\section{Cross-sectional Area and Volume}
+
+\begin{figure*}
+\centering
+\input{images/tokamak_dimensions}
+\caption{Dimensions of Tokamak Cross-Section}
+\label{fig:dims}
+\end{figure*}
+
+The plasma cross-sectional area and volume can be evaluated by straightforward calculations,
+\begin{equation}
+\begin{split}
+	A & = \int \int dR dZ = a^2 \int \int dx dy = a^2 \int_0^{2 \pi} x \frac{dy}{d\alpha} d\alpha \\ & = \pi a^2 \kappa g
+\end{split}
+\end{equation}
+\begin{equation}
+\begin{split}
+	\volume & = \int \int \int R dR dZ d\Phi = 2 \pi a^2 \int \int R dx dy \\ & = 2 \pi a^2 R_0 \int_0^{2 \pi} \left( x + \epsilon \frac{ x^2 }{ 2} \right) \frac{dy}{d\alpha} d\alpha \approx 2 \pi a^2 R_0 \int_0^{2 \pi} x \frac{dy}{d\alpha} d\alpha \\ & = 2 \pi^2 R_0 a^2 \kappa g
+\end{split}
+\end{equation}
+
+The second form of the volume integral makes use of the small inverse aspect ratio expansion, $\epsilon \ll 1 $, which is a good approximation and used throughout the analysis.
+
+\section{Surface and Volume Integrals}
+
+\cref{eq:xalpha,eq:yalpha} are simple formulas describing the shape of the outer plasma surface. We next modify the model so that it gives a plausible description of the interior flux surfaces as well. The idea is to introduce a normalized flux label, which is radial-like in behavior. This label is denoted by $\rho$ and $\rho \in [0,1]$ with $\rho = 1$ being the outer plasma surface (i.e. the 95\% surface) and $\rho = 0$ being the magnetic axis. Additional trial and error results in the following representation for the flux surfaces,
+\begin{equation}
+	x(\rho,\alpha) = \sigma( 1 - \rho^2 ) + c_0 \rho^4 + c_1 \rho \cos(\alpha) + c_2 \rho^2 \cos(2\alpha) + 
+		c_3 \rho^3 \cos(3\alpha)
+\end{equation}
+\begin{equation}
+	y(\rho, \alpha) = \kappa \rho \sin(\alpha)
+\end{equation}
+
+with $\sigma$ being the shift of the magnetic axis. Usually, $\sigma \sim 0.1$ for a high field tokamak.
+
+Lastly, we note that in the course of the work it will be necessary to integrate functions of $\rho$ over the volume and cross-sectional area of the plasma. Specifically we will need to evaluate:
+\begin{equation}
+	Q_V = \int \int \int Q(\rho) R dR dZ d\Phi \approx 2 \pi R_0 a^2 \int \int Q(\rho) dx dy
+\end{equation}
+\begin{equation}
+	Q_A = \int \int Q(\rho) dR dZ = a^2 \int \int Q(\rho) dx dy
+\end{equation}
+
+Here, $Q(\rho)$ is an arbitrary function of $\rho$ such as pressure or temperature. In the large aspect ratio limit, both integrals require the evaluation of the same quantity:
+
+\begin{equation}
+	K = \int \int Q(\rho) dx dy
+\end{equation}
+
+To evaluate this integral, we need to convert from $x, y$ coordinates to $\rho, \alpha$ coordinates. Using the Jacobian of the transformation leads to
+\begin{equation}
+	K = \int \int Q(\rho) (x_\rho y_\alpha - x_\alpha y_\rho ) d\rho d\alpha
+\end{equation}
+
+Here,
+\begin{equation}
+\begin{split}
+	x_\rho y_\alpha - x_\alpha y_\rho & = \kappa \sin(\alpha) \cdot \left( c_1 \rho \sin(\alpha) + 2 c_2 \rho^2 \sin(2\alpha)  + 3 c_3 \rho^3 \sin(3\alpha)  \right) \\
+		& + \kappa \rho \cos(\alpha) \cdot \Big[ \\
+		& \ \ \ \ \ \ -2 \rho \sigma + 4 \rho^3 c_0 + c_1 \cos(\alpha) \\
+		& \ \ \ \ \ \ + 2 c_2 \rho \cos(2\alpha) + 3 c_3 \rho^2 \cos(3\alpha) \\
+		& \ \ \Big]
+\end{split}	
+\end{equation}
+
+Since Q is only a function of $\rho$, the $\alpha$ integral can be carried out analytically. The only term that survives the averaging are the ones containing $c_1$. A simple integration over $\alpha$ then yields the desired results:
+ \begin{equation}
+  	\label{eq:qv}
+ 	Q_V = 4 \pi^2 R_0 a^2 \kappa g \int_0^1 Q(\rho) \rho \, d\rho
+ \end{equation}
+\begin{equation}
+	\label{eq:qs}
+	Q_S = 2 \pi a^2 \kappa g \int_0^1 Q(\rho) \rho \, d\rho
+\end{equation}

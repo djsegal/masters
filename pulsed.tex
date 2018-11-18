@@ -20,9 +20,11 @@
 
 \chapter{Designing a Pulsed Tokamak}
 
-Pulsed tokamaks are the flagship of the European fusion effort. As such, this paper's model will now be generalized to accommodate this mode of operation. Fundamentally, this involves transforming current balance into flux balance -- adding inductive (pulsed) sources to stand alongside the LHCD (steady-state) ones.
+Pulsed tokamaks are the flagship of the European fusion \added{reactor design} effort. As such, this paper's model will now be generalized to accommodate this mode of operation. Fundamentally, this involves transforming current balance into flux balance -- adding inductive (pulsed) sources to stand alongside the LHCD (steady-state) ones.
 
 The first step in generalizing current balance will be understanding the problem from a basic electrical engineering perspective -- i.e. with circuit analysis. The resulting equation will then be transformed into the flux balance seen in other models from the literature. All that will need to be done then is solving the problem for plasma current ($I_P$) and simplifying it for various situations -- e.g. steady-state operation.
+
+\added{This generalized plasma current will then be found to be a function of the other dynamic variables (i.e. $R_0$, $B_0$, and $\overline T$). This, of course, is more difficult to handle computationally than the steady current, which only directly depended on temperature ($\overline T$). Discussion about solving this new root solving problem will be the topic of the next chapter.}
 
 \section{Modeling Plasmas as Circuits}
 
@@ -34,14 +36,14 @@ The first step in deriving a current equation is to determine the circuit equati
 
 Understanding a circuit always starts with drawing a simple diagram, see \cref{fig:circuit_diagram}. This figure depicts the transformer governing pulsed reactor. The left sub-circuit is the transformer's primary -- the central solenoid component of the tokamak that provides most of the inductive current. Whereas, the right sub-circuit is the plasma acting as the transformer's secondary. The central solenoid, here, is then a helically-spiraled metal coil that fits within the inner ring of the doughnut. For now, every other flux source (besides this central solenoid) is neglected.
 
-\begin{figure}[h!]
+\begin{figure}[]
 \centering
 \input{images/circuit_diagram}
 \caption{A Simple Plasma Transformer Description}
 \label{fig:circuit_diagram}
 \end{figure}
 
-Hopefully without scaring the reader too much, the circuit equations -- when only modeling voltage sources, resistors, and inductors -- are described by:
+\replaced{This is described by the standard circuits involving voltage sources, resistors, and inductors:}{Hopefully without scaring the reader too much, the circuit equations -- when only modeling voltage sources, resistors, and inductors -- are described by:}
 
 \begin{equation}
 	V_i = \sum_j^n \frac{d}{dt} \left( M_{ij} I_j \right) + I_i R_i \ \, , \ \ \ \ \forall \, i = 1,2,..,n
@@ -88,7 +90,7 @@ Up until now, little has been discussed that has a time dependence. For steady-s
 \label{fig:circuit_profiles}
 \end{figure}
 
-Transformer pulses between the central solenoid and the plasma occur on the timescale of hours. For clarity, each pulse is subdivided into four phases: ramp-up, flattop, ramp-down, and dwell. Pictorially represented in \cref{fig:circuit_profiles}, these divisions allow a simple scheme for transforming the coupled circuit differential equations -- from \cref{eq:circ1,eq:circ2} -- into simple algebraic formulas. 
+Transformer pulses between the central solenoid and the plasma occur on the timescale of hours. \added{During this time, a plasma is brought up to some quasi-steady-state current ($I_P^*$) for around an hour and then ramped back down using the available flux in the solenoid (measured in volt-seconds).} For clarity, each pulse is subdivided into four phases: ramp-up, flattop, ramp-down, and dwell. Pictorially represented in \cref{fig:circuit_profiles}, these divisions allow a simple scheme for transforming the coupled circuit differential equations -- from \cref{eq:circ1,eq:circ2} -- into simple algebraic formulas. 
 
 Along the way, we will approximate derivatives with linear piecewise functions. Using $t_i$ to represent the initial time and $t_f$ as the final one, these can be written as:
 
@@ -132,6 +134,8 @@ Dwell & $t_3$ & $t_4$ & ${-V}_{max}$ \\
 \hfill
 \hfill
 \end{table}
+
+\added{The exact definitions for the plasma's inductive current ($I_P^*$) and the maximum voltage in the central solenoid ($V_{max}$) will be put off til the end of the section.}
 
 \subsubsection{The Ramp-Up Phase -- RU}
 
@@ -302,7 +306,7 @@ The plasma inductance is a composite of several different terms, but overall sca
 	L_2 = K_{LP} R_0
 \end{equation}
 
-This fixed coefficient -- $K_{LP}$ -- then combines three inductive behaviors of the plasma. The first is its own self inductance (through $l_i$). \cite{jeff} The next is a resistive component through the Ejima coefficient, $C_{ejima}$, which is usually set to $\sim \frac{1}{3}$. \cite{process} And lastly, a geometric component -- involving $\epsilon$ and $\kappa$ -- is given by the Hirshman-Neilson model. \cite{hn85} Mathematically,
+This \replaced{static}{fixed} coefficient -- $K_{LP}$ -- then combines three inductive behaviors of the plasma. The first is its own self inductance (through $l_i$). \cite{jeff} The next is a resistive component through the Ejima coefficient, $C_{ejima}$, which is usually set to $\sim \frac{1}{3}$. \cite{process} And lastly, a geometric component -- involving $\epsilon$ and $\kappa$ -- is given by the Hirshman-Neilson model. \cite{hn85} Mathematically,
 
 \begin{equation}
 	K_{LP} = \mu_0 \cdot \left( \frac{l_i}{2} + C_{ejima} + \frac{ ( b_{HN} - a_{HN} ) \, ( 1 - \epsilon ) }{ ( 1 - \epsilon ) + \kappa \, d_{HN} } \right)
@@ -338,7 +342,7 @@ The value of the coupling coefficient, k, is always less than (or equal to) 1, b
 
 This subsection focuses on a quantitative estimate for how to select a pulse length. As no fusion reactor exists in the world today, the writers believe this is an acceptable calculation. Further, the resulting length of two hours matches the durations of other studies in the literature.
 
-Starting at the end, our goal is to find the pulse length of a tokamak reactor in seconds.  The first piece of information is the expected lifetime of the central solenoid, $ N \approx 10 \ \textnormal{years} $. The next is the desired number of shots the machine will likely have, $ M \approx 50,000 \ \textnormal{shots} $. This gives the ballpark estimate of around 10 pulses a day -- or a pulse length of two hours.
+Starting at the end, our goal is to find the pulse length of a tokamak reactor in seconds.  The first piece of information is the expected lifetime of the central solenoid, $ N \approx 10 \ \textnormal{years} $. The next is the desired number of shots the machine will likely have, $ M \approx 50,000 \ \textnormal{shots} $.\footnote{This 50,000 shots comes from multiplying the number of pulses run at Diii-D per year by the expected lifetime of the central solenoid (10 years).\cite{diiid}} This gives the ballpark estimate of around 10 pulses a day -- or a pulse length of two hours.
 
 With the pulse length defined, we are now in a position to justify neglecting the duty factor for pulsed reactors in this model. Using ballpark reactor values -- while assuming the central solenoid has around 4000 turns -- leads to the following scalings:
 
@@ -421,7 +425,7 @@ Adding the effect of PF coils -- belts of current driving plates on the outer ed
 
 Where again $R_{CS}$ and $d$ are the inner radius and thickness of the central solenoid, respectively. These will be the topic of the next section.
 
-Moving forward, the vertical field -- $B_V$ -- is a magnetic field oriented up-and-down with the ground. It is needed to prevent a tokamak plasma from spinning out of the machine. From the literature, the magnitude of this vertical field is given by: \cite{process}
+Moving forward, the vertical field -- $B_V$ -- is a magnetic field oriented up-and-down with the ground. It is needed to prevent a tokamak plasma from spinning out of the machine. From the literature, the magnitude of this vertical field \added{(valid for a circular plasma)} is given by: \cite{process}
 
 \begin{equation}
   |B_V| = \frac{\mu_0 I_P}{4 \pi R_0} \cdot \left( \,\textnormal{ln} \left(\frac{8}{\epsilon}\right) + \beta_{\,p} + \frac{l_i}{2} - \frac{3}{2} \, \right)
@@ -555,7 +559,7 @@ The thickness of the TF coils -- $c$ -- is a little beyond the scope of this pap
 	G_{CO} = \frac{B_{0}}{ \mu_0 J_{TF} } \cdot \frac{1}{ ( 1 - \epsilon_b )}
 \end{equation}
 
-The critical stress -- $\sigma_{TF}$ in $G_{CI}$ implies it depends on the structural component, whereas the maximum current density -- $J_{TF}$ -- implies a magnetic predisposition in $G_{CO}$. The use of $G_\square$ in these quantities, instead of $K_\square$ is because they include the toroidal magnetic field strength -- $B_0$. For this reason, they are referred to as floating coefficients. Lastly, the term $\epsilon_b$ represents the blanket inverse aspect ratio that combines the minor radius with the blanket thickness:
+The critical stress -- $\sigma_{TF}$ in $G_{CI}$ implies it depends on the structural component, whereas the maximum current density -- $J_{TF}$ -- implies a magnetic predisposition in $G_{CO}$. The use of $G_\square$ in these quantities, instead of $K_\square$ is because they include the toroidal magnetic field strength -- $B_0$. For this reason, they are referred to as \replaced{dynamic}{floating} coefficients. Lastly, the term $\epsilon_b$ represents the blanket inverse aspect ratio that combines the minor radius with the blanket thickness:
 
 \begin{equation}
 	\epsilon_b = \frac{ a + b }{R_0}
@@ -578,7 +582,7 @@ Finishing this discussion where we started, the central solenoid's thickness -- 
 	K_{DO} = \frac{6 B_{CS} \sigma_{CS}}{ 6 \mu_0 \sigma_{CS}  - B_{CS}^2 } \cdot \left( \frac{1}{J_{OH}} \right)
 \end{equation}
 
-Here, the use of $K_\square$ for the coefficients signifies their use as fixed coefficients. Therefore, $B_{CS}$ must be treated as a fixed variable representing the magnetic field strength in the central solenoid. For prospective solenoids using high temperature superconducting (HTS) tape, $B_{CS}$ may be around 20\,T. The values of $\sigma_{CS}$ and $J_{CS}$ have similar meanings to the ones for TF coils. These are collected in a table below with example values representative of our model.
+Here, the use of $K_\square$ for the coefficients signifies their use as \replaced{static}{fixed} coefficients. Therefore, $B_{CS}$ must be treated as a \replaced{static}{fixed} variable representing the magnetic field strength in the central solenoid. For prospective solenoids using high temperature superconducting (HTS) tape, $B_{CS}$ may be around 20\,T. The values of $\sigma_{CS}$ and $J_{CS}$ have similar meanings to the ones for TF coils. These are collected in a table below with example values representative of our model.
 
 \begin{table}[h!]
 \centering	
@@ -611,7 +615,7 @@ TF Coils & $J_{TF}$ & 200 \\
 \hfill
 \end{table}
 
-Before moving on, it seems important to say that although $K_{DI}$ and $K_{DO}$ do not depend on floating variables, $R_{CS}$ most definitely does. This is what makes the central solenoid's thickness difficult.
+Before moving on, it seems important to say that although $K_{DI}$ and $K_{DO}$ do not depend on \replaced{dynamic}{floating} variables, $R_{CS}$ most definitely does. This is what makes the central solenoid's thickness difficult.
 
 \subsection{Revisiting Central Solenoid Dimensions}
 
@@ -659,7 +663,7 @@ The first simplification to make while estimating central solenoid dimensions is
 	\underset{K_{DO} \to 0}{\underset{G_{CO} \to 0}{\lim}} \ R_{CS} = R_{CS}^{\,\dagger} = \frac{ R_0 }{ 1 + K_{DR} } \cdot \left( 1 - \epsilon_b - G_{CI}  \right)
 \end{equation}
 
-The new fixed coefficient, here, is:
+The new \replaced{static}{fixed} coefficient, here, is:
 
 \begin{equation}
 	K_{EK} = \epsilon \cdot \left( \kappa - 1 \right)
@@ -718,7 +722,7 @@ The first step is realizing that the central solenoid flux can now be rewritten 
 	K_{CS} = 2 k B_{CS} \cdot \sqrt{ \frac{ \pi K_{LP} }{ \mu_0 } }
 \end{equation}
 
-Next, we will slightly simplify the PF coil flux using a floating variable coefficient:
+Next, we will slightly simplify the PF coil flux using a \replaced{dynamic}{floating} variable coefficient:
 
 \begin{equation}
 	\Phi_{PF} = G_V \cdot \frac{ K_{VI} I_P + K_{VT} \overline T }{R_0}
@@ -766,7 +770,7 @@ As promised, this will start with the trivial simplification of the generalized 
 
 \subsection{Recovering the Steady Current}
 
-The place to start with the steady current is the floating coefficient, $G_{IP}$:
+The place to start with the steady current is the \replaced{dynamic}{floating} coefficient, $G_{IP}$:
 
 \begin{equation}
 	\tag{\ref{eq:gip}}

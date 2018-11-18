@@ -350,7 +350,7 @@ The first discrepancy is how the PROCESS team defines the loss term in the ELMy 
 
 Unlike the steady-state case, however, the modified power loss term does not fix the pulsed case, as it actually draws the reactor curves further from the design in their paper. As such, it is flux balance that is now the main culprit for discrepencies between the two models. This makes sense, as this model uses highly simplified source terms -- namely neglecting anything but the central solenoid and PF coils (as well as ignoring crucial physics for these two components). Even acknowledging the differences between the two models, Fussy.jl still does remarkably well at reproducing their much more sophisticated coding framework. 
 
-The final point to make is about selecting optimum points to build as the floating variables are allowed to make curves through reactor space. Up to this point, only steady-state tokamak designs have been explored. In every single one of these, though, the paper values have been very close to the point where the beta curves and wall loading curves cross. This is because they all result in the minimum cost-per-watt. 
+The final point to make is about selecting optimum points to build as the \replaced{dynamic}{floating} variables are allowed to make curves through reactor space. Up to this point, only steady-state tokamak designs have been explored. In every single one of these, though, the paper values have been very close to the point where the beta curves and wall loading curves cross. This is because they all result in the minimum cost-per-watt. 
 
 For pulsed designs, on the other hand, kink curves start to appear for low magnetic field strengths. Just as beta-wall intersections were optimum places to design for low cost-per-watt ($C_W$) reactors, these beta-kink intersections will prove to be the place where minimum capital cost ($W_M$) reactors usually occur.
 
@@ -532,7 +532,7 @@ $\eta_{CD}$      & 0.2721           & -
 
 Now that the model used in Fussy.jl has been tested against other fusion systems codes in the field, we will develop our own prototype reactors. Because this paper is about making a levelized comparison of pulsed and steady-state tokamaks, we will develop middle-of-the-road reactors that only differ by operating mode. 
 
-The steady-state prototype, Charybdis, is the obvious choice to start with -- as the model was tested against four of these typed reactors. It was also pointed out that the model did remarkably well when recreating ARC. As the authors share many of the ARC team's philosophies, Charybdis uses fixed parameters very similar to them.
+The steady-state prototype, Charybdis, is the obvious choice to start with -- as the model was tested against four of these typed reactors. It was also pointed out that the model did remarkably well when recreating ARC. As the authors share many of the ARC team's philosophies, Charybdis uses \replaced{static}{fixed} parameters very similar to them.
 
 Next, although led to believe Charybdis' pulsed twin reactor -- Proteus -- would be created by a simple flip of the switch, it was a slight oversimplification. The first difference is that the pulsed twin, Proteus, is assumed to be purely pulsed: $\eta_{CD} = 0$. Further, the bootstrap current is much less important than it was for steady-state tokamaks. This corresponds to a current profile peaked at the origin -- i.e. a parabola. Numerically, this is done by raising $l_i$ from around 5.5 to 6.
 
@@ -731,7 +731,7 @@ Now that the model has been properly vetted and prototypes designed, we can expl
 
 \subsection{Picking a Design Point}
 
-With more than twenty design parameters, finding the most efficient reactor is a fool's errand. Intuition building aside, finding good reactors becomes much more feasible when only focusing on floating variables -- i.e. when keeping fixed variables constant. This method, for example, is how all the $R_0$ -- $B_0$ curves have been produced this chapter. Once these curves are produced, it is up to the user to choose which reactor on them to build. However, the guiding metric usually involves lowering some cost, either: capital cost or cost-per-watt.
+With more than twenty design parameters, finding the most efficient reactor is a fool's errand. Intuition building aside, finding good reactors becomes much more feasible when only focusing on \replaced{dynamic}{floating} variables -- i.e. when keeping \replaced{static}{fixed} variables constant. This method, for example, is how all the $R_0$ -- $B_0$ curves have been produced this chapter. Once these curves are produced, it is up to the user to choose which reactor on them to build. However, the guiding metric usually involves lowering some cost, either: capital cost or cost-per-watt.
 
 Regardless of reactor type, most efficient tokamaks operate near the beta limit -- where plasma pressure is greatest. Besides being a regime highly sensitive to magnetic field strength, the beta limit is a constraint that occurs on every reactor (seen by the authors). This beta limit is usually nested between the kink limit to lower $B_0$ values and wall loading to higher ones. Understanding these regimes is the first step towards building an intuition favoring efficient machines -- see \cref{fig:limit_regimes}.
 
@@ -938,7 +938,7 @@ Rehashing this section, HTS tape is the best way to lower the cost of fusion rea
 
 \subsection{Looking at Design Alternatives}
 
-Even in this relatively simple fusion model, there are more than twenty fixed/input variable knobs a designer can tune to improve reactor feasibility. Many have practical limits, such as being physically realizable or fitting within the ELMy H-Mode database. Thus, the goal of this subsection is to investigate some of the more interesting results. Although many more plots are available in the appendix.
+Even in this relatively simple fusion model, there are more than twenty \replaced{static}{fixed}/input variable knobs a designer can tune to improve reactor feasibility. Many have practical limits, such as being physically realizable or fitting within the ELMy H-Mode database. Thus, the goal of this subsection is to investigate some of the more interesting results. Although many more plots are available in the appendix.
 
 \subsubsection{Capitalizing the Bootstrap Current}
 

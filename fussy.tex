@@ -53,7 +53,7 @@ Sensitivity studies are how computationalists test the effect of changing a vari
 
 \subsubsection{The Sampling Structure}
 
-The Sampling struct was created to do simple Monte Carlo runs over a reactor's fixed values. While sensitivities only allow one variable to change at a time, samplings randomly assign a list of variables to some neighborhood of possible values. These are how the scatter plots are made. Succinctly, where sensitivity studies show local changes to variables, Monte Carlo samplings show global trends in reactor design.
+The Sampling struct was created to do simple Monte Carlo runs over a reactor's \replaced{static}{fixed} values. While sensitivities only allow one variable to change at a time, samplings randomly assign a list of variables to some neighborhood of possible values. These are how the scatter plots are made. Succinctly, where sensitivity studies show local changes to variables, Monte Carlo samplings show global trends in reactor design.
 
 \subsubsection{The Equation Structure}
 
@@ -72,7 +72,7 @@ The step up from the Equation struct are the Equation Sets. These collections of
 
 \subsection{Referencing Input Decks and Solutions}
 
-With more than twenty fixed variables in the model, the range of tokamak reactors is basically infinite. To help users build a net of designs to explore reactor space are seven input decks. These are the ones given in the results: Arc, Act I /II, Demo Steady/Pulsed, Proteus and Charybdis. Coupled with the non-prototype reactors are solution reactors that store various quantities from the original papers (e.g. $P_F$, $f_{BS}$, $R_0$). These are how the comparison tables were constructed.
+With more than twenty \replaced{static}{fixed} variables in the model, the range of tokamak reactors is basically infinite. To help users build a net of designs to explore reactor space are seven input decks. These are the ones given in the results: Arc, Act I /II, Demo Steady/Pulsed, Proteus and Charybdis. Coupled with the non-prototype reactors are solution reactors that store various quantities from the original papers (e.g. $P_F$, $f_{BS}$, $R_0$). These are how the comparison tables were constructed.
 
 \subsection{Acknowledging Utility Functions}
 
@@ -94,11 +94,11 @@ The reactor is the most atomic data structure in this model. It therefore makes 
 
 \subsubsection{Calculations}
 
-The calculation subdirectory of reactor methods are used to set various important values in the solver. For floating variables, these include: $\overline n$, $R_0$, $B_0$, and $I_P$. This folder also includes the calculation of the Bosch-Hale reactivity and the Ehst-Karney current drive efficiency. 
+The calculation subdirectory of reactor methods are used to set various important values in the solver. For \replaced{dynamic}{floating} variables, these include: $\overline n$, $R_0$, $B_0$, and $I_P$. This folder also includes the calculation of the Bosch-Hale reactivity and the Ehst-Karney current drive efficiency. 
 
 \subsubsection{Coefficients and Composites}
 
-The coefficients and composites directories correspond to the model's fixed and floating coefficients, respectively. For clarity, fixed coefficients, including $K_n$ and $K_{CD}$, were labeled with a K. Whereas, floating coefficients then started with G's -- i.e. $G_{PB}$ and $G_V$.
+The coefficients and composites directories correspond to the model's \replaced{static}{fixed} and \replaced{dynamic}{floating} coefficients, respectively. For clarity, \replaced{static}{fixed} coefficients, including $K_n$ and $K_{CD}$, were labeled with a K. Whereas, \replaced{dynamic}{floating} coefficients then started with G's -- i.e. $G_{PB}$ and $G_V$.
 
 \subsubsection{Fluxes and Powers}
 
