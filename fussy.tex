@@ -20,10 +20,12 @@ Currently the Fussy.jl codebase is written using \texttt{v0.6}, but should be \t
 
 Once the Fussy.jl package has been cloned into your Julia package library, you should be able to access it through the Julia REPL or a Jupyter notebook. You can now reproduce every plot in this text. A quick test to see if your code works is: \\
 
+\begin{addmargin}[1.5em]{1.5em}
 \texttt{using Fussy \\
 cur\_reactor = Reactor(15) \\ \\
 @assert cur\_reactor.T\_bar == 15
 }
+\end{addmargin}
 
 \section{Sorting out the Codebase}
 
@@ -116,4 +118,169 @@ Additionally, there are many geometric relations. These include the various toka
 
 The final set of reactor methods are formulas that do not really fit anywhere else. If a method is not related to geometry, power, calculations, etc, it ends up here. For example, this group includes: $\beta_N$, $f_{BS}$, $C_W$, and $\tau_E$. Total, there are around 25 formulas -- as of the writing of this document.
 
-At this point, you should now be an expert Fussy.jl user. Good luck!
+\section{Demonstrating Code Usage}
+
+Now that the Fussy.jl package has been described in detail, the final step is showing a simple example that can recreate a figure from the results chapter. This will closely match the Jupyter notebook available at:
+
+{\centering \href{https://git.io/fussy_sensitivity}{www.git.io/fussy\_sensitivity} \par }
+
+Our goal will be to make a cost curve for the ARC reactor as a function of H -- a so called sensitivity study plot.
+
+\subsection{Initializing the Workspace}
+
+The first step for any Fussy.jl Jupyter notebook is loading the required packages -- i.e. the Fussy.jl and Plots.jl packages. This can be done using the following commands:\footnote{The \texttt{addprocs} and \texttt{@everywhere} commands are to parallelize the code. This is because \texttt{addprocs(6)} activates 6 worker processes and \texttt{@everywhere Fussy.jl} adds Fussy.jl to the main kernel and worker processes.}
+
+\begin{addmargin}[1.5em]{1.5em}
+\texttt{addprocs(6) \\ ~ \\
+@everywhere using Fussy \\
+using Plots
+}
+\end{addmargin}
+
+The Plots.jl package may take a minute to load -- similar to Matlab's initial boot time. If the kernel raises an error about Plots.jl not being installed, use the following lines:
+
+\begin{addmargin}[1.5em]{1.5em}
+\texttt{import Pkg \\
+Pkg.add("Plots")
+}
+\end{addmargin}
+
+\subsection{Running a Study}
+
+Now that the necessary packages have been loaded, we can move on to actually running the sensitivity study. We will split this command into two steps to make it more explicit. 
+
+The first step will be making several variables that store: boolean flags, numbers, and symbols -- which are like strings, but prefaced with a colon (\texttt{:}) instead of surrounded by double quotes (\texttt{"}). 
+
+\begin{addmargin}[1.5em]{1.5em}
+\texttt{cur\_param = :H \\
+cur\_deck = :arc \\
+is\_pulsed = false \\
+is\_consistent = true \\
+cur\_sensitivity = 1.0 \\
+cur\_num\_points = 41
+}
+\end{addmargin}
+
+These six variables almost completely describe a sensitivity study. The first two saw we are using the Arc reactor deck and running a sensitivity over the H-factor parameter. Next, the two boolean values refer to the reactor (1) being treated as pulsed or steady-state and (2) wether to handle $\eta_{CD}$ self-consistently.\footnote{Note that, currently, a pulsed reactor cannot be self-consistent in $\eta_{CD}$ -- it therefore causes an error.} Ergo, what these two flags do is make sure ARC is being handled as a steady-state reactor with a self-consistent $\eta_{CD}$. The last two variables are then ways to change the sensitivity of the study (with $1.0 \rightarrow 100\%$) and the number of reactors it will produce (i.e. 41).
+
+Now all six of these variables can be piped into a call to the \texttt{Study} struct to start running the sensitivity study:
+
+\begin{addmargin}[1.5em]{1.5em}
+\texttt{cur\_study = Study( \\
+\-\ \-\ cur\_param, \\
+\-\ \-\ deck = cur\_deck, \\
+\-\ \-\ is\_pulsed = is\_pulsed, \\
+\-\ \-\ is\_consistent = is\_consistent, \\
+\-\ \-\ sensitivity = cur\_sensitivity, \\
+\-\ \-\ num\_points = cur\_num\_points \\
+)
+}
+\end{addmargin}
+
+Note here that the equal signs inside the parentheses are called keyword arguments, which are common to most modern programming languages. After executing the command, the code will need to run for a few minutes.
+
+\subsection{Extracting Results}
+
+At this point, a user should have a completed sensitivity study they wish to plot. To make the plot useful, the study data structure first has to be unpacked and its contents cleaned. This is the goal of this subsection.
+
+First and foremost, a study has four families of reactors within it: beta-wall (i.e. "wall"), beta-kink (i.e. "kink"), minimum capital cost (i.e. "W\_M"), and minimum cost-per-watt (i.e. "cost"). Therefore, we will extract these reactor lists into a new dictionary data structure:
+
+\begin{addmargin}[1.5em]{1.5em}
+\texttt{cur\_dict = Dict() \\ ~ \\
+cur\_dict["Beta-Wall"] = cur\_study.wall\_reactors \\
+cur\_dict["Beta-Kink"] = cur\_study.kink\_reactors \\ ~ \\
+cur\_dict["Min Cost per Watt"] = cur\_study.cost\_reactors \\
+cur\_dict["Min Capital Cost"] = cur\_study.W\_M\_reactors
+}
+\end{addmargin}
+
+Next, we will want to filter out all the invalid reactors that constitute non-physically realizable ones. These would likely be reactors that could fit in your hand or take up a whole city block.
+
+\begin{addmargin}[1.5em]{1.5em}
+\texttt{for (cur\_key, cur\_value) in cur\_dict \\
+\-\ \-\ cur\_dict[cur\_key] = filter( \\
+\-\ \-\ \-\ \-\ cur\_reactor -> cur\_reactor.is\_valid, \\
+\-\ \-\ \-\ \-\ deepcopy(cur\_value) \\
+\-\ \-\ ) \\
+end
+}
+\end{addmargin}
+
+\subsection{Plotting Curves}
+
+Our goal is now to turn our unpacked, clean reactor lists into plots -- i.e. measuring costs-per-watt as a function of H. For simplicity, this will lack a lot of the features shown in the Jupyter notebook from the beginning of the section. Additionally, we will be doing it in an iterative process made possible by the Plots.jl framework.
+
+The first step is simply making a plot object
+
+\begin{addmargin}[1.5em]{1.5em}
+\texttt{cur\_plot = plot()}
+\end{addmargin}
+
+After execution, this should produce the plank 2-D plot shown in \cref{fig:example_1}.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\textwidth]{images/example_1}
+	\caption{A Blank Plot} ~\\
+	\small A simple 2-D plot with no labels or data. 
+	\label{fig:example_1}
+\end{figure}
+
+Next we will add a simple title and labels for the axes:
+
+\begin{addmargin}[1.5em]{1.5em}
+\texttt{title!("Arc") \\ ~ \\
+xlabel!("H") \\
+ylabel!("Cost")
+}
+\end{addmargin}
+
+The exclamation marks ensure this title and the labels are added to the \texttt{cur\_plot}. Upon execution, you should see a plot with this information (\cref{fig:example_2}).
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\textwidth]{images/example_2}
+	\caption{An Empty Plot} ~\\
+	\small A simple 2-D plot with labels, but no data. 
+	\label{fig:example_2}
+\end{figure}
+
+Now we will loop over the dictionary of reactors and add them one at a time.
+
+\begin{addmargin}[1.5em]{1.5em}
+\texttt{for (cur\_key, cur\_value) in cur\_dict \\
+\-\ \-\ cur\_x = map(cur\_reactor -> cur\_reactor.H, cur\_value) \\
+\-\ \-\ cur\_y = map(cur\_reactor -> cur\_reactor.cost, cur\_value) \\
+\-\ \-\ plot!(cur\_x, cur\_y, label=cur\_key) \\
+end \\
+plot!()
+}
+\end{addmargin}
+
+This results in the not very useful plot shown in \cref{fig:example_3}. Note that each label is exactly the key assigned to it in \texttt{cur\_dict}.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\textwidth]{images/example_3}
+	\caption{An Unscaled Plot} ~\\
+	\small A simple 2-D plot with Bad Limits. 
+	\label{fig:example_3}
+\end{figure}
+
+The final step is adding proper limits to make what is going on obvious to the reader:
+
+\begin{addmargin}[1.5em]{1.5em}
+\texttt{ylims!(0, 0.03)}
+\end{addmargin}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\textwidth]{images/example_4}
+	\caption{A Scaled Plot} ~\\
+	\small An example plot showing cost as a function of the H factor. 
+	\label{fig:example_4}
+\end{figure}
+
+The addition of which can be seen in \cref{fig:example_4}.
+
+This completes the example. At this point, you should now be able to use every feature of Fussy.jl. Good luck!

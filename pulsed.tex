@@ -135,7 +135,7 @@ Dwell & $t_3$ & $t_4$ & ${-V}_{max}$ \\
 \hfill
 \end{table}
 
-\added{The exact definitions for the plasma's inductive current ($I_P^*$) and the maximum voltage in the central solenoid ($V_{max}$) will be put off til the end of the section.}
+\added{The exact definitions for the plasma's inductive current ($I_P^*$) and the maximum voltage in the central solenoid ($V_{max}$) will be put off until the end of the section.}
 
 \subsubsection{The Ramp-Up Phase -- RU}
 
@@ -146,7 +146,7 @@ The first phase in every plasma pulse is the ramp-up. During ramp-up, the centra
 	0 = \frac{1}{\tau_{RU}} \cdot \left( M \cdot ( I_{max} - \tilde I ) - L_2 \cdot I_{ID} \right)
 \end{align}
 
-Simplifying these equations will be done shortly, for now the new terms are what is important. The maximum voltage of the solenoid is $V_{max}$. Next, $I_{max}$ is the solenoid's current at the beginning of ramp-up. Whereas $\tilde I$ is the magnitude of the current once the plasma is at its flattop inductive-drive current -- $I_{ID}$. The $\tau_{RU}$ quantity, then, is the duration of time it takes to ramp-up (i.e. RU). Again, $L_1$ and $L_2$ are the internal inductances of the solenoid and plasma, respectively, and M is the mutual inductance between them.
+Simplifying these equations will be done shortly, for now the new terms are what is important. The maximum voltage of the solenoid is $V_{max}$ \added{-- usually measured in kilovolts}. Next, $I_{max}$ is the solenoid's current at the beginning of ramp-up. Whereas $\tilde I$ is the magnitude of the current once the plasma is at its flattop inductive-drive current -- $I_{ID}$. The $\tau_{RU}$ quantity, then, is the duration of time it takes to ramp-up (i.e. RU). Again, $L_1$ and $L_2$ are the \added{microhenry-scale} internal inductances of the solenoid and plasma, respectively, and M is the mutual inductance between them.
 
 The last step in discussing ramp-up is giving the two important formulas that come from it:
 
@@ -336,15 +336,15 @@ The mutual inductance -- M -- represents the coupling between the solenoid prima
 
 The value of the coupling coefficient, k, is always less than (or equal to) 1, but usually has a value around one-third. With all the equations defined, we are now at a position to explain one of the larger nuances of this fusion systems framework: declaring the pulse length of a tokamak.
 
-\subsection{Reasoning the Pulse Length}
+\subsection{\replaced{Constructing}{Reasoning} the Pulse Length}
 
 \label{section:pulse}
 
 This subsection focuses on a quantitative estimate for how to select a pulse length. As no fusion reactor exists in the world today, the writers believe this is an acceptable calculation. Further, the resulting length of two hours matches the durations of other studies in the literature.
 
-Starting at the end, our goal is to find the pulse length of a tokamak reactor in seconds.  The first piece of information is the expected lifetime of the central solenoid, $ N \approx 10 \ \textnormal{years} $. The next is the desired number of shots the machine will likely have, $ M \approx 50,000 \ \textnormal{shots} $.\footnote{This 50,000 shots comes from multiplying the number of pulses run at Diii-D per year by the expected lifetime of the central solenoid (10 years).\cite{diiid}} This gives the ballpark estimate of around 10 pulses a day -- or a pulse length of two hours.
+Starting at the end, our goal is to find the pulse length of a tokamak reactor in seconds \added{-- as dictated by cyclical stress concerns}.  The first piece of information is the expected lifetime of the central solenoid, $ N \approx 10 \ \textnormal{years} $. The next is the desired number of shots the machine will likely have, $ M \approx 50,000 \ \textnormal{shots} $.\footnote{This 50,000 shots comes from multiplying the number of pulses run at Diii-D per year by the expected lifetime of the central solenoid (10 years).\cite{diiid}} This gives the ballpark estimate of around 10 pulses a day -- or a \added{flattop} pulse length of two hours.
 
-With the pulse length defined, we are now in a position to justify neglecting the duty factor for pulsed reactors in this model. Using ballpark reactor values -- while assuming the central solenoid has around 4000 turns -- leads to the following scalings:
+With the pulse length defined, we are now in a position to justify neglecting the duty factor for pulsed reactors in this model. Using \replaced{expected}{ballpark} reactor values -- while assuming the central solenoid has around 4000 turns -- leads to the following scalings:
 
 \begin{equation}
 	\tau_{FT} \sim \tau_{pulse} \sim \textnormal{O(hours)}
@@ -362,7 +362,7 @@ As such, even pulsed tokamak reactors should have a duty factor of around unity:
 
 Now that all the terms in a pulsed circuit have been explored, we will move on to rearranging the flattop equation to reproduce flux balance. This will then naturally lead to a generalized current equation -- which is the main result of the chapter.
 
-\section{Salvaging Flux Balance}
+\section{\replaced{Producing}{Salvaging} Flux Balance}
 
 The goal of this section is to arrive at a conservation equation for flux balance that mirrors the ones in the literature. The fusion systems model this one attempts to follow most is the PROCESS code.\cite{process} In a manner similar to power balance, flux balance can be written as:
 
@@ -412,11 +412,11 @@ With the ramp-up and flattop flux given respectively by:
 	\Phi_{FT} = ( R_P \tau_{FT} ) \cdot I_{ID}
 \end{equation}
 
-On comparing these quantities to the ones from the PROCESS team, $\Phi_{RU}$ and $\Phi_{FT}$ are exactly the same. The source terms, on the other hand, are off for two reasons -- both related to the central solenoid being the only source term in flux balance. This can partially be remedied by adding the second most dominant source of flux a posteriori -- i.e. the PF coils. The second, and inherently limiting factor, is the simplicity of the current model. All that can be shown to this regard is that the $\Phi_{CS}$ terms does reasonably predict the values from PROCESS.
+On comparing these quantities to the ones from the PROCESS team, $\Phi_{RU}$ and $\Phi_{FT}$ are exactly the same. The source terms, on the other hand, are off for two reasons -- both related to the central solenoid being the only source term in flux balance. This can partially be remedied by adding the second most dominant source of flux a posteriori -- i.e. the PF coils. The second, and inherently limiting factor, is the simplicity of the current model. All that can be shown to this regard is that the $\Phi_{CS}$ terms does reasonably predict the values from \added{the} PROCESS \added{code}.
 
-\subsection{Importing Poloidal Field Coils}
+\subsection{\replaced{Adding}{Importing} Poloidal Field Coils}
 
-Adding the effect of PF coils -- belts of current driving plates on the outer edges of the tokamak -- leads to a second-order improvement over relying solely on the central solenoid for flux generation. From the literature, this can be modeled as: \cite{hartmann}
+Adding the effect of PF coils -- belts of current driving plates on the outer edges of the tokamak -- leads to \replaced{as much as a 50\% improvement\cite{process,inputfile}}{a second-order improvement} over relying solely on the central solenoid for flux generation. From the literature, this can be modeled as: \cite{hartmann}
 
 \begin{equation}
 	\label{eq:phipf}
@@ -425,7 +425,7 @@ Adding the effect of PF coils -- belts of current driving plates on the outer ed
 
 Where again $R_{CS}$ and $d$ are the inner radius and thickness of the central solenoid, respectively. These will be the topic of the next section.
 
-Moving forward, the vertical field -- $B_V$ -- is a magnetic field oriented up-and-down with the ground. It is needed to prevent a tokamak plasma from spinning out of the machine. From the literature, the magnitude of this vertical field \added{(valid for a circular plasma)} is given by: \cite{process}
+Moving forward, the vertical field -- $B_V$ -- is a magnetic field oriented up-and-down with the ground. It is needed to prevent a tokamak plasma from \replaced{drifting radially}{spinning} out of the machine. From the literature, the magnitude of this vertical field \added{(valid for a circular plasma)} is given by: \cite{process}
 
 \begin{equation}
   |B_V| = \frac{\mu_0 I_P}{4 \pi R_0} \cdot \left( \,\textnormal{ln} \left(\frac{8}{\epsilon}\right) + \beta_{\,p} + \frac{l_i}{2} - \frac{3}{2} \, \right)
@@ -455,7 +455,7 @@ Here, $g_p$ is another geometric scaling factor,
   g_p = \frac{1 + \kappa^2 ( 1 + 2 \delta^2 - 1.2\delta^3 )}{2} 
 \end{equation}
 
-Boiled down, this relation for the magnitude of the vertical magnetic field can be written in standardized units as:
+\replaced{After a few lines of algebra}{Boiled down}, this relation for the magnitude of the vertical magnetic field can be written in standardized units as:
 
 \begin{equation}
 	|B_V| = \left( \frac{ 1 }{ 10 \cdot R_0} \right) \cdot \left( K_{VI} I_P +  K_{VT\,} \overline{T}  \right)
@@ -493,7 +493,7 @@ From before, this fusion systems model has been said to depend on the major and 
 
 \subsection{Defining Central Solenoid Dimensions}
 
-The best way to conceptualize tokamak geometry is through cartoon -- see \cref{fig:dims}. What this says is there is a gap at the very center of a tokamak. This gap extends radially outwards to $R_{CS}$ meters where the slinky-shaped central solenoid -- of thickness $d$ -- begins. Between the outer edge of the solenoid and the wall of the torus (i.e. the doughnut) are the blanket and toroidal field (TF) coils.
+The best way to conceptualize tokamak geometry is through cartoon -- see \cref{fig:dims}. What this says is there is a gap at the very center of a tokamak. This gap extends radially outwards to $R_{CS}$ meters where the \replaced{spiraled}{slinky-shaped} central solenoid -- of thickness $d$ -- begins. Between the outer edge of the solenoid and the wall of the torus (i.e. the doughnut) are the blanket and toroidal field (TF) coils.
 
 \begin{figure*}
 \centering
@@ -516,7 +516,7 @@ The blanket and TF coils have thicknesses of $b$ and $c$, respectively. Before d
 
 Again, this relation is pictorially represented in \cref{fig:dims}. The next step is defining: $b$, $c$, and $d$ -- to close the variable loop.
 
-\subsection{Measuring Component Thicknesses}
+\subsection{\replaced{Calculating}{Measuring} Component Thicknesses}
  
 In between the inner surface of the central solenoid and the major radius of the tokamak are four thicknesses: $a$, $b$, $c$, and $d$. This subsection will go over them one-by-one.
  
@@ -531,20 +531,20 @@ The minor radius was the first of these thicknesses we encountered. To calculate
  
 \subsubsection{The Blanket Thickness -- $b$}
 
-The blanket is an area between the TF coils and the torus that is strongly composed of lithium. It serves to both: protect the superconducting magnet structures from neutron damage, as well as breed a little more tritium fuel from stray fusion neutrons. In equation form, the blanket thickness is given by: \cite{minervini}
+The blanket is an area between the TF coils and the torus that is \deleted{strongly} composed \added{mainly} of lithium. It serves to both: protect the superconducting magnet structures from neutron damage, as well as breed \deleted{a little} more tritium fuel from stray fusion neutrons. In equation form, the blanket thickness is given by: \cite{minervini}
 
 \begin{equation}
 	\label{eq:bb}
 	b = 1.23 + 0.074 \ \textnormal{ln} \, P_W
 \end{equation}
 
-Here, the constant term (i.e. 1.23) is approximately the mean-free-path of fusion neutrons through lithium-7 -- the thickness of lithium needed to reduce the population of neutrons by $\sim 65\%$. While the second term, which includes $P_W$, is a correction to account for extra wall loading (as discussed in the secondary constraint section). 
+\deleted{Here, the constant term (i.e. 1.23) is approximately the mean-free-path of fusion neutrons through lithium-7 -- the thickness of lithium needed to reduce the population of neutrons by $\sim 65\%$.} \replaced{Here, $P_W$}{While the second term, which includes $P_W$,} is a correction to account for extra wall loading (as discussed in \replaced{\cref{subsection:wall_loading}}{the secondary constraint section}). 
 
 Moving forward, the remaining two thicknesses -- $c$ and $d$ -- are handled differently, estimating structural steel portions as well as magnetic current-carrying ones.
 
 \subsubsection{The Toroidal Field Coil Thickness -- $c$}
 
-The thickness of the TF coils -- $c$ -- is a little beyond the scope of this paper. It does, however, have a form that combines a structural steel component with a magnetic portion. From one of Jeff's previous models, this can be given as: \cite{minervini}
+The thickness of the TF coils -- $c$ -- is a little beyond the scope of this paper. It does, however, have a form that combines a structural steel component with a magnetic portion. From \replaced{a previous model}{one of Jeff's previous models}, this can be given as: \cite{minervini}
 
 \begin{equation}
 	\label{eq:cc}
@@ -794,7 +794,7 @@ This is precisely the steady current given by \cref{eq:steady}! The generalized 
 
 \subsection{Extracting the Pulsed Current}
 
-For pulsed reactors, we have to play a similar game -- except now $\tau_{FT}$ is expected to be a reasonably sized number (i.e. 2 hours).
+For pulsed reactors, we have to \replaced{resolve a similar problem}{play a similar game} -- except now $\tau_{FT}$ is expected to be a reasonably sized number (i.e. 2 hours).
 
 With an aim at intuition, the reactor is first treated as purely pulsed -- having no current drive assistance:
 
