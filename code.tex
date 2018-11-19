@@ -20,6 +20,8 @@
 
 \chapter{Completing the Systems Model}
 
+\label{chapter:complete}
+
 As opposed to previous chapters, this one will focus on the numerics behind the fusion systems model. This will then naturally segue into a discussion of how plots are made and should be interpreted. The remaining chapters will then decouple the dissemination of results from their analytic conclusions.
 
 \section{Describing a Simple Algebra}
@@ -93,7 +95,7 @@ Cost per Watt ($C_W$) & I & $ (C_W)_{const} \cdot \left( \sfrac{ K_F K_n ^ 2 ( \
 
 \subsection{Rehashing the Limits}
 
-The limits category is simply a rebranding of the secondary constraints given previously. These include the physics derived limits from MHD theory -- i.e. the beta limit ($\beta_N$) and the kink safety factor ($q_{95}$) -- which for clarity, set maximums on the allowed plasma pressure and velocity, respectively. Additionally, there were several engineering limits also described: wall loading, heat loading, and maximum power capacity. For this paper, wall loading from neutrons ($P_W$) is assumed to be important, whereas the other two engineering limits are not allowed to explicitly guide designs.
+The limits category is simply \replaced{limiting constraints given in \cref{chapter:model}.}{a rebranding of the secondary constraints given previously.} These include the physics derived limits from MHD theory -- i.e. the beta limit ($\beta_N$) and the kink safety factor ($q_{95}$) -- which for clarity, set maximums on the allowed plasma pressure and velocity, respectively. Additionally, there were several engineering limits also described: wall loading, heat loading, and maximum power capacity. For this paper, wall loading from neutrons ($P_W$) is assumed to be important, whereas the other two engineering limits are not allowed to explicitly guide designs.
 
 Combined all these limits, as well as the yet to be defined \replaced{dynamic}{float} and \replaced{intermediate}{derived} equations, are given in \cref{table:eq}. These share a remarkably similar form to power balance when put into a generalized, separable state. This hints at why the major radius ($R_0$), the toroidal field strength ($B_0$), and the plasma current ($I_P$) can easily be separated and substituted out of the current balance equation.
 
