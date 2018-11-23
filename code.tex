@@ -22,41 +22,32 @@
 
 \label{chapter:complete}
 
-As opposed to previous chapters, this one will focus on the numerics behind the fusion systems model. This will then naturally segue into a discussion of how plots are made and should be interpreted. The remaining chapters will then decouple the dissemination of results from their analytic conclusions.
+As opposed to previous chapters, this one will focus on the numerics behind the fusion systems model.  \added{A simple algebra will lead to a generalized solver for exploring reactor space for low cost and interesting machines.} This will then naturally segue into a discussion of how plots are made and should be interpreted. The remaining chapters will then decouple the presentation of results from their analytic conclusions. 
 
 \section{Describing a Simple Algebra}
 
-Boiled down, the systems model used here is a simple algebra problem -- given five equations, solve for five unknowns. The goal is then to pick the five equations that best represent modern fusion reactor design. This selection should also be done in such a way that actually reduces the system of equations to a simple univariate root solving equation (i.e. one equation with one unknown). As will be shown in the results, this model does remarkably well: matching year-long modeling campaigns in seconds.
+\replaced{In essence,}{Boiled down,} the systems model used here is a simple algebra problem -- given five equations, solve for five unknowns. The goal is then to pick the five equations that best represent modern fusion reactor design. This selection should also be done in such a way that actually reduces the system of equations to a simple univariate root solving equation (i.e. one equation with one unknown). As will be shown in the results, this model does \replaced{reasonably}{remarkably} well: matching year-long modeling campaigns in seconds.
 
 The logical place to start in a discussion of this algebra problem is with the three equations fundamental to all reactor-grade tokamaks -- both in steady-state and pulsed operation. These are: the Greenwald density limit, power balance, and current balance. The Greenwald density's importance was hinted early on when it was used to simplify every equation derived thereafter. 
-
 \begin{equation}
 	\tag{\ref{eq:greenwald}}
 	\overline n = K_n \cdot \frac{I_P}{R_0^2}
 \end{equation}
-
-The two balance equations prove slightly more dubious. As was shown previously, current balance -- the stability requirement for tokamaks -- was most peculiar. It brought forth the notion of self-consistency for steady-state machines and a highly-coupled multi-root equation for pulsed ones. As such, this equation stands as the one everything else will be substituted into to setup for a univariate root solve.
-
+The two balance equations \replaced{proved to be}{prove} slightly more \replaced{complicated.}{dubious.} As was \replaced{shown,}{shown previously,} current balance \deleted{-- the stability requirement for tokamaks --} was \replaced{the more difficult of the two -- bringing}{most peculiar. It brought} forth the notion of self-consistency for steady-state machines and a highly-coupled multi-root equation for pulsed ones. As such, \replaced{current balance}{this equation} stands as the \replaced{equation}{one} everything \replaced{is substituted}{else will be substituted} into to \replaced{do a final}{setup for a} univariate root solve.
 \begin{equation}
 	\tag{\ref{eq:gen_ip}}
 	I_P = \frac{ \left( K_{BS} + \sfrac{ G_{IU} }{ G_{IP} } \right) \cdot \overline T }{ 1 - K_{CD} ( \sigma v ) - \sfrac{ G_{ID} }{ G_{IP} } }
 \end{equation}
-
-Although slightly buried in \cref{eq:gen_ip}, the right-hand side actually depends on all the quantities (including $I_P$ through the blanket thickness). Through equation,
-
+Although slightly buried in \cref{eq:gen_ip}, the right-hand side actually depends on all the quantities (including $I_P$ through the \added{wall loading term in} blanket thickness). Through equation,
 \begin{equation}
 	I_P = f(I_P, \overline T, R_0, B_0)
 \end{equation}
-
-The remaining equation common to all reactor-grade tokamaks is power balance -- the relation that separates power plants from toasters. Due to the use of the ELMy H-Mode scaling law for modeling the diffusion coefficient, this had the complicated form of:
-
+The remaining equation common to all reactor-grade tokamaks is power balance -- the relation that \replaced{quantifies its net electricity production capabilities.}{separates power plants from toasters.} Due to the use of the ELMy H-Mode scaling law for modeling the diffusion coefficient, this had the complicated form of:
 \begin{equation}
-	\tag{\ref{eq:freidberg}}
+	\label{eq:freidberg}
 	R_0^{ \alpha_R^* } \cdot B_0^{\,\alpha_B} \cdot I_P^{\,\alpha_I^*} = \frac{ G_{PB} }{ K_{PB} }
 \end{equation}
-
 Although being rather cumbersome, this equation actually remains relatively simple in that all three quantities on the left-hand side are separable. To close the system, two more equations of this form are needed. These have the following form and will be described next.
-
 \begin{equation}
 	\label{eq:rbi}
 	R_0^{\, \gamma_R} \cdot B_0^{\, \gamma_B} \cdot I_P^{\, \gamma_I} = G( \overline T )
@@ -64,16 +55,16 @@ Although being rather cumbersome, this equation actually remains relatively simp
 
 \section{Generalizing Previous Equations}
 
-Where the equations defined up to this point in the chapter are shared among all fusion reactors, the remaining two equations -- needed to close the system -- must be chosen by the user. These user-supplied equations come in three flavors: limits, \replaced{intermediate}{derived} quantities, and \replaced{dynamic}{floating} variables. By convention, we enforce that at least one limit must be used. The other constraint can then come from any of the three defined collections, which we will refer to as the closure equation.
+Where the equations defined up to this point in the chapter are shared among all fusion reactors, the remaining two equations -- needed to close the system -- must be \added{partially} chosen by the user. These \deleted{user-supplied} equations come in three \replaced{varieties:}{flavors:} limits, \replaced{intermediate}{derived} quantities, and \replaced{dynamic}{floating} variables. By convention, we enforce that at least one limit must be used. The other constraint can then come from any of the three defined collections, which we will refer to as the closure equation.
 
-\begin{table}[hb]
+\begin{table}[hb!]
 \caption[Main Equation Bank]{Main Equation Bank \\ \small To close the system of equations for potential reactors, different equations can be used to lock down tokamak designs. These include physics and engineering limits (L), as well as ways to set \replaced{dynamic (D)}{floating (F)} or \replaced{intermediate (I)}{derived (D)} variables to constant values.}
 \begin{spacing}{1.5}
 \begin{tabular}{lccccc}
  Variable & Category & G($\overline T$)  & $\gamma_R$ & $\gamma_B$ & $\gamma_{I}$ \\ \hline
 Power Balance & - & $\sfrac{ G_{PB} }{ K_{PB} }$ & $\alpha_R^*$ & $\alpha_B$ & $\alpha_I^*$ \\
 Beta ($\beta_N$) & L & $K_{TB} \overline T$ & 1 & 1 & 0 \\
-Kink ($q_{95}$) & L & $K_{KF} $ & 1 & 1 & -1 \\
+Kink ($q_{\replaced{*}{95}}$) & L & $K_{KF} $ & 1 & 1 & -1 \\
 Wall Loading ($P_W$) & L & $K_{WL} ( \sigma v )^{\sfrac{1}{3}} $ & 1 & 0 & -$\sfrac{2}{3}$ \\
 Power Cap ($P_E$) & L & $K_{PC} ( \sigma v ) $ & 1 & 0 & -2 \\
 Heat Loading ($q_{DV}$) & L & $K_{DV} ( \sigma v )^{\sfrac{1}{3.2}} $ & 1 & 0 & -1 \\
@@ -93,13 +84,13 @@ Cost per Watt ($C_W$) & I & $ (C_W)_{const} \cdot \left( \sfrac{ K_F K_n ^ 2 ( \
 \label{table:eq}
 \end{table}
 
-\subsection{Rehashing the Limits}
+\subsection{\replaced{Including Limiting Constraints}{Rehashing the Limits}}
 
-The limits category is simply \replaced{limiting constraints given in \cref{chapter:model}.}{a rebranding of the secondary constraints given previously.} These include the physics derived limits from MHD theory -- i.e. the beta limit ($\beta_N$) and the kink safety factor ($q_{95}$) -- which for clarity, set maximums on the allowed plasma pressure and velocity, respectively. Additionally, there were several engineering limits also described: wall loading, heat loading, and maximum power capacity. For this paper, wall loading from neutrons ($P_W$) is assumed to be important, whereas the other two engineering limits are not allowed to explicitly guide designs.
+The limits category is \replaced{composed of the limiting constraints given in \cref{chapter:model}.}{simply a rebranding of the secondary constraints given previously.} These include the physics derived limits from MHD theory -- i.e. the beta limit ($\beta_N$) and the kink safety factor ($q_{\replaced{*}{95}}$) -- which for clarity, set maximums on the allowed plasma pressure and \replaced{current,}{velocity,} respectively. Additionally, there were several engineering limits also described: wall loading, heat loading, and maximum power capacity. For this paper, wall loading from neutrons ($P_W$) is assumed to be important, whereas the other two engineering limits are not allowed to explicitly guide designs.
 
 Combined all these limits, as well as the yet to be defined \replaced{dynamic}{float} and \replaced{intermediate}{derived} equations, are given in \cref{table:eq}. These share a remarkably similar form to power balance when put into a generalized, separable state. This hints at why the major radius ($R_0$), the toroidal field strength ($B_0$), and the plasma current ($I_P$) can easily be separated and substituted out of the current balance equation.
 
-Before moving on, it proves useful to explain the two limits not used to explicitly guide reactor design -- divertor heat loading and the maximum power capacity. The simpler of the two to reason is the heat loading limit. Although removing the gigawatts of heat is extremely difficult, it remains an unsolved problem worthy of its own research machine, but currently neglected financially. As such, it is only kept to provide a human-interpreted  measure of difficulty. The power cap, on the other hand, is just handled informally. If a reactor surpasses it (i.e. $ P_E > 4000 MW $), it is considered invalid.
+Before moving on, it proves useful to explain the two limits not used to explicitly guide reactor design -- divertor heat loading and the maximum power capacity. The simpler of the two to reason is the heat loading limit. Although removing the gigawatts\added{-per-square-meter} of heat is extremely difficult, it remains an unsolved problem worthy of its own research \replaced{machine.\cite{adx} }{machine, but currently neglected financially.} As such, it is only kept to provide a human-interpreted  measure of difficulty. The power cap, on the other hand, is just handled informally. If a reactor surpasses it (i.e. $ P_E > 4000 MW $), it is considered invalid.
 
 While the maximum power cap informally sets a maximum major radius for a machine, there also exists an implicit minimum major radius. This minimum occurs due to the hole-size constraint -- i.e. at some point there is no longer enough room on the inside of the machine to store the central solenoid, blanket, and TF coils.
 
@@ -108,22 +99,20 @@ At this point, we can now explain how various quantities in the systems model ca
 \subsection{Minimizing \replaced{Intermediate}{Derived} Quantities} 
 
 Whereas the limits from the previous section represented constraints with real physics and engineering repercussions, the \replaced{intermediate}{derived} quantities here are just used to find when reactors reach certain user-supplied values. Most notable are the capital cost (through the magnetic energy -- $W_M$) and the cost-per-watt ($C_W$). The model also, however, allows easily setting values for the bootstrap fraction, plasma pressure, and fusion power. As mentioned previously, they are given in \cref{table:eq} through a generalized representation of the form:
-
 \begin{equation}
 	\tag{\ref{eq:rbi}}
 	R_0^{\, \gamma_R} \cdot B_0^{\, \gamma_B} \cdot I_P^{\, \gamma_I} = G( \overline T )
 \end{equation}
+What this collection of variables is really useful for, though, is finding minimum cost reactors -- both in a capital context as well as a cost-per-watt one. \replaced{This}{Without boring the reader, this} is done in a three stage process. \replaced{The first of which is to find a valid reactor -- i.e. one that satisfies every limiting constraint. Practically, this is done by searching over a range of scanned temperatures.}{First, some valid reactor is found: it does not matter if it is good, just valid. This of course can be found by systematically throwing darts at a dart board -- see \cref{fig:step_one}.}
 
-What this collection of variables is really useful for, though, is finding minimum cost reactors -- both in a capital context as well as a cost-per-watt one. Without boring the reader, this is done in a three stage process. First, some valid reactor is found: it does not matter if it is good, just valid. This of course can be found by systematically throwing darts at a dart board -- see \cref{fig:step_one}
-
-\begin{figure}[h]
-\centering
-\begin{adjustbox}{width=0.8\textwidth}
-	\input{images/step_one}
-\end{adjustbox}
-\caption{Minimize Cost Step I -- Find Valid Reactor}
-\label{fig:step_one}
-\end{figure}
+%\begin{figure}[h]
+%\centering
+%\begin{adjustbox}{width=0.8\textwidth}
+%	\input{images/step_one}
+%\end{adjustbox}
+%\caption{Minimize Cost Step I -- Find Valid Reactor}
+%\label{fig:step_one}
+%\end{figure}
 
 After a valid reactor is found, its cost is recorded leading to a drill-down stage. In this step, the cost is continuously halved until a valid reactor cannot be found. Once this invalid reactor is reached, it sets a bound on the minimum cost reactor. As such, the final stage is a simple bisection step where the minimum cost is honed down to some acceptable margin of error -- see \cref{fig:minimize}.
 
@@ -152,22 +141,20 @@ After a valid reactor is found, its cost is recorded leading to a drill-down sta
 \subsection{Pinning \replaced{Dynamic}{Floating} Variables} 
 
 The remaining collection of closure equations is for the five \replaced{dynamic}{floating} variables in the systems model: $R_0$, $B_0$, $\overline n$, $\overline T$, and $I_P$. As we are making equations of the following form, the formulas for $R_0$, $B_0$, and $I_P$ are trivial.
-
 \begin{equation}
 	\tag{\ref{eq:rbi}}
 	R_0^{\, \gamma_R} \cdot B_0^{\, \gamma_B} \cdot I_P^{\, \gamma_I} = G( \overline T )
 \end{equation}
-
 Next, the equation for $\overline n$ -- shown in \cref{table:eq} -- is just a simple undoing of the Greenwald density limit. The remaining equation is then from the original temperature equation:
-
 \begin{equation}
 	\tag{\ref{eq:tbar}}
 	\overline T = const.
 \end{equation}
+As was assumed earlier, this is sort of a default equation for the systems model. By this, we mean reactor curves can be created by scanning over temperatures, i.e. set $\overline T = 5 \ \textnormal{keV}$ in one run, 10 in the next, etc. This temperature equation also brings up a \replaced{difficulty for the algebraic solver, as it does not depend on:}{subtlety of the model, as it does not depend on} current, radius, or magnet strength. \added{Overcoming this difficulty is discussed next subsection.}
 
-As was assumed earlier, this is sort of a default equation for the systems model. By this, we mean reactor curves can be created by scanning over temperatures, i.e. set $\overline T = 5 \ \textnormal{keV}$ in one run, 10 in the next, etc. This temperature equation also brings up a subtlety of the model, as it does not depend on current, radius, or magnet strength.
+\subsection{Detailing the Equation Solver}
 
-The algorithm that motivated this generalized equation approach most notably bifurcates in the situation where the closure equation does not depend on $R_0$, $B_0$, or $I_P$ (i.e. the temperature equation). The two scenarios are given in \cref{eq:case_1_R,eq:case_1_B,eq:case_1_I,eq:case_1_gamma,eq:case_2_R,eq:case_2_B,eq:case_2_gamma} -- where at least $R_0$ and $B_0$ are substituted out of the system. In the temperature case, $I_P$ is not needed to be explicitly removed. 
+The algorithm that motivated this generalized equation approach most notably bifurcates in the situation where the closure equation does not depend on $R_0$, $B_0$, or $I_P$ (i.e. \added{for} the temperature equation). The two scenarios are given in \cref{eq:case_1_R,eq:case_1_B,eq:case_1_I,eq:case_1_gamma,eq:case_2_R,eq:case_2_B,eq:case_2_gamma} -- where at least $R_0$ and $B_0$ are substituted out of the system. In the temperature case, $I_P$ is not needed to be explicitly removed. 
 
 Concretely, the root solve for the temperature  scenario is for the current, whereas it is for the temperature in all other cases. The nomenclature in the code is a \emph{match} for Scenario I (i.e. root solving for plasma temperature), and a \emph{solve} for Scenario II (i.e. root solving for plasma current).
 
@@ -180,7 +167,6 @@ Concretely, the root solve for the temperature  scenario is for the current, whe
 	G_2 ^ {  \, ( \gamma_{B,3} \, \gamma_{I,1} - \gamma_{B,1} \, \gamma_{I,3} ) } \cdot 
 	G_3 ^ {  \, ( \gamma_{B,1} \, \gamma_{I,2} - \gamma_{B,2} \, \gamma_{I,1} ) }\right)^{ \frac{1}{\gamma_{RBI}} }
 \end{equation}
-
 \begin{equation}
 	\label{eq:case_1_B}
 	B_0( \overline T) = \left( 
@@ -188,7 +174,6 @@ Concretely, the root solve for the temperature  scenario is for the current, whe
 	G_2 ^ {  \, ( \gamma_{I,3} \, \gamma_{R,1} - \gamma_{I,1} \, \gamma_{R,3} ) } \cdot 
 	G_3 ^ {  \, ( \gamma_{I,1} \, \gamma_{R,2} - \gamma_{I,2} \, \gamma_{R,1} ) }\right)^{ \frac{1}{\gamma_{RBI}} }
 \end{equation}
-
 \begin{equation}
 	\label{eq:case_1_I}
 	I_P( \overline T) = \left( 
@@ -196,7 +181,6 @@ Concretely, the root solve for the temperature  scenario is for the current, whe
 	G_2 ^ {  \, ( \gamma_{R,3} \, \gamma_{B,1} - \gamma_{R,1} \, \gamma_{B,3} ) } \cdot 
 	G_3 ^ {  \, ( \gamma_{R,1} \, \gamma_{B,2} - \gamma_{R,2} \, \gamma_{B,1} ) }\right)^{ \frac{1}{\gamma_{RBI}} }
 \end{equation}
-
 \begin{gather}
 	\label{eq:case_1_gamma}
 	\gamma_{RBI} = ( \gamma_{R,1} \, \gamma_{B,2} \, \gamma_{I,3} +  \gamma_{R,2} \, \gamma_{B,3} \, \gamma_{I,1} + \gamma_{R,3} \, \gamma_{B,1} \, \gamma_{I,2} ) - \\
@@ -212,7 +196,6 @@ Concretely, the root solve for the temperature  scenario is for the current, whe
 	G_2 ^ {  \, -\gamma_{B,1} } \cdot 
 	I_P ^ {  \, ( \gamma_{B,1} \, \gamma_{I,2} - \gamma_{B,2} \, \gamma_{I,1} ) }\right)^{ \frac{1}{\gamma_{RBT}} }
 \end{equation}
-
 \begin{equation}
 	\label{eq:case_2_B}
 	B_0( \overline T) = \left( 
@@ -220,7 +203,6 @@ Concretely, the root solve for the temperature  scenario is for the current, whe
 	G_2 ^ {  \, \gamma_{R,1} } \cdot 
 	I_P ^ {  \, ( \gamma_{I,1} \, \gamma_{R,2} - \gamma_{I,2} \, \gamma_{R,1} ) }\right)^{ \frac{1}{\gamma_{RBT}} }
 \end{equation}
-
 \begin{equation}
 	\label{eq:case_2_gamma}
 	\gamma_{RBT} = \gamma_{R,1} \, \gamma_{B,2} - \gamma_{R,2} \, \gamma_{B,1}
@@ -228,12 +210,12 @@ Concretely, the root solve for the temperature  scenario is for the current, whe
 
 \section{Wrapping up the Logic} 
 
-As stated at the beginning of the chapter, this systems model basically boils down to a simple 5 equation/5 unknown algebra problem. The Greenwald density was implicitly used in the initial derive to simplify the logic. The current balance was then delegated to be the root solve equation. Lastly, three equations were needed to remove the major radius and magnet strength, as well as either the current or temperature. These 16 equations were given in \cref{table:eq} with the generalized solution given in \cref{eq:case_1_R,eq:case_1_B,eq:case_1_I,eq:case_1_gamma,eq:case_2_R,eq:case_2_B,eq:case_2_gamma}.
+As stated at the beginning of the chapter, this systems model basically \replaced{reduces}{boils down} to a simple 5 equation/5 unknown algebra problem. The Greenwald density was implicitly used in the initial derive to simplify the logic. The current balance was then delegated to be the root solve equation. Lastly, three equations were needed to remove the major radius and magnet strength, as well as either the current or temperature. These 16 equations were given in \cref{table:eq} with the generalized solution given in \cref{eq:case_1_R,eq:case_1_B,eq:case_1_I,eq:case_1_gamma,eq:case_2_R,eq:case_2_B,eq:case_2_gamma}.
 
-This now sets the stage for the most interesting part of the document -- the results. In true Dickens fashion, they will come in several forms. The first result type we will encounter will be temperature scans. These allow us to validate the model by comparing it to several designs from the literature. These will use the Scenario II solver.
+This now sets the stage for the most interesting part of the document -- the results. \replaced{These}{In true Dickens fashion, they} will come in several forms. The first result type \deleted{we will encounter} will be temperature \replaced{scans that}{scans. These} allow us to validate the model \replaced{against other}{by comparing it to several} designs from the literature. \replaced{These are created using}{These will use} the Scenario II solver.
 
-Moving onto examples of the Scenario I matcher are sensitivity studies and Monte Carlo samplings. The simple one variable sensitivities will reveal local trends from sweeping various \replaced{static}{fixed} (i.e. input) variables -- namely H, $\kappa$, $B_{CS}$, etc. Whereas the samplings will highlight global trends as many \replaced{static}{fixed}/input variables are allowed to vary simultaneously.
+\replaced{The}{Moving onto examples of the} Scenario I matcher \replaced{will then be used to create}{are} sensitivity studies and Monte Carlo samplings. The simple one variable sensitivities will reveal local trends from sweeping various \replaced{static}{fixed} (i.e. input) variables -- namely H, $\kappa$, $B_{CS}$, etc. \added{-- one at a time.} Whereas the samplings will highlight global trends as many \replaced{static}{fixed}/input variables are allowed to vary simultaneously.
 
- These Scenario I flavors are further subdivided in regards to the nature of their closure equation. The first flavor comes from finding so called two limit solutions, which live at the point where the beta and kink (or wall) limits are just marginally satisfied. The second main type is then minimum cost reactors -- measured in either a capital cost or cost-per-watt context. These will be used in depth next chapter.
+ These Scenario I \replaced{matchers}{flavors} are further subdivided in regards to the nature of their closure equation. The first \replaced{type}{flavor} comes from finding so called two limit solutions, which live at the point where the beta and kink (or wall) limits are just marginally satisfied. The second main type is then minimum cost reactors -- measured in either a capital cost or cost-per-watt context. These will be used in depth next chapter.
  
 %\end{document}

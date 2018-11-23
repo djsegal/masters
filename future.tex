@@ -61,22 +61,22 @@ Presented below are the three confinement scaling laws, as well as the generaliz
 \begin{equation}
   \tau_E^G = K_\tau \, H \, \frac{
     I_P^{\,\alpha_I} \, R_0^{\,\alpha_R} \, a^{\,\alpha_a} \, \kappa^{\,\alpha_\kappa} \ \overline{n}^{\,\alpha_n} \, B_0^{\,\alpha_B} \, A^{\,\alpha_A}
-  }{ P_L ^ {\,\alpha_P} }
+  }{ P_{src} ^ {\,\alpha_P} }
   \tag{\ref{eq:tau_gen}}
 \end{equation}
 
 \begin{equation}
   \tau_E^H = 0.145 \, H \, \frac{
     I_P^{0.93} \, R_0^{1.39} \, a^{0.58} \, \kappa^{0.78} \ \overline{n}^{\, 0.41} \, B_0^{0.15} \, A^{0.19}
-  }{ P_L ^ {\,0.69} }
+  }{ P_{src} ^ {\,0.69} }
   \tag{\ref{eq:tau_h}}
 \end{equation}
 \begin{equation}
   \tau_E^L = 0.048\, H \, \frac{
-    I_P^{0.85} \, R_0^{1.2} \, a^{0.3} \, \kappa^{0.5} \ \overline{n}^{\, 0.1} \, B_0^{0.2} \, A^{0.5} }{ P_L ^ {\,0.5} }
+    I_P^{0.85} \, R_0^{1.2} \, a^{0.3} \, \kappa^{0.5} \ \overline{n}^{\, 0.1} \, B_0^{0.2} \, A^{0.5} }{ P_{src} ^ {\,0.5} }
 \end{equation}
 \begin{equation}
-  \tau_E^I = \frac{ 0.014 \, H }{ 0.68 ^ {\lambda_R} \cdot 0.22 ^ {\lambda_a} } \cdot \frac{ I_P^{0.69} \, R_0^{\lambda_R} \, a^{\lambda_a} \, \kappa^{0.0} \ \overline{n}^{\, 0.17} \, B_0^{0.77} \, A^{0.0} }{ P_L ^ {\,0.29} }
+  \tau_E^I = \frac{ 0.014 \, H }{ 0.68 ^ {\lambda_R} \cdot 0.22 ^ {\lambda_a} } \cdot \frac{ I_P^{0.69} \, R_0^{\lambda_R} \, a^{\lambda_a} \, \kappa^{0.0} \ \overline{n}^{\, 0.17} \, B_0^{0.77} \, A^{0.0} }{ P_{src} ^ {\,0.29} }
 \end{equation}
 \begin{equation}
 	\lambda_R + \lambda_a = 2.2
@@ -88,7 +88,7 @@ A final point to make is reemphasizing that the I-Mode scaling law is not battle
 
 Before moving on to the final conclusions, we will give a quick recap of the more audacious simplifications used within this fusion systems framework. These include: approximating temperature profiles as simple parabolas, neglecting all radiation except Bremsstrahlung, and handling flux sources at too basic a level.
 
-\subsection{Including Pedestal Temperature Profiles}
+\subsection{Integrating Pedestal Temperature Profiles}
 
 The most dubious simplification in the code at this point is modeling temperature profiles as parabolas. Although these parabolas work for densities and L-Mode plasma temperatures, the same cannot be said about H-Mode temperatures. This is because they have a distinct pedestal region on the outer edge of the plasma.
 
