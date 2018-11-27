@@ -4,7 +4,7 @@
 
 \section{Fusion Power -- $P_F$}
 
-This requires a more first-principles approach than those used up until now. As such, a quick background is given to motivate the parameters it adds -- i.e. the dilution factor ($f_{D}$) and the Bosch-Hale fusion reactivity ($\sigma v$).
+This requires a more first-principles approach than those used up until now. As such, a quick background is given to motivate the parameters it adds -- i.e.\ the dilution factor ($f_{D}$) and the Bosch-Hale fusion reactivity ($\sigma v$).
 
 \begin{figure}
 	\centering
@@ -13,11 +13,11 @@ This requires a more first-principles approach than those used up until now. As 
 	\end{adjustbox}
 %	\includegraphics[width=0.75\textwidth]{images/test_image}
 	\caption{Comparing Nuclear Fusion and Fission} ~\\
-	\small The binding energy per nucleon is what differentiates nuclear fusion from fission. Nuclei heavier than Iron fission (e.g. Uranium), while light ones -- such as Hydrogen -- fuse. 
+	\small The binding energy per nucleon is what differentiates nuclear fusion from fission. Nuclei heavier than Iron fission (e.g.\ Uranium), while light ones -- such as Hydrogen -- fuse. 
 	\label{fig:binding_energy}
 \end{figure}
 
-The natural place to start when talking about fusion is the binding-energy per nucleon plot (see \cref{fig:binding_energy}). As can be seen, the function reaches a maximum value around the element Iron (A=56). What this means at a basic level is: elements lighter than iron can \emph{fuse} into a heavier one (i.e. hydrogens into helium), whereas heavier elements can \emph{fission} into lighter ones (e.g. uranium into krypton and barium). This is what differentiates fission (uranium-fueled) reactors from fusion (hydrogen-fueled) ones. For fusion reactors, the most common reaction in a first-generation tokamak will be:
+The natural place to start when talking about fusion is the binding-energy per nucleon plot (see \cref{fig:binding_energy}). As can be seen, the function reaches a maximum value around the element Iron (A=56). What this means at a basic level is: elements lighter than iron can \emph{fuse} into a heavier one (i.e.\ hydrogens into helium), whereas heavier elements can \emph{fission} into lighter ones (e.g.\ uranium into krypton and barium). This is what differentiates fission (uranium-fueled) reactors from fusion (hydrogen-fueled) ones. For fusion reactors, the most common reaction in a first-generation tokamak will be:
 
 \begin{equation}
 	{}^2H+ {}^3H \rightarrow {}^4 He + {}^1 n + E_F
@@ -28,7 +28,7 @@ The natural place to start when talking about fusion is the binding-energy per n
 	E_F = 17.6 \ \textnormal{MeV}
 \end{equation}
 
-What this reaction describes is two isotopes of hydrogen -- i.e. deuterium and tritium -- fusing into a heavier element, helium, while simultaneously ejecting a neutron. The entire energy of the fusion reaction ($E_F$) is then divvied up 80-20 between the neutron and helium, respectively. Quantitatively, the helium (hereafter referred to as an alpha particle) receives 3.5 MeV.
+What this reaction describes is two isotopes of hydrogen -- i.e.\ deuterium and tritium -- fusing into a heavier element, helium, while simultaneously ejecting a neutron. The entire energy of the fusion reaction ($E_F$) is then divvied up 80-20 between the neutron and helium, respectively. Quantitatively, the helium (hereafter referred to as an alpha particle) receives 3.5 MeV.
 
 \begin{figure}
 	\centering
@@ -40,7 +40,7 @@ What this reaction describes is two isotopes of hydrogen -- i.e. deuterium and t
 	\small In a first generation tokamak reactor, the main source of energy will come from two hydrogen isotopes fusing into a helium particle -- and ejecting a 14.1 MeV neutron.
 \end{figure}
 
-The final point to make before returning to the fusion power derivation is the main difference between the two fusion products: helium (i.e. the alpha particle) and the neutron. First, neutrons lack a charge -- they are neutral. This means they cannot be confined with magnetic fields. As such, they simply move in straight lines until they collide with other particles. As the structure of a tokamak is mainly metal, the neutron is much more likely to collide there than the gaseous plasma, which is orders of magnitude less dense. Conversely, alpha particles are charged -- when stripped of their electrons -- and can therefore be kept within the plasma using magnets. What this means practically is that of the 17.6 MeV that comes from every fusion reaction, only 3.5 MeV remains inside the plasma (within the helium particle species).
+The final point to make before returning to the fusion power derivation is the main difference between the two fusion products: helium (i.e.\ the alpha particle) and the neutron. First, neutrons lack a charge -- they are neutral. This means they cannot be confined with magnetic fields. As such, they simply move in straight lines until they collide with other particles. As the structure of a tokamak is mainly metal, the neutron is much more likely to collide there than the gaseous plasma, which is orders of magnitude less dense. Conversely, alpha particles are charged -- when stripped of their electrons -- and can therefore be kept within the plasma using magnets. What this means practically is that of the 17.6 MeV that comes from every fusion reaction, only 3.5 MeV remains inside the plasma (within the helium particle species).
 
 As mentioned before, this fusion power is divvied up 80-20 between the neutron and alpha particle. These relations will be used shortly. For now, they can be described mathematically as:
 \begin{equation}

@@ -21,7 +21,7 @@
 
 This chapter explores a simple model for designing steady-state tokamaks. In the next couple chapters, the model is first formalized for use in a systems code and then generalized to handle pulsed operation. These derivations highlight that the only difference between the two modes \added{of operation} is how they generate their auxiliary plasma current: LHCD for steady-state operation and inductive sources for when a reactor is purely pulsed.
 
-Along the way, equations will be derived that get rather complicated. To remedy the situation, a distinction between \replaced{dynamic}{floating} and \replaced{static}{fixed} values is now given, which will allow splitting most equations into \replaced{static}{fixed} and \replaced{dynamic}{floating} parts. \replaced{Dynamic}{Fixed} values -- i.e. the tokamak's major radius ($R_0$) and magnet strength ($B_0$), as well as the plasma's current ($I_P$), temperature ($\overline T$), and density ($\overline n$) -- are first-class variables in the model \added{(see \cref{table:dynamic})}. Everything is derived to relate them. \replaced{Static}{Fixed} values, on the other hand, can be treated as code inputs, which remain constant throughout a reactor solve.  These most obviously include the various geometric and profile parameters introduced next section. 
+Along the way, equations will be derived that get rather complicated. To remedy the situation, a distinction between \replaced{dynamic}{floating} and \replaced{static}{fixed} values is now given, which will allow splitting most equations into \replaced{static}{fixed} and \replaced{dynamic}{floating} parts. \replaced{Dynamic}{Fixed} values -- i.e.\ the tokamak's major radius ($R_0$) and magnet strength ($B_0$), as well as the plasma's current ($I_P$), temperature ($\overline T$), and density ($\overline n$) -- are first-class variables in the model \added{(see \cref{table:dynamic})}. Everything is derived to relate them. \replaced{Static}{Fixed} values, on the other hand, can be treated as code inputs, which remain constant throughout a reactor solve.  These most obviously include the various geometric and profile parameters introduced next section. 
 
 \added{
 The overall structure of this chapter, then, is built around developing an equation for plasma current in a steady-state tokamak. It is shown that this value arises from balancing current in a reactor using both a plasma's own bootstrap current ($I_{BS}$), as well the tokamak's auxiliary driven current ($I_{CD}$). These relations necessitate geometric parameters and plasma profiles, which will be given shortly. Along the way, definitions will also be needed for the Greenwald density ($N_G$) and the fusion power ($P_F$). What is shown is that the current does not actually depend directly on the major radius ($R_0$) or magnet strength ($B_0$) of a tokamak -- allowing these variables to be put off until next chapter.
@@ -112,7 +112,7 @@ These geometric factors allow the volumetric and surface integrals governing fus
 
 \subsection{Prescribing Plasma Profiles}
 
-The first step in defining radial profiles is realizing that all three quantities are \replaced{essentially parabolas}{basically parabolas} -- i.e. the temperature, density and current \added{density}, shown in \cref{fig:profiles}, are peaked at some radius (usually the center) and then decay to zero somewhere before the walls of the tokamak enclosure.
+The first step in defining radial profiles is realizing that all three quantities are \replaced{essentially parabolas}{basically parabolas} -- i.e.\ the temperature, density and current \added{density}, shown in \cref{fig:profiles}, are peaked at some radius (usually the center) and then decay to zero somewhere before the walls of the tokamak enclosure.
 
 \added{Although not self-consistent, these profiles do capture enough of the physics to approximate relevant phenomenon, such as transport and fusion power.\cite{process_guide}}
 
@@ -167,7 +167,7 @@ The use of a parabolic profile for the plasma temperature is slightly more dubio
 
 \subsubsection{The Current \added{Density} Profile}
 
-The plasma current \added{density} is the third profile and cannot safely be represented by a simple parabola. This is because having an adequate bootstrap current relies heavily on a profile being peaked off-axis -- i.e. at some radius not at the center. This hollow profile can then be modeled with the commonly given plasma internal inductance ($l_i$). Concretely, the current's hollow profile is described by:
+The plasma current \added{density} is the third profile and cannot safely be represented by a simple parabola. This is because having an adequate bootstrap current relies heavily on a profile being peaked off-axis -- i.e.\ at some radius not at the center. This hollow profile can then be modeled with the commonly given plasma internal inductance ($l_i$). Concretely, the current's hollow profile is described by:
 \begin{equation}
 	J(\rho) = \bar{J} \cdot \frac{ \gamma ^ 2 \cdot ( 1 - \rho ^ 2 ) \cdot e^{ \gamma \rho^2 } }{ e^\gamma - 1 - \gamma}
 \end{equation}
@@ -274,7 +274,7 @@ The next step is transforming the \emph{line-averaged} density ($\hat n$) into t
  
  Where $\Gamma( \, \cdots)$ represents the gamma function: the non-integer analogue of the factorial function.
  
- Combining these pieces allows the volume-averaged density to be written in standardized units \deleted{(i.e. the ones we use)} as:
+ Combining these pieces allows the volume-averaged density to be written in standardized units \deleted{(i.e.\ the ones we use)} as:
  \begin{equation}
  	\label{eq:greenwald}
  	\tcbhighmath{
@@ -286,7 +286,7 @@ The next step is transforming the \emph{line-averaged} density ($\hat n$) into t
  	K_n = \frac{2 N_G}{\epsilon^2 \, \pi^{3/2} } \cdot \left( \frac{\Gamma \left( \nu_n + \frac{3}{2} \right)}{\Gamma \left( \nu_n + 2 \right)} \right)
 \end{equation}
  
-The format of the previous equation pair will be used throughout the remainder of the paper. The top equation relates \replaced{dynamic}{floating} variables (i.e. $\overline n$, $I_P$, and $R_0$), while the \replaced{static}{fixed}-value coefficient ($K_n$) lumps together \replaced{static}{fixed} quantities, such as: $N_G$, $\epsilon$, 2, $\pi$, and $\nu_n$.
+The format of the previous equation pair will be used throughout the remainder of the paper. The top equation relates \replaced{dynamic}{floating} variables (i.e.\ $\overline n$, $I_P$, and $R_0$), while the \replaced{static}{fixed}-value coefficient ($K_n$) lumps together \replaced{static}{fixed} quantities, such as: $N_G$, $\epsilon$, 2, $\pi$, and $\nu_n$.
 
 \subsection{Declaring the Bootstrap Current}
 
@@ -326,7 +326,7 @@ The first term to define in current balance, \cref{eq:ibal}, is the bootstrap cu
  
 \deleted{For a more formal look into this $J_{BS}$ function, check the appendix section on pedestal temperatures. The point to make now is that it depends on the the profiles' derivatives, leading to one major discrepancy in the model.}
 
-As shown later in the results, bootstrap fractions are often under-predicted by this model. This is due to parabolic profiles (i.e. for temperature) having much less steep declines near the edge (i.e. in their derivatives) than characteristic H-Mode profiles with pedestals. This implies that the area most positively impacted by a pedestal profile for temperature would be the bootstrap current derivation. \added{The instructions to do so are given in \cref{section:pedestalbootstrap}. }
+As shown later in the results, bootstrap fractions are often under-predicted by this model. This is due to parabolic profiles (i.e.\ for temperature) having much less steep declines near the edge (i.e.\ in their derivatives) than characteristic H-Mode profiles with pedestals. This implies that the area most positively impacted by a pedestal profile for temperature would be the bootstrap current derivation. \added{The instructions to do so are given in \cref{section:pedestalbootstrap}. }
 
 \deleted{Getting back on track -- and without completeness -- the bootstrap current can now be written in proportionality form as:}
 
@@ -357,11 +357,11 @@ As shown later in the results, bootstrap fractions are often under-predicted by 
   H_{BS} = ( 1 + \nu_n ) ( 1 + \nu_T ) ( \nu_n + 0.054 \nu_T ) \int_0^1 \frac{ \rho^{\,5/2} \, ( \, 1 - \rho^{\,2} \, )^{\, \nu_n + \nu_T - 1} }{b_p} \, d\rho
 \end{equation}
 
-Quickly noting, this $H_{BS}$ term serves as the analogue of \replaced{static}{fixed}-value coefficients (e.g. $K_{BS}$ and $K_n$) when they contain an integral. And $b_p$ represents the poloidal magnet strength given by Eq. \ref{eq:b_p}.
+Quickly noting, this $H_{BS}$ term serves as the analogue of \replaced{static}{fixed}-value coefficients (e.g.\ $K_{BS}$ and $K_n$) when they contain an integral. And $b_p$ represents the poloidal magnet strength given by Eq. \ref{eq:b_p}.
 
 \subsection{Deriving the Fusion Power}
 
-\deleted{The next segue on our journey to solving for the steady current is deriving the fusion power ($P_F$), which appears in current drive. This requires a more first-principles approach than those used up until now. As such, a quick background is given to motivate the parameters it adds -- i.e. the dilution factor ($f_{D}$) and the Bosch-Hale fusion reactivity ($\sigma v$).}
+\deleted{The next segue on our journey to solving for the steady current is deriving the fusion power ($P_F$), which appears in current drive. This requires a more first-principles approach than those used up until now. As such, a quick background is given to motivate the parameters it adds -- i.e.\ the dilution factor ($f_{D}$) and the Bosch-Hale fusion reactivity ($\sigma v$).}
 
 %\begin{figure}
 %	\centering
@@ -370,12 +370,12 @@ Quickly noting, this $H_{BS}$ term serves as the analogue of \replaced{static}{f
 %	\end{adjustbox}
 %%	\includegraphics[width=0.75\textwidth]{images/test_image}
 %	\caption{Comparing Nuclear Fusion and Fission} ~\\
-%	\small The binding energy per nucleon is what differentiates nuclear fusion from fission. Nuclei heavier than Iron fission (e.g. Uranium), while light ones -- such as Hydrogen -- fuse. 
+%	\small The binding energy per nucleon is what differentiates nuclear fusion from fission. Nuclei heavier than Iron fission (e.g.\ Uranium), while light ones -- such as Hydrogen -- fuse. 
 %	\label{fig:binding_energy}
 %\end{figure}
 
 %\cref{fig:binding_energy}
-\deleted{The natural place to start when talking about fusion is the binding-energy per nucleon plot (see Fig. N). As can be seen, the function reaches a maximum value around the element Iron (A=56). What this means at a basic level is: elements lighter than iron can \emph{fuse} into a heavier one (i.e. hydrogens into helium), whereas heavier elements can \emph{fission} into lighter ones (e.g. uranium into krypton and barium). This is what differentiates fission (uranium-fueled) reactors from fusion (hydrogen-fueled) ones. For fusion reactors, the most common reaction in a first-generation tokamak will be:}
+\deleted{The natural place to start when talking about fusion is the binding-energy per nucleon plot (see Fig. N). As can be seen, the function reaches a maximum value around the element Iron (A=56). What this means at a basic level is: elements lighter than iron can \emph{fuse} into a heavier one (i.e.\ hydrogens into helium), whereas heavier elements can \emph{fission} into lighter ones (e.g.\ uranium into krypton and barium). This is what differentiates fission (uranium-fueled) reactors from fusion (hydrogen-fueled) ones. For fusion reactors, the most common reaction in a first-generation tokamak will be:}
 
 %\begin{equation}
 %	{}^2H+ {}^3H \rightarrow {}^4 He + {}^1 n + E_F
@@ -386,7 +386,7 @@ Quickly noting, this $H_{BS}$ term serves as the analogue of \replaced{static}{f
 %	E_F = 17.6 \ \textnormal{MeV}
 %\end{equation}
 
-\deleted{What this reaction describes is two isotopes of hydrogen -- i.e. deuterium and tritium -- fusing into a heavier element, helium, while simultaneously ejecting a neutron. The entire energy of the fusion reaction ($E_F$) is then divvied up 80-20 between the neutron and helium, respectively. Quantitatively, the helium (hereafter referred to as an alpha particle) receives 3.5 MeV.}
+\deleted{What this reaction describes is two isotopes of hydrogen -- i.e.\ deuterium and tritium -- fusing into a heavier element, helium, while simultaneously ejecting a neutron. The entire energy of the fusion reaction ($E_F$) is then divvied up 80-20 between the neutron and helium, respectively. Quantitatively, the helium (hereafter referred to as an alpha particle) receives 3.5 MeV.}
 
 %\begin{figure}
 %	\centering
@@ -398,7 +398,7 @@ Quickly noting, this $H_{BS}$ term serves as the analogue of \replaced{static}{f
 %	\small In a first generation tokamak reactor, the main source of energy will come from two hydrogen isotopes fusing into a helium particle -- and ejecting a 14.1 MeV neutron.
 %\end{figure}
 
-\deleted{The final point to make before returning to the fusion power derivation is the main difference between the two fusion products: helium (i.e. the alpha particle) and the neutron. First, neutrons lack a charge -- they are neutral. This means they cannot be confined with magnetic fields. As such, they simply move in straight lines until they collide with other particles. As the structure of a tokamak is mainly metal, the neutron is much more likely to collide there than the gaseous plasma, which is orders of magnitude less dense. Conversely, alpha particles are charged -- when stripped of their electrons -- and can therefore be kept within the plasma using magnets. What this means practically is that of the 17.6 MeV that comes from every fusion reaction, only 3.5 MeV remains inside the plasma (within the helium particle species).}
+\deleted{The final point to make before returning to the fusion power derivation is the main difference between the two fusion products: helium (i.e.\ the alpha particle) and the neutron. First, neutrons lack a charge -- they are neutral. This means they cannot be confined with magnetic fields. As such, they simply move in straight lines until they collide with other particles. As the structure of a tokamak is mainly metal, the neutron is much more likely to collide there than the gaseous plasma, which is orders of magnitude less dense. Conversely, alpha particles are charged -- when stripped of their electrons -- and can therefore be kept within the plasma using magnets. What this means practically is that of the 17.6 MeV that comes from every fusion reaction, only 3.5 MeV remains inside the plasma (within the helium particle species).}
  
  \added{The next segue on our journey to solving for the steady current is deriving the fusion power ($P_F$), which appears in current drive. A comprehensive introduction to this is given in \cref{chapter:power}.} \replaced{Summarized, though, a formula for}{Returning to the problem at hand, the} fusion power from a D-T reaction -- in megawatts -- is given by \replaced{the following volume integral: \cite{fusionpower} }{ Jeff Freidberg's textbook through the following volume integral: }
  \begin{equation}
@@ -409,7 +409,7 @@ Quickly noting, this $H_{BS}$ term serves as the analogue of \replaced{static}{f
 	E_F = 17.6 \ \textnormal{MeV}
 \end{equation}
  
-\added{The $E_F$ quantity is the energy created from a deuterium-tritium fusion reaction.} The $n_D$ and $n_T$ in this equation \added{then} represent the density of the deuterium and tritium ions, respectively. Assuming a 50-50 mix of the two, they can be related to the electron density -- i.e. the one used in this model -- through the dilution factor \added{($f_D$). This dilution factor represents the decrease in available fuel from part of the plasma actually being composed of non-hydrogen gasses}:
+\added{The $E_F$ quantity is the energy created from a deuterium-tritium fusion reaction.} The $n_D$ and $n_T$ in this equation \added{then} represent the density of the deuterium and tritium ions, respectively. Assuming a 50-50 mix of the two, they can be related to the electron density -- i.e.\ the one used in this model -- through the dilution factor \added{($f_D$). This dilution factor represents the decrease in available fuel from part of the plasma actually being composed of non-hydrogen gasses}:
  \begin{equation}
  	n_D = n_T = f_D \cdot \left( \frac{n}{2} \right)
  \end{equation}
@@ -472,7 +472,7 @@ In standardized units, the equation for current drive is often given in the lite
 Here, $\eta_{CD}$ is the current drive efficiency with units $ \left(
 \frac{ \textnormal{MA} }{ \textnormal{MW-m}^2 } \right) $ and $P_H$ is the heating power in megawatts driven by LHCD (and absorbed by the plasma).
 
-Let it be known, though, that driving current in a plasma is hard! In fact, pulsed reactor designers (i.e. European fusion researchers) think it is so difficult, they may choose to forego it completely -- focusing only on inductive sources that necessitate reactor fatigue and downtime. 
+Let it be known, though, that driving current in a plasma is hard! In fact, pulsed reactor designers (i.e.\ European fusion researchers) think it is so difficult, they may choose to forego it completely -- focusing only on inductive sources that necessitate reactor fatigue and downtime. 
 
 A common current drive efficiency ($\eta_{CD}$) seen in many designs is $0.3 \pm 0.1 $ in the standard units. It is however inherently a function of all the plasma parameters -- with subtlety put off until the discussion of self-consistency. For now it assumed to have some constant/\replaced{static}{fixed} value.
 
@@ -534,7 +534,7 @@ Combining these three equations and solving for the total plasma current ($I_P$)
 
 This is the answer we have been seeking!
 
-As mentioned before, this simple formula appears to only depend on temperature!\footnote{ This dependence only on temperature refers to dynamic variables. The plasma current can still be highly volatile to many of the static variables, such as: $\epsilon$, $\kappa$, $N_G$, $f_D$, $\nu_n$, $l_i$, etc. } Apparently, the plasma should have the same current at some temperature (i.e. $\overline T$ = 15 keV), regardless of the size of the machine or the strength of its magnets. This has the important corollary that each temperature maps to only one current value. \added{Further, each temperature would then map to a single magnet strength, capital cost, etc. (as shown next chapter).}
+As mentioned before, this simple formula appears to only depend on temperature!\footnote{ This dependence only on temperature refers to dynamic variables. The plasma current can still be highly volatile to many of the static variables, such as: $\epsilon$, $\kappa$, $N_G$, $f_D$, $\nu_n$, $l_i$, etc. } Apparently, the plasma should have the same current at some temperature (i.e.\ $\overline T$ = 15 keV), regardless of the size of the machine or the strength of its magnets. This has the important corollary that each temperature maps to only one current value. \added{Further, each temperature would then map to a single magnet strength, capital cost, etc.\ (as shown next chapter).}
 
 As has become a mantra, though, the subtlety of this behavior lies in the self-consistency of the current-drive efficiency -- $\eta_{CD}$.
 
@@ -542,7 +542,7 @@ As has become a mantra, though, the subtlety of this behavior lies in the self-c
 
 Although a thorough description of the wave theory behind lower-hybrid current drive (LHCD) is well outside the scope of this text, it does motivate the solving of a tokamak's major radius ($R_0$) and field strength ($B_0$). It also shows how what was once a simple problem has now transformed into a rather complex one -- a common occurrence with plasmas.
 
-The logic behind finding a self-consistent current-drive efficiency is starting at some plausible value (i.e. $\eta_{CD} = 0.3$), solving for the steady current -- i.e. $I_P = f(\overline T)$ -- and then somehow iteratively creeping towards a value deemed self-consistent. What this means is that in addition to the solver described in the last section, there needs to be a black-box function that solutions are piped through to get better guesses at $\eta_{CD}$. The black-box function we use is a variation of the Ehst-Karney model. \cite{ehstkarney}
+The logic behind finding a self-consistent current-drive efficiency is starting at some plausible value (i.e.\ $\eta_{CD} = 0.3$), solving for the steady current -- i.e.\ $I_P = f(\overline T)$ -- and then somehow iteratively creeping towards a value deemed self-consistent. What this means is that in addition to the solver described in the last section, there needs to be a black-box function that solutions are piped through to get better guesses at $\eta_{CD}$. The black-box function we use is a variation of the Ehst-Karney model. \cite{ehstkarney}
 
 As mentioned, a self-consistent $\eta_{CD}$ is found once a trip through the Ehst-Karney black-box results in the same $\eta_{CD}$ as was piped in -- to some tolerable level of error. This consistency incorporates an explicit dependence on the tokamak configuration. Mathematically,
 \begin{equation}

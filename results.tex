@@ -20,29 +20,84 @@
 
 \chapter{Presenting the Code Results}
 
-Now that our fusion systems model has been formulated and completed, the next logical step is to code it up and run it to produce interesting data. To this, the code for this document -- Fussy.jl -- is available at \href{http://git.io/tokamak}{git.io/tokamak} (with a short guide given in the Appendix). The results will be given shortly.
+Now that our fusion systems model has been formulated and completed, the next logical step is to \replaced{build a codebase and explore reactor space.}{code it up and run it to produce interesting data.} To this, the code \replaced{encompassing this document's model}{for this document} -- Fussy.jl -- is available at \href{http://git.io/tokamak}{git.io/tokamak} (with a short guide given in \cref{chapter:fussy}). \replaced{The results from this chapter will be divided into}{The results will be given shortly. \\ 
+Before accosting the reader with some twenty plots and tables, though, it makes sense to first warn them what they are getting into. This chapter has} three sections. The first is an attempt to test how \replaced{accurate}{good} the model is by comparing it with other codes in the field.\cite{arc,eupulsed,process}. \replaced{The next will be two prototypes developed to fairly compare pulsed and steady state reactors, the initial motivation for this project.}{Next, we will develop two prototype reactors that pit steady-state against pulsed operation on a levelized playing field.}
 
-Before accosting the reader with some twenty plots and tables, though, it makes sense to first warn them what they are getting into. This chapter has three sections. The first is an attempt to test how good the model is by comparing it with other codes in the field.\cite{arc,eupulsed,process}. Next, we will develop two prototype reactors that pit steady-state against pulsed operation on a levelized playing field.
+This chapter will then conclude with a discussion on how best to lower \replaced{reactor costs.}{the costs of a tokamak reactor.} In line with the MIT mission, this will highlight how using stronger magnets leads to more compact, \replaced{economic}{efficient} machines. The new piece of insight, then, is how to optimally incorporate high-temperature superconducting (HTS) tape technology -- the \replaced{assumed technological advancement}{miracle} found in the ARC design family. 
 
-This chapter will then conclude with a discussion on how best to lower the costs of a tokamak reactor. In line with the MIT mission, this will highlight how using stronger magnets leads to more compact, efficient machines. The new piece of insight, then, is how to optimally incorporate high-temperature superconducting (HTS) tape technology -- the miracle found in the ARC design family. 
+\replaced{Succinctly,}{Without spoiling too much for the reader,} we will show that HTS tape should be used in the TF coils for steady-state tokamaks (i.e.\ $B_0$), whereas it should only be appear in the central solenoid (i.e.\ $B_{CS}$) for pulsed ones. This is a fundamentally new result!
 
-Without spoiling too much for the reader, we will show that HTS tape should be used in the TF coils for steady-state tokamaks (i.e. $B_0$), whereas it should only be appear in the central solenoid (i.e. $B_{CS}$) for pulsed ones. This is a fundamentally new result!
+\section{\replaced{Testing the}{Validating} Code \replaced{against}{with} other Models}
 
-\section{Validating Code with other Models}
+\replaced{After developing a new model, the first next step is to make sure its results are sensical.}{When you develop a new model, the first thing you have to do is check that it makes sensical results.} The \replaced{goal, however,}{goal} is \added{to} not \deleted{to} go \replaced{too far, i.e.\ }{overboard, though,} by: comparing it with too many models or requiring perfect matches with \deleted{all} their results. To this, we will compare Fussy.jl with five designs \deleted{coming} from \replaced{the literature}{three separate research teams} -- hopefully casting a wide enough net through reactor-space to prove sufficient. It should be noted that for how simple this model is, it does a remarkable job matching \replaced{the other group's}{these} more sophisticated frameworks. It also highlights how discrepancies arise in this highly non-linear computational problem.
 
-When you develop a new model, the first thing you have to do is check that it makes sensical results. The goal is not to go overboard, though, by: comparing it with too many models or requiring perfect matches with all their results. To this, we will compare Fussy.jl with five designs coming from three separate research teams -- hopefully casting a wide enough net through reactor-space to prove sufficient. It should be noted that for how simple this model is, it does a remarkable job matching these more sophisticated frameworks. It also highlights how discrepancies arise in this highly non-linear computational problem.
+The first reactor design that will provide a basis for comparison is the ARC reactor.\cite{arc} As it was also designed by MIT researchers, the fit is shown to be almost exact. This of course probably involves a fair amount of inherent biases stemming from \replaced{shared scientific philosophies and knowledge base.}{how this ecosystem operates and produces engineers -- most notably as the core of this code comes from Jeff's ongoing interest in the problem.}
 
-The first reactor design that will provide a basis for comparison is the ARC reactor. As it was also designed by MIT researchers, the fit is shown to be almost exact. This of course probably involves a fair amount of inherent biases stemming from how this ecosystem operates and produces engineers -- most notably as the core of this code comes from Jeff's ongoing interest in the problem.
+The next set of reactor designs come from the ARIES four-act study.\cite{ussteady} This ARIES team is a United States effort to reevaluate the problem of designing a fusion reactor around once a decade. The most recent study focused on how tokamaks \replaced{would look}{shape up} as you assume optimistic and conservative \added{values for} physics and engineering parameters. Although our model recovers their results, it does highlight one peculiarity of their algorithm -- reliance on the minimum achievable value of H.
 
-The next set of reactor designs come from the ARIES four-act study. This ARIES team is a United States effort to reevaluate the problem of designing a fusion reactor around once a decade. The most recent study focused on how tokamaks shape up as you assume optimistic and conservative physics and engineering parameters. Although our model recovers their results, it does highlight one peculiarity of their algorithm -- reliance on the minimum achievable value of H.
+The final series of reactors comes from the major codebase used among European fusion systems experts: PROCESS.\cite{process} As such, this group actually gives an example for pulsed vs. steady-state tokamaks. Although these designs have the most discrepancies with our model, discussion will be given that remedy some of the shortcomings. These basically \replaced{amount}{boil down} to: alternative definitions for heat loss appearing in the ELMy H-Mode Scaling, as well as the simplified nature of our flux balance equation -- which only accounts for central solenoid and PF coil source terms. 
 
-The final series of reactors comes from the major codebase used among European fusion systems experts: PROCESS. As such, this group actually gives an example for pulsed vs. steady-state tokamaks. Although these designs have the most discrepancies with our model, discussion will be given that remedy some of the shortcomings. These basically boil down to: alternative definitions for heat loss appearing in the ELMy H-Mode Scaling, as well as the simplified nature of our flux balance equation -- which only accounts for central solenoid and PF coil source terms. 
-
-\newpage 
+\added{The most important detail to take from the comparisons done in \cref{table:arc,table:act_1,table:act_2,table:demo_steady}, however, is that each steady state design from the literature has H factors and Greenwald densities ($N_G$) that violate standard values (i.e.\ 1.0). What this means, practically, is steady-state reactors are not possible in the current tokamak paradigm -- some technological advancement is needed.}
 
 \subsection{Comparing with the PSFC Arc Reactor}
 
-As mentioned, this model matches the results from the ARC design almost perfectly. This probably stems from how both models were developed within the MIT community.  The points to make now, though, is even with how well the results match, there are two notable discrepancies: the fusion power ($P_F$) and bootstrap current fraction ($f_{BS}$). These mainly arise from the use of simple parabolic profiles for temperature.
+As mentioned, this model matches the results from the ARC design almost \replaced{perfectly -- see \cref{table:arc,fig:arc_comparison}.}{perfectly.} This probably stems from how both models were developed within the MIT community.  \replaced{Two notable discrepancies between the models, however, are in}{The points to make now, though, is even with how well the results match, there are two notable discrepancies:} the fusion power ($P_F$) and bootstrap current fraction ($f_{BS}$). These \added{discrepancies} \replaced{likely}{mainly} arise from the use of simple parabolic profiles for \replaced{temperature and, thus, can be seen in the subsequent model comparisons.}{temperature.}
+
+\added{Before moving on, though, it is important to explain how the plots and table used for this comparison are made. First, a list of temperatures between 1 and 40 keV is scanned to produce a set of reactors -- each with their own size ($R_0$), magnet strength ($B_0$), etc. These reactors are then turned into the two curves shown in \cref{fig:arc_comparison} by mapping to their respective values. Note that $R_0$ vs. $B_0$ is then a measure of the accuracy in the tokamak's engineering, while $I_P$ vs $\overline T$ is a measure on its plasma's physics.}
+
+\added{Once these curves are created, a design point is chosen on them that has the least distance to the marked point (from the original model's paper). These two points -- or reactors -- are then compared in detail in \cref{table:arc}. Note that the input variables are shared between the original model and this model's input file. The output between the two is what is different. For clarity, $\volume$ is the volume of a tokamak in cubic meters, and the dash on the inductive current fraction $f_{ID}$ implies it makes up $0\%$ of the current.}
+
+\added{The use of a dash for $\beta_N$ brings up the final piece of information needed to understand the plots and table creation process -- limiting constraints. Note that in \cref{fig:arc_comparison}, the solid curve has two portions: \texttt{beta} and \texttt{wall}. These are the portions where the beta limit and the wall loading limit are the driving constraints, respectively. For example at $B_0$ = 5T, the wall loading ($P_W$) will be much less than the maximum allowed $2.5 \, \textnormal{MW}/\textnormal{m}^2$. This is why the dash is next to $\beta_N$ in \cref{table:arc}, as it is held at the maximum allowed value (i.e. $\beta_N = 0.026$.)}
+
+\added{Finally, the reason there is a dashed \texttt{pulsed} curve and a solid \texttt{steady} one is because this reactor was run in both modes of operation. The pulsed label is actually a slight misnomer as it implies the generalized current balance formula is used (over the simple steady current from \cref{eq:steady}). Because pulses are set to 50 years, they are functionally steady-state regardless. The real reason the two curves diverge is because the steady current has a self-consistent current drive efficiency ($\eta_{CD}$).}
+
+\subsection{Contrasting with the Aries Act Studies}
+
+Moving on, the Aries Act study focuses on how steady-state reactors would look under both a conservative and optimistic perspective. This is highlighted in \cref{fig:act_h_cost}, which shows how costs decreases as the H factor is allowed to increase. Notice that for every value of H, the ACT I study (i.e.\ the optimistic act) has a lower cost than the design from ACT II (i.e.\ the conservative one).
+
+This figure also highlights another peculiarity of the ARIES study -- a reliance on the minimum possible value of H. Note that just left of the reactor point on both plots is a highly erratic portion of the curve. As such, if even a slightly smaller value of H were used in either case, a quite distinct reactor would occur. This is not a robust way to design machines. A better approach would be to build with some safety factor -- i.e at a slightly more \replaced{optimistic value}{magical version} of H. This can be seen in ARC's H-Sweep.
+
+\subsubsection{Act I -- Advanced Physics and Engineering}
+
+Act 1 is the ARIES study that assumes advanced physics and engineering design parameters. Although this paper's model does a \replaced{fair job recovering}{good job matching} the results from their paper, it does show what optimistic design really means. As can be seen, this design actually only surpasses the minimum possible toroidal field strength by as less than a Tesla! Practically, this means \replaced{their}{the} reactor is barely realizable. \added{Trying to build a 5T device would not be possible using their stated reactor input parameters.}
+
+\subsubsection{Act II -- Conservative Physics and Engineering}
+
+ARIES more conservative design -- Act II -- is much more like ARC in nature. From the plots, it is obvious the paper's model is basically right on top of the reactor curve made using Fussy.jl.  Much like ARC, too, it shows how the model overestimates fusion power and underestimates bootstrap fraction due to their selection of a pedestal profile for plasma temperature.
+
+\subsection{Benchmarking with the Process DEMO Designs}
+
+The PROCESS team's prospective designs for successors to ITER constitute the final set of model comparisons: the steady-state and pulsed DEMO reactors. As this paper is designed to compare these modes of operation, this study proves most \replaced{informative.}{fruitful.} It also highlights how common model decisions can dramatically alter what reactors come out of the solvers.
+
+The first discrepancy is how the PROCESS team defines the loss term in the ELMy H-Mode scaling law. As shown in their paper, they actually subtract out a Bremsstrahlung component, while leaving the fitting coefficients the same. \cite{process} After modifying Fussy.jl to incorporate this definition, the steady-state reactor is easily reproducible in $R_0$ -- $B_0$ slice of reactor space.
+\begin{equation}
+	\label{eq:pl_demo}
+	P_L^{DEMO} = P_{src} - P_{BR}
+\end{equation}
+
+Unlike the steady-state case, however, the modified power loss term does not fix the pulsed case, as it actually draws the reactor curves further from the design in their paper. As such, it is flux balance that is now the main culprit for discrepancies between the two models. This makes sense, as this model uses highly simplified source terms -- namely neglecting anything but the central solenoid and PF coils (as well as ignoring crucial physics for these two components). Even acknowledging the differences between the two models, Fussy.jl still does \replaced{reasonably}{remarkably} well at reproducing their much more sophisticated coding framework. 
+
+The final point to make is about selecting optimum points to build as the \replaced{dynamic}{floating} variables are allowed to make curves through reactor space. Up to this point, only steady-state tokamak designs have been explored. In every single one of these, though, the paper values have been very close to the point where the beta curves and wall loading curves cross. This is because they all result in the minimum cost-per-watt. 
+
+For pulsed designs, on the other hand, kink curves start to appear for low magnetic field strengths. Just as beta-wall intersections were optimum places to design for low cost-per-watt ($C_W$) reactors, these beta-kink intersections will prove to be the place where minimum capital cost ($W_M$) reactors usually occur. \added{This is discussed in more detail in \cref{subsection:design_point}.}
+
+\subsubsection{DEMO Steady -- A Steady-State ITER Successor}
+
+\deleted{Hands down, this DEMO Steady reactor is the worst modeled reactor using Fussy.jl. As mentioned previously, though, some of the discrepancy was removed by using the PROCESS team's modified version of heat loss. This heavily corrected the $R_0$ -- $B_0$ curve, but had no effect on the $I_P$ -- $\overline T$ one. An interesting aside is that these curves actually show how steady current is independent of \replaced{limiting}{secondary} constraint (as noted).}
+
+\added{As shown in \cref{fig:demo_steady_comparison,table:demo_steady}, the DEMO steady reactor is the design captured worst by the Fussy.jl model. Some discrepency, however can be removed by using the PROCESS team's modified version of heat loss, as given by \cref{eq:pl_demo}.\cite{process} Although not supported by the official ITER database fit,\cite{iter_confinement} the PROCESS team reduces the absorbed power by the Bremsstrahlung power\cite{process_rad} -- which can lengthen $\tau_E$ by more than 25\%.\cite{inputfile} }
+
+\added{With this correction, the $R_0$ -- $B_0$ curve is drawn to be right on top of their model's design. The same cannot be said for the $I_P$ -- $\overline T$ curve as steady current was shown to have little dependence on tokamak configuration ($R_0$ and $B_0$) and, correspondingly, the limiting constraint (e.g. \texttt{beta} and \texttt{wall}). }
+
+\added{Note that the labels of \texttt{modified} and \texttt{pulsed} are slightly obscure in this context. Pulsed, for starters, is actually the generalized solver that does not rely on self-consistent current drive (i.e. in $\eta_{CD}$). The modified label is then when the pulsed solver uses the $P_L^{DEMO}$ value in approximating heat conductive losses.}
+
+\subsubsection{DEMO Pulsed -- A Pulsed ITER Successor}
+
+This pulsed version of DEMO is the only reactor in our collection that is not run in steady-state. As such, it may be the most important one \added{(i.e. it is the only pulsed reactor)}. The first \replaced{observation from \cref{fig:demo_pulsed_comparison}}{thing that is abundantly clear} is that this design actually has no valid wall loading portion -- only a kink and beta curve exist! Even so, the results match pretty well. It should be noted, though, that this current drive is treated as an input and not solved self-consistently.
+
+\clearpage
+
+\newpage
 
 \begin{figure*}[h!]
     \centering
@@ -66,6 +121,7 @@ As mentioned, this model matches the results from the ARC design almost perfectl
     \end{subfigure}
     \hfill \hfill ~\\ ~\\ ~\\
     \caption{Arc Model Comparison} ~\\
+    \label{fig:arc_comparison}
 \end{figure*}
 
 \begin{table}[h!]
@@ -87,7 +143,7 @@ $\kappa_{95}$    & 1.84            \\
 $\delta_{95}$    & 0.333           \\
 $\nu_{n}$        & 0.385           \\
 $\nu_{T}$        & 0.929           \\
-$l_{i}$          & 0.67            \\
+$l_{i}$          & 0.670            \\
 $A$              & 2.5             \\
 $Z_{eff}$        & 1.2             \\
 $f_{D}$          & 0.9             \\
@@ -123,15 +179,12 @@ $\eta_{CD}$      & 0.321            & 0.316          \\
 \end{subtable}
 \hfill
 \hfill
+\label{table:arc}
 \end{table}
 
+\clearpage
+
 \newpage
-
-\subsection{Contrasting with the Aries Act Studies}
-
-Moving on, the Aries Act study focuses on how steady-state reactors would look under both a conservative and optimistic perspective. This is highlighted in \cref{fig:act_h_cost}, which shows how costs decreases as the H factor is allowed to increase. Notice that for every value of H, the ACT I study (i.e. the optimistic act) has a lower cost than the design from ACT II (i.e. the conservative one).
-
-This figure also highlights another peculiarity of the ARIES study -- a reliance on the minimum possible value of H. Note that just left of the reactor point on both plots is a highly erratic portion of the curve. As such, if even a slightly smaller value of H were used in either case, a quite distinct reactor would occur. This is not a robust way to design machines. A better approach would be to build with some safety factor -- i.e at a slightly more magical version of H. This can be seen in ARC's H-Sweep.
 
 \begin{figure*}[h!]
     \centering
@@ -166,11 +219,9 @@ This figure also highlights another peculiarity of the ARIES study -- a reliance
 	\label{fig:act_h_cost}
 \end{figure*}
 
-\newpage 
+\clearpage
 
-\subsubsection{Act I -- Advanced Physics and Engineering}
-
-Act 1 is the ARIES study that assumes advanced physics and engineering design parameters. Although this paper's model does a good job matching the results from their paper, it does show what optimistic design really means. As can be seen, this design actually only surpasses the minimum possible toroidal field strength by as less than a Tesla! Practically, this means the reactor is barely realizable.
+\newpage
 
 \begin{figure*}[h!]
     \centering
@@ -194,6 +245,7 @@ Act 1 is the ARIES study that assumes advanced physics and engineering design pa
     \end{subfigure}
     \hfill \hfill ~\\ ~\\ ~\\
     \caption{Aries Act I Model Comparison} ~\\
+    \label{fig:act_1_comparison}
 \end{figure*}
 
 \begin{table}[h!]
@@ -251,13 +303,12 @@ $\eta_{CD}$      & 0.188            & 0.185          \\
 \end{subtable}
 \hfill
 \hfill
+\label{table:act_1}
 \end{table}
 
-\newpage 
+\clearpage
 
-\subsubsection{Act II -- Conservative Physics and Engineering}
-
-ARIES more conservative design -- Act II -- is much more like ARC in nature. From the plots, it is obvious the paper's model is basically right on top of the reactor curve made using Fussy.jl.  Much like ARC, too, it shows how the model overestimates fusion power and underestimates bootstrap fraction due to their selection of a pedestal profile for plasma temperature.
+\newpage
 
 \begin{figure*}[h!]
     \centering
@@ -281,6 +332,7 @@ ARIES more conservative design -- Act II -- is much more like ARC in nature. Fro
     \end{subfigure}
     \hfill \hfill ~\\ ~\\ ~\\
     \caption{Aries Act II Model Comparison} ~\\
+    \label{fig:act_2_comparison}
 \end{figure*}
 
 \begin{table}[h!]
@@ -302,7 +354,7 @@ $\kappa_{95}$    & 1.964           \\
 $\delta_{95}$    & 0.42            \\
 $\nu_{n}$        & 0.41            \\
 $\nu_{T}$        & 1.15            \\
-$l_{i}$          & 0.60275         \\
+$l_{i}$          & 0.603         \\
 $A$              & 2.5             \\
 $Z_{eff}$        & 2.12            \\
 $f_{D}$          & 0.74            \\
@@ -338,27 +390,12 @@ $\eta_{CD}$      & 0.256            & 0.307           \\
 \end{subtable}
 \hfill
 \hfill
+\label{table:act_2}
 \end{table}
 
+\clearpage
+
 \newpage
-
-\subsection{Benchmarking with the Process DEMO Designs}
-
-The PROCESS team's prospective designs for successors to ITER constitute the final set of model comparisons: the steady-state and pulsed DEMO reactors. As this paper is designed to compare these modes of operation, this study proves most fruitful. It also highlights how common model decisions can dramatically alter what reactors come out of the solvers.
-
-The first discrepancy is how the PROCESS team defines the loss term in the ELMy H-Mode scaling law. As shown in their paper, they actually subtract out a Bremsstrahlung component, while leaving the fitting coefficients the same. \cite{process} After modifying Fussy.jl to incorporate this definition, the steady-state reactor is easily reproducible in $R_0$ -- $B_0$ slice of reactor space.
-
-Unlike the steady-state case, however, the modified power loss term does not fix the pulsed case, as it actually draws the reactor curves further from the design in their paper. As such, it is flux balance that is now the main culprit for discrepencies between the two models. This makes sense, as this model uses highly simplified source terms -- namely neglecting anything but the central solenoid and PF coils (as well as ignoring crucial physics for these two components). Even acknowledging the differences between the two models, Fussy.jl still does remarkably well at reproducing their much more sophisticated coding framework. 
-
-The final point to make is about selecting optimum points to build as the \replaced{dynamic}{floating} variables are allowed to make curves through reactor space. Up to this point, only steady-state tokamak designs have been explored. In every single one of these, though, the paper values have been very close to the point where the beta curves and wall loading curves cross. This is because they all result in the minimum cost-per-watt. 
-
-For pulsed designs, on the other hand, kink curves start to appear for low magnetic field strengths. Just as beta-wall intersections were optimum places to design for low cost-per-watt ($C_W$) reactors, these beta-kink intersections will prove to be the place where minimum capital cost ($W_M$) reactors usually occur.
-
-\newpage 
-
-\subsubsection{DEMO Steady -- A Steady-State ITER Successor}
-
-Hands down, this DEMO Steady reactor is the worst modeled reactor using Fussy.jl. As mentioned previously, though, some of the discrepancy was removed by using the PROCESS team's modified version of heat loss. This heavily corrected the $R_0$ -- $B_0$ curve, but had no effect on the $I_P$ -- $\overline T$ one. An interesting aside is that these curves actually show how steady current is independent of \replaced{limiting}{secondary} constraint (as noted).
 
 \begin{figure*}[h!]
     \centering
@@ -382,6 +419,7 @@ Hands down, this DEMO Steady reactor is the worst modeled reactor using Fussy.jl
     \end{subfigure}
     \hfill \hfill ~\\ ~\\ ~\\
     \caption{Demo Steady Model Comparison} ~\\
+    \label{fig:demo_steady_comparison}
 \end{figure*}
 
 \begin{table}[h!]
@@ -403,7 +441,7 @@ $\kappa_{95}$    & 1.8             \\
 $\delta_{95}$    & 0.333           \\
 $\nu_{n}$        & 0.3972          \\
 $\nu_{T}$        & 0.9187          \\
-$l_{i}$          & 0.9             \\
+$l_{i}$          & 0.900             \\
 $A$              & 2.856           \\
 $Z_{eff}$        & 4.708           \\
 $f_{D}$          & 0.7366          \\
@@ -416,36 +454,35 @@ $B_{CS}$         & 12.85           \\
 \begin{subtable}[t]{0.5\textwidth}
 \centering  
 \caption{Output Variables} ~\\
-\begin{tabular}{ c|c|c } 
+\begin{tabular}{ c|c|c|c } 
 
-Output           & Original         & Fussy.jl        \\  
+Output           & Original         & Fussy.jl  & Modified      \\  
 \hline
-$R_{0}$          & 7.5              & 8.2           \\
-$B_{0}$          & 5.627            & 6.307           \\
-$I_{P}$          & 21.63            & 30.93           \\
-$\overline n$    & 0.8746           & 1.048           \\
-$\overline T$    & 18.07            & 27.83           \\
-$\beta_{N}$       & 0.038            & -           \\
-$q_{95}$         & 4.405            & 3.761           \\
-$P_{W}$          & 1.911            & 4.151           \\
-$f_{BS}$         & 0.611            & 0.424          \\
-$f_{CD}$         & 0.389            & 0.576          \\
-$f_{ID}$         & -              & -             \\
-$\volume$         & 2217           & 2879          \\
-$P_{F}$          & 3255           & 8971          \\
-$\eta_{CD}$      & 0.4152           & -          \\
+$R_{0}$          & 7.5              & 8.2  &  7.6        \\
+$B_{0}$          & 5.627            & 6.307  & 5.577         \\
+$I_{P}$          & 21.63            & 30.93   &  22.05       \\
+$\overline n$    & 0.875           & 1.048   & 0.855        \\
+$\overline T$    & 18.07            & 27.83    &  23.00       \\
+$\beta_{N}$       & 0.038            & - & -         \\
+$q_{95}$         & 4.405            & 3.761 &   4.360         \\
+$P_{W}$          & 1.911            & 4.151 &    2.281       \\
+$f_{BS}$         & 0.611            & 0.424  &  0.492       \\
+$f_{CD}$         & 0.389            & 0.576 &  0.508        \\
+$f_{ID}$         & -              & -             & - \\
+$\volume$         & 2217           & 2879 &  2351        \\
+$P_{F}$          & 3255           & 8971 & 4306         \\
+$\eta_{CD}$      & 0.4152           & -  & -        \\
 
 \end{tabular}
 \end{subtable}
 \hfill
 \hfill
+\label{table:demo_steady}
 \end{table}
 
-\newpage 
+\clearpage
 
-\subsubsection{DEMO Pulsed -- A Pulsed ITER Successor}
-
-This pulsed version of DEMO is the only reactor in our collection that is not run in steady-state. As such, it may be the most important one. The first thing that is abundantly clear is that this design actually has no valid wall loading portion -- only a kink and beta curve exist! Even so, the results match pretty well. It should be noted, though, that this current drive is treated as an input and not solved self-consistently.
+\newpage
 
 \begin{figure*}[h!]
     \centering
@@ -469,6 +506,7 @@ This pulsed version of DEMO is the only reactor in our collection that is not ru
     \end{subfigure}
     \hfill \hfill ~\\ ~\\ ~\\
     \caption{Demo Pulsed Model Comparison} ~\\
+    \label{fig:demo_pulsed_comparison}
 \end{figure*}
 
 \begin{table}[h!]
@@ -503,58 +541,67 @@ $B_{CS}$         & 12.77           \\
 \begin{subtable}[t]{0.5\textwidth}
 \centering  
 \caption{Output Variables} ~\\
-\begin{tabular}{ c|c|c } 
+\begin{tabular}{ c|c|c|c } 
 
-Output           & Original         & Fussy.jl        \\
+Output           & Original         & Fussy.jl  & Modified      \\
 \hline
-$R_{0}$          & 9.07            & 8.10             \\
-$B_{0}$          & 5.67            & 5.48            \\
-$I_{P}$          & 19.6             & 19.3           \\
-$\overline n$    & 0.7983           & 0.9795          \\
-$\overline T$    & 13.06            & 13.28           \\
-$\beta_{N}$       & 0.0259           & -          \\
-$q_{95}$         & 3.247            & 2.853           \\
-$P_{W}$          & 1.05             & 1.47           \\
-$f_{BS}$         & 0.348            & 0.164          \\
-$f_{CD}$         & 0.096            & 0.106          \\
-$f_{ID}$         & 0.557            & 0.730          \\
-$\volume$         & 2502           & 1751          \\
-$P_{F}$          & 2037           & 2376          \\
-$\eta_{CD}$      & 0.2721           & -     
+$R_{0}$          & 9.07            & 8.10   & 7.61           \\
+$B_{0}$          & 5.67            & 5.48   &  5.71        \\
+$I_{P}$          & 19.6             & 19.3 &   16.3       \\
+$\overline n$    & 0.7983           & 0.9795 &   0.9384      \\
+$\overline T$    & 13.06            & 13.28 & 13.00         \\
+$\beta_{N}$       & 0.0259           & - & -         \\
+$q_{95}$         & 3.247            & 2.853 & 3.303          \\
+$P_{W}$          & 1.05             & 1.47 & 1.23          \\
+$f_{BS}$         & 0.348            & 0.164 & 0.190         \\
+$f_{CD}$         & 0.096            & 0.106 &  0.103        \\
+$f_{ID}$         & 0.557            & 0.730  & 0.707         \\
+$\volume$         & 2502           & 1751  & 1452        \\
+$P_{F}$          & 2037           & 2376 & 1756         \\
+$\eta_{CD}$      & 0.2721           & - & -    
 
 \end{tabular}
 \end{subtable}
 \hfill
 \hfill
+\label{table:demo_pulsed}
 \end{table}
+
+\clearpage
+
+\newpage
 
 \section{Developing Prototype Reactors}
 
-Now that the model used in Fussy.jl has been tested against other fusion systems codes in the field, we will develop our own prototype reactors. Because this paper is about making a levelized comparison of pulsed and steady-state tokamaks, we will develop middle-of-the-road reactors that only differ by operating mode. 
+Now that the model used in Fussy.jl has been tested against other fusion systems codes in the field, we will develop our own prototype reactors. Because this paper is about making a levelized comparison of pulsed and steady-state tokamaks, we will develop middle-of-the-road reactors that only differ by operating mode. \added{The parameters for these two designs are captured in \cref{table:charybdis,table:proteus}.}
 
-The steady-state prototype, Charybdis, is the obvious choice to start with -- as the model was tested against four of these typed reactors. It was also pointed out that the model did remarkably well when recreating ARC. As the authors share many of the ARC team's philosophies, Charybdis uses \replaced{static}{fixed} parameters very similar to them.
+\replaced{To compare the two modes of operation, the}{The} steady-state prototype, Charybdis, is the obvious choice to start with -- as the model was tested against four of these typed reactors. It was also pointed out that the model did remarkably well when recreating ARC. As the authors share many of the ARC team's philosophies, Charybdis uses \replaced{static}{fixed} parameters very similar to them.\cite{arc}
 
-Next, although led to believe Charybdis' pulsed twin reactor -- Proteus -- would be created by a simple flip of the switch, it was a slight oversimplification. The first difference is that the pulsed twin, Proteus, is assumed to be purely pulsed: $\eta_{CD} = 0$. Further, the bootstrap current is much less important than it was for steady-state tokamaks. This corresponds to a current profile peaked at the origin -- i.e. a parabola. Numerically, this is done by raising $l_i$ from around 5.5 to 6.
+Next, although led to believe Charybdis' pulsed twin reactor -- Proteus -- would be created by a simple flip of the switch, it was a slight oversimplification. The first difference is that the pulsed twin, Proteus, is assumed to be purely pulsed: $\eta_{CD} = 0$. Further, the bootstrap current is much less important than it was for steady-state tokamaks. This corresponds to a current profile peaked at the origin -- i.e.\ a parabola. Numerically, this is done by raising $l_i$ from around \replaced{0.55}{5.5} to \replaced{0.6}{6}.
 
-The final difference creates the largest change in the twin reactors: the choice of miracle. As hinted several times before, the H factor is a common way designers artificially boost the confinement of their machines. This H value will thus be the miracle for Charybdis, the steady-state prototype. Next, as the main conclusion of this paper is to state the advantages of high magnetic field, a free way to boost a central solenoid -- through $B_{CS}$ -- will be employed using HTS coils.
+The final difference creates the largest change in the twin reactors: the choice of \replaced{necessary technological advancement.}{miracle.} As \replaced{mentioned}{hinted} several times before, the H factor is a common way designers artificially boost the confinement of their machines. This H value will thus be the \replaced{technological advancement needed}{miracle} for Charybdis, the steady-state prototype. Next, as the main conclusion of this paper is to state the advantages of high magnetic field, \replaced{an inexpensive way to strengthen the}{a free way to boost a} central solenoid -- through $B_{CS}$ -- will be employed using HTS coils.
 
-Opposite the order of how they were designed, the goal now is to lock down a value of $B_{CS}$ for Proteus and then use it to set the H factor for Charybdis. This selection algorithm is depicted in \cref{fig:selection}. For Proteus, the point locked down was $B_{CS} = 20 \ \textnormal{T}$, which occurred at a fusion power ($P_F$) of around 1250 MW. As shown in the cost curve, this was at a point where the ratio between the minimum capital cost and the minimum cost-per-watt saturated. This choice of a 1250 MW reactor then led to Charybdis having an H factor of 1.7.
+\deleted{Opposite the order of how they were designed, the goal now is to lock down a value of $B_{CS}$ for Proteus and then use it to set the H factor for Charybdis. This selection algorithm is depicted in Fig.\ \ref{fig:selection}. For Proteus, the point locked down was $B_{CS} = 20 \ \textnormal{T}$, which occurred at a fusion power ($P_F$) of around 1250 MW. As shown in the cost curve, this was at a point where the ratio between the minimum capital cost and the minimum cost-per-watt saturated. This choice of a 1250 MW reactor then led to Charybdis having an H factor of 1.7.}
+
+\added{The goal now is to impose a constraint on a reactor's economic competitiveness by setting the fusion power to a relatively low value for both designs -- i.e.\ 1250 MW. As \cref{fig:selection} shows, this results in Charybdis having an H factor of 1.7 and Proteus having a $B_{CS}$ of around 20T. As shown in the Proteus cost curve, this was at a point where the ratio between the minimum capital cost and the minimum cost-per-watt leveled off. }
+
+\added{Note that these technological advancements (in H and $B_{CS}$) are necessary to get economic -- or even physically realizable -- reactors. This is the same reason why all the literature reactors used values for H and $N_G$ that violate standard values.} 
+
+\clearpage
+
+\newpage
 
 \begin{figure}[h!]
 \centering
 \input{images/pulsed_vs_steady.tex}
-\caption{How to Build a Fusion Reactor} ~ \\
-\small As is convention in fusion engineering, a good design only relies on one miracle. For steady-state reactors, we assume we can get better confinement -- by increasing $H$. While in the pulsed case, the miracle is assuming strong magnets for the central solenoid -- $B_{CS}$.
+\caption{\replaced{Designing Reactor Prototypes}{How to Build a Fusion Reactor}} ~ \\
+\small As is convention in fusion engineering, \replaced{designs are built using one assumed technological advancement.}{a good design only relies on one miracle.} For steady-state reactors, we assume \replaced{a method for improving}{we can get better} confinement -- by increasing $H$. While in the pulsed case, the \replaced{advancement is inexpensive magnet technology for stronger fields in}{miracle is assuming strong magnets for} the central solenoid -- $B_{CS}$. 
 \label{fig:selection}
 \end{figure}
 
 \clearpage
 
 \newpage
-
-\subsection{Navigating around Charybdis}
-
-The Charybdis reactor is the steady-state twin developed for this paper. As mentioned, its parameters are similar to the ARC design. This is shown in \cref{fig:charybdis}, where the two $R_0$ -- $B_0$ curves are almost interchangeable. Before moving on, it proves useful to note that the optimum place to build on these curves is where the two portions intersect -- as it minimizes costs.
 
 \begin{figure*}[h!]
     \centering
@@ -600,7 +647,7 @@ $\kappa_{95}$    & 1.8              \\
 $\delta_{95}$    & 0.35             \\
 $\nu_{n}$        & 0.4              \\
 $\nu_{T}$        & 1.1              \\
-$l_{i}$          & 0.5579         \\
+$l_{i}$          & 0.558         \\
 $A$              & 2.5              \\
 $Z_{eff}$        & 1.75             \\
 $f_{D}$          & 0.9              \\
@@ -636,13 +683,12 @@ $\eta_{CD}$      & 0.291           \\
 \end{subtable}
 \hfill
 \hfill
+\label{table:charybdis}
 \end{table}
 
-\newpage 
+\clearpage
 
-\subsection{Pinning down Proteus}
-
-The pulsed twin reactor, Proteus, highlights the effects o f a high field central solenoid. When compared to the Pulsed Demo design, the $R_0$ -- $B_0$ curve looks far more favorable -- i.e. each machine built at a certain magnet strength would be more compact (and cheaper). An interesting facet of Proteus is that it exhibits all three used limits: kink safety factor, Troyon beta, and wall loading.
+\newpage
 
 \begin{figure*}[h!]
     \centering
@@ -666,6 +712,7 @@ The pulsed twin reactor, Proteus, highlights the effects o f a high field centra
     \end{subfigure}
     \hfill \hfill ~\\ ~\\ ~\\
     \caption{Pulsed Prototype Comparison} ~\\
+    \label{fig:proteus}
 \end{figure*}
 
 \begin{table}[h!]
@@ -687,7 +734,7 @@ $\kappa_{95}$    & 1.8              \\
 $\delta_{95}$    & 0.35             \\
 $\nu_{n}$        & 0.4              \\
 $\nu_{T}$        & 1.1              \\
-$l_{i}$          & 0.6328         \\
+$l_{i}$          & 0.633         \\
 $A$              & 2.5              \\
 $Z_{eff}$        & 1.75             \\
 $f_{D}$          & 0.9              \\
@@ -723,7 +770,20 @@ $\eta_{CD}$      & 0.0              \\
 \end{subtable}
 \hfill
 \hfill
+\label{table:proteus}
 \end{table}
+
+\clearpage
+
+\newpage
+
+\subsection{Navigating around Charybdis}
+
+The Charybdis reactor is the steady-state twin developed for this paper. As mentioned, its parameters are similar to the ARC design. This is shown in \cref{fig:charybdis}, where the two $R_0$ -- $B_0$ curves are almost interchangeable. Before moving on, it proves useful to note that the optimum place to build on these curves is where the two portions intersect -- as it minimizes costs. \added{These cost curves are shown in \cref{fig:steady_cost}.}
+
+\subsection{Pinning down Proteus}
+
+The pulsed twin reactor, Proteus, highlights the effects of a high field central solenoid. When compared to the Pulsed Demo design, the $R_0$ -- $B_0$ curve looks far more favorable -- i.e.\ each machine built at a certain magnet strength would be more compact (and cheaper). An interesting facet of Proteus is that it exhibits all three used limits: kink safety factor, Troyon beta, and wall loading. \added{Cost curves are shown in \cref{fig:pulsed_costs}.} 
 
 \section{Learning from the Data}
 
@@ -731,7 +791,9 @@ Now that the model has been properly vetted and prototypes designed, we can expl
 
 \subsection{Picking a Design Point}
 
-With more than twenty design parameters, finding the most efficient reactor is a fool's errand. Intuition building aside, finding good reactors becomes much more feasible when only focusing on \replaced{dynamic}{floating} variables -- i.e. when keeping \replaced{static}{fixed} variables constant. This method, for example, is how all the $R_0$ -- $B_0$ curves have been produced this chapter. Once these curves are produced, it is up to the user to choose which reactor on them to build. However, the guiding metric usually involves lowering some cost, either: capital cost or cost-per-watt.
+\label{subsection:design_point}
+
+With more than twenty design parameters, finding the most efficient reactor is a fool's errand. Intuition building aside, finding good reactors becomes much more feasible when only focusing on \replaced{dynamic}{floating} variables -- i.e.\ when keeping \replaced{static}{fixed} variables constant. This method, for example, is how all the $R_0$ -- $B_0$ curves have been produced this chapter. Once these curves are produced, it is up to the user to choose which reactor on them to build. However, the guiding metric usually involves lowering some cost, either: capital cost or cost-per-watt.
 
 Regardless of reactor type, most efficient tokamaks operate near the beta limit -- where plasma pressure is greatest. Besides being a regime highly sensitive to magnetic field strength, the beta limit is a constraint that occurs on every reactor (seen by the authors). This beta limit is usually nested between the kink limit to lower $B_0$ values and wall loading to higher ones. Understanding these regimes is the first step towards building an intuition favoring efficient machines -- see \cref{fig:limit_regimes}.
 
@@ -744,7 +806,15 @@ Regardless of reactor type, most efficient tokamaks operate near the beta limit 
 \label{fig:limit_regimes}
 \end{figure}
 
-Now that the beta limit curve has been designated as the most efficient regime to operate in (usually), the goal is to select which reactor on it is the best one to build. Starting with the easier of the two, the optimum design point for steady-state reactors is the point where wall loading first starts to dominate design. Here, engineering concerns cause the reactor to start increasing in size and cost -- which is bad. This conclusion is justified by the cost curves for all five reactors in \cref{fig:steady_cost}. As these show, it is also where these reactor designers pinned down their tokamaks.\footnote{ Simply stated, the optimum reactor for steady-state tokamaks is one that just barely satisfies the beta and wall loading limit simultaneously -- i.e. where the two curves intersect. }
+Now that the beta limit curve has been designated as the most efficient regime to operate in (usually), the goal is to select which reactor on it is the best one to build. Starting with the easier of the two, the optimum design point for steady-state reactors is the point where wall loading first starts to dominate design. Here, engineering concerns cause the reactor to start increasing in size and cost -- which is bad. This conclusion is justified by the cost curves for all five reactors in \cref{fig:steady_cost}. As these show, it is also where these reactor designers pinned down their tokamaks.\footnote{ Simply stated, the optimum reactor for steady-state tokamaks is one that just barely satisfies the beta and wall loading limit simultaneously -- i.e.\ where the two curves intersect. }
+
+The problem of selecting an optimum design is more difficult for the pulsed case. This is mainly due to the kink limit regime being actually achievable. Following the conclusion from steady-state reactors would be an oversimplification because there are actually two costs relevant to a reactor: capital cost and cost-per-watt. These beta-wall reactors are actually the points often best for minimizing cost-per-watt (i.e.\ your rate of return). The new beta-kink reactors, then, lead to cheap to build machines -- as they minimize capital cost. These conclusions are shown in \cref{fig:pulsed_costs}.
+
+Summarizing the conclusions of this subsection, the beta limit is usually the best constraint to operate at. For lowering the cost-per-watt, a reactor should always be run at the highest magnetic field strength ($B_0$) that satisfies the beta limit. This most often occurs when wall loading takes over (for steady-state reactors) or reactors start being physically unrealizable (for pulsed ones). Building cheap to build reactors -- i.e.\ minimizing capital cost -- then actually proved to make pulsed design one of trade-offs. This is because the beta-kink curve intersection produces a low capital cost reactor, but at the price of operating at a subpar cost-per-watt. Designers should therefore balance the two cost metrics.
+
+\clearpage
+
+\newpage
 
 \begin{figure*}
     \centering
@@ -787,10 +857,13 @@ Now that the beta limit curve has been designated as the most efficient regime t
     \end{subfigure}
     \hfill \hfill ~\\ ~\\ ~\\
     \caption{Steady State Cost Curves}
-    \label{fig:steady_cost}
+    \label{fig:steady_cost} ~ \\
+    \added{\small Steady state reactors typically have two regimes -- a lower magnet strength \texttt{beta} limiting one and a high field \texttt{wall} loading one. As shown, each steady state scan produces a minimum cost reactor at the point where the two regimes meet.}
 \end{figure*}
 
-The problem of selecting an optimum design is more difficult for the pulsed case. This is mainly due to the kink limit regime being actually achievable. Following the conclusion from steady-state reactors would be an oversimplification because there are actually two costs relevant to a reactor: capital cost and cost-per-watt. These beta-wall reactors are actually the points often best for minimizing cost-per-watt (i.e. your rate of return). The new beta-kink reactors, then, lead to cheap to build machines -- as they minimize capital cost. These conclusions are shown in \cref{fig:pulsed_costs}.
+\clearpage
+
+\newpage
 
 \begin{figure*}
     \centering
@@ -833,10 +906,13 @@ The problem of selecting an optimum design is more difficult for the pulsed case
     \end{subfigure}	
     \hfill \hfill ~\\ ~\\ ~\\
     \caption{Pulsed Cost Curves}
-    \label{fig:pulsed_costs}
+    \label{fig:pulsed_costs} ~ \\
+    \added{\small Pulsed reactor design is slightly more ambiguous than steady-state in terms of selecting an operating point. These plots show that the cost-per-watt is reduced at the highest field strength available to \texttt{beta} regime reactors. The minimum capital cost then occurs when the \texttt{beta} and \texttt{kink} limit are both just marginally satisfied. }
 \end{figure*}
 
-Summarizing the conclusions of this subsection, the beta limit is usually the best constraint to operate at. For lowering the cost-per-watt, a reactor should always be run at the highest magnetic field strength ($B_0$) that satisfies the beta limit. This most often occurs when wall loading takes over (for steady-state reactors) or reactors start being physically unrealizable (for pulsed ones). Building cheap to build reactors -- i.e. minimizing capital cost -- then actually proved to make pulsed design one of trade-offs. This is because the beta-kink curve intersection produces a low capital cost reactor, but at the price of operating at a subpar cost-per-watt. Designers should therefore balance the two cost metrics.
+\clearpage
+
+\newpage
 
 \subsection{Utilizing High Field Magnets}
 
@@ -844,7 +920,7 @@ The main conclusion for this paper is that high field magnets are the way to go 
 
 At a very simple level, there are two main places strong magnets can be employed: the toroidal fields ($B_0$) and the central solenoid ($B_{CS}$). The easier mode of operation to start with is steady-state. This is because steady-state tokamaks do not rely on a central solenoid for the profitability of their machines. Further, the cost curves in \cref{fig:steady_cost} show that all these designs would benefit from toroidal fields ($B_0$) not achievable with conventional magnets -- which can only reach around 10 T on a good day.
 
-The more interesting result is that pulsed reactors gain no real benefit from using HTS toroidal field magnets. Within the modern paradigm (i.e. D-T fuel, H-Mode, etc), pulsed reactors never have to exceed the limits of \replaced{less expensive LTS magnets.}{inexpensive, copper magnets.} The place HTS can really help is with the central solenoid, which governs how long a pulse can last. Further, the effect of improving the central solenoid saturates within the range accessible to HTS tape. Again, HTS would be more than adequate for the modern paradigm. These conclusions are shown in \cref{fig:pulsed_sensitivities,fig:pulsed_samplings}.
+The more interesting result is that pulsed reactors gain no real benefit from using HTS toroidal field magnets. Within the modern paradigm (i.e.\ D-T fuel, H-Mode, etc), pulsed reactors never have to exceed the limits of \replaced{less expensive LTS magnets.}{inexpensive, copper magnets.} The place HTS can really help is with the central solenoid, which governs how long a pulse can last. Further, the effect of improving the central solenoid saturates within the range accessible to HTS tape. Again, HTS would be more than adequate for the modern paradigm. These conclusions are shown in \cref{fig:pulsed_sensitivities,fig:pulsed_samplings}.
 
 \begin{figure*}
     \centering
@@ -944,7 +1020,7 @@ Even in this relatively simple fusion model, there are more than twenty \replace
 
 Besides artificially enhancing a plasmas confinement with the H-factor, steady-state reactor designers may also heavily rely on high bootstrap currents. This is because bootstrap current is the portion of current you do not have to pay for. The research camp most focused on this miracle is General Atomic's DIII-D in San Diego. This miracle relies on tailoring current profiles to be extremely hollow.
 
-Quickly reasoning this camp's thought process are two sets of plots. The first plot (\cref{fig:bootstrap_samplings}) highlights how the cheapest possible steady-state designs have bootstrap fractions approaching unity -- they use almost no current drive. This makes sense as current drive is extremely cost prohibitive (i.e. why people consider pulsed tokamaks).
+Quickly reasoning this camp's thought process are two sets of plots. The first plot (\cref{fig:bootstrap_samplings}) highlights how the cheapest possible steady-state designs have bootstrap fractions approaching unity -- they use almost no current drive. This makes sense as current drive is extremely cost prohibitive (i.e.\ why people consider pulsed tokamaks).
 
 \begin{figure*}
     \centering

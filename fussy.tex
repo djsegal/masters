@@ -1,5 +1,7 @@
 \chapter{Simulating with Fussy.jl}
 
+\label{chapter:fussy}
+
 Fussy.jl is a 0-D \underline{fus}ion \underline{sy}stems code written using the Julia language. The reason for choosing Julia over say Matlab and Python was due to metaprogramming concerns and its tight-knit  computational community, respectively. Incorporating the model used throughout this paper, the code is quick to run and matches more sophisticated frameworks with high fidelity.
 
 This chapter will be broken down into three steps. The first is getting a user up and running with the code. Once the user gets to this point, hopefully they will wonder how the code is structured. This will be the second step. The final step will be explaining the various functions callable on reactor objects -- the atomic data structure for Fussy.jl.
@@ -33,11 +35,11 @@ Assuming the user got to this section, the code works and now you want to know w
 
 {\centering \href{http://git.io/tokamak}{git.io/tokamak} \par }
 
-Within the \texttt{src} folder are several subfolders as well as a few files (e.g. Fussy.jl and defaults.jl). In an attempt to not bore the reader, we will be painting with thick brushstrokes. Further, the \texttt{methods} subfolder will be the topic of the next section -- as most involve calls on a reactor object.
+Within the \texttt{src} folder are several subfolders as well as a few files (e.g.\ Fussy.jl and defaults.jl). In an attempt to not bore the reader, we will be painting with thick brushstrokes. Further, the \texttt{methods} subfolder will be the topic of the next section -- as most involve calls on a reactor object.
 
 \subsection{Typing out Structures}
 
-The place to start in any modeling framework is its data structures. These type definitions allow the building of nested hierarchies of constructed objects. The most atomic of these is the Reactor struct, but several other ones allow for solving broader scoped questions (i.e. Scans, Sensitivities, and Samplings.)
+The place to start in any modeling framework is its data structures. These type definitions allow the building of nested hierarchies of constructed objects. The most atomic of these is the Reactor struct, but several other ones allow for solving broader scoped questions (i.e.\ Scans, Sensitivities, and Samplings.)
 
 \subsubsection{The Reactor Structure}
 
@@ -51,7 +53,7 @@ This is the data structure that produces the various comparison plots in the res
 
 \subsubsection{The Sensitivity Structure}
 
-Sensitivity studies are how computationalists test the effect of changing a variable over multiple values -- i.e. do a 20\% sensitivity around the H factor. Like Scans, Sensitivities store various lists of reactors, each corresponding to an interesting data point. These include limit reactors where the beta limit and kink limit are just satisfied or when the beta limit and wall loading are just satisfied. Additionally, they include the minimum capital cost reactors and the minimum cost-per-watt ones. 
+Sensitivity studies are how computationalists test the effect of changing a variable over multiple values -- i.e.\ do a 20\% sensitivity around the H factor. Like Scans, Sensitivities store various lists of reactors, each corresponding to an interesting data point. These include limit reactors where the beta limit and kink limit are just satisfied or when the beta limit and wall loading are just satisfied. Additionally, they include the minimum capital cost reactors and the minimum cost-per-watt ones. 
 
 \subsubsection{The Sampling Structure}
 
@@ -66,7 +68,7 @@ In order to store the various equations from \cref{table:eq} is the Equation Str
 	R_0^{\, \gamma_R} \cdot B_0^{\, \gamma_B} \cdot I_P^{\, \gamma_I} = G( \overline T )
 \end{equation}
 
-Concretely, there are 16 objects that use this struct -- one for each equation (e.g. for fusion power, the beta limit, and temperature assignment).
+Concretely, there are 16 objects that use this struct -- one for each equation (e.g.\ for fusion power, the beta limit, and temperature assignment).
 
 \subsubsection{The Equation Set Structure}
 
@@ -74,13 +76,13 @@ The step up from the Equation struct are the Equation Sets. These collections of
 
 \subsection{Referencing Input Decks and Solutions}
 
-With more than twenty \replaced{static}{fixed} variables in the model, the range of tokamak reactors is basically infinite. To help users build a net of designs to explore reactor space are seven input decks. These are the ones given in the results: Arc, Act I /II, Demo Steady/Pulsed, Proteus and Charybdis. Coupled with the non-prototype reactors are solution reactors that store various quantities from the original papers (e.g. $P_F$, $f_{BS}$, $R_0$). These are how the comparison tables were constructed.
+With more than twenty \replaced{static}{fixed} variables in the model, the range of tokamak reactors is basically infinite. To help users build a net of designs to explore reactor space are seven input decks. These are the ones given in the results: Arc, Act I /II, Demo Steady/Pulsed, Proteus and Charybdis. Coupled with the non-prototype reactors are solution reactors that store various quantities from the original papers (e.g.\ $P_F$, $f_{BS}$, $R_0$). These are how the comparison tables were constructed.
 
 \subsection{Acknowledging Utility Functions}
 
 For the uninitiated, utility functions are grab bag functions that do not really belong in a codebase -- but do anyway. This sentiment does not mean they are worthless, just not fusion related at all. In Fussy.jl, the most notable are a normalized integral calculator, a filter that includes numeric tolerances, and a robust root solver. 
 
-Although since incorporated into the official Roots.jl package, \texttt{find\_roots} allows finding an arbitrary number of roots within a bounded range. This was needed because many roots can be found at various levels of the reactor solving problem -- i.e. for $I_P$, $\overline T$, $\eta_{CD}$, etc.
+Although since incorporated into the official Roots.jl package, \texttt{find\_roots} allows finding an arbitrary number of roots within a bounded range. This was needed because many roots can be found at various levels of the reactor solving problem -- i.e.\ for $I_P$, $\overline T$, $\eta_{CD}$, etc.
 
 \subsection{Mentioning Base Level Files}
 
@@ -100,7 +102,7 @@ The calculation subdirectory of reactor methods are used to set various importan
 
 \subsubsection{Coefficients and Composites}
 
-The coefficients and composites directories correspond to the model's \replaced{static}{fixed} and \replaced{dynamic}{floating} coefficients, respectively. For clarity, \replaced{static}{fixed} coefficients, including $K_n$ and $K_{CD}$, were labeled with a K. Whereas, \replaced{dynamic}{floating} coefficients then started with G's -- i.e. $G_{PB}$ and $G_V$.
+The coefficients and composites directories correspond to the model's \replaced{static}{fixed} and \replaced{dynamic}{floating} coefficients, respectively. For clarity, \replaced{static}{fixed} coefficients, including $K_n$ and $K_{CD}$, were labeled with a K. Whereas, \replaced{dynamic}{floating} coefficients then started with G's -- i.e.\ $G_{PB}$ and $G_V$.
 
 \subsubsection{Fluxes and Powers}
 
@@ -112,7 +114,7 @@ The next collection of reactor methods are the various profiles. Most obviously,
 
 \subsubsection{Geometries}
 
-Additionally, there are many geometric relations. These include the various tokamak thicknesses: a, b, c, d -- as well as the radius and height of the central solenoid. This group also includes the volume, perimeter, surface area, and cross-sectional area. It also includes the many subscripted fields. For example, the elongation (i.e. $\kappa_{95}$) includes the following alternative definitions: $\kappa_X$, $\kappa_P$, and $\kappa_\tau$
+Additionally, there are many geometric relations. These include the various tokamak thicknesses: a, b, c, d -- as well as the radius and height of the central solenoid. This group also includes the volume, perimeter, surface area, and cross-sectional area. It also includes the many subscripted fields. For example, the elongation (i.e.\ $\kappa_{95}$) includes the following alternative definitions: $\kappa_X$, $\kappa_P$, and $\kappa_\tau$
 
 \subsubsection{Formulas}
 
@@ -128,7 +130,7 @@ Our goal will be to make a cost curve for the ARC reactor as a function of H -- 
 
 \subsection{Initializing the Workspace}
 
-The first step for any Fussy.jl Jupyter notebook is loading the required packages -- i.e. the Fussy.jl and Plots.jl packages. This can be done using the following commands:\footnote{The \texttt{addprocs} and \texttt{@everywhere} commands are to parallelize the code. This is because \texttt{addprocs(6)} activates 6 worker processes and \texttt{@everywhere Fussy.jl} adds Fussy.jl to the main kernel and worker processes.}
+The first step for any Fussy.jl Jupyter notebook is loading the required packages -- i.e.\ the Fussy.jl and Plots.jl packages. This can be done using the following commands:\footnote{The \texttt{addprocs} and \texttt{@everywhere} commands are to parallelize the code. This is because \texttt{addprocs(6)} activates 6 worker processes and \texttt{@everywhere Fussy.jl} adds Fussy.jl to the main kernel and worker processes.}
 
 \begin{addmargin}[1.5em]{1.5em}
 \texttt{addprocs(6) \\ ~ \\
@@ -161,7 +163,7 @@ cur\_num\_points = 41
 }
 \end{addmargin}
 
-These six variables almost completely describe a sensitivity study. The first two saw we are using the Arc reactor deck and running a sensitivity over the H-factor parameter. Next, the two boolean values refer to the reactor (1) being treated as pulsed or steady-state and (2) wether to handle $\eta_{CD}$ self-consistently.\footnote{Note that, currently, a pulsed reactor cannot be self-consistent in $\eta_{CD}$ -- it therefore causes an error.} Ergo, what these two flags do is make sure ARC is being handled as a steady-state reactor with a self-consistent $\eta_{CD}$. The last two variables are then ways to change the sensitivity of the study (with $1.0 \rightarrow 100\%$) and the number of reactors it will produce (i.e. 41).
+These six variables almost completely describe a sensitivity study. The first two saw we are using the Arc reactor deck and running a sensitivity over the H-factor parameter. Next, the two boolean values refer to the reactor (1) being treated as pulsed or steady-state and (2) wether to handle $\eta_{CD}$ self-consistently.\footnote{Note that, currently, a pulsed reactor cannot be self-consistent in $\eta_{CD}$ -- it therefore causes an error.} Ergo, what these two flags do is make sure ARC is being handled as a steady-state reactor with a self-consistent $\eta_{CD}$. The last two variables are then ways to change the sensitivity of the study (with $1.0 \rightarrow 100\%$) and the number of reactors it will produce (i.e.\ 41).
 
 Now all six of these variables can be piped into a call to the \texttt{Study} struct to start running the sensitivity study:
 
@@ -183,7 +185,7 @@ Note here that the equal signs inside the parentheses are called keyword argumen
 
 At this point, a user should have a completed sensitivity study they wish to plot. To make the plot useful, the study data structure first has to be unpacked and its contents cleaned. This is the goal of this subsection.
 
-First and foremost, a study has four families of reactors within it: beta-wall (i.e. "wall"), beta-kink (i.e. "kink"), minimum capital cost (i.e. "W\_M"), and minimum cost-per-watt (i.e. "cost"). Therefore, we will extract these reactor lists into a new dictionary data structure:
+First and foremost, a study has four families of reactors within it: beta-wall (i.e.\ "wall"), beta-kink (i.e.\ "kink"), minimum capital cost (i.e.\ "W\_M"), and minimum cost-per-watt (i.e.\ "cost"). Therefore, we will extract these reactor lists into a new dictionary data structure:
 
 \begin{addmargin}[1.5em]{1.5em}
 \texttt{cur\_dict = Dict() \\ ~ \\
@@ -208,7 +210,7 @@ end
 
 \subsection{Plotting Curves}
 
-Our goal is now to turn our unpacked, clean reactor lists into plots -- i.e. measuring costs-per-watt as a function of H. For simplicity, this will lack a lot of the features shown in the Jupyter notebook from the beginning of the section. Additionally, we will be doing it in an iterative process made possible by the Plots.jl framework.
+Our goal is now to turn our unpacked, clean reactor lists into plots -- i.e.\ measuring costs-per-watt as a function of H. For simplicity, this will lack a lot of the features shown in the Jupyter notebook from the beginning of the section. Additionally, we will be doing it in an iterative process made possible by the Plots.jl framework.
 
 The first step is simply making a plot object
 

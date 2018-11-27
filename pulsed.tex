@@ -24,13 +24,13 @@
 
 Pulsed tokamaks are the flagship of the European fusion \added{reactor design} effort. As such, this paper's model will now be generalized to accommodate this mode of operation. Fundamentally, this involves transforming current balance into flux balance -- adding inductive (pulsed) sources to stand alongside the LHCD (steady-state) ones.
 
-The first step in generalizing current balance will be understanding the problem from a basic electrical engineering perspective -- i.e. with circuit analysis. The resulting equation will then be transformed into the flux balance seen in other models from the literature. All that will need to be done then is solving the problem for plasma current ($I_P$) and simplifying it for various situations -- e.g. steady-state operation.
+The first step in generalizing current balance will be understanding the problem from a basic electrical engineering perspective -- i.e.\ with circuit analysis. The resulting equation will then be transformed into the flux balance seen in other models from the literature. All that will need to be done then is solving the problem for plasma current ($I_P$) and simplifying it for various situations -- e.g.\ steady-state operation.
 
-\added{This generalized plasma current will then be found to be a function of the other dynamic variables (i.e. $R_0$, $B_0$, and $\overline T$). This, of course, is more difficult to handle computationally than the steady current, which only directly depended on temperature ($\overline T$). Discussion about solving this new root solving problem will be the topic of the next chapter.}
+\added{This generalized plasma current will then be found to be a function of the other dynamic variables (i.e.\ $R_0$, $B_0$, and $\overline T$). This, of course, is more difficult to handle computationally than the steady current, which only directly depended on temperature ($\overline T$). Discussion about solving this new root solving problem will be the topic of the next chapter.}
 
 \section{Modeling Plasmas as Circuits}
 
-Although it may have been lost along the way, what makes plasmas so interesting and versatile -- in comparison to gases -- is their ability to respond to electric and magnetic fields. It seems natural then to model plasma current from a circuits perspective (i.e. with resistors, voltage sources, and inductors). By name, this circuit is referred to as a transformer where: the plasma is the secondary and the yet-to-be discussed central solenoid (of the tokamak) is the primary.
+Although it may have been lost along the way, what makes plasmas so interesting and versatile -- in comparison to gases -- is their ability to respond to electric and magnetic fields. It seems natural then to model plasma current from a circuits perspective (i.e.\ with resistors, voltage sources, and inductors). By name, this circuit is referred to as a transformer where: the plasma is the secondary and the yet-to-be discussed central solenoid (of the tokamak) is the primary.
 
 The first step in deriving a current equation is to determine the circuit equations that govern pulsed operation in a tokamak. This will be done in two steps. First, we will draw a circuit diagram and write the equations that describe it. Next, we will use a simple schematic for how current evolves in a transformer to boil the resulting differential equations into simple algebraic ones -- as is the hallmark of our model.
 
@@ -49,11 +49,11 @@ Understanding a circuit always starts with drawing a simple diagram, see \cref{f
 \begin{equation}
 	V_i = \sum_j^n \frac{d}{dt} \left( M_{ij} I_j \right) + I_i R_i \ \, , \ \ \ \ \forall \, i = 1,2,..,n
 \end{equation}
-Without going into the inductances (M) and resistances (R), the variable $n$ is the number of sub-circuits, here being 2. Whereas, the variables $i$ and $j$ are the indices of sub-circuits (i.e. 1 for the primary, 2 for the secondary). For illustrative purposes, this would boil down to the following relation for a battery attached to a lightbulb:
+Without going into the inductances (M) and resistances (R), the variable $n$ is the number of sub-circuits, here being 2. Whereas, the variables $i$ and $j$ are the indices of sub-circuits (i.e.\ 1 for the primary, 2 for the secondary). For illustrative purposes, this would boil down to the following relation for a battery attached to a lightbulb:
 \begin{equation}
 	V = I R
 \end{equation}
-Back to the transformer diagram, the equations for the two subcircuits can be expanded and greatly simplified. Besides ignoring every inductive source other than the central solenoid, the next powerful assumption is treating the solenoid as a superconductor (i.e. with negligible resistance). Lastly, the inductances between components and themselves are held constant -- independent of time. This allows the coupled transformer equations to be written as:
+Back to the transformer diagram, the equations for the two subcircuits can be expanded and greatly simplified. Besides ignoring every inductive source other than the central solenoid, the next powerful assumption is treating the solenoid as a superconductor (i.e.\ with negligible resistance). Lastly, the inductances between components and themselves are held constant -- independent of time. This allows the coupled transformer equations to be written as:
 
 \begin{align}
 	\label{eq:circ1}
@@ -76,7 +76,7 @@ Repeated, the one subscript represents the primary -- the central solenoid -- an
 
 \subsection{Plotting Pulse Profiles}
 
-Up until now, little has been discussed that has a time dependence. For steady-state tokamaks, this did not occur because it is an extreme case where pulses basically last the duration of the machine's lifespan (i.e. around 50 years). By definition, though, a pulsed machine has pulses -- with around ten scheduled per day. For this reason, a fusion pulse is now investigated in detail.
+Up until now, little has been discussed that has a time dependence. For steady-state tokamaks, this did not occur because it is an extreme case where pulses basically last the duration of the machine's lifespan (i.e.\ around 50 years). By definition, though, a pulsed machine has pulses -- with around ten scheduled per day. For this reason, a fusion pulse is now investigated in detail.
 
 \begin{figure}[h!]
 \centering
@@ -139,7 +139,7 @@ The first phase in every plasma pulse is the ramp-up. During ramp-up, the centra
 	0 = \frac{1}{\tau_{RU}} \cdot \left( M \cdot ( I_{max} - \tilde I ) - L_2 \cdot I_{ID} \right)
 \end{align}
 
-Simplifying these equations will be done shortly, for now the new terms are what is important. The maximum voltage of the solenoid is $V_{max}$ \added{-- usually measured in kilovolts}. Next, $I_{max}$ is the solenoid's current at the beginning of ramp-up. Whereas $\tilde I$ is the magnitude of the current once the plasma is at its flattop inductive-drive current -- $I_{ID}$. The $\tau_{RU}$ quantity, then, is the duration of time it takes to ramp-up (i.e. RU). Again, $L_1$ and $L_2$ are the \added{microhenry-scale} internal inductances of the solenoid and plasma, respectively, and M is the mutual inductance between them.
+Simplifying these equations will be done shortly, for now the new terms are what is important. The maximum voltage of the solenoid is $V_{max}$ \added{-- usually measured in kilovolts}. Next, $I_{max}$ is the solenoid's current at the beginning of ramp-up. Whereas $\tilde I$ is the magnitude of the current once the plasma is at its flattop inductive-drive current -- $I_{ID}$. The $\tau_{RU}$ quantity, then, is the duration of time it takes to ramp-up (i.e.\ RU). Again, $L_1$ and $L_2$ are the \added{microhenry-scale} internal inductances of the solenoid and plasma, respectively, and M is the mutual inductance between them.
 
 The last step in discussing ramp-up is giving the two important formulas that come from it:
 \begin{equation}
@@ -233,7 +233,7 @@ The inductive current is the source of current that separates pulsed from steady
 \begin{equation}
 	I_{ID} = I_P - ( I_{BS} + I_{CD} )
 \end{equation}
-As before, $I_P$ is the total plasma current in mega-amps, $I_{BS}$ is the bootstrap current, and $I_{CD}$ is the current from LHCD (i.e. lower hybrid current drive). For this model, the relation can be rewritten as:
+As before, $I_P$ is the total plasma current in mega-amps, $I_{BS}$ is the bootstrap current, and $I_{CD}$ is the current from LHCD (i.e.\ lower hybrid current drive). For this model, the relation can be rewritten as:
 \begin{equation}
 	I_{ID} = I_P \cdot \Big( 1 - K_{CD} ( \sigma v ) \Big) - K_{BS} \, \overline T
 \end{equation}
@@ -248,7 +248,7 @@ The maximum current, on the other hand, can be defined through Ampere's Law on a
 \begin{equation}
 	I_{max} = \frac{B_{CS} h_{CS}}{N \mu_0}
 \end{equation}
-Here, $B_{CS}$ is a magnetic field strength the central solenoid is assumed to operate at (i.e. 12 T), $h_{CS}$ is the height of the solenoid, N is the number of loops, and $\mu_0$ has its usual physics meaning $\left( \textnormal{i.e.} \ 40 \, \pi \, \frac{ \mu \textnormal{H}}{\textnormal{m}} \right)$. As will be seen, the value of N does not directly affect the model, as it cancels out in the final flux balance. The height of the central solenoid will be the focus of an upcoming section on improving tokamak geometry.
+Here, $B_{CS}$ is a magnetic field strength the central solenoid is assumed to operate at (i.e.\ 12 T), $h_{CS}$ is the height of the solenoid, N is the number of loops, and $\mu_0$ has its usual physics meaning $\left( \textnormal{i.e.\ } \ 40 \, \pi \, \frac{ \mu \textnormal{H}}{\textnormal{m}} \right)$. As will be seen, the value of N does not directly affect the model, as it cancels out in the final flux balance. The height of the central solenoid will be the focus of an upcoming section on improving tokamak geometry.
 
 \subsubsection{The Central Solenoid Inductance -- $L_1$}
 
@@ -336,7 +336,7 @@ Multiplying by the right-hand side's denominator and moving the negative term ov
 \begin{equation}
 	2 M I_{max} = I_{ID} \cdot \left( L_2 + R_P \tau_{FT} \right) 
 \end{equation}
-This equation is flux balance, where the left-hand side are the sources (e.g. the central solenoid), and the other terms are the sinks (i.e. ramp-up and flattop). The source term can currently be encapsulated in:
+This equation is flux balance, where the left-hand side are the sources (e.g.\ the central solenoid), and the other terms are the sinks (i.e.\ ramp-up and flattop). The source term can currently be encapsulated in:
 \begin{equation}
 	\label{eq:phics}
 	\Phi_{CS} = 2 M I_{max}
@@ -356,7 +356,7 @@ With the ramp-up and flattop flux given respectively by:
 	\label{eq:phift}
 	\Phi_{FT} = ( R_P \tau_{FT} ) \cdot I_{ID}
 \end{equation}
-On comparing these quantities to the ones from the PROCESS team, $\Phi_{RU}$ and $\Phi_{FT}$ are exactly the same. The source terms, on the other hand, are off for two reasons -- both related to the central solenoid being the only source term in flux balance. This can partially be remedied by adding the second most dominant source of flux a posteriori -- i.e. the PF coils. The second, and inherently limiting factor, is the simplicity of the current model. All that can be shown to this regard is that the $\Phi_{CS}$ terms does reasonably predict the values from \added{the} PROCESS \added{code}.
+On comparing these quantities to the ones from the PROCESS team, $\Phi_{RU}$ and $\Phi_{FT}$ are exactly the same. The source terms, on the other hand, are off for two reasons -- both related to the central solenoid being the only source term in flux balance. This can partially be remedied by adding the second most dominant source of flux a posteriori -- i.e.\ the PF coils. The second, and inherently limiting factor, is the simplicity of the current model. All that can be shown to this regard is that the $\Phi_{CS}$ terms does reasonably predict the values from \added{the} PROCESS \added{code}.
 
 \subsection{\replaced{Adding}{Importing} Poloidal Field Coils}
 
@@ -413,11 +413,11 @@ The $R_{CS}$ and $d$ terms found in $\Phi_{PF}$ will now be discussed as they ar
 
 \section{Improving Tokamak Geometry}
 
-From before, this fusion systems model has been said to depend on the major and minor radius -- $R_0$ and $a$, respectively -- and along the way, various geometric parameters have been defined (e.g. $\epsilon$, $\kappa$, $\delta$) to describe the geometry further. Now three more thicknesses will be added: $b$, $c$, and $d$. Additionally, two fundamental dimension corresponding to the solenoid will be given: the radius ($R_{CS}$) and height ($h_{CS}$). These are the topics of this section.
+From before, this fusion systems model has been said to depend on the major and minor radius -- $R_0$ and $a$, respectively -- and along the way, various geometric parameters have been defined (e.g.\ $\epsilon$, $\kappa$, $\delta$) to describe the geometry further. Now three more thicknesses will be added: $b$, $c$, and $d$. Additionally, two fundamental dimension corresponding to the solenoid will be given: the radius ($R_{CS}$) and height ($h_{CS}$). These are the topics of this section.
 
 \subsection{Defining Central Solenoid Dimensions}
 
-The best way to conceptualize tokamak geometry is through cartoon -- see \cref{fig:dims}. What this says is there is a gap at the very center of a tokamak. This gap extends radially outwards to $R_{CS}$ meters where the \replaced{spiraled}{slinky-shaped} central solenoid -- of thickness $d$ -- begins. Between the outer edge of the solenoid and the wall of the torus (i.e. the doughnut) are the blanket and toroidal field (TF) coils.
+The best way to conceptualize tokamak geometry is through cartoon -- see \cref{fig:dims}. What this says is there is a gap at the very center of a tokamak. This gap extends radially outwards to $R_{CS}$ meters where the \replaced{spiraled}{slinky-shaped} central solenoid -- of thickness $d$ -- begins. Between the outer edge of the solenoid and the wall of the torus (i.e.\ the doughnut) are the blanket and toroidal field (TF) coils.
 
 \begin{figure*}
 \centering
@@ -456,7 +456,7 @@ The blanket is an area between the TF coils and the torus that is \deleted{stron
 	\label{eq:bb}
 	b = 1.23 + 0.074 \ \textnormal{ln} \, P_W
 \end{equation}
-\deleted{Here, the constant term (i.e. 1.23) is approximately the mean-free-path of fusion neutrons through lithium-7 -- the thickness of lithium needed to reduce the population of neutrons by $\sim 65\%$.} \replaced{Here, $P_W$}{While the second term, which includes $P_W$,} is a correction to account for extra wall loading (as discussed in \replaced{\cref{subsection:wall_loading}}{the secondary constraint section}). 
+\deleted{Here, the constant term (i.e.\ 1.23) is approximately the mean-free-path of fusion neutrons through lithium-7 -- the thickness of lithium needed to reduce the population of neutrons by $\sim 65\%$.} \replaced{Here, $P_W$}{While the second term, which includes $P_W$,} is a correction to account for extra wall loading (as discussed in \replaced{\cref{subsection:wall_loading}}{the secondary constraint section}). 
 
 Moving forward, the remaining two thicknesses -- $c$ and $d$ -- are handled differently, estimating structural steel portions as well as magnetic current-carrying ones.
 
@@ -480,7 +480,7 @@ The critical stress -- $\sigma_{TF}$ in $G_{CI}$ implies it depends on the struc
 
 \subsubsection{The Central Solenoid Thickness -- $d$}
 
-Finishing this discussion where we started, the central solenoid's thickness -- $d$ -- has a form similar to the TF coil's (i.e. $c$). In mathematical form, this can be represented as: \cite{minervini}
+Finishing this discussion where we started, the central solenoid's thickness -- $d$ -- has a form similar to the TF coil's (i.e.\ $c$). In mathematical form, this can be represented as: \cite{minervini}
  \begin{equation}
  	\label{eq:dd}
 	d = K_{DR} R_{CS} + K_{DO}
@@ -528,7 +528,7 @@ Before moving on, it seems important to say that although $K_{DI}$ and $K_{DO}$ 
 
 \subsection{Revisiting Central Solenoid Dimensions}
 
-Now that the various thicknesses have been defined (i.e. $a$, $b$, $c$, and $d$), the equations for the solenoid's dimensions (i.e. $R_{CS}$ and $h_{CS}$), can now be revisited and simplified. From before,
+Now that the various thicknesses have been defined (i.e.\ $a$, $b$, $c$, and $d$), the equations for the solenoid's dimensions (i.e.\ $R_{CS}$ and $h_{CS}$), can now be revisited and simplified. From before,
  \begin{equation}
  	\tag{\ref{eq:rcs1}}
  	R_{CS} = R_0 - ( a + b + c + d )
@@ -663,7 +663,7 @@ This is precisely the steady current given by \cref{eq:steady}! The generalized 
 
 \subsection{Extracting the Pulsed Current}
 
-For pulsed reactors, we have to \replaced{resolve a similar problem}{play a similar game} -- except now $\tau_{FT}$ is expected to be a reasonably sized number (i.e. 2 hours).
+For pulsed reactors, we have to \replaced{resolve a similar problem}{play a similar game} -- except now $\tau_{FT}$ is expected to be a reasonably sized number (i.e.\ 2 hours).
 
 With an aim at intuition, the reactor is first treated as purely pulsed -- having no current drive assistance:
 \begin{equation}
