@@ -18,15 +18,17 @@
 %
 %\let\cleardoublepage\relax \tableofcontents \newpage
 
-\chapter{Planning Future Work}
+\chapter{Planning Future Work \added{for the Model}}
 
-This model may run and produce interesting results, but there is always more to do. This chapter explores three potential fusion reactors that could help guide real world designs. It then goes into a laundry list of possible model improvements.
+\added{This model may run and produce interesting results, but there is always more to be done. This chapter explores three potential fusion reactors that could help guide real world designs. These are: a stellarator (Ladon), a steady-state/pulsed \replaced{composite}{hybrid} (Janus), and a tokamak capable of reaching H, L, and I modes (Daedalus). The chapter then concludes by describing several possible model improvements, including: adding radiation sources, using pedestal profiles, and improving flux balance.}
 
-The three reactors covered are: a stellarator (Ladon), a steady-state/pulsed hybrid (Janus), and a tokamak capable of reaching H, L, and I modes (Daedalus). 
+\deleted{This model may run and produce interesting results, but there is always more to do. This chapter explores three potential fusion reactors that could help guide real world designs. It then goes into a laundry list of possible model improvements.}
+
+\deleted{The three reactors covered are: a stellarator (Ladon), a steady-state/pulsed hybrid (Janus), and a tokamak capable of reaching H, L, and I modes (Daedalus).}
 
 \section{Incorporating Stellarator Technology -- Ladon}
 
-A stellarator is, at a basic level, a tokamak helically twisted along the length of its major circle. For a long time they were dismissed because of the difficulty involved in building spiraled magnets.  Recent technological improvements, though, have eased this situation -- as seen with the Wendelstein 7-X device in Germany. The problem now is engrained in the missing scaling laws stemming from a lack of machines and, more fundamentally, data points.
+A stellarator is, at a basic level, a tokamak helically twisted along the length of its major circle. For a long time they were dismissed because of \replaced{their poor transport properties.}{the difficulty involved in building spiraled magnets.}  Recent technological improvements, though, have eased this situation -- as seen with the Wendelstein 7-X device in Germany. The problem now is engrained in the \replaced{underdeveloped}{missing} scaling laws stemming from a lack of machines and, more fundamentally, data points.
 
 \begin{figure}
 	\centering
@@ -34,11 +36,13 @@ A stellarator is, at a basic level, a tokamak helically twisted along the length
 	\caption{Cut-Away of Stellarator Reactor} ~\\
 \end{figure}
 
-Optimistically, expanding this model would just involve developing a new confinement time scaling law and replacing the Greenwald density limit. The reason the Greenwald density limit is no longer important is because stability is much easier to maintain in a stellarator. Most likely, the density limit will now be governed by Bremsstrahlung radiation. If this were the case, each equation would need to be redivided using it. Ladon would be the reactor built using this enhancement.
+\added{To model Ladon, this paper's proposed stellarator, one would need to replace at least: the Greenwald density limit and the confinement time scaling law. In place of the Greenwald density will likely be some other density or current limit, possibly the Bremsstrahlung density limit.\cite{stellar} This may require the density to be carried throughout analysis -- thus appearing explicitly in one column of \cref{table:eq}.}
 
-\section{Making a Hybrid Reactor -- Janus}
+\deleted{Optimistically, expanding this model would just involve developing a new confinement time scaling law and replacing the Greenwald density limit. The reason the Greenwald density limit is no longer important is because stability is much easier to maintain in a stellarator. Most likely, the density limit will now be governed by Bremsstrahlung radiation. If this were the case, each equation would need to be redivided using it. Ladon would be the reactor built using this enhancement.}
 
-The next interesting reactor would be a hybrid tokamak incorporating pulsed and steady-state operation, codenamed: Janus. Fundamentally, this would mean current would come from both LHCD (steady-state) and inductive (pulsed) sources. This was actually used in Demo Pulsed, but the current drive was not handled self-consistently. Coupling these two current sources could reduce reliance on bootstrap current and lead to much more compact machines.
+\section{Making a \replaced{Composite}{Hybrid} Reactor -- Janus}
+
+The next interesting reactor would be a \replaced{composite}{hybrid} tokamak incorporating pulsed and steady-state operation: Janus. Fundamentally, this would involve current coming from both LHCD (steady-state), as well as inductive (pulsed) sources. This was actually used in Demo Pulsed, but the current drive was not handled self-consistently. Coupling these two current sources could reduce reliance on bootstrap current and lead to much more compact machines.
 
 \begin{figure}
 	\centering
@@ -50,11 +54,11 @@ The next interesting reactor would be a hybrid tokamak incorporating pulsed and 
 	\small In a tokamak, there needs to be a certain amount of current -- and that current has to come from somewhere. All good reactors have an adequate bootstrap current. What provides the remaining current is what distinguishes steady state from pulsed operation.
 \end{figure}
 
-The arguments against this are mainly technical: why build two difficult auxiliary systems when one is needed -- especially when they probably work against each other. Although rational, the argument implicitly assumes a current is achievable through only one source (i.e.\ either through LHCD or from a central solenoid). Using two may allow for stronger plasma currents.
+The arguments against this are mainly technical: why build two difficult auxiliary systems when one is needed -- especially when they probably work against each other. Although rational, \replaced{it may turn out that the larger current achievable with two sources leads to a smaller, more economic machine.}{the argument implicitly assumes a current is achievable through only one source (i.e.\ either through LHCD or from a central solenoid). Using two may allow for stronger plasma currents.}
 
 \section{Bridging Confinement Scalings -- Daedalus}
 
-The final potential reactor -- Daedalus -- is designed to collect as many scaling laws as possible. As a baseline, it should be able to run in H-Mode, L-Mode, and I-Mode. Because L-Mode is available on any machine, the first step is building under H-Mode. The goal then is to find reactors that can also reach I-Mode -- thus improving the scaling law's fit and making the  actual reactor more cost effective.
+The final potential reactor -- Daedalus -- is designed \replaced{so that it can be}{to collect as many scaling laws as possible. As a baseline, it should be able to} run in H-Mode, L-Mode, and I-Mode. Because L-Mode is available on any machine, the first step is \added{actually} building under H-Mode. The goal then is to find reactors that can also reach I-Mode -- \replaced{simultaneously}{thus} improving the scaling law's fit and \added{possibly} making the actual reactor more \replaced{economic}{cost effective}.
 
 Presented below are the three confinement scaling laws, as well as the generalized formula. As should be noted, the I-Mode scaling currently lacks a true radial dependence -- as it has only been found on two machines. This is one reason Daedalus would be so valuable.
 
@@ -82,15 +86,15 @@ Presented below are the three confinement scaling laws, as well as the generaliz
 	\lambda_R + \lambda_a = 2.2
 \end{equation}
 
-A final point to make is reemphasizing that the I-Mode scaling law is not battle-tested. It is the target of ongoing research at the MIT PSFC.
+A final point to make is reemphasizing that the I-Mode scaling law is \replaced{significantly underdeveloped}{not battle-tested.} It is the target of ongoing research at the MIT PSFC.
 
 \section{Addressing Model Shortcomings}
 
-Before moving on to the final conclusions, we will give a quick recap of the more audacious simplifications used within this fusion systems framework. These include: approximating temperature profiles as simple parabolas, neglecting all radiation except Bremsstrahlung, and handling flux sources at too basic a level.
+Before moving on to the final conclusions, we will give a quick recap of \replaced{several of the more overly simplified phenomena in}{the more audacious simplifications used within} this fusion systems framework. These include: approximating temperature profiles as simple parabolas, neglecting all radiation except Bremsstrahlung, and handling flux sources at too basic a level. \added{This list is non-comprehensive, as more sophisticated analysis would also help: the divertor heat load, the neutron wall loading, etc.}
 
 \subsection{Integrating Pedestal Temperature Profiles}
 
-The most dubious simplification in the code at this point is modeling temperature profiles as parabolas. Although these parabolas work for densities and L-Mode plasma temperatures, the same cannot be said about H-Mode temperatures. This is because they have a distinct pedestal region on the outer edge of the plasma.
+\replaced{One of the biggest shortcomings of this model is not handling plasma profiles self-consistently -- instead replacing them with simple parabolas.}{The most dubious simplification in the code at this point is modeling temperature profiles as parabolas.} Although these parabolas work for densities and L-Mode plasma temperatures, the same cannot be said about H-Mode temperatures. This is because they have a distinct pedestal region on the outer edge of the plasma.
 
 The usage of pedestal temperatures -- discussed in the appendix -- improves two aspects of the model: the fusion power and the bootstrap current. These were shown in the results to be over-calculated and underestimated, respectively. Pedestals, having a lower core temperature, would decrease the total fusion power. As well, they would boost bootstrap current due to the quick drop near the plasma's edge (i.e.\ they have a large derivative there). 
 
@@ -102,10 +106,10 @@ The next area that would be improved by more sophisticated theory would be the r
 
 \subsection{Taking Flux Sources Seriously}
 
-The final oversimplification in the model deals with the flux sources involved in a pulsed reactor -- existing at almost every level. First, the derivation of flux balance started with a simple transformer between a solenoid primary and a plasma secondary. Even this initial step is probably too simple.
+The final oversimplification in the model deals with the flux sources involved in a pulsed reactor -- existing at almost every level. First, the derivation of flux balance started with a simple transformer between a solenoid primary and a plasma secondary. \deleted{Even this initial step is probably too simple.}
 
 After we developed an equation for flux balance, we compared it to ones in the literature (i.e.\ PROCESS) to build confidence in the model. To draw this equation closer to theirs, we then added a PF coil contribution a posteriori. This implicitly ignored coupling between most of the components. Thus leading to another source of error for the model. Moreover, this formula for PF coil contribution was much simpler than ones found in other fusion systems codes.
 
-Even though this model may be extremely simple, it does remarkably well at matching more sophisticated codes -- and does so at a much faster pace. These suggestions were all just ways to draw results closer to real world values.
+Even though this model may be extremely simple, it does remarkably well at matching more sophisticated codes -- and does so at a much faster pace. These suggestions were \deleted{all} just ways to \replaced{account for more realistic physics.}{draw results closer to real world values.}
 
 %\end{document}

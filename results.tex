@@ -57,6 +57,39 @@ Moving on, the Aries Act study focuses on how steady-state reactors would look u
 
 This figure also highlights another peculiarity of the ARIES study -- a reliance on the minimum possible value of H. Note that just left of the reactor point on both plots is a highly erratic portion of the curve. As such, if even a slightly smaller value of H were used in either case, a quite distinct reactor would occur. This is not a robust way to design machines. A better approach would be to build with some safety factor -- i.e at a slightly more \replaced{optimistic value}{magical version} of H. This can be seen in ARC's H-Sweep.
 
+\begin{figure*}[h!]
+    \centering
+    \hfill 
+    \begin{subfigure}[t]{0.4\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/act_1_C_W_vs_H}
+    \end{adjustbox}
+        \caption{Act I H Sweep}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.4\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/act_2_C_W_vs_H}
+    \end{adjustbox}
+        \caption{Act II H Sweep}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\
+    \begin{subfigure}[t]{0.4\textwidth}
+        \centering
+		\begin{adjustbox}{width=\textwidth}
+			\Large
+			\input{images/sensitivities/arc_C_W_vs_H}
+		\end{adjustbox}
+        \caption{Arc H Sweep}
+    \end{subfigure} ~\\ ~\\ ~\\
+    \caption{Act Studies Cost Dependence on the H Factor} ~\\    
+	\label{fig:act_h_cost}
+\end{figure*}
+
 \subsubsection{Act I -- Advanced Physics and Engineering}
 
 Act 1 is the ARIES study that assumes advanced physics and engineering design parameters. Although this paper's model does a \replaced{fair job recovering}{good job matching} the results from their paper, it does show what optimistic design really means. As can be seen, this design actually only surpasses the minimum possible toroidal field strength by as less than a Tesla! Practically, this means \replaced{their}{the} reactor is barely realizable. \added{Trying to build a 5T device would not be possible using their stated reactor input parameters.}
@@ -181,47 +214,6 @@ $\eta_{CD}$      & 0.321            & 0.316          \\
 \hfill
 \label{table:arc}
 \end{table}
-
-\clearpage
-
-\newpage
-
-\begin{figure*}[h!]
-    \centering
-    \hfill 
-    \begin{subfigure}[t]{0.4\textwidth}
-        \centering
-    \begin{adjustbox}{width=\textwidth}
-      \Large
-      \input{images/sensitivities/act_1_C_W_vs_H}
-    \end{adjustbox}
-        \caption{Act I H Sweep}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[t]{0.4\textwidth}
-        \centering
-    \begin{adjustbox}{width=\textwidth}
-      \Large
-      \input{images/sensitivities/act_2_C_W_vs_H}
-    \end{adjustbox}
-        \caption{Act II H Sweep}
-    \end{subfigure}
-    \hfill \hfill ~\\ ~\\ ~\\
-    \begin{subfigure}[t]{0.4\textwidth}
-        \centering
-		\begin{adjustbox}{width=\textwidth}
-			\Large
-			\input{images/sensitivities/arc_C_W_vs_H}
-		\end{adjustbox}
-        \caption{Arc H Sweep}
-    \end{subfigure} ~\\ ~\\ ~\\
-    \caption{Act Studies Cost Dependence on the H Factor} ~\\    
-	\label{fig:act_h_cost}
-\end{figure*}
-
-\clearpage
-
-\newpage
 
 \begin{figure*}[h!]
     \centering
@@ -787,30 +779,31 @@ The pulsed twin reactor, Proteus, highlights the effects of a high field central
 
 \section{Learning from the Data}
 
-Now that the model has been properly vetted and prototypes designed, we can explore how pulsed and steady-state tokamaks scale. Fitting with the Dickens theme, there will be three mostly independent results. The first result will explore how to minimize costs for a reactor by choosing optimum design points. The next will be an argument for how to properly utilize the HTS magnet technology in component design. Lastly, we will take a cursory look at the other parameters capable of lowering machine costs.
+Now that the model has been properly vetted and prototypes designed, we can explore how pulsed and steady-state tokamaks scale. \replaced{This will lead to}{Fitting with the Dickens theme, there will be} three mostly independent results. The first result will explore how to minimize costs for a reactor by choosing optimum design points. The next will be an argument for how to properly utilize the HTS magnet technology in component design. Lastly, we will take a cursory look at the other parameters capable of lowering machine costs.
 
 \subsection{Picking a Design Point}
 
 \label{subsection:design_point}
 
-With more than twenty design parameters, finding the most efficient reactor is a fool's errand. Intuition building aside, finding good reactors becomes much more feasible when only focusing on \replaced{dynamic}{floating} variables -- i.e.\ when keeping \replaced{static}{fixed} variables constant. This method, for example, is how all the $R_0$ -- $B_0$ curves have been produced this chapter. Once these curves are produced, it is up to the user to choose which reactor on them to build. However, the guiding metric usually involves lowering some cost, either: capital cost or cost-per-watt.
+With more than twenty design parameters, finding the most \replaced{economic}{efficient} reactor is \replaced{computationally intractable.}{a fool's errand.} Intuition building aside, finding \replaced{optimum}{good} reactors becomes much more feasible when only focusing on \replaced{dynamic}{floating} variables -- i.e.\ when keeping \replaced{static}{fixed} variables constant. This method, for example, is how all the $R_0$ -- $B_0$ curves have been produced this chapter. Once these curves are produced, it is up to the user to choose which reactor on them to build. However, the guiding metric usually involves lowering some cost, either: capital cost or cost-per-watt.
 
-Regardless of reactor type, most efficient tokamaks operate near the beta limit -- where plasma pressure is greatest. Besides being a regime highly sensitive to magnetic field strength, the beta limit is a constraint that occurs on every reactor (seen by the authors). This beta limit is usually nested between the kink limit to lower $B_0$ values and wall loading to higher ones. Understanding these regimes is the first step towards building an intuition favoring efficient machines -- see \cref{fig:limit_regimes}.
+Regardless of reactor type, most \replaced{economic}{efficient} tokamaks operate near the beta limit -- where plasma pressure is greatest. Besides being a regime highly sensitive to magnetic field strength, the beta limit is a constraint that occurs on every reactor (seen by the authors). This beta limit \added{($\beta_N$)} is usually nested between the kink limit \added{($q_*$)} to lower $B_0$ values and wall loading \added{($P_W$)} to higher ones. Understanding these regimes is the first step towards building an intuition favoring \replaced{economic}{efficient} machines -- see \cref{fig:limit_regimes}.
 
 \begin{figure}
 \centering
 \begin{adjustbox}{width=0.75\textwidth}
 	\input{images/limit_regimes}
 \end{adjustbox}
-\caption{Limit Regimes as function of $B_0$}
+\caption{\replaced{Limiting Constraint Regimes}{Limit Regimes as function of $B_0$}} ~ \\
+\added{ \small At a simple level, a reactor has around three regimes of design limiting constraints. At low fields, the kink safety factor -- through $q_*$ and \cref{eq:r_kink} -- drives design. Then at high fields, wall loading -- through $P_W$ and \cref{eq:r_wall} -- guide reactors. And between the two, the beta limit -- through $\beta_N$ and \cref{eq:r_beta} -- are the limiting constraint. }
 \label{fig:limit_regimes}
 \end{figure}
 
-Now that the beta limit curve has been designated as the most efficient regime to operate in (usually), the goal is to select which reactor on it is the best one to build. Starting with the easier of the two, the optimum design point for steady-state reactors is the point where wall loading first starts to dominate design. Here, engineering concerns cause the reactor to start increasing in size and cost -- which is bad. This conclusion is justified by the cost curves for all five reactors in \cref{fig:steady_cost}. As these show, it is also where these reactor designers pinned down their tokamaks.\footnote{ Simply stated, the optimum reactor for steady-state tokamaks is one that just barely satisfies the beta and wall loading limit simultaneously -- i.e.\ where the two curves intersect. }
+Now that the beta limit curve has been designated as the most \replaced{economic}{efficient} regime to operate in (usually), the goal is to select which reactor on it is the best one to build. Starting with the easier of the two, the optimum design point for steady-state reactors is the point where wall loading first starts to dominate \added{the} design. \replaced{Due to the wall loading relation (see \cref{eq:r_wall}), this causes}{Here, engineering concerns cause} the reactor to start increasing in size and cost -- which is bad. This conclusion is justified by the cost curves for all five reactors in \cref{fig:steady_cost}. As these show, it is also where these reactor designers pinned down their tokamaks.\footnote{ Simply stated, the optimum reactor for steady-state tokamaks is one that just barely satisfies the beta and wall loading limit simultaneously -- i.e.\ where the two curves intersect. }
 
-The problem of selecting an optimum design is more difficult for the pulsed case. This is mainly due to the kink limit regime being actually achievable. Following the conclusion from steady-state reactors would be an oversimplification because there are actually two costs relevant to a reactor: capital cost and cost-per-watt. These beta-wall reactors are actually the points often best for minimizing cost-per-watt (i.e.\ your rate of return). The new beta-kink reactors, then, lead to cheap to build machines -- as they minimize capital cost. These conclusions are shown in \cref{fig:pulsed_costs}.
+The problem of selecting an optimum design is more difficult for the pulsed case. This is mainly due to \replaced{there being a regime where the kink safety factor can actually be a guiding limiting constraint.}{the kink limit regime being actually achievable.} Following the conclusion from steady-state reactors would be an oversimplification because there are actually two costs relevant to a reactor: capital cost and cost-per-watt. These beta-wall reactors are actually the points often best for minimizing cost-per-watt (i.e.\ your rate of return). The new beta-kink reactors, then, lead to cheap to build machines -- as they minimize capital cost. These conclusions are shown in \cref{fig:pulsed_costs}.
 
-Summarizing the conclusions of this subsection, the beta limit is usually the best constraint to operate at. For lowering the cost-per-watt, a reactor should always be run at the highest magnetic field strength ($B_0$) that satisfies the beta limit. This most often occurs when wall loading takes over (for steady-state reactors) or reactors start being physically unrealizable (for pulsed ones). Building cheap to build reactors -- i.e.\ minimizing capital cost -- then actually proved to make pulsed design one of trade-offs. This is because the beta-kink curve intersection produces a low capital cost reactor, but at the price of operating at a subpar cost-per-watt. Designers should therefore balance the two cost metrics.
+Summarizing the conclusions of this subsection, the beta limit is usually the best constraint to operate at. For lowering the cost-per-watt, a reactor should always be run at the highest magnetic field strength ($B_0$) that \replaced{has the beta limit at its maximum allowed value.}{satisfies the beta limit.} This most often occurs when wall loading takes over (for steady-state reactors) or reactors start being physically unrealizable (for pulsed ones). Building cheap to build reactors -- i.e.\ minimizing capital cost -- then actually proved to make pulsed design one of trade-offs. This is because the beta-kink curve intersection produces a low capital cost reactor, but at the price of operating at a subpar cost-per-watt. Designers should therefore balance the two cost \replaced{metrics when pinning down a pulsed reactor.}{metrics.}
 
 \clearpage
 
@@ -916,11 +909,11 @@ Summarizing the conclusions of this subsection, the beta limit is usually the be
 
 \subsection{Utilizing High Field Magnets}
 
-The main conclusion for this paper is that high field magnets are the way to go to build an efficient, compact fusion reactor. In line with the MIT ARC effort, these high fields will be built with high-temperature superconducting (HTS) tape. This innovation is set to double the strength of conventional magnets. The real question is how best to use this technology.
+The main conclusion for this paper is that high field magnets are the way to go to build an \replaced{economic}{efficient}, compact fusion reactor. In line with the MIT ARC effort, these high fields will be built with high-temperature superconducting (HTS) tape. This innovation is set to \added{nearly} double the strength of conventional magnets. The real question is how best to use this technology.
 
-At a very simple level, there are two main places strong magnets can be employed: the toroidal fields ($B_0$) and the central solenoid ($B_{CS}$). The easier mode of operation to start with is steady-state. This is because steady-state tokamaks do not rely on a central solenoid for the profitability of their machines. Further, the cost curves in \cref{fig:steady_cost} show that all these designs would benefit from toroidal fields ($B_0$) not achievable with conventional magnets -- which can only reach around 10 T on a good day.
+At a very simple level, there are two main places strong magnets can be employed: the toroidal fields ($B_0$) and the central solenoid ($B_{CS}$). The easier mode of operation to start with is steady-state. This is because steady-state tokamaks do not rely on a central solenoid \replaced{to run their functionally infinite length pulses.}{for the profitability of their machines.} Further, the cost curves in \cref{fig:steady_cost} show that all these designs would benefit from toroidal fields ($B_0$) not achievable with conventional magnets -- which can only reach around \replaced{13T.}{10 T on a good day.}
 
-The more interesting result is that pulsed reactors gain no real benefit from using HTS toroidal field magnets. Within the modern paradigm (i.e.\ D-T fuel, H-Mode, etc), pulsed reactors never have to exceed the limits of \replaced{less expensive LTS magnets.}{inexpensive, copper magnets.} The place HTS can really help is with the central solenoid, which governs how long a pulse can last. Further, the effect of improving the central solenoid saturates within the range accessible to HTS tape. Again, HTS would be more than adequate for the modern paradigm. These conclusions are shown in \cref{fig:pulsed_sensitivities,fig:pulsed_samplings}.
+The more interesting result is that pulsed reactors gain no real benefit from using HTS toroidal field magnets. Within the modern paradigm (i.e.\ D-T fuel, H-Mode, etc), pulsed reactors never have to exceed the limits of \replaced{less expensive LTS magnets.}{inexpensive, copper magnets.} The place HTS can really help is with the central solenoid, which governs how long a pulse can last. Further, \replaced{improvements to}{the effect of improving} the central solenoid \replaced{have diminishing returns past}{saturates within} the range accessible to HTS tape. Again, HTS would be more than adequate for the modern paradigm. These conclusions are shown in \cref{fig:pulsed_sensitivities,fig:pulsed_samplings}.
 
 \begin{figure*}
     \centering
@@ -1010,7 +1003,7 @@ The more interesting result is that pulsed reactors gain no real benefit from us
     \label{fig:pulsed_samplings}
 \end{figure*}
 
-Rehashing this section, HTS tape is the best way to lower the cost of fusion reactors at a commercial scale. For steady-state reactors, HTS works best in the toroidal field coils ($B_0$), while the tape would fare better in the central solenoid ($B_{CS}$) of pulsed reactors. Further, both effects saturate within the range of this HTS tape, rendering more sophisticated magnetic technology unnecessary. HTS is truly the answer to affordable fusion energy.
+\replaced{Summarizing this subsection,}{Rehashing this section,} HTS tape is \added{one of} the best \replaced{ways}{way} to lower the cost of fusion reactors at a commercial scale. For steady-state reactors, HTS works best in the toroidal field coils ($B_0$), while the tape would fare better in the central solenoid ($B_{CS}$) of pulsed reactors. Further, both effects saturate within the range of this HTS tape, rendering more sophisticated magnetic technology unnecessary. HTS is \replaced{thus one technological advancement that could help usher in an era of}{truly the answer to} affordable fusion energy.
 
 \subsection{Looking at Design Alternatives}
 
@@ -1018,9 +1011,9 @@ Even in this relatively simple fusion model, there are more than twenty \replace
 
 \subsubsection{Capitalizing the Bootstrap Current}
 
-Besides artificially enhancing a plasmas confinement with the H-factor, steady-state reactor designers may also heavily rely on high bootstrap currents. This is because bootstrap current is the portion of current you do not have to pay for. The research camp most focused on this miracle is General Atomic's DIII-D in San Diego. This miracle relies on tailoring current profiles to be extremely hollow.
+Besides artificially enhancing a plasmas confinement with the H-factor, steady-state reactor designers may also heavily rely on high bootstrap currents. This is because bootstrap current is the portion of current you do not have to pay for. The research \replaced{groups}{camp} most focused on this \replaced{technological advancement are}{miracle is} General Atomic's DIII-D in San \replaced{Diego and PPPL's NSTX-U in New Jersey.}{Diego.} This \replaced{advancement}{miracle} relies on tailoring current profiles to be \replaced{much more}{extremely} hollow.
 
-Quickly reasoning this camp's thought process are two sets of plots. The first plot (\cref{fig:bootstrap_samplings}) highlights how the cheapest possible steady-state designs have bootstrap fractions approaching unity -- they use almost no current drive. This makes sense as current drive is extremely cost prohibitive (i.e.\ why people consider pulsed tokamaks).
+Quickly reasoning this \deleted{camp's} thought process are two sets of plots. The first plot (\cref{fig:bootstrap_samplings}) highlights how the cheapest possible steady-state designs have bootstrap fractions approaching unity -- they use almost no current drive. This makes sense as current drive is extremely cost prohibitive (i.e.\ why people consider pulsed tokamaks).
 
 \begin{figure*}
     \centering
@@ -1063,10 +1056,11 @@ Quickly reasoning this camp's thought process are two sets of plots. The first p
     \end{subfigure}	
     \hfill \hfill ~\\ ~\\ ~\\
     \caption{Bootstrap Current Monte Carlo Sampling}
-    \label{fig:bootstrap_samplings}
+    \label{fig:bootstrap_samplings} ~ \\
+    \added{ \small The purpose of these plots is to show that a high bootstrap current always reduces the cost of a steady state reactor -- highly independent of actual input quantities (i.e. $\epsilon$, $l_i$, etc.)}
 \end{figure*}
 
-The next plot is the parameter that determines a current profile's peak radius: $l_i$. As can be seen, the current peak approaches the outer edge of the plasma as $l_i$ decreases. This in turn boosts the bootstrap fraction closer to one -- leading to inexpensive reactors.
+The next plot \added{(\cref{fig:inductance_sensitivities})} is the parameter that determines a current profile's peak radius: $l_i$. As can be seen, the current peak approaches the outer edge of the plasma as $l_i$ decreases. This in turn boosts the bootstrap fraction closer to one -- leading to inexpensive reactors.
 
 \begin{figure*}
     \centering
@@ -1127,7 +1121,8 @@ The next plot is the parameter that determines a current profile's peak radius: 
         \caption{Act II Bootstrap Fraction}
     \end{subfigure}
     \hfill \hfill ~\\ ~\\ ~\\ ~\\
-    \caption{Internal Inductance Sensitivities}
+    \caption{Internal Inductance Sensitivities} ~ \\
+    \added{ \small The internal inductance has a strong influence on the peaking radius ($\rho_m$) of the hollow profile and the bootstrap current fraction ($f_{BS}$). Lowering the internal inductance thus makes a profile more hollow, which in turn increases the bootstrap fraction. } 
     \label{fig:inductance_sensitivities}
 \end{figure*}
 
@@ -1135,7 +1130,7 @@ The next plot is the parameter that determines a current profile's peak radius: 
 
 From before, increasing the H-factor always led to more cost effective steady-state reactors. This is because the enhanced confinement allows for smaller machines. This was already heavily explored in \cref{fig:act_h_cost}. These plots also show that steady state reactors would not be physically possible using a default H factor of one! In other words, steady-state tokamaks require some technical advancement before they can ever be used as fusion reactors. The same cannot be said for pulsed machines.
 
-For pulsed reactors, increasing H always reduces capital cost, but may actually increase the cost-per-watt. The reason for this is because fusion powers are much smaller in pulsed machines. This interesting result demonstrates the unusual behaviors of highly non-linear systems: masterclass intuition may not match model results.
+For pulsed reactors, increasing H always reduces capital cost, but may actually increase the cost-per-watt. \replaced{This is because the fusion power can decrease at a faster rate than the capital cost in a pulsed tokamak -- both of which appear in \cref{eq:c_w} defining the cost-per-watt.}{The reason for this is because fusion powers are much smaller in pulsed machines.} This interesting result demonstrates the unusual behaviors of highly non-linear systems: masterclass intuition may not match model results.
 
 \begin{figure*}
     \centering
@@ -1202,7 +1197,7 @@ For pulsed reactors, increasing H always reduces capital cost, but may actually 
 
 \subsubsection{Showcasing the Current Drive Efficiency}
 
-The last exploration is less about building an efficient machine and more about understanding the self-consistent current drive efficiency in steady-state tokamaks. Using the Ehst-Karney model \cite{ehstkarney} coupled with Jeff's textbook \cite{jeff} leads to a remarkably simple and accurate solver. The model captures the physics almost spot on for the different designs.\footnote{ It did, however, not converge for the DEMO steady reactor. This is probably due to lack of self-consistency for $\eta_{CD}$ in their systems framework. }
+The last exploration is less about building an \replaced{economic}{efficient} machine and more about understanding the self-consistent current drive efficiency in steady-state tokamaks. Using the Ehst-Karney model \cite{ehstkarney} coupled with \replaced{standard analysis}{Jeff's textbook}\cite{jeff} leads to a remarkably simple and accurate solver. \replaced{As shown in \cref{fig:steady_eta_CD}, the}{The} model captures the physics almost \replaced{exactly}{spot on} for the different designs.\footnote{ It did, however, not converge for the DEMO steady reactor. This is probably due to lack of self-consistency for $\eta_{CD}$ in their systems framework. }
 
 \begin{figure*}
     \centering
@@ -1248,7 +1243,7 @@ The last exploration is less about building an efficient machine and more about 
     \label{fig:steady_eta_CD}
 \end{figure*}
 
-In a similar fashion as the bootstrap fraction results, the variable that most captures how to directly maximize $\eta_{CD}$ is the LHCD laser launch angle, $\theta_{wave}$. When below $90 ^{\circ}$ it is considered outside launch, whereas up to $135 ^{\circ}$ it is considered inside launch. Notably, these curves are not monotonic, there is an optimum launching angle.
+In a similar fashion as the bootstrap fraction results, the variable that most captures how to directly maximize $\eta_{CD}$ is the LHCD \replaced{wave}{laser} launch angle, $\theta_{wave}$. When below $90 ^{\circ}$ it is considered outside launch, whereas up to $135 ^{\circ}$ it is considered inside launch. Notably, these curves are not monotonic, there is an optimum launching angle \added{-- as shown in \cref{fig:launch_angle}}.
 
 \begin{figure*}[h!]
     \centering
@@ -1291,8 +1286,9 @@ In a similar fashion as the bootstrap fraction results, the variable that most c
     \end{subfigure}
     \hfill \hfill ~\\ ~\\ ~\\
     \caption{Current Drive Efficiency vs Launch Angle}
+    \label{fig:launch_angle}
 \end{figure*}
 
-It should be noted that the launch angle was not found to have a major impact. This may be a due to an oversimplification of the model.
+It should be noted that the launch angle was not found to have a major impact. This may be a due to an oversimplification of the \replaced{model, as sources suggest inside launch is preferable for multiple reasons./cite{adx}}{model.}
 
 %\end{document}
