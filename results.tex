@@ -777,6 +777,54 @@ The Charybdis reactor is the steady-state twin developed for this paper. As ment
 
 The pulsed twin reactor, Proteus, highlights the effects of a high field central solenoid. When compared to the Pulsed Demo design, the $R_0$ -- $B_0$ curve looks far more favorable -- i.e.\ each machine built at a certain magnet strength would be more compact (and cheaper). An interesting facet of Proteus is that it exhibits all three used limits: kink safety factor, Troyon beta, and wall loading. \added{Cost curves are shown in \cref{fig:pulsed_costs}.} 
 
+\subsection{Highlighting Operation Differences}
+
+\label{subsection:operation_differences}
+
+\added{Before moving onto general conclusions taken from the data, a quick investigation into the pulsed vs steady-state twin results is in order. A comparison between the two is best abridged in \cref{table:proteus_charybdis}.}
+
+\added{Most apparently, pulsed reactors are typically larger than steady-state ones and are meant to be run at higher plasma currents. The former behavior was seen with the DEMO designs,\cite{process,inputfile} whereas the latter was already mentioned in discussing how steady-state reactors never saw a kink (current limiting) regime. Additionally pulsed machines can be run at much lower temperatures because their higher current improves confinement. }
+
+\added{ These combined effects lead to the minimum cost reactors for steady-state operation having much higher toroidal field strengths than their pulsed counterparts. This is discussed in \cref{subsection:high_field} when explaining optimum use of HTS tape. } 
+
+\begin{table}[h!]
+\centering  
+\caption{Proteus and Charybdis Comparison}
+\hfill
+\begin{subtable}[t]{0.45\textwidth}
+\centering  
+\caption{Charybdis} ~\\
+\begin{tabular}{ c|c } 
+
+Output           & Value       \\
+\hline
+$R_{0}$          & 4.13            \\
+$B_{0}$          & 10.28            \\
+$I_{P}$          & 8.98            \\
+$\overline n$    & 1.47            \\
+$\overline T$    & 15.81           \\
+\end{tabular}
+\end{subtable}
+\hfill
+\begin{subtable}[t]{0.45\textwidth}
+\centering  
+\caption{Proteus} ~\\
+\begin{tabular}{ c|c } 
+
+Output           & Value       \\
+\hline
+$R_{0}$          & 6.11             \\
+$B_{0}$          & 4.93            \\
+$I_{P}$          & 15.54            \\
+$\overline n$    & 1.16            \\
+$\overline T$    & 11.25            \\
+\end{tabular}
+\end{subtable}
+\hfill
+\hfill
+\label{table:proteus_charybdis}
+\end{table}
+
 \section{Learning from the Data}
 
 Now that the model has been properly vetted and prototypes designed, we can explore how pulsed and steady-state tokamaks scale. \replaced{This will lead to}{Fitting with the Dickens theme, there will be} three mostly independent results. The first result will explore how to minimize costs for a reactor by choosing optimum design points. The next will be an argument for how to properly utilize the HTS magnet technology in component design. Lastly, we will take a cursory look at the other parameters capable of lowering machine costs.
@@ -909,11 +957,13 @@ Summarizing the conclusions of this subsection, the beta limit is usually the be
 
 \subsection{Utilizing High Field Magnets}
 
+\label{subsection:high_field}
+
 The main conclusion for this paper is that high field magnets are the way to go to build an \replaced{economic}{efficient}, compact fusion reactor. In line with the MIT ARC effort, these high fields will be built with high-temperature superconducting (HTS) tape. This innovation is set to \added{nearly} double the strength of conventional magnets. The real question is how best to use this technology.
 
-At a very simple level, there are two main places strong magnets can be employed: the toroidal fields ($B_0$) and the central solenoid ($B_{CS}$). The easier mode of operation to start with is steady-state. This is because steady-state tokamaks do not rely on a central solenoid \replaced{to run their functionally infinite length pulses.}{for the profitability of their machines.} Further, the cost curves in \cref{fig:steady_cost} show that all these designs would benefit from toroidal fields ($B_0$) not achievable with conventional magnets -- which can only reach around \replaced{13T.}{10 T on a good day.}
+At a very simple level, there are two main places strong magnets can be employed: the toroidal fields ($B_0$) and the central solenoid ($B_{CS}$). The easier mode of operation to start with is steady-state. This is because steady-state tokamaks do not rely on a central solenoid \replaced{to run their functionally infinite length pulses.}{for the profitability of their machines.} Further, the cost curves in \cref{fig:steady_cost} show that all these designs would benefit from toroidal fields ($B_0$) not achievable with conventional magnets -- which can only reach around \replaced{13 T.}{10 T on a good day.}
 
-The more interesting result is that pulsed reactors gain no real benefit from using HTS toroidal field magnets. Within the modern paradigm (i.e.\ D-T fuel, H-Mode, etc), pulsed reactors never have to exceed the limits of \replaced{less expensive LTS magnets.}{inexpensive, copper magnets.} The place HTS can really help is with the central solenoid, which governs how long a pulse can last. Further, \replaced{improvements to}{the effect of improving} the central solenoid \replaced{have diminishing returns past}{saturates within} the range accessible to HTS tape. Again, HTS would be more than adequate for the modern paradigm. These conclusions are shown in \cref{fig:pulsed_sensitivities,fig:pulsed_samplings}.
+The more interesting result is that pulsed reactors gain no real benefit from using HTS toroidal field magnets \added{-- as mentioned previously in \cref{subsection:operation_differences}}. Within the modern paradigm (i.e.\ D-T fuel, H-Mode, etc), pulsed reactors never have to exceed the limits of \replaced{less expensive LTS magnets.}{inexpensive, copper magnets.} The place HTS can really help is with the central solenoid, which governs how long a pulse can last. Further, \replaced{improvements to}{the effect of improving} the central solenoid \replaced{have diminishing returns past}{saturates within} the range accessible to HTS tape. Again, HTS would be more than adequate for the modern paradigm. These conclusions are shown in \cref{fig:pulsed_sensitivities,fig:pulsed_samplings}.
 
 \begin{figure*}
     \centering

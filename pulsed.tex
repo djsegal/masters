@@ -41,7 +41,8 @@ Understanding a circuit always starts with drawing a simple diagram, see \cref{f
 \begin{figure}[]
 \centering
 \input{images/circuit_diagram}
-\caption{A Simple Plasma Transformer Description}
+\caption{A Simple Plasma Transformer Description} ~\\
+\added{\small A plasma transformer consists of a solenoid primary (left) and a plasma secondary (right). They are connected by their mutual inductance, M. Note that the two currents -- $I_1$ and $I_2$ -- travel in opposite directions. }
 \label{fig:circuit_diagram}
 \end{figure}
 
@@ -76,16 +77,17 @@ Repeated, the one subscript represents the primary -- the central solenoid -- an
 
 \subsection{Plotting Pulse Profiles}
 
-Up until now, little has been discussed that has a time dependence. For steady-state tokamaks, this did not occur because it is an extreme case where pulses basically last the duration of the machine's lifespan (i.e.\ around 50 years). By definition, though, a pulsed machine has pulses -- with around ten scheduled per day. For this reason, a fusion pulse is now investigated in detail.
+Up until now, little has been discussed that has a time dependence. For steady-state tokamaks, this did not occur because it is an extreme case where pulses \replaced{could last weeks or months.}{basically last the duration of the machine's lifespan (i.e.\ around 50 years).} By definition, though, a pulsed machine has pulses -- with around ten scheduled per day. For this reason, a fusion pulse is now investigated in detail.
 
 \begin{figure}[h!]
 \centering
 \input{images/circuit_profiles}
 \caption{Time Evolution of Circuit Profiles}
-\label{fig:circuit_profiles}
+\label{fig:circuit_profiles} ~\\
+\small{A circuit pulse involves four phases: (1) Ramp-Up, (2) Flattop, (3) Ramp-Down, and (4) Dwell. In reality, flattop can last more than 90\% of the pulse.\cite{inputfile} This makes the slope of the primary current during this phase much shallower than shown. }
 \end{figure}
 
-Transformer pulses between the central solenoid and the plasma occur on the timescale of hours. \added{During this time, a plasma is brought up to some quasi-steady-state current ($I_P^*$) for around an hour and then ramped back down using the available flux in the solenoid (measured in volt-seconds).} For clarity, each pulse is subdivided into four phases: ramp-up, flattop, ramp-down, and dwell. Pictorially represented in \cref{fig:circuit_profiles}, these divisions allow a simple scheme for transforming the coupled circuit differential equations -- from \cref{eq:circ1,eq:circ2} -- into simple algebraic formulas. 
+Transformer pulses between the central solenoid and the plasma occur on the timescale of hours. \added{During this time, a plasma is brought up to some quasi-steady-state current ($I_P^*$) for \replaced{several}{around an} hour and then ramped back down using the available flux in the solenoid (measured in volt-seconds).} For clarity, each pulse is subdivided into four phases: ramp-up, flattop, ramp-down, and dwell. Pictorially represented in \cref{fig:circuit_profiles}, these divisions allow a simple scheme for transforming the coupled circuit differential equations -- from \cref{eq:circ1,eq:circ2} -- into simple algebraic formulas. 
 
 Along the way, we will approximate derivatives with linear piecewise functions. Using $t_i$ to represent the initial time and $t_f$ as the final one, these can be written as:
 \begin{equation}
@@ -153,7 +155,7 @@ The last step in discussing ramp-up is giving the two important formulas that co
 
 \subsubsection{The Flattop Phase -- FT}
 
-The most important phase in any reactor's pulse is flattop -- the quasi-steady-state time when the tokamak is making electricity (and money). Flattops are assumed to last a couple of hours for a profitable machine, during which the central solenoid completely discharges to overcome a plasma's resistive losses -- keeping it in a quasi-steady-state mode of operation. In a steady-state reactor, this phases constitutes the entirety of the pulse.
+The most important phase in any reactor's pulse is flattop -- the quasi-steady-state time when the tokamak is making \replaced{electricity.}{electricity (and money).} Flattops are assumed to last a couple of hours for a profitable machine, during which the central solenoid completely discharges to overcome a plasma's resistive losses -- keeping it in a quasi-steady-state mode of operation. In a steady-state reactor, this phases constitutes the entirety of the pulse.
 
 Although the resistance cannot be safely neglected for flattop -- as it was for ramp-up -- the plasma's inductive current ($I_{ID}$) is assumed constant. This leads to its derivative in equations cancelling out! Mathematically,
 
@@ -184,7 +186,7 @@ For clarity, this is the time when a plasma's current is brought down from its f
 
 Where the first three phases had little ambiguity, the dwell phase changes definition from model to model. For now, it is assumed to be the time it takes the central solenoid to reset after a plasma has been completely ramped-down to an off-mode. To get a more realistic duty factor for cost estimates, it could include an evacuation time, set to last around thirty minutes. During this evacuation, a plasma is vacuumed out of a device as it undergoes some inter-pulse maintenance.
 
-Ignoring evacuation for now, the dwell phase involves resetting the central solenoid when the plasma's current is negligible. This fundamentally means the secondary of the transformer is nonexistent -- the central solenoid is the entire circuit. In equation form,
+Ignoring evacuation for now, the dwell phase involves resetting the central solenoid when the plasma's current is negligible. This \deleted{fundamentally} means the secondary of the transformer is \replaced{an open circuit}{nonexistent} -- \added{fundamentally} the central solenoid is the \replaced{only component.}{entire circuit.} In equation form,
 \begin{equation}
 	V_{max} = \frac{L_1}{\tau_{DW}} \cdot \left( I_{max} + \tilde I \right) 
 \end{equation}
@@ -301,7 +303,7 @@ The value of the coupling coefficient, k, is always less than (or equal to) 1, b
 
 This subsection focuses on a quantitative estimate for how to select a pulse length. As no fusion reactor exists in the world today, the writers believe this is an acceptable calculation. Further, the resulting length of two hours matches the durations of other studies in the literature.
 
-Starting at the end, our goal is to find the pulse length of a tokamak reactor in seconds \added{-- as dictated by cyclical stress concerns}.  The first piece of information is the expected lifetime of the central solenoid, $ N \approx 10 \ \textnormal{years} $. The next is the desired number of shots the machine will likely have, $ M \approx 50,000 \ \textnormal{shots} $.\footnote{This 50,000 shots comes from multiplying the number of pulses run at Diii-D per year by the expected lifetime of the central solenoid (10 years).\cite{diiid}} This gives the ballpark estimate of around 10 pulses a day -- or a \added{flattop} pulse length of two hours.
+Starting at the end, our goal is to find the pulse length of a tokamak reactor in seconds \added{-- as dictated by cyclical stress concerns}.  The first piece of information is the expected lifetime of the central solenoid, $ N \approx 10 \ \textnormal{years} $. The next is the desired number of \replaced{pulses}{shots} the \replaced{central solenoid will have to last:}{machine will likely have,} $ M \approx 50,000 \ \textnormal{pulses} $.\footnote{This 50,000 pulses is based on the values from the ITER design specifications.\cite{iter_cs} } This gives the \replaced{rough}{ballpark} estimate of around 10 pulses a day -- or a \added{flattop} pulse length of two hours.
 
 With the pulse length defined, we are now in a position to justify neglecting the duty factor for pulsed reactors in this model. Using \replaced{expected}{ballpark} reactor values -- while assuming the central solenoid has around 4000 turns -- leads to the following scalings:
 \begin{equation}
@@ -451,7 +453,7 @@ The minor radius was the first of these thicknesses we encountered. To calculate
  
 \subsubsection{The Blanket Thickness -- $b$}
 
-The blanket is an area between the TF coils and the torus that is \deleted{strongly} composed \added{mainly} of lithium. It serves to both: protect the superconducting magnet structures from neutron damage, as well as breed \deleted{a little} more tritium fuel from stray fusion neutrons. In equation form, the blanket thickness is given by: \cite{minervini}
+The blanket is an area between the TF coils and the torus that is \deleted{strongly} composed \added{mainly} of lithium \added{steel}. It serves to both: protect the superconducting magnet structures from neutron damage, as well as breed \deleted{a little} more tritium fuel from stray fusion neutrons. In equation form, the blanket thickness is given by: \cite{minervini}
 \begin{equation}
 	\label{eq:bb}
 	b = 1.23 + 0.074 \ \textnormal{ln} \, P_W
@@ -715,6 +717,6 @@ From the previous two subsections, we arrived at equations for infinitely large 
 	\tag{\ref{eq:tau_zero}}
 	\lim_{ \tau_{FT} \to 0 } I_P^\ddagger = R_0 \cdot \left( \frac{ K_{CS} }{ K_{LP} } \cdot \frac{ ( 1 - \epsilon_b ) \cdot \sqrt{ 2 ( K_{EK} + \epsilon_b ) } }{ 1 + K_{DR} } \right)
 \end{equation}
-What these imply at an intuitive level is that at small pulses, current scales with the major radius. While for long pulses, current sales with plasma temperature. In the general case, of course, the problem becomes much harder to predict.
+What these imply at an intuitive level is that at small pulses, current scales with the major radius. While for long pulses, current scales with plasma temperature. In the general case, of course, the problem becomes much harder to predict. \added{-- as shown by the code's results using \cref{eq:gen_ip}}.
 
 %\end{document}

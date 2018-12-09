@@ -26,7 +26,18 @@ As opposed to previous chapters, this one will focus on the numerics behind the 
 
 \section{Describing a Simple Algebra}
 
-\replaced{In essence,}{Boiled down,} the systems model used here is a simple algebra problem -- given five equations, solve for five unknowns. The goal is then to pick the five equations that best represent modern fusion reactor design. This selection should also be done in such a way that actually reduces the system of equations to a simple univariate root solving equation (i.e.\ one equation with one unknown). As will be shown in the results, this model does \replaced{reasonably}{remarkably} well: matching year-long modeling campaigns in seconds.
+\replaced{In essence,}{Boiled down,} the systems model used here is a simple algebra problem -- given five equations, solve for five unknowns. The goal is then to pick the five equations that best represent modern fusion reactor design (as shown in \cref{fig:equation_breakdown}). This selection should also be done in such a way that actually reduces the system of equations to a simple univariate root solving equation (i.e.\ one equation with one unknown). As will be shown in the results, this model does \replaced{reasonably}{remarkably} well: matching \replaced{other}{year-long} modeling campaigns in seconds.
+
+\begin{figure}
+	\centering
+	\begin{adjustbox}{width=0.75\textwidth}
+		\input{images/equation_breakdown}
+	\end{adjustbox}
+%	\includegraphics[width=0.75\textwidth]{images/test_image}
+	\caption{Equation Selection for Fusion System} ~\\
+	\small The goal of this fusion system is to create a set of equations that model the five dynamic variables. These are the Greenwald limit for density, current balance for the plasma current, and three generalized formulas for the temperature, major radius, and toroidal field strength.	
+	\label{fig:equation_breakdown}
+\end{figure}
 
 The logical place to start in a discussion of this algebra problem is with the three equations fundamental to all reactor-grade tokamaks -- both in steady-state and pulsed operation. These are: the Greenwald density limit, power balance, and current balance. The Greenwald density's importance was hinted early on when it was used to simplify every equation derived thereafter. 
 \begin{equation}
