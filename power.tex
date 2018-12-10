@@ -2,9 +2,27 @@
 
 \label{chapter:power}
 
-\section{Fusion Power -- $P_F$}
+In a tokamak reactor, the main source of output power is fusion. Therefore, this chapter goes over a quick background of fusion power and describes a method for how to calculate the reactivity term that appears inside it. The particular method used for this reactivity approximation was done by Bosch and Hale in 1992.\cite{boschhale}
 
-This requires a more first-principles approach than those used up until now. As such, a quick background is given to motivate the parameters it adds -- i.e.\ the dilution factor ($f_{D}$) and the Bosch-Hale fusion reactivity ($\sigma v$).
+\section{Theoretical Background}
+
+The natural place to start when introducing fusion energy is the binding energy per nucleon curve shown in \cref{fig:binding_energy}. As can be seen, this function reaches a maximum value around the element Iron (A=56). What this means at a basic level is: elements lighter than iron can \emph{fuse} into a heavier one (i.e.\ hydrogens into helium), whereas heavier elements can \emph{fission} into lighter ones (e.g.\ uranium into krypton and barium). This is what differentiates fission (uranium-fueled) reactors from fusion (hydrogen-fueled) ones. For fusion reactors, the most common reaction in a first-generation tokamak will be:
+\begin{equation}
+	{}^2H+ {}^3H \rightarrow {}^4 He + {}^1 n + E_F
+\end{equation}
+\myequations{Fusion Energy -- $E_F$}
+\begin{equation}
+	E_F = 17.6 \ \textnormal{MeV}
+\end{equation}
+
+
+
+
+
+
+
+
+
 
 \begin{figure}
 	\centering
@@ -17,19 +35,6 @@ This requires a more first-principles approach than those used up until now. As 
 	\label{fig:binding_energy}
 \end{figure}
 
-The natural place to start when talking about fusion is the binding-energy per nucleon plot (see \cref{fig:binding_energy}). As can be seen, the function reaches a maximum value around the element Iron (A=56). What this means at a basic level is: elements lighter than iron can \emph{fuse} into a heavier one (i.e.\ hydrogens into helium), whereas heavier elements can \emph{fission} into lighter ones (e.g.\ uranium into krypton and barium). This is what differentiates fission (uranium-fueled) reactors from fusion (hydrogen-fueled) ones. For fusion reactors, the most common reaction in a first-generation tokamak will be:
-
-\begin{equation}
-	{}^2H+ {}^3H \rightarrow {}^4 He + {}^1 n + E_F
-\end{equation}
-\myequations{Fusion Energy -- $E_F$}
-
-\begin{equation}
-	E_F = 17.6 \ \textnormal{MeV}
-\end{equation}
-
-What this reaction describes is two isotopes of hydrogen -- i.e.\ deuterium and tritium -- fusing into a heavier element, helium, while simultaneously ejecting a neutron. The entire energy of the fusion reaction ($E_F$) is then divvied up 80-20 between the neutron and helium, respectively. Quantitatively, the helium (hereafter referred to as an alpha particle) receives 3.5 MeV.
-
 \begin{figure}
 	\centering
 	\begin{adjustbox}{width=0.75\textwidth}
@@ -38,40 +43,28 @@ What this reaction describes is two isotopes of hydrogen -- i.e.\ deuterium and 
 %	\includegraphics[width=0.75\textwidth]{images/test_image}
 	\caption{The D-T Fusion Reaction} ~\\
 	\small In a first generation tokamak reactor, the main source of energy will come from two hydrogen isotopes fusing into a helium particle -- and ejecting a 14.1 MeV neutron.
+	\label{fig:fusion_reaction}
 \end{figure}
 
-The final point to make before returning to the fusion power derivation is the main difference between the two fusion products: helium (i.e.\ the alpha particle) and the neutron. First, neutrons lack a charge -- they are neutral. This means they cannot be confined with magnetic fields. As such, they simply move in straight lines until they collide with other particles. As the structure of a tokamak is mainly metal, the neutron is much more likely to collide there than the gaseous plasma, which is orders of magnitude less dense. Conversely, alpha particles are charged -- when stripped of their electrons -- and can therefore be kept within the plasma using magnets. What this means practically is that of the 17.6 MeV that comes from every fusion reaction, only 3.5 MeV remains inside the plasma (within the helium particle species).
-
-As mentioned before, this fusion power is divvied up 80-20 between the neutron and alpha particle. These relations will be used shortly. For now, they can be described mathematically as:
-\begin{equation}
-	P_\alpha = 0.2 \cdot P_F
-\end{equation}
-\myequations{Alpha Power -- $P_\alpha$}
+What this reaction (shown in \cref{fig:fusion_reaction}) describes is two isotopes of hydrogen -- i.e.\ deuterium and tritium -- fusing into a heavier element, helium, while simultaneously ejecting a neutron. The entire energy of the fusion reaction ($E_F$) is then divvied up 80-20 between the neutron and helium, respectively. Quantitatively, the helium (often referred to as an alpha particle) receives 3.5 MeV.
 \begin{equation}
 	P_n = 0.8 \cdot P_F
 \end{equation}
 \myequations{Neutron Power -- $P_n$}
+\begin{equation}
+	P_\alpha = 0.2 \cdot P_F
+\end{equation}
+\myequations{Alpha Power -- $P_\alpha$}
+The final point to make is the main difference between the two fusion products: helium (i.e.\ the alpha particle) and the neutron. First, neutrons lack a charge -- they are neutral. This means they cannot be confined with magnetic fields. As such, they simply move in straight lines until they collide with other particles. As the structure of a tokamak is mainly metal, the neutron is much more likely to collide there than the gaseous plasma, which is orders of magnitude less dense. Conversely, alpha particles are charged -- when stripped of their electrons -- and can therefore be kept within the plasma using magnets. What this means practically is that of the 17.6 MeV that comes from every fusion reaction, only 3.5 MeV remains inside the plasma (within the helium particle species).
 
-\section{Reactivity -- $(\sigma v)$}
+\section{Bosch-Hale Reactivity}
 
-When discussing reactivity, the place to start is talking about fusion power,
+The formula for fusion power used in this model makes use of a reactivity term -- $(\sigma v)$:\cite{jeff}
 \begin{equation}
 	P_F = \int E_F \, n_D \, n_T \, \langle \sigma v \rangle \, d \textbf{r}
 \end{equation}
 
-For the tokamak geometry given, volume integrals can be reduced to 0-D forms. 
-
-An arbitrary $F(\rho)$ has that:
-\begin{equation}
-	F_V = 4 \, \pi ^2 \, R_0 \, a^2 \kappa \, g \int\limits_0^1 F(\rho) \rho d\rho
-\end{equation}
-
-Given that $E_F = 17.6$ MeV and,
-\begin{equation}
-	n_D = n_T = f_D \frac {n_e}{2} = \frac{f_D}{2} \cdot \, \left( \ \overline{n} \, ( 1 + \nu_n ) \, ( 1 - \rho^2 ) ^ {\, \nu_n} \, \right) 
-\end{equation}
-
-Fusion power can be expressed as,
+Summarizing the work of \cref{subsection:fusion_derive}, this fusion power volume integral can be reduced to a 0-D form -- assuming the geometry prescribed by this model:
 \begin{equation}
 	P_F = K_F \cdot ( \, \overline{n}^2 \, R_0^3 \, ) \cdot (\sigma v) \ \ \ [MW]
 \end{equation}
@@ -82,7 +75,7 @@ Fusion power can be expressed as,
 	K_F = 278.3 \, ( f_D^2 \, \epsilon^2 \kappa \, g )
 \end{equation}
 
-The Bosch-Hale parametrization of the volumetric reaction rates is then given by, \cite{boschhale,zach}
+This reactivity term (or volumetric fusion reaction rate) can then be approximated by the Bosch-Hale parameterization, with coefficients given in \cref{table:rrParam}.\cite{boschhale,zach}
 \begin{equation}
 	\tcboxmath{
 	\langle \sigma v \rangle = C_1 \cdot \theta \cdot \textnormal{exp}(-3 \xi) \cdot \sqrt{ \frac{\xi  }{m_\mu  c^2 T^3} }  \ \ \, [ \, \sfrac{ \textnormal{m}^3 }{ \textnormal{s} } \, ] }
@@ -94,18 +87,20 @@ The Bosch-Hale parametrization of the volumetric reaction rates is then given by
 	\xi = \left(\frac{B_G^2}{4\theta}\right)^{1/3}
 \end{equation}
 
-Where approximate DT volumetric reaction rate ($10\lesssim~T~\mathrm{[keV]}\lesssim20$)
+For D-T (Deuterium-Tritium) fuel within a standard fusion temperature regime (i.e. $T \in [10, 20]$ keV), this can be simplified to:\cite{zach} 
 \begin{equation}
 		\langle\sigma v\rangle_\mathrm{DT} = 1.1\times10^{-24} \cdot  \, T^2   \ \ \ [ \, \sfrac{ \textnormal{m}^3 }{ \textnormal{s} } \, ]
 \end{equation}
+In our model, each appearance of T is set to the radial profile defined earlier -- as it appears inside an integral.
 
-In our model, each appearance of T is set to the profile defined earlier.
+Example tabulations for this reactivity are given in \cref{table:rr}.\cite{zach,nrl,boschhale}
 
 \begin{table}[h!]\small
   \noindent
   \centering
+  \caption{Bosch-Hale parametrization coefficients for volumetric reaction rates}
   \begin{tabular}{c | c c | c | c}
-    \multicolumn{5}{c}{Bosch-Hale parametrization coefficients for volumetric reaction rates}\\
+    \multicolumn{5}{c}{}\\
     \hline
     & $^2$H(d,n)$^3$He & $^2$H(d,p)$^3$H & $^3H$(d,n)$^4$He & $^3$He(d,p)$^4$He\\
     \hline\hline
@@ -130,8 +125,9 @@ In our model, each appearance of T is set to the profile defined earlier.
 \begin{table}[h!]\small
   \noindent
   \centering
+  \caption{Tabulated Bosch-Hale reaction rates [m$^3$~s$^{-1}$]}
   \begin{tabular}{c | c c | c | c}
-    \multicolumn{5}{c}{Tabulated Bosch-Hale reaction rates [m$^3$~s$^{-1}$]}\\
+    \multicolumn{5}{c}{}\\
     \hline
     T (keV) & $^2$H(d,n)$^3$He & $^2$H(d,p)$^3$H & $^3H$(d,n)$^4$He & $^3$He(d,p)$^4$He\\
     \hline\hline
