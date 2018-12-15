@@ -31,8 +31,6 @@
 \usepackage{lineno}
 \linenumbers
 
-\usepackage[capitalise]{cleveref}
-
 \usepackage[perpage, symbol, flushmargin, hang]{footmisc}
 \renewcommand{\thefootnote}{\fnsymbol{footnote}}
 
@@ -42,7 +40,7 @@
 
 \newcommand{\listequationsname}{List of Equations}
 \newlistof{myequations}{equ}{\listequationsname}
-\newcommand{\myequations}[1]{\addcontentsline{equ}{myequations}{\protect\numberline{\theequation} \ \ \, #1}}
+\newcommand{\myequations}[1]{\addcontentsline{equ}{myequations}{\protect\numberline{\theequation} \ \ \, #1}\ignorespaces}
 
 \makeatletter
 \DeclareRobustCommand{\volume}{\text{\volumedash}V}
@@ -52,6 +50,8 @@
   }%
 }
 \makeatother
+
+\renewcommand\bibname{References}
 
 %% This bit allows you to either specify only the files which you wish to
 %% process, or `all' to process all files which you \include.
@@ -72,9 +72,25 @@
 \setlist{nolistsep}
 
 \usepackage{hyperref}
+\usepackage[capitalise]{cleveref}
 
-%\includeonly{biblio,extra}
-
+%\includeonly{contents,biblio,intro,steady,model}
+%\includeonly{contents,biblio}
+%\includeonly{contents,biblio,intro}
+%\includeonly{contents,biblio,steady}
+%\includeonly{contents,biblio,model}
+\includeonly{contents,biblio,pulsed}
+%\includeonly{contents,biblio,code}
+%\includeonly{contents,biblio,results}
+%\includeonly{contents,biblio,future}
+%\includeonly{contents,biblio,conclusion}
+%\includeonly{contents,biblio,variables}
+%\includeonly{contents,biblio,fussy}
+%\includeonly{contents,biblio,power}
+%\includeonly{contents,biblio,appa}
+%\includeonly{contents,biblio,surfaces}
+%\includeonly{contents,biblio,bootstrap}
+%\includeonly{contents,biblio,extra}
 \begin{document}
 
 %\listofchanges

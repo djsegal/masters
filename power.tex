@@ -9,20 +9,11 @@ In a tokamak reactor, the main source of output power is fusion. Therefore, this
 The natural place to start when introducing fusion energy is the binding energy per nucleon curve shown in \cref{fig:binding_energy}. As can be seen, this function reaches a maximum value around the element Iron (A=56). What this means at a basic level is: elements lighter than iron can \emph{fuse} into a heavier one (i.e.\ hydrogens into helium), whereas heavier elements can \emph{fission} into lighter ones (e.g.\ uranium into krypton and barium). This is what differentiates fission (uranium-fueled) reactors from fusion (hydrogen-fueled) ones. For fusion reactors, the most common reaction in a first-generation tokamak will be:
 \begin{equation}
 	{}^2H+ {}^3H \rightarrow {}^4 He + {}^1 n + E_F
-	\myequations{Fusion Energy -- $E_F$}
 \end{equation}
+\myequations{Fusion Energy -- $E_F$}
 \begin{equation}
 	E_F = 17.6 \ \textnormal{MeV}
 \end{equation}
-
-
-
-
-
-
-
-
-
 
 \begin{figure}
 	\centering
@@ -31,7 +22,7 @@ The natural place to start when introducing fusion energy is the binding energy 
 	\end{adjustbox}
 %	\includegraphics[width=0.75\textwidth]{images/test_image}
 	\caption{Comparing Nuclear Fusion and Fission} ~\\
-	\small The binding energy per nucleon is what differentiates nuclear fusion from fission. Nuclei heavier than Iron fission (e.g.\ Uranium), while light ones -- such as Hydrogen -- fuse. 
+	\small The binding energy per nucleon is what differentiates nuclear fusion from fission. Nuclei heavier than Iron fission (e.g.\ Uranium), while light ones -- such as Hydrogen -- fuse.
 	\label{fig:binding_energy}
 \end{figure}
 
@@ -49,12 +40,14 @@ The natural place to start when introducing fusion energy is the binding energy 
 What this reaction (shown in \cref{fig:fusion_reaction}) describes is two isotopes of hydrogen -- i.e.\ deuterium and tritium -- fusing into a heavier element, helium, while simultaneously ejecting a neutron. The entire energy of the fusion reaction ($E_F$) is then divvied up 80-20 between the neutron and helium, respectively. Quantitatively, the helium (often referred to as an alpha particle) receives 3.5 MeV.
 \begin{equation}
 	P_n = 0.8 \cdot P_F
-	\myequations{Neutron Power -- $P_n$}
+	\label{eq:p_n}
 \end{equation}
+\myequations{Neutron Power -- $P_n$}
 \begin{equation}
 	P_\alpha = 0.2 \cdot P_F
-	\myequations{Alpha Power -- $P_\alpha$}
+	\label{eq:palpha}
 \end{equation}
+\myequations{Alpha Power -- $P_\alpha$}
 The final point to make is the main difference between the two fusion products: helium (i.e.\ the alpha particle) and the neutron. First, neutrons lack a charge -- they are neutral. This means they cannot be confined with magnetic fields. As such, they simply move in straight lines until they collide with other particles. As the structure of a tokamak is mainly metal, the neutron is much more likely to collide there than the gaseous plasma, which is orders of magnitude less dense. Conversely, alpha particles are charged -- when stripped of their electrons -- and can therefore be kept within the plasma using magnets. What this means practically is that of the 17.6 MeV that comes from every fusion reaction, only 3.5 MeV remains inside the plasma (within the helium particle species).
 
 \section{Bosch-Hale Reactivity}
@@ -80,14 +73,14 @@ This reactivity term (or volumetric fusion reaction rate) can then be approximat
 	\tcboxmath{
 	\langle \sigma v \rangle = C_1 \cdot \theta \cdot \textnormal{exp}(-3 \xi) \cdot \sqrt{ \frac{\xi  }{m_\mu  c^2 T^3} }  \ \ \, [ \, \sfrac{ \textnormal{m}^3 }{ \textnormal{s} } \, ] }
 \end{equation}
-\begin{equation} 
+\begin{equation}
 	\theta = T \cdot \left(1-\frac{T(C_2+T(C_4+TC_6))}{1+T(C_3+T(C_5+TC_7))}\right) ^{-1}
 \end{equation}
 \begin{equation}
 	\xi = \left(\frac{B_G^2}{4\theta}\right)^{1/3}
 \end{equation}
 
-For D-T (Deuterium-Tritium) fuel within a standard fusion temperature regime (i.e. $T \in [10, 20]$ keV), this can be simplified to:\cite{zach} 
+For D-T (Deuterium-Tritium) fuel within a standard fusion temperature regime (i.e. $T \in [10, 20]$ keV), this can be simplified to:\cite{zach}
 \begin{equation}
 		\langle\sigma v\rangle_\mathrm{DT} = 1.1\times10^{-24} \cdot  \, T^2   \ \ \ [ \, \sfrac{ \textnormal{m}^3 }{ \textnormal{s} } \, ]
 \end{equation}
@@ -108,7 +101,7 @@ Example tabulations for this reactivity are given in \cref{table:rr}.\cite{zach,
     $m_\mu c^2$ [keV]   & 937 814 & 937 814 & 1 124 656 & 1 124 572 \\
     \hline
             % 2H(d,n)                    % 2H(d,p)                   % 3H(d,n)                    % 3He(d,p)
-    C$_1$& 5.43360$\times$10$^{-12}$  & 5.65718$\times$10$^{-12}$ & 1.17302$\times$10$^{-9}$  & 5.51036$\times$10$^{-10}$ \\ 
+    C$_1$& 5.43360$\times$10$^{-12}$  & 5.65718$\times$10$^{-12}$ & 1.17302$\times$10$^{-9}$  & 5.51036$\times$10$^{-10}$ \\
     C$_2$  & 5.85778$\times$10$^{-3}$   & 3.41267$\times$10$^{-3}$  & 1.51361$\times$10$^{-2}$  & 6.41918$\times$10$^{-3}$ \\
     C$_3$  & 7.68222$\times$10$^{-3}$   & 1.99167$\times$10$^{-3}$  & 7.51886$\times$10$^{-2}$  & -2.02896$\times$10$^{-3}$ \\
     C$_4$  & 0.0                        & 0.0                       & 4.60643$\times$10$^{-3}$  & -1.91080$\times$10$^{-5}$ \\
