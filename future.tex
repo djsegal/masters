@@ -28,7 +28,7 @@
 
 \section{Incorporating Stellarator Technology -- Ladon}
 
-A stellarator is, at a basic level, a tokamak helically twisted along the length of its major circle. For a long time they were dismissed because of \replaced{their poor transport properties.}{the difficulty involved in building spiraled magnets.}  Recent technological improvements, though, have eased this situation -- as seen with the Wendelstein 7-X device in Germany. The problem now is engrained in the \replaced{underdeveloped}{missing} scaling laws stemming from a lack of machines and, more fundamentally, data points.
+A stellarator is, at a basic level, a tokamak helically twisted along the length of its major circle. For a long time they were dismissed because of \replaced{their poor transport properties.}{the difficulty involved in building spiraled magnets.}  Recent technological improvements, though, have eased this situation -- as seen with the Wendelstein 7-X device in Germany. The problem now is engrained in the \replaced{underdeveloped}{missing} scaling laws stemming from a lack of machines and, more fundamentally, data points.\cite{tau_stellar}
 
 \begin{figure}
 	\centering
@@ -58,9 +58,11 @@ The arguments against this are mainly technical: why build two difficult auxilia
 
 \section{Bridging Confinement Scalings -- Daedalus}
 
-The final potential reactor -- Daedalus -- is designed \replaced{so that it can be}{to collect as many scaling laws as possible. As a baseline, it should be able to} run in H-Mode, L-Mode, and I-Mode. Because L-Mode is available on any machine, the first step is \added{actually} building under H-Mode. The goal then is to find reactors that can also reach I-Mode -- \replaced{simultaneously}{thus} improving the scaling law's fit and \added{possibly} making the actual reactor more \replaced{economic}{cost effective}.
+The final potential reactor -- Daedalus -- is designed \replaced{so that it can be}{to collect as many scaling laws as possible. As a baseline, it should be able to} run in H-Mode, L-Mode, and I-Mode. Up until now, only H-Mode (high confinement) has been discussed due to its use in conventional reactor design. However, L-Mode (low) and I-Mode\cite{imode} (intermediate) may prove to produce more favorable scalings -- in terms of cost -- as more of reactor space is explored.
 
-Presented below are the three confinement scaling laws, as well as the generalized formula. As should be noted, the I-Mode scaling currently lacks a true radial dependence -- as it has only been found on two machines. This is one reason Daedalus would be so valuable.
+Because L-Mode is available on any machine, the first step is \added{actually} building under H-Mode. The goal then is to find reactors that can also reach I-Mode -- \replaced{simultaneously}{thus} improving the scaling law's fit and \added{possibly} making the actual reactor more \replaced{economic}{cost effective}.
+
+Presented below are the three confinement scaling laws, as well as the generalized formula. As should be noted, the I-Mode scaling currently lacks a true radial dependence -- as it has only been found on two machines. This is one reason Daedalus would be so valuable.\footnote{ In H-Mode and L-Mode's favor, they have been found on every machine that should see them. } 
 
 \begin{equation}
   \tau_E^G = K_\tau \, H \, \frac{
@@ -86,7 +88,7 @@ Presented below are the three confinement scaling laws, as well as the generaliz
 	\lambda_R + \lambda_a = 2.2
 \end{equation}
 
-A final point to make is reemphasizing that the I-Mode scaling law is \replaced{significantly underdeveloped}{not battle-tested.} It is the target of ongoing research at the MIT PSFC.
+A final point to make is reemphasizing that the I-Mode scaling law is \replaced{significantly underdeveloped}{not battle-tested.} It is the target of ongoing research at the MIT PSFC.\cite{imode}
 
 \section{Addressing Model Shortcomings}
 
@@ -96,7 +98,7 @@ Before moving on to the final conclusions, we will give a quick recap of \replac
 
 \replaced{One of the biggest shortcomings of this model is not handling plasma profiles self-consistently -- instead replacing them with simple parabolas.}{The most dubious simplification in the code at this point is modeling temperature profiles as parabolas.} Although these parabolas work for densities and L-Mode plasma temperatures, the same cannot be said about H-Mode temperatures. This is because they have a distinct pedestal region on the outer edge of the plasma.
 
-The usage of pedestal temperatures -- discussed in the appendix -- improves two aspects of the model: the fusion power and the bootstrap current. These were shown in the results to be over-calculated and underestimated, respectively. Pedestals, having a lower core temperature, would decrease the total fusion power. As well, they would boost bootstrap current due to the quick drop near the plasma's edge (i.e.\ they have a large derivative there). 
+The usage of pedestal temperatures -- discussed in \cref{chapter:profiles} -- improves two aspects of the model: the fusion power and the bootstrap current. These were shown in the results to be over-calculated and underestimated, respectively. Pedestals, having a lower core temperature, would decrease the total fusion power. As well, they would boost bootstrap current due to the quick drop near the plasma's edge (i.e.\ they have a large derivative there). 
 
 These improvements could easily be added to the code, because temperature was addressed as a difficult parameter to handle from the beginning.
 

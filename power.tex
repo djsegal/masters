@@ -9,8 +9,8 @@ In a tokamak reactor, the main source of output power is fusion. Therefore, this
 The natural place to start when introducing fusion energy is the binding energy per nucleon curve shown in \cref{fig:binding_energy}. As can be seen, this function reaches a maximum value around the element Iron (A=56). What this means at a basic level is: elements lighter than iron can \emph{fuse} into a heavier one (i.e.\ hydrogens into helium), whereas heavier elements can \emph{fission} into lighter ones (e.g.\ uranium into krypton and barium). This is what differentiates fission (uranium-fueled) reactors from fusion (hydrogen-fueled) ones. For fusion reactors, the most common reaction in a first-generation tokamak will be:
 \begin{equation}
 	{}^2H+ {}^3H \rightarrow {}^4 He + {}^1 n + E_F
+	\myequations{Fusion Energy -- $E_F$}
 \end{equation}
-\myequations{Fusion Energy -- $E_F$}
 \begin{equation}
 	E_F = 17.6 \ \textnormal{MeV}
 \end{equation}
@@ -49,12 +49,12 @@ The natural place to start when introducing fusion energy is the binding energy 
 What this reaction (shown in \cref{fig:fusion_reaction}) describes is two isotopes of hydrogen -- i.e.\ deuterium and tritium -- fusing into a heavier element, helium, while simultaneously ejecting a neutron. The entire energy of the fusion reaction ($E_F$) is then divvied up 80-20 between the neutron and helium, respectively. Quantitatively, the helium (often referred to as an alpha particle) receives 3.5 MeV.
 \begin{equation}
 	P_n = 0.8 \cdot P_F
+	\myequations{Neutron Power -- $P_n$}
 \end{equation}
-\myequations{Neutron Power -- $P_n$}
 \begin{equation}
 	P_\alpha = 0.2 \cdot P_F
+	\myequations{Alpha Power -- $P_\alpha$}
 \end{equation}
-\myequations{Alpha Power -- $P_\alpha$}
 The final point to make is the main difference between the two fusion products: helium (i.e.\ the alpha particle) and the neutron. First, neutrons lack a charge -- they are neutral. This means they cannot be confined with magnetic fields. As such, they simply move in straight lines until they collide with other particles. As the structure of a tokamak is mainly metal, the neutron is much more likely to collide there than the gaseous plasma, which is orders of magnitude less dense. Conversely, alpha particles are charged -- when stripped of their electrons -- and can therefore be kept within the plasma using magnets. What this means practically is that of the 17.6 MeV that comes from every fusion reaction, only 3.5 MeV remains inside the plasma (within the helium particle species).
 
 \section{Bosch-Hale Reactivity}
@@ -98,7 +98,7 @@ Example tabulations for this reactivity are given in \cref{table:rr}.\cite{zach,
 \begin{table}[h!]\small
   \noindent
   \centering
-  \caption{Bosch-Hale parametrization coefficients for volumetric reaction rates}
+  \caption{Bosch-Hale Parametrization Coefficients}
   \begin{tabular}{c | c c | c | c}
     \multicolumn{5}{c}{}\\
     \hline
@@ -125,7 +125,7 @@ Example tabulations for this reactivity are given in \cref{table:rr}.\cite{zach,
 \begin{table}[h!]\small
   \noindent
   \centering
-  \caption{Tabulated Bosch-Hale reaction rates [m$^3$~s$^{-1}$]}
+  \caption{Tabulated Bosch-Hale Reactivities}
   \begin{tabular}{c | c c | c | c}
     \multicolumn{5}{c}{}\\
     \hline
