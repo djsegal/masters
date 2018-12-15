@@ -127,7 +127,7 @@ The next metric, the cost-per-watt, is defined by dividing the capital cost (i.e
 \deleted{In pulsed machines, the entire pulse includes charging the inductive sources as well as flushing out the tokamak between runs. These non-flattop portions of time can last around thirty minutes (where the reactor makes no money). As steady-state machines lack these non-flattop portions, their duty factors are rightfully one. Analysis in Fig.\ \ref{section:pulse} and discussion with several researchers, however, show that the same will probably hold true for a pulsed reactor, too.}
 \deleted{Summarizing, the cost-per-watt coupled with the duty factor provides an ad hoc pricing metric, $C_W$, given by:}
 
-\added{ A final correction can be made on the cost-per-watt to account for reactor downtime, which is fundamental to pulsed operation. This is handled through the duty factor ($f_{Duty}$) that is defined as the ratio of a reactor's quasi-steady-state flattop duration to the entire pulse length of a tokamak. In the context of the cost-per-watt, it scales down the fusion power:}
+\added{A final correction can be made on the cost-per-watt to account for reactor downtime, which is fundamental to pulsed operation. This is handled through the duty factor ($f_{Duty}$) that is defined as the ratio of a reactor's quasi-steady-state flattop duration to the entire pulse length of a tokamak. In the context of the cost-per-watt, it scales down the fusion power:}
 \begin{equation}
 	\tcboxmath{
 	C_W = \frac{W_M}{f_{Duty} \cdot P_F}
@@ -164,13 +164,9 @@ More concretely, this paper shows that new HTS \deleted{tape} technology is capa
 
 Now that the problem has been thoroughly introduced, we will go over the theory behind steady-state and, then, pulsed tokamaks. A couple \replaced{detours}{segues} will be taken along the way to show how the model can be incorporated into a fusion systems code. This code -- Fussy.jl -- is the topic of \cref{chapter:fussy} and is freely available at:
  
-{\centering \href{http://git.io/tokamak}{git.io/tokamak} \par }
+{\centering \href{http://git.io/tokamak}{git.io/tokamak} \par } ~
 
-\clearpage
-
-\newpage
-
-\begin{figure*}
+\begin{figure*}[h]
     \centering
     \hfill 
     \begin{subfigure}[t]{0.42\textwidth}
@@ -196,7 +192,7 @@ Now that the problem has been thoroughly introduced, we will go over the theory 
     \label{fig:charybdis_intro}
 \end{figure*}
 
-\begin{figure*}
+\begin{figure*}[h]
     \centering
     \hfill 
     \begin{subfigure}[t]{0.42\textwidth}

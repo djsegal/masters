@@ -785,7 +785,7 @@ The pulsed twin reactor, Proteus, highlights the effects of a high field central
 
 \added{Most apparently, pulsed reactors are typically larger than steady-state ones and are meant to be run at higher plasma currents. The former behavior was seen with the DEMO designs,\cite{process,inputfile} whereas the latter was already mentioned in discussing how steady-state reactors never saw a kink (current limiting) regime. Additionally pulsed machines can be run at much lower temperatures because their higher current improves confinement. }
 
-\added{ These combined effects lead to the minimum cost reactors for steady-state operation having much higher toroidal field strengths than their pulsed counterparts. This is discussed in \cref{subsection:high_field} when explaining optimum use of HTS tape. } 
+\added{These combined effects lead to the minimum cost reactors for steady-state operation having much higher toroidal field strengths than their pulsed counterparts. This is discussed in \cref{subsection:high_field} when explaining optimum use of HTS tape. }  
 
 \begin{table}[h!]
 \centering  
@@ -803,6 +803,11 @@ $B_{0}$          & 10.28            \\
 $I_{P}$          & 8.98            \\
 $\overline n$    & 1.47            \\
 $\overline T$    & 15.81           \\
+$f_{BS}$ & 0.72 \\
+$f_{CD}$ & 0.28 \\
+$P_F$ & 1300 \\
+$W_M$ & 9.48 \\
+$C_W$ & 0.007 \\
 \end{tabular}
 \end{subtable}
 \hfill
@@ -818,6 +823,11 @@ $B_{0}$          & 4.93            \\
 $I_{P}$          & 15.54            \\
 $\overline n$    & 1.16            \\
 $\overline T$    & 11.25            \\
+$f_{BS}$ & 0.27 \\
+$f_{ID}$ & 0.73 \\
+$P_F$ & 1650 \\
+$W_M$ & 7.09 \\
+$C_W$ & 0.004 \\
 \end{tabular}
 \end{subtable}
 \hfill
@@ -843,7 +853,7 @@ Regardless of reactor type, most \replaced{economic}{efficient} tokamaks operate
 	\input{images/limit_regimes}
 \end{adjustbox}
 \caption{\replaced{Limiting Constraint Regimes}{Limit Regimes as function of $B_0$}} ~ \\
-\added{ \small At a simple level, a reactor has around three regimes of design limiting constraints. At low fields, the kink safety factor -- through $q_*$ and \cref{eq:r_kink} -- drives design. Then at high fields, wall loading -- through $P_W$ and \cref{eq:r_wall} -- guide reactors. And between the two, the beta limit -- through $\beta_N$ and \cref{eq:r_beta} -- are the limiting constraint. }
+\added{\small At a simple level, a reactor has around three regimes of design limiting constraints. At low fields, the kink safety factor -- through $q_*$ and \cref{eq:r_kink} -- drives design. Then at high fields, wall loading -- through $P_W$ and \cref{eq:r_wall} -- guide reactors. And between the two, the beta limit -- through $\beta_N$ and \cref{eq:r_beta} -- are the limiting constraint. }
 \label{fig:limit_regimes}
 \end{figure}
 
@@ -1107,7 +1117,7 @@ Quickly reasoning this \deleted{camp's} thought process are two sets of plots. T
     \hfill \hfill ~\\ ~\\ ~\\
     \caption{Bootstrap Current Monte Carlo Sampling}
     \label{fig:bootstrap_samplings} ~ \\
-    \added{ \small The purpose of these plots is to show that a high bootstrap current always reduces the cost of a steady state reactor -- highly independent of actual input quantities (i.e. $\epsilon$, $l_i$, etc.)}
+    \added{\small The purpose of these plots is to show that a high bootstrap current always reduces the cost of a steady state reactor -- highly independent of actual input quantities (i.e. $\epsilon$, $l_i$, etc.)}
 \end{figure*}
 
 The next plot \added{(\cref{fig:inductance_sensitivities})} is the parameter that determines a current profile's peak radius: $l_i$. As can be seen, the current peak approaches the outer edge of the plasma as $l_i$ decreases. This in turn boosts the bootstrap fraction closer to one -- leading to inexpensive reactors.
@@ -1172,7 +1182,7 @@ The next plot \added{(\cref{fig:inductance_sensitivities})} is the parameter tha
     \end{subfigure}
     \hfill \hfill ~\\ ~\\ ~\\ ~\\
     \caption{Internal Inductance Sensitivities} ~ \\
-    \added{ \small The internal inductance has a strong influence on the peaking radius ($\rho_m$) of the hollow profile and the bootstrap current fraction ($f_{BS}$). Lowering the internal inductance thus makes a profile more hollow, which in turn increases the bootstrap fraction. } 
+    \added{\small The internal inductance has a strong influence on the peaking radius ($\rho_m$) of the hollow profile and the bootstrap current fraction ($f_{BS}$). Lowering the internal inductance thus makes a profile more hollow, which in turn increases the bootstrap fraction. } 
     \label{fig:inductance_sensitivities}
 \end{figure*}
 

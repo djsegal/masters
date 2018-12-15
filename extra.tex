@@ -1,0 +1,2540 @@
+%\documentclass[11pt]{book}
+%
+%\setlength{\parindent}{0pt}
+%\setlength{\parskip}{8pt}
+%
+%\usepackage{amsmath}
+%\usepackage{amssymb}
+%\usepackage{hyperref}
+%
+%\renewcommand*{\thefootnote}{\fnsymbol{footnote}}
+%
+%\setcounter{chapter}{2}
+%
+%\begin{document}
+%
+%\section*{A Levelized Comparison of \\ Pulsed and Steady-State Tokamaks}
+%
+%\let\cleardoublepage\relax \tableofcontents \newpage
+
+\chapter{Compending Code Plots}
+
+\label{chapter:extra}
+
+This chapter gives a brief overview of the plots that from using this model on several reactor prototypes: Charybdis, Proteus, ARC, Demo Pulsed, the two ARIES ACT reactors. The two types of results this information comes in are: magnet strength scans and cost sensitivity studies.
+
+In the former, all static variables are kept constant and only the magnet strength is allowed to change. The latter then focuses on changing one static variable at a time and finding several magnet strengths that satisfy certain constraints -- i.e. minimum cost or when two limits are both just marginally satisfied.
+
+\clearpage
+
+\newpage
+
+\section{Magnet Strength Scans}
+
+This section includes the following magnet strength scans: ~
+
+\begin{enumerate}
+  \item \hyperref[subsection:scan_T_bar]{ Plasma Temperature -- $\overline T$  }
+  \item \hyperref[subsection:scan_n_bar]{ Plasma Density -- $\overline n$  }
+  \item \hyperref[subsection:scan_I_P]{ Plasma Current -- $I_P$  }
+  \item \hyperref[subsection:scan_R_0]{ Major Radius -- $R_0$  }
+  \item \hyperref[subsection:scan_p_bar]{ Plasma Pressure -- $\overline p$  }
+  \item \hyperref[subsection:scan_tau_E]{ Confinement Time -- $\tau_E$  }
+  \item \hyperref[subsection:scan_eta_CD]{ Current Drive Efficiency -- $\eta_{CD}$  }
+  \item \hyperref[subsection:scan_f_BS]{ Bootstrap Fraction  -- $f_{BS}$  }
+  \item \hyperref[subsection:scan_W_M]{ Magnetic Energy -- $W_M$  }
+  \item \hyperref[subsection:scan_C_W]{ Cost-per-Watt -- $C_W$  }
+  \item \hyperref[subsection:scan_q_DV]{ Divertor Head Load -- $q_{DV}$  }
+  \item \hyperref[subsection:scan_norm_beta_N]{ Normalized Beta Normal -- $(\beta_N)_{norm} $  }
+  \item \hyperref[subsection:scan_norm_q_95]{ Normalized Kink Safety Factor -- $(q_{95})_{norm}$  }
+  \item \hyperref[subsection:scan_norm_P_W]{ Normalized Wall Loading  -- $(P_W)_{norm}$  }
+  \item \hyperref[subsection:scan_P_F]{ Fusion Power -- $P_F$  }
+  \item \hyperref[subsection:scan_b]{ Blanket Thickness -- $b$  }
+  \item \hyperref[subsection:scan_c]{ TF Coil Thickness -- $c$  }
+  \item \hyperref[subsection:scan_d]{ Central Solenoid Thickness -- $d$  }
+  \item \hyperref[subsection:scan_h_CS]{ Central Solenoid Height -- $h_{CS}$  }
+  \item \hyperref[subsection:scan_R_CS]{ Central Solenoid Inner Radius -- $R_{CS}$ }
+\end{enumerate}
+
+
+
+\clearpage
+
+\newpage
+
+\subsection*{ Plasma Temperature -- $\overline T$ }
+	\label{subsection:scan_T_bar}
+
+\begin{figure*}[h!]
+    \centering
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/charybdis_T_bar_vs_B_0}
+    \end{adjustbox}
+        \caption{Charybdis}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/proteus_T_bar_vs_B_0}
+    \end{adjustbox}
+        \caption{Proteus}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/arc_T_bar_vs_B_0}
+    \end{adjustbox}
+        \caption{Arc}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/demo_pulsed_T_bar_vs_B_0}
+    \end{adjustbox}
+        \caption{Demo Pulsed}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/act_1_T_bar_vs_B_0}
+    \end{adjustbox}
+        \caption{Act I}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/act_2_T_bar_vs_B_0}
+    \end{adjustbox}
+        \caption{Act II}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+  \caption{Magnet Scan: $\overline T$ vs $B_0$} ~\\
+\end{figure*}
+
+
+\clearpage
+
+\newpage
+
+\subsection*{ Plasma Density -- $\overline n$ }
+  \label{subsection:scan_n_bar}
+
+\begin{figure*}[h!]
+    \centering
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/charybdis_n_bar_vs_B_0}
+    \end{adjustbox}
+        \caption{Charybdis}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/proteus_n_bar_vs_B_0}
+    \end{adjustbox}
+        \caption{Proteus}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/arc_n_bar_vs_B_0}
+    \end{adjustbox}
+        \caption{Arc}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/demo_pulsed_n_bar_vs_B_0}
+    \end{adjustbox}
+        \caption{Demo Pulsed}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/act_1_n_bar_vs_B_0}
+    \end{adjustbox}
+        \caption{Act I}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/act_2_n_bar_vs_B_0}
+    \end{adjustbox}
+        \caption{Act II}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+  \caption{Magnet Scan: $\overline n$ vs $B_0$} ~\\
+
+\end{figure*}
+
+
+\clearpage
+
+\newpage
+
+\subsection*{ Plasma Current -- $I_P$ }
+  \label{subsection:scan_I_P}
+
+\begin{figure*}[h!]
+    \centering
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/charybdis_I_P_vs_B_0}
+    \end{adjustbox}
+        \caption{Charybdis}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/proteus_I_P_vs_B_0}
+    \end{adjustbox}
+        \caption{Proteus}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/arc_I_P_vs_B_0}
+    \end{adjustbox}
+        \caption{Arc}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/demo_pulsed_I_P_vs_B_0}
+    \end{adjustbox}
+        \caption{Demo Pulsed}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/act_1_I_P_vs_B_0}
+    \end{adjustbox}
+        \caption{Act I}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/act_2_I_P_vs_B_0}
+    \end{adjustbox}
+        \caption{Act II}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+  \caption{Magnet Scan: $I_P$ vs $B_0$} ~\\
+\end{figure*}
+
+
+\clearpage
+
+\newpage
+
+\subsection*{ Major Radius -- $R_0$ }
+  \label{subsection:scan_R_0}
+
+\begin{figure*}[h!]
+    \centering
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/charybdis_R_0_vs_B_0}
+    \end{adjustbox}
+        \caption{Charybdis}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/proteus_R_0_vs_B_0}
+    \end{adjustbox}
+        \caption{Proteus}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/arc_R_0_vs_B_0}
+    \end{adjustbox}
+        \caption{Arc}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/demo_pulsed_R_0_vs_B_0}
+    \end{adjustbox}
+        \caption{Demo Pulsed}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/act_1_R_0_vs_B_0}
+    \end{adjustbox}
+        \caption{Act I}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/act_2_R_0_vs_B_0}
+    \end{adjustbox}
+        \caption{Act II}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+  \caption{Magnet Scan: $R_0$ vs $B_0$} ~\\
+\end{figure*}
+
+
+\clearpage
+
+\newpage
+
+\subsection*{ Plasma Pressure -- $\overline p$ }
+  \label{subsection:scan_p_bar}
+
+\begin{figure*}[h!]
+    \centering
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/charybdis_p_bar_vs_B_0}
+    \end{adjustbox}
+        \caption{Charybdis}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/proteus_p_bar_vs_B_0}
+    \end{adjustbox}
+        \caption{Proteus}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/arc_p_bar_vs_B_0}
+    \end{adjustbox}
+        \caption{Arc}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/demo_pulsed_p_bar_vs_B_0}
+    \end{adjustbox}
+        \caption{Demo Pulsed}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/act_1_p_bar_vs_B_0}
+    \end{adjustbox}
+        \caption{Act I}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/act_2_p_bar_vs_B_0}
+    \end{adjustbox}
+        \caption{Act II}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+  \caption{Magnet Scan: $\overline p$ vs $B_0$} ~\\
+\end{figure*}
+
+
+\clearpage
+
+\newpage
+
+\subsection*{ Confinement Time -- $\tau_E$ }
+  \label{subsection:scan_tau_E}
+
+\begin{figure*}[h!]
+    \centering
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/charybdis_tau_E_vs_B_0}
+    \end{adjustbox}
+        \caption{Charybdis}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/proteus_tau_E_vs_B_0}
+    \end{adjustbox}
+        \caption{Proteus}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/arc_tau_E_vs_B_0}
+    \end{adjustbox}
+        \caption{Arc}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/demo_pulsed_tau_E_vs_B_0}
+    \end{adjustbox}
+        \caption{Demo Pulsed}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/act_1_tau_E_vs_B_0}
+    \end{adjustbox}
+        \caption{Act I}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/act_2_tau_E_vs_B_0}
+    \end{adjustbox}
+        \caption{Act II}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+  \caption{Magnet Scan: $\tau_E$ vs $B_0$} ~\\
+\end{figure*}
+
+
+\clearpage
+
+\newpage
+
+\subsection*{ Current Drive Efficiency -- $\eta_{CD}$ }
+  \label{subsection:scan_eta_CD}
+
+\begin{figure*}[h!]
+    \centering
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/charybdis_eta_CD_vs_B_0}
+    \end{adjustbox}
+        \caption{Charybdis}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/proteus_eta_CD_vs_B_0}
+    \end{adjustbox}
+        \caption{Proteus}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/arc_eta_CD_vs_B_0}
+    \end{adjustbox}
+        \caption{Arc}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/demo_pulsed_eta_CD_vs_B_0}
+    \end{adjustbox}
+        \caption{Demo Pulsed}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/act_1_eta_CD_vs_B_0}
+    \end{adjustbox}
+        \caption{Act I}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/act_2_eta_CD_vs_B_0}
+    \end{adjustbox}
+        \caption{Act II}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+  \caption{Magnet Scan: $\eta_{CD}$ vs $B_0$} ~\\
+\end{figure*}
+
+
+\clearpage
+
+\newpage
+
+\subsection*{ Bootstrap Fraction  -- $f_{BS}$ }
+  \label{subsection:scan_f_BS}
+
+\begin{figure*}[h!]
+    \centering
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/charybdis_f_BS_vs_B_0}
+    \end{adjustbox}
+        \caption{Charybdis}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/proteus_f_BS_vs_B_0}
+    \end{adjustbox}
+        \caption{Proteus}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/arc_f_BS_vs_B_0}
+    \end{adjustbox}
+        \caption{Arc}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/demo_pulsed_f_BS_vs_B_0}
+    \end{adjustbox}
+        \caption{Demo Pulsed}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/act_1_f_BS_vs_B_0}
+    \end{adjustbox}
+        \caption{Act I}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/act_2_f_BS_vs_B_0}
+    \end{adjustbox}
+        \caption{Act II}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+  \caption{Magnet Scan: $f_{BS}$ vs $B_0$} ~\\
+\end{figure*}
+
+
+\clearpage
+
+\newpage
+
+\subsection*{ Magnetic Energy -- $W_M$ }
+  \label{subsection:scan_W_M}
+
+\begin{figure*}[h!]
+    \centering
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/charybdis_W_M_vs_B_0}
+    \end{adjustbox}
+        \caption{Charybdis}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/proteus_W_M_vs_B_0}
+    \end{adjustbox}
+        \caption{Proteus}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/arc_W_M_vs_B_0}
+    \end{adjustbox}
+        \caption{Arc}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/demo_pulsed_W_M_vs_B_0}
+    \end{adjustbox}
+        \caption{Demo Pulsed}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/act_1_W_M_vs_B_0}
+    \end{adjustbox}
+        \caption{Act I}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/act_2_W_M_vs_B_0}
+    \end{adjustbox}
+        \caption{Act II}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+  \caption{Magnet Scan: $W_M$ vs $B_0$} ~\\
+\end{figure*}
+
+
+\clearpage
+
+\newpage
+
+\subsection*{ Cost-per-Watt -- $C_W$ }
+  \label{subsection:scan_C_W}
+
+\begin{figure*}[h!]
+    \centering
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/charybdis_C_W_vs_B_0}
+    \end{adjustbox}
+        \caption{Charybdis}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/proteus_C_W_vs_B_0}
+    \end{adjustbox}
+        \caption{Proteus}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/arc_C_W_vs_B_0}
+    \end{adjustbox}
+        \caption{Arc}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/demo_pulsed_C_W_vs_B_0}
+    \end{adjustbox}
+        \caption{Demo Pulsed}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/act_1_C_W_vs_B_0}
+    \end{adjustbox}
+        \caption{Act I}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/act_2_C_W_vs_B_0}
+    \end{adjustbox}
+        \caption{Act II}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+  \caption{Magnet Scan: $C_W$ vs $B_0$} ~\\
+\end{figure*}
+
+
+\clearpage
+
+\newpage
+
+\subsection*{ Divertor Head Load -- $q_{DV}$ }
+  \label{subsection:scan_q_DV}
+
+\begin{figure*}[h!]
+    \centering
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/charybdis_q_DV_vs_B_0}
+    \end{adjustbox}
+        \caption{Charybdis}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/proteus_q_DV_vs_B_0}
+    \end{adjustbox}
+        \caption{Proteus}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/arc_q_DV_vs_B_0}
+    \end{adjustbox}
+        \caption{Arc}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/demo_pulsed_q_DV_vs_B_0}
+    \end{adjustbox}
+        \caption{Demo Pulsed}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/act_1_q_DV_vs_B_0}
+    \end{adjustbox}
+        \caption{Act I}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/act_2_q_DV_vs_B_0}
+    \end{adjustbox}
+        \caption{Act II}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+  \caption{Magnet Scan: $q_{DV}$ vs $B_0$} ~\\
+\end{figure*}
+
+
+\clearpage
+
+\newpage
+
+\subsection*{ Normalized Beta Normal -- $(\beta_N)_{norm} $ }
+  \label{subsection:scan_norm_beta_N}
+
+\begin{figure*}[h!]
+    \centering
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/charybdis_norm_beta_N_vs_B_0}
+    \end{adjustbox}
+        \caption{Charybdis}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/proteus_norm_beta_N_vs_B_0}
+    \end{adjustbox}
+        \caption{Proteus}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/arc_norm_beta_N_vs_B_0}
+    \end{adjustbox}
+        \caption{Arc}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/demo_pulsed_norm_beta_N_vs_B_0}
+    \end{adjustbox}
+        \caption{Demo Pulsed}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/act_1_norm_beta_N_vs_B_0}
+    \end{adjustbox}
+        \caption{Act I}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/act_2_norm_beta_N_vs_B_0}
+    \end{adjustbox}
+        \caption{Act II}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+  \caption{Magnet Scan: $(\beta_N)_{norm}$ vs $B_0$} ~\\
+\end{figure*}
+
+
+\clearpage
+
+\newpage
+
+\subsection*{ Normalized Kink Safety Factor -- $(q_{95})_{norm}$ }
+  \label{subsection:scan_norm_q_95}
+
+\begin{figure*}[h!]
+    \centering
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/charybdis_norm_q_95_vs_B_0}
+    \end{adjustbox}
+        \caption{Charybdis}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/proteus_norm_q_95_vs_B_0}
+    \end{adjustbox}
+        \caption{Proteus}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/arc_norm_q_95_vs_B_0}
+    \end{adjustbox}
+        \caption{Arc}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/demo_pulsed_norm_q_95_vs_B_0}
+    \end{adjustbox}
+        \caption{Demo Pulsed}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/act_1_norm_q_95_vs_B_0}
+    \end{adjustbox}
+        \caption{Act I}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/act_2_norm_q_95_vs_B_0}
+    \end{adjustbox}
+        \caption{Act II}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+  \caption{Magnet Scan: $(q_{95})_{norm}$ vs $B_0$} ~\\
+\end{figure*}
+
+
+\clearpage
+
+\newpage
+
+\subsection*{ Normalized Wall Loading  -- $(P_W)_{norm}$ }
+  \label{subsection:scan_norm_P_W}
+
+\begin{figure*}[h!]
+    \centering
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/charybdis_norm_P_W_vs_B_0}
+    \end{adjustbox}
+        \caption{Charybdis}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/proteus_norm_P_W_vs_B_0}
+    \end{adjustbox}
+        \caption{Proteus}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/arc_norm_P_W_vs_B_0}
+    \end{adjustbox}
+        \caption{Arc}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/demo_pulsed_norm_P_W_vs_B_0}
+    \end{adjustbox}
+        \caption{Demo Pulsed}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/act_1_norm_P_W_vs_B_0}
+    \end{adjustbox}
+        \caption{Act I}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/act_2_norm_P_W_vs_B_0}
+    \end{adjustbox}
+        \caption{Act II}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+  \caption{Magnet Scan: $(P_W)_{norm}$ vs $B_0$} ~\\
+\end{figure*}
+
+
+\clearpage
+
+\newpage
+
+\subsection*{ Fusion Power -- $P_F$ }
+  \label{subsection:scan_P_F}
+
+\begin{figure*}[h!]
+    \centering
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/charybdis_P_F_vs_B_0}
+    \end{adjustbox}
+        \caption{Charybdis}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/proteus_P_F_vs_B_0}
+    \end{adjustbox}
+        \caption{Proteus}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/arc_P_F_vs_B_0}
+    \end{adjustbox}
+        \caption{Arc}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/demo_pulsed_P_F_vs_B_0}
+    \end{adjustbox}
+        \caption{Demo Pulsed}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/act_1_P_F_vs_B_0}
+    \end{adjustbox}
+        \caption{Act I}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/act_2_P_F_vs_B_0}
+    \end{adjustbox}
+        \caption{Act II}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+  \caption{Magnet Scan: $P_F$ vs $B_0$} ~\\
+\end{figure*}
+
+
+\clearpage
+
+\newpage
+
+\subsection*{ Blanket Thickness -- $b$ }
+  \label{subsection:scan_b}
+
+\begin{figure*}[h!]
+    \centering
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/charybdis_b_vs_B_0}
+    \end{adjustbox}
+        \caption{Charybdis}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/proteus_b_vs_B_0}
+    \end{adjustbox}
+        \caption{Proteus}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/arc_b_vs_B_0}
+    \end{adjustbox}
+        \caption{Arc}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/demo_pulsed_b_vs_B_0}
+    \end{adjustbox}
+        \caption{Demo Pulsed}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/act_1_b_vs_B_0}
+    \end{adjustbox}
+        \caption{Act I}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/act_2_b_vs_B_0}
+    \end{adjustbox}
+        \caption{Act II}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+  \caption{Magnet Scan: $b$ vs $B_0$} ~\\
+\end{figure*}
+
+
+\clearpage
+
+\newpage
+
+\subsection*{ TF Coil Thickness -- $c$ }
+  \label{subsection:scan_c}
+
+\begin{figure*}[h!]
+    \centering
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/charybdis_c_vs_B_0}
+    \end{adjustbox}
+        \caption{Charybdis}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/proteus_c_vs_B_0}
+    \end{adjustbox}
+        \caption{Proteus}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/arc_c_vs_B_0}
+    \end{adjustbox}
+        \caption{Arc}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/demo_pulsed_c_vs_B_0}
+    \end{adjustbox}
+        \caption{Demo Pulsed}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/act_1_c_vs_B_0}
+    \end{adjustbox}
+        \caption{Act I}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/act_2_c_vs_B_0}
+    \end{adjustbox}
+        \caption{Act II}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+  \caption{Magnet Scan: $c$ vs $B_0$} ~\\
+\end{figure*}
+
+
+\clearpage
+
+\newpage
+
+\subsection*{ Central Solenoid Thickness -- $d$ }
+  \label{subsection:scan_d}
+
+\begin{figure*}[h!]
+    \centering
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/charybdis_d_vs_B_0}
+    \end{adjustbox}
+        \caption{Charybdis}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/proteus_d_vs_B_0}
+    \end{adjustbox}
+        \caption{Proteus}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/arc_d_vs_B_0}
+    \end{adjustbox}
+        \caption{Arc}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/demo_pulsed_d_vs_B_0}
+    \end{adjustbox}
+        \caption{Demo Pulsed}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/act_1_d_vs_B_0}
+    \end{adjustbox}
+        \caption{Act I}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/act_2_d_vs_B_0}
+    \end{adjustbox}
+        \caption{Act II}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+  \caption{Magnet Scan: $d$ vs $B_0$} ~\\
+\end{figure*}
+
+
+\clearpage
+
+\newpage
+
+\subsection*{ Central Solenoid Height -- $h_{CS}$ }
+  \label{subsection:scan_h_CS}
+
+\begin{figure*}[h!]
+    \centering
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/charybdis_h_CS_vs_B_0}
+    \end{adjustbox}
+        \caption{Charybdis}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/proteus_h_CS_vs_B_0}
+    \end{adjustbox}
+        \caption{Proteus}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/arc_h_CS_vs_B_0}
+    \end{adjustbox}
+        \caption{Arc}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/demo_pulsed_h_CS_vs_B_0}
+    \end{adjustbox}
+        \caption{Demo Pulsed}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/act_1_h_CS_vs_B_0}
+    \end{adjustbox}
+        \caption{Act I}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/act_2_h_CS_vs_B_0}
+    \end{adjustbox}
+        \caption{Act II}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+  \caption{Magnet Scan: $h_{CS}$ vs $B_0$} ~\\
+\end{figure*}
+
+
+\clearpage
+
+\newpage
+
+\subsection*{Central Solenoid Inner Radius -- $R_{CS}$}
+  \label{subsection:scan_R_CS}
+
+\begin{figure*}[h!]
+    \centering
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/charybdis_R_CS_vs_B_0}
+    \end{adjustbox}
+        \caption{Charybdis}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/proteus_R_CS_vs_B_0}
+    \end{adjustbox}
+        \caption{Proteus}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/arc_R_CS_vs_B_0}
+    \end{adjustbox}
+        \caption{Arc}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/demo_pulsed_R_CS_vs_B_0}
+    \end{adjustbox}
+        \caption{Demo Pulsed}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/act_1_R_CS_vs_B_0}
+    \end{adjustbox}
+        \caption{Act I}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/comparisons/act_2_R_CS_vs_B_0}
+    \end{adjustbox}
+        \caption{Act II}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+  \caption{Magnet Scan: $R_{CS}$ vs $B_0$} ~\\
+\end{figure*}
+
+
+
+
+
+\section{Cost Sensitivity Studies}
+
+This section includes the following cost sensitivity studies: ~
+
+\begin{enumerate}
+  \item \hyperref[subsection:sensitivity_H]{ Enhancement Factor -- $H$  }
+  \item \hyperref[subsection:sensitivity_Q]{ Physics Gain -- $Q$  }
+  \item \hyperref[subsection:sensitivity_tau_FT]{ Flattop Duration -- $\tau_{FT}$  }
+  \item \hyperref[subsection:sensitivity_N_G]{ Greenwald Fraction -- $N_G$  }
+  \item \hyperref[subsection:sensitivity_f_D]{ Dilution Factor -- $f_D$  }
+  \item \hyperref[subsection:sensitivity_Z_eff]{ Effective Charge -- $Z_{eff}$  }
+  \item \hyperref[subsection:sensitivity_epsilon]{ Inverse Aspect Ratio -- $\epsilon$  }
+  \item \hyperref[subsection:sensitivity_kappa_95]{ Elongation -- $\kappa_{95}$  }
+  \item \hyperref[subsection:sensitivity_delta_95]{ Triangularity -- $\delta_{95}$  }
+  \item \hyperref[subsection:sensitivity_nu_n]{ Density Peaking Factor -- $\nu_n$  }
+  \item \hyperref[subsection:sensitivity_nu_T]{ Temperature Peaking Factor -- $\nu_T$  }
+  \item \hyperref[subsection:sensitivity_l_i]{ Internal Inductance -- $l_i$  }
+  \item \hyperref[subsection:sensitivity_max_beta_N]{ Max Beta Normal -- $(\beta_N)_{max}$  }
+  \item \hyperref[subsection:sensitivity_max_q_95]{ Max Kink Safety Factor -- $({q_{95}})_{max}$  }
+  \item \hyperref[subsection:sensitivity_max_P_W]{ Max Wall Loading -- $({P_W})_{max}$ }
+\end{enumerate}
+
+\clearpage
+
+\newpage
+
+\subsection*{ Enhancement Factor -- $H$ }
+  \label{subsection:sensitivity_H}
+
+\begin{figure*}[h!]
+    \centering
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/charybdis_C_W_vs_H }
+    \end{adjustbox}
+        \caption{Charybdis}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/proteus_C_W_vs_H }
+    \end{adjustbox}
+        \caption{Proteus}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/arc_C_W_vs_H }
+    \end{adjustbox}
+        \caption{Arc}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/demo_pulsed_C_W_vs_H }
+    \end{adjustbox}
+        \caption{Demo Pulsed}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/act_1_C_W_vs_H }
+    \end{adjustbox}
+        \caption{Act I}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/act_2_C_W_vs_H }
+    \end{adjustbox}
+        \caption{Act II}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+  \caption{Cost Sensitivity: $H$ vs. $B_0$} ~\\
+\end{figure*}
+
+
+\clearpage
+
+\newpage
+
+\subsection*{ Physics Gain -- $Q$ }
+  \label{subsection:sensitivity_Q}
+
+\begin{figure*}[h!]
+    \centering
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/charybdis_C_W_vs_Q }
+    \end{adjustbox}
+        \caption{Charybdis}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/proteus_C_W_vs_Q }
+    \end{adjustbox}
+        \caption{Proteus}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/arc_C_W_vs_Q }
+    \end{adjustbox}
+        \caption{Arc}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/demo_pulsed_C_W_vs_Q }
+    \end{adjustbox}
+        \caption{Demo Pulsed}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/act_1_C_W_vs_Q }
+    \end{adjustbox}
+        \caption{Act I}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/act_2_C_W_vs_Q }
+    \end{adjustbox}
+        \caption{Act II}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+  \caption{Cost Sensitivity: $Q$ vs. $B_0$} ~\\
+\end{figure*}
+
+
+\clearpage
+
+\newpage
+
+\subsection*{ Flattop Duration -- $\tau_{FT}$ }
+  \label{subsection:sensitivity_tau_FT}
+
+\begin{figure*}[h!]
+    \centering
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/charybdis_C_W_vs_tau_FT }
+    \end{adjustbox}
+        \caption{Charybdis}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/proteus_C_W_vs_tau_FT }
+    \end{adjustbox}
+        \caption{Proteus}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/arc_C_W_vs_tau_FT }
+    \end{adjustbox}
+        \caption{Arc}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/demo_pulsed_C_W_vs_tau_FT }
+    \end{adjustbox}
+        \caption{Demo Pulsed}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/act_1_C_W_vs_tau_FT }
+    \end{adjustbox}
+        \caption{Act I}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/act_2_C_W_vs_tau_FT }
+    \end{adjustbox}
+        \caption{Act II}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+  \caption{Cost Sensitivity: $\tau_{FT}$ vs. $B_0$} ~\\
+\end{figure*}
+
+
+\clearpage
+
+\newpage
+
+\subsection*{ Greenwald Fraction -- $N_G$ }
+  \label{subsection:sensitivity_N_G}
+
+\begin{figure*}[h!]
+    \centering
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/charybdis_C_W_vs_N_G }
+    \end{adjustbox}
+        \caption{Charybdis}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/proteus_C_W_vs_N_G }
+    \end{adjustbox}
+        \caption{Proteus}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/arc_C_W_vs_N_G }
+    \end{adjustbox}
+        \caption{Arc}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/demo_pulsed_C_W_vs_N_G }
+    \end{adjustbox}
+        \caption{Demo Pulsed}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/act_1_C_W_vs_N_G }
+    \end{adjustbox}
+        \caption{Act I}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/act_2_C_W_vs_N_G }
+    \end{adjustbox}
+        \caption{Act II}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+  \caption{Cost Sensitivity: $N_G$ vs. $B_0$} ~\\
+\end{figure*}
+
+
+\clearpage
+
+\newpage
+
+\subsection*{ Dilution Factor -- $f_D$ }
+  \label{subsection:sensitivity_f_D}
+
+\begin{figure*}[h!]
+    \centering
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/charybdis_C_W_vs_f_D }
+    \end{adjustbox}
+        \caption{Charybdis}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/proteus_C_W_vs_f_D }
+    \end{adjustbox}
+        \caption{Proteus}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/arc_C_W_vs_f_D }
+    \end{adjustbox}
+        \caption{Arc}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/demo_pulsed_C_W_vs_f_D }
+    \end{adjustbox}
+        \caption{Demo Pulsed}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/act_1_C_W_vs_f_D }
+    \end{adjustbox}
+        \caption{Act I}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/act_2_C_W_vs_f_D }
+    \end{adjustbox}
+        \caption{Act II}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+  \caption{Cost Sensitivity: $f_D$ vs. $B_0$} ~\\
+\end{figure*}
+
+
+\clearpage
+
+\newpage
+
+\subsection*{ Effective Charge -- $Z_{eff}$ }
+  \label{subsection:sensitivity_Z_eff}
+
+\begin{figure*}[h!]
+    \centering
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/charybdis_C_W_vs_Z_eff }
+    \end{adjustbox}
+        \caption{Charybdis}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/proteus_C_W_vs_Z_eff }
+    \end{adjustbox}
+        \caption{Proteus}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/arc_C_W_vs_Z_eff }
+    \end{adjustbox}
+        \caption{Arc}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/demo_pulsed_C_W_vs_Z_eff }
+    \end{adjustbox}
+        \caption{Demo Pulsed}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/act_1_C_W_vs_Z_eff }
+    \end{adjustbox}
+        \caption{Act I}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/act_2_C_W_vs_Z_eff }
+    \end{adjustbox}
+        \caption{Act II}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+  \caption{Cost Sensitivity: $Z_{eff}$ vs. $B_0$} ~\\
+\end{figure*}
+
+
+\clearpage
+
+\newpage
+
+\subsection*{ Inverse Aspect Ratio -- $\epsilon$ }
+  \label{subsection:sensitivity_epsilon}
+
+\begin{figure*}[h!]
+    \centering
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/charybdis_C_W_vs_epsilon }
+    \end{adjustbox}
+        \caption{Charybdis}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/proteus_C_W_vs_epsilon }
+    \end{adjustbox}
+        \caption{Proteus}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/arc_C_W_vs_epsilon }
+    \end{adjustbox}
+        \caption{Arc}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/demo_pulsed_C_W_vs_epsilon }
+    \end{adjustbox}
+        \caption{Demo Pulsed}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/act_1_C_W_vs_epsilon }
+    \end{adjustbox}
+        \caption{Act I}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/act_2_C_W_vs_epsilon }
+    \end{adjustbox}
+        \caption{Act II}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+  \caption{Cost Sensitivity: $\epsilon$ vs. $B_0$} ~\\
+\end{figure*}
+
+
+\clearpage
+
+\newpage
+
+\subsection*{ Elongation -- $\kappa_{95}$ }
+  \label{subsection:sensitivity_kappa_95}
+
+\begin{figure*}[h!]
+    \centering
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/charybdis_C_W_vs_kappa_95 }
+    \end{adjustbox}
+        \caption{Charybdis}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/proteus_C_W_vs_kappa_95 }
+    \end{adjustbox}
+        \caption{Proteus}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/arc_C_W_vs_kappa_95 }
+    \end{adjustbox}
+        \caption{Arc}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/demo_pulsed_C_W_vs_kappa_95 }
+    \end{adjustbox}
+        \caption{Demo Pulsed}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/act_1_C_W_vs_kappa_95 }
+    \end{adjustbox}
+        \caption{Act I}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/act_2_C_W_vs_kappa_95 }
+    \end{adjustbox}
+        \caption{Act II}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+  \caption{Cost Sensitivity: $\kappa_{95}$ vs. $B_0$} ~\\
+\end{figure*}
+
+
+\clearpage
+
+\newpage
+
+\subsection*{ Triangularity -- $\delta_{95}$ }
+  \label{subsection:sensitivity_delta_95}
+
+\begin{figure*}[h!]
+    \centering
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/charybdis_C_W_vs_delta_95 }
+    \end{adjustbox}
+        \caption{Charybdis}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/proteus_C_W_vs_delta_95 }
+    \end{adjustbox}
+        \caption{Proteus}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/arc_C_W_vs_delta_95 }
+    \end{adjustbox}
+        \caption{Arc}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/demo_pulsed_C_W_vs_delta_95 }
+    \end{adjustbox}
+        \caption{Demo Pulsed}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/act_1_C_W_vs_delta_95 }
+    \end{adjustbox}
+        \caption{Act I}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/act_2_C_W_vs_delta_95 }
+    \end{adjustbox}
+        \caption{Act II}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+  \caption{Cost Sensitivity: $\delta_{95}$ vs. $B_0$} ~\\
+\end{figure*}
+
+
+\clearpage
+
+\newpage
+
+\subsection*{ Density Peaking Factor -- $\nu_n$ }
+  \label{subsection:sensitivity_nu_n}
+
+\begin{figure*}[h!]
+    \centering
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/charybdis_C_W_vs_nu_n }
+    \end{adjustbox}
+        \caption{Charybdis}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/proteus_C_W_vs_nu_n }
+    \end{adjustbox}
+        \caption{Proteus}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/arc_C_W_vs_nu_n }
+    \end{adjustbox}
+        \caption{Arc}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/demo_pulsed_C_W_vs_nu_n }
+    \end{adjustbox}
+        \caption{Demo Pulsed}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/act_1_C_W_vs_nu_n }
+    \end{adjustbox}
+        \caption{Act I}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/act_2_C_W_vs_nu_n }
+    \end{adjustbox}
+        \caption{Act II}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+  \caption{Cost Sensitivity: $\nu_n$ vs. $B_0$} ~\\
+\end{figure*}
+
+
+\clearpage
+
+\newpage
+
+\subsection*{ Temperature Peaking Factor -- $\nu_T$ }
+  \label{subsection:sensitivity_nu_T}
+
+\begin{figure*}[h!]
+    \centering
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/charybdis_C_W_vs_nu_T }
+    \end{adjustbox}
+        \caption{Charybdis}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/proteus_C_W_vs_nu_T }
+    \end{adjustbox}
+        \caption{Proteus}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/arc_C_W_vs_nu_T }
+    \end{adjustbox}
+        \caption{Arc}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/demo_pulsed_C_W_vs_nu_T }
+    \end{adjustbox}
+        \caption{Demo Pulsed}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/act_1_C_W_vs_nu_T }
+    \end{adjustbox}
+        \caption{Act I}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/act_2_C_W_vs_nu_T }
+    \end{adjustbox}
+        \caption{Act II}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+  \caption{Cost Sensitivity: $\nu_T$ vs. $B_0$} ~\\
+\end{figure*}
+
+
+\clearpage
+
+\newpage
+
+\subsection*{ Internal Inductance -- $l_i$ }
+  \label{subsection:sensitivity_l_i}
+
+\begin{figure*}[h!]
+    \centering
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/charybdis_C_W_vs_l_i }
+    \end{adjustbox}
+        \caption{Charybdis}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/proteus_C_W_vs_l_i }
+    \end{adjustbox}
+        \caption{Proteus}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/arc_C_W_vs_l_i }
+    \end{adjustbox}
+        \caption{Arc}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/demo_pulsed_C_W_vs_l_i }
+    \end{adjustbox}
+        \caption{Demo Pulsed}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/act_1_C_W_vs_l_i }
+    \end{adjustbox}
+        \caption{Act I}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/act_2_C_W_vs_l_i }
+    \end{adjustbox}
+        \caption{Act II}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+  \caption{Cost Sensitivity: $l_i$ vs. $B_0$} ~\\
+\end{figure*}
+
+
+\clearpage
+
+\newpage
+
+\subsection*{ Max Beta Normal -- $(\beta_N)_{max}$ }
+  \label{subsection:sensitivity_max_beta_N}
+
+\begin{figure*}[h!]
+    \centering
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/charybdis_C_W_vs_max_beta_N }
+    \end{adjustbox}
+        \caption{Charybdis}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/proteus_C_W_vs_max_beta_N }
+    \end{adjustbox}
+        \caption{Proteus}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/arc_C_W_vs_max_beta_N }
+    \end{adjustbox}
+        \caption{Arc}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/demo_pulsed_C_W_vs_max_beta_N }
+    \end{adjustbox}
+        \caption{Demo Pulsed}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/act_1_C_W_vs_max_beta_N }
+    \end{adjustbox}
+        \caption{Act I}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/act_2_C_W_vs_max_beta_N }
+    \end{adjustbox}
+        \caption{Act II}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+  \caption{Cost Sensitivity: $(\beta_N)_{max}$ vs. $B_0$} ~\\
+\end{figure*}
+
+
+\clearpage
+
+\newpage
+
+\subsection*{ Max Kink Safety Factor -- $({q_{95}})_{max}$ }
+\label{subsection:sensitivity_max_q_95}  ~
+
+\begin{figure*}[h!]
+    \centering
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/charybdis_C_W_vs_max_q_95 }
+    \end{adjustbox}
+        \caption{Charybdis}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/proteus_C_W_vs_max_q_95 }
+    \end{adjustbox}
+        \caption{Proteus}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/arc_C_W_vs_max_q_95 }
+    \end{adjustbox}
+        \caption{Arc}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/demo_pulsed_C_W_vs_max_q_95 }
+    \end{adjustbox}
+        \caption{Demo Pulsed}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/act_1_C_W_vs_max_q_95 }
+    \end{adjustbox}
+        \caption{Act I}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/act_2_C_W_vs_max_q_95 }
+    \end{adjustbox}
+        \caption{Act II}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+  \caption{Cost Sensitivity: $({q_{95}})_{max}$ vs. $B_0$} ~\\
+\end{figure*}
+
+
+\clearpage
+
+\newpage
+
+\subsection*{ Max Wall Loading -- $({P_W})_{max}$ }
+  \label{subsection:sensitivity_max_P_W}
+
+\begin{figure*}[h!]
+    \centering
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/charybdis_C_W_vs_max_P_W }
+    \end{adjustbox}
+        \caption{Charybdis}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/proteus_C_W_vs_max_P_W }
+    \end{adjustbox}
+        \caption{Proteus}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/arc_C_W_vs_max_P_W }
+    \end{adjustbox}
+        \caption{Arc}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/demo_pulsed_C_W_vs_max_P_W }
+    \end{adjustbox}
+        \caption{Demo Pulsed}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/act_1_C_W_vs_max_P_W }
+    \end{adjustbox}
+        \caption{Act I}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+    \begin{adjustbox}{width=\textwidth}
+      \Large
+      \input{images/sensitivities/act_2_C_W_vs_max_P_W }
+    \end{adjustbox}
+        \caption{Act II}
+    \end{subfigure}
+    \hfill \hfill ~\\ ~\\ ~\\ ~\\
+  \caption{Cost Sensitivity: $({P_W})_{max}$ vs. $B_0$} ~\\
+\end{figure*}
+
+
+
+
+
+%\end{document}
