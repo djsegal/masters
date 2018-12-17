@@ -1,33 +1,86 @@
-\chapter{Cataloging \replaced{Static}{Fixed} Variables}
+\chapter{Cataloging Model Variables}
+
+\section{Static Variables}
 
 \label{chapter:var_table}
 
 \begin{table}[h]
+\centering
 \caption{List of \replaced{Static}{Fixed} Variables}
 \begin{tabular}{c|l}
 \textbf{Name} & \textbf{Value} \\
 \hline
 is\_pulsed & is reactor pulsed or steady-state \\
-$H$ & h factor for ELMy H-mode scaling \\
+$H$ & Enhancement factor for ELMy H-mode scaling \\
 $Q$ & Physics Gain ($P_F/P_H$) \\
-$\epsilon$ & inverse aspect ratio \\
-$\kappa_{95}$ &  elongation at 95 flux surface \\
-$\delta_{95}$ &  triangularity at 95 flux surface \\
-$\nu_n$ &  parabolic density peaking factor \\
-$\nu_T$ &  parabolic temperature peaking factor \\
-$Z_{eff}$ & effective charge \\
-$f_D$ & dilution factor \\
-$A$ & average mass number (in amus) \\
-$l_i$ & internal inductance (interchangeable with $\rho_m$) \\
-$\rho_m$ & normalized radius of current peak (interchangeable with $l_i$) \\
+$\epsilon$ & Inverse aspect ratio \\
+$\kappa_{95}$ &  Elongation at 95 flux surface \\
+$\delta_{95}$ &  Triangularity at 95 flux surface \\
+$\nu_n$ &  Parabolic density peaking factor \\
+$\nu_T$ &  Parabolic temperature peaking factor \\
+$Z_{eff}$ & Effective charge \\
+$f_D$ & Dilution factor \\
+$A$ & Average mass number (in amus) \\
+$l_i$ & Internal inductance (interchangeable with $\rho_m$) \\
+$\rho_m$ & Normalized radius of current peak (interchangeable with $l_i$) \\
 $N_G$ & Greenwald density fraction \\
-$\eta_T$ & thermal efficiency of the reactor \\
-$\eta_{RF}$ &  efficiency of the RF antenna \\
-$\tau_{FT}$ &  time of flattop of reactor pulse \\
-$B_{CS}$ &  strength of magnetic field in central solenoid \\
-$(\beta_N)_{max}$ &  max allowed normalized beta normal \\
-$(q_{\replaced{*}{95}})_{max}$ &  min allowed safety factor \\
-$(P_W)_{max}$ & maximum allowed wall loading power per surface area
+$\eta_T$ & Thermal efficiency of the reactor \\
+$\eta_{RF}$ &  Efficiency of the RF antenna \\
+$\tau_{FT}$ &  Time of flattop of reactor pulse \\
+$B_{CS}$ &  Strength of magnetic field in central solenoid \\
+$(\beta_N)_{max}$ &  Max allowed normalized beta normal \\
+$(q_{\replaced{*}{95}})_{max}$ & Minimum allowed safety factor \\
+$(P_W)_{max}$ & Maximum allowed wall loading power per surface area
+\end{tabular}
+\end{table}
+
+\section{Dynamic Variables}
+
+\begin{table}[h!]
+\centering
+\caption{List of Dynamic Variables}
+\begin{tabular}{ c|c|c }
+
+\textbf{Symbol} & \textbf{Name} & \textbf{Units} \\
+\hline
+$I_P$ & Plasma Current & MA \\
+$\overline{T}$ & Plasma Temperature & keV \\
+$\overline{n}$ & Electron Density & $10^{20} \, \textnormal{m}^{-3}$ \\
+$R_0$ &  Major Radius & m \\
+$B_0$ &  Magnetic Field & T
+\end{tabular}
+\end{table}
+
+\section{Intermediate Variables}
+
+\begin{table}[h]
+\centering
+\caption{List of Intermediate Variables (Noncomprehensive) }
+\begin{tabular}{c|l}
+\textbf{Name} & \textbf{Value} \\
+\hline
+$C_W$ & Cost-per-watt \\
+$W_M$ & Magnetic energy \\
+$P_F$ & Fusion power \\
+$P_\Omega$ & Resistive power \\
+$P_{BR}$ & Bremsstrahlung power \\
+$P_\kappa$ & Conductive heat losses \\
+$P_W$ & Wall loading \\
+$\beta_N$ & Plasma beta normal \\
+$q_*$ & Kink safety factor \\
+\volume & Tokamak volume in cubic meters \\
+$f_{BS}$ & Bootstrap current fraction \\
+$f_{CD}$ & Current drive fraction \\
+$f_{ID}$ & Indirect drive current fraction \\
+$\overline p$ & Volume-averaged plasma pressure \\
+$\langle \sigma v \rangle$ & Bosch-Hale fusion reactivity \\
+$R_P$ & Plasma resistance \\
+$\tau_E$ & Confinement time \\
+$a$ & Tokamak minor radius \\
+$b$ & Blanket thickness \\
+$c$ & TF coil thickness \\
+$d$ & Central solenoid thickness \\
+$R_{CS}$ & Central solenoid inner radius \\
 \end{tabular}
 \end{table}
 

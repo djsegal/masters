@@ -173,9 +173,9 @@ The plasma current \added{density} is the third profile and cannot safely be rep
 \myequations{Current Density Profile -- $J$}
 The intermediate $\gamma$ quantity can then be numerically solved for from the plasma internal inductance using the following relations -- with $b_p$ representing the normalized poloidal magnetic field. \added{These are derived in \cref{chapter:bootstrap}.}
 \begin{equation}
+	\tag{\ref{eq:l_i}}
 	l_i = \frac{4 \kappa}{1+\kappa^2}	 \int_0^1 b_p^2 \, \rho \, d\rho
 \end{equation}
-\myequations{Internal Inductance -- $l_i$}
 \begin{equation}
 	\label{eq:b_p}
 	b_p(\rho) = \frac{ -e^{\gamma\rho^2} ( \gamma\rho^2 - 1 - \gamma ) - 1 - \gamma }{\rho \,( e^\gamma - 1 - \gamma ) }
@@ -198,7 +198,7 @@ The goal is then to write equations for bootstrap current and driven current. Th
 
 \subsection{Enforcing the Greenwald Density Limit}
 
-The Greenwald density limit is \replaced{a density limit that applies to all tokamaks}{ubiquitous in the field of fusion energy.} It sets a hard limit on the density and how it scales with current and reactor size. Although currently lacking a true first-principles theoretical explanation, it does have a real meaning within the design context. Operate at too low a density and run the risk of never entering H-Mode. Run the density too high, and cause the tokamak's plasma to \replaced{disrupt.}{disrupt catastrophically!} \added{These conclusions can be seen in \cref{fig:greenwald}.}
+The Greenwald density limit is \replaced{a density limit that applies to all tokamaks}{ubiquitous in the field of fusion energy.} It sets a hard limit on the density and how it scales with current and reactor size. Although currently lacking a true first-principles theoretical explanation, it does have a real meaning within the design context. Operate at too low a density and run the risk of never entering H-Mode. Run the density too high, and cause the tokamak's plasma to \replaced{disrupt.}{disrupt catastrophically!} \added{\cref{fig:greenwald} shows how most shots exist within the regime between the two.}
 
 \begin{figure*}
     \centering
@@ -249,7 +249,7 @@ The Greenwald density limit is \replaced{a density limit that applies to all tok
         \caption{All Tokamak Shots}
     \end{subfigure} ~\\ ~\\ ~\\
     \caption{Greenwald Density Limit} ~\\
-    \small The Greenwald Density Limit is a robust metric of what densities an H-Mode plasma can attain. Although empirical in nature, \replaced{it accurately predicts when a tokamak will undergo degraded plasma transport.\cite{greenwald,iterdb}}{it is an indicator for good transport regimes.}
+    \small The Greenwald Limit is a robust metric of what densities an H-Mode plasma can attain -- here referred to as a \emph{Greenwaldian} region. Although empirical in nature, \replaced{it accurately predicts when a tokamak will undergo degraded plasma transport.\cite{greenwald,iterdb}}{it is an indicator for good transport regimes.}
     \label{fig:greenwald}
 \end{figure*}
 
@@ -278,6 +278,7 @@ The next step is transforming the \emph{line-averaged} density ($\hat n$) into t
 \end{equation}
 \myequations{Greenwald Density -- $\overline n$}
  \begin{equation}
+  \label{eq:kn}
  	K_n = \frac{2 N_G}{\epsilon^2 \, \pi^{3/2} } \cdot \left( \frac{\Gamma \left( \nu_n + \frac{3}{2} \right)}{\Gamma \left( \nu_n + 2 \right)} \right)
 \end{equation}
 The format of the previous equation pair will be used throughout the remainder of the paper. The top equation relates \replaced{dynamic}{floating} variables (i.e.\ $\overline n$, $I_P$, and $R_0$), while the \replaced{static}{fixed}-value coefficient ($K_n$) lumps together \replaced{static}{fixed} quantities, such as: $N_G$, $\epsilon$, 2, $\pi$, and $\nu_n$.
@@ -396,7 +397,7 @@ Quickly noting, this $H_{BS}$ term serves as the analogue of \replaced{static}{f
 
 \deleted{The final point to make before returning to the fusion power derivation is the main difference between the two fusion products: helium (i.e.\ the alpha particle) and the neutron. First, neutrons lack a charge -- they are neutral. This means they cannot be confined with magnetic fields. As such, they simply move in straight lines until they collide with other particles. As the structure of a tokamak is mainly metal, the neutron is much more likely to collide there than the gaseous plasma, which is orders of magnitude less dense. Conversely, alpha particles are charged -- when stripped of their electrons -- and can therefore be kept within the plasma using magnets. What this means practically is that of the 17.6 MeV that comes from every fusion reaction, only 3.5 MeV remains inside the plasma (within the helium particle species).}
 
- \added{The next segue on our journey to solving for the steady current is deriving the fusion power ($P_F$), which appears in current drive. A comprehensive introduction to this is given in \cref{chapter:power}.} \replaced{Summarized, though, a formula for}{Returning to the problem at hand, the} fusion power from a D-T reaction -- in megawatts -- is given by \replaced{the following volume integral: \cite{fusionpower} }{ Jeff Freidberg's textbook through the following volume integral: }
+ \added{The next segue on our journey to solving for the steady current is deriving the fusion power ($P_F$), which appears in current drive. A comprehensive introduction to this is given in \cref{chapter:power}.} \replaced{Summarized, though, a formula for}{Returning to the problem at hand, the} fusion power from a D-T reaction -- in megawatts -- is given by \replaced{the following volume integral: \cite{lawson} }{ Jeff Freidberg's textbook through the following volume integral: }
  \begin{equation}
  	\label{eq:pf_int}
  	P_F = \int E_F \, n_D \, n_T \, \langle \sigma v \rangle \, d \vec{\bold{r}}
@@ -462,7 +463,7 @@ Here, $\eta_{CD}$ is the current drive efficiency with units $ \left(
 
 Let it be known, though, that driving current in a plasma is hard! In fact, pulsed reactor designers (i.e.\ European fusion researchers) think it is so difficult, they may choose to forego it completely -- focusing only on inductive sources that necessitate reactor fatigue and downtime.
 
-A common current drive efficiency ($\eta_{CD}$) seen in many designs is $0.3 \pm 0.1 $ in the standard units. It is however inherently a function of all the plasma parameters -- with subtlety put off until the discussion of self-consistency. For now it assumed to have some constant/\replaced{static}{fixed} value.
+For LHCD, a common current drive efficiency ($\eta_{CD}$) seen in many designs is $0.3 \pm 0.1 $ in the standard units.\cite{itercd,arc,ussteady} It is however inherently a function of all the plasma parameters -- with subtlety put off until the discussion of self-consistency. For now it assumed to have some constant/\replaced{static}{fixed} value.
 
 The remaining step in deriving an equation for driven current ($I_{CD}$) is a formula for the heating power ($P_H$). The way fusion systems models -- like this one -- handle the heating power is through the physics gain factor, Q. Sometimes referred to as big Q, this value represents how many times over the heating power ($P_H$) is amplified as it is transformed into fusion power ($P_F$):
 \begin{equation}

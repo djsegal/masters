@@ -37,7 +37,7 @@ As opposed to previous chapters, this one will focus on the numerics behind the 
 	\end{adjustbox}
 %	\includegraphics[width=0.75\textwidth]{images/test_image}
 	\caption{Equation Selection for Fusion System} ~\\
-	\small The goal of this fusion system is to create a set of equations that model the five dynamic variables. These are the Greenwald limit for density, current balance for the plasma current, and three generalized formulas for the temperature, major radius, and toroidal field strength.	
+	\small This systems model selects five variables to solve for all the dynamic variables. These are the Greenwald limit for density, current balance for the plasma current, and three generalized formulas for the temperature, major radius, and toroidal field strength.	
 	\label{fig:equation_breakdown}
 \end{figure}
 
@@ -63,8 +63,11 @@ The remaining equation common to all reactor-grade tokamaks is power balance -- 
 Although being rather cumbersome, this equation actually remains relatively simple in that all three quantities on the left-hand side are separable. To close the system, two more equations of this form are needed. These have the following form and will be described next.
 \begin{equation}
 	\label{eq:rbi}
+	\tcbhighmath{
 	R_0^{\, \gamma_R} \cdot B_0^{\, \gamma_B} \cdot I_P^{\, \gamma_I} = G( \overline T )
+	}
 \end{equation}
+\myequations{General Model Equation -- $G( \overline T )$}
 
 \section{Generalizing Previous Equations}
 
@@ -131,24 +134,27 @@ After a valid reactor is found, its cost is recorded leading to a drill-down sta
 
 \begin{figure*}
     \centering
-    \begin{subfigure}[t]{0.8\textwidth}
+    \begin{subfigure}[t]{0.725\textwidth}
         \centering
 		\begin{adjustbox}{width=\textwidth}
+			\Large
 			\input{images/step_two}
 		\end{adjustbox}
         \caption{ Minimize Step II }
     \end{subfigure} 
     \par \bigskip \par \bigskip 
-    \begin{subfigure}[t]{0.8\textwidth}
+    \begin{subfigure}[t]{0.725\textwidth}
         \centering
 		\begin{adjustbox}{width=\textwidth}
+			\Large
 			\input{images/step_three}
 		\end{adjustbox}
         \caption{ Minimize Step III }
     \end{subfigure}
     \par \bigskip \par \bigskip    
     \caption{Minimize Cost Step II/III -- Optimize Reactor}
-    \label{fig:minimize} 
+    \label{fig:minimize} ~ \\
+    \small{ After a valid reactor has been found, it is a simple process to find the minimum cost reactor. This involves first continually searching for reactors that are half the cost until a valid one can no longer be found. After the costing interval has been bounded by a valid and invalid reactor, the interval is bisected until there is negligible error.}
 \end{figure*}
 
 \subsection{Pinning \replaced{Dynamic}{Floating} Variables} 
@@ -173,27 +179,23 @@ Concretely, the root solve for the temperature  scenario is for the current, whe
 
 \subsubsection{Scenario I -- Match for $\overline T$}
 
-\begin{equation}
+\begin{gather}
 	\label{eq:case_1_R}
 	R_0( \overline T) = \left( 
 	G_1 ^ {  \, ( \gamma_{B,2} \, \gamma_{I,3} - \gamma_{B,3} \, \gamma_{I,2} ) } \cdot 
 	G_2 ^ {  \, ( \gamma_{B,3} \, \gamma_{I,1} - \gamma_{B,1} \, \gamma_{I,3} ) } \cdot 
-	G_3 ^ {  \, ( \gamma_{B,1} \, \gamma_{I,2} - \gamma_{B,2} \, \gamma_{I,1} ) }\right)^{ \frac{1}{\gamma_{RBI}} }
-\end{equation}
-\begin{equation}
+	G_3 ^ {  \, ( \gamma_{B,1} \, \gamma_{I,2} - \gamma_{B,2} \, \gamma_{I,1} ) }\right)^{ \frac{1}{\gamma_{RBI}} } \\
 	\label{eq:case_1_B}
 	B_0( \overline T) = \left( 
 	G_1 ^ {  \, ( \gamma_{I,2} \, \gamma_{R,3} - \gamma_{I,3} \, \gamma_{R,2} ) } \cdot 
 	G_2 ^ {  \, ( \gamma_{I,3} \, \gamma_{R,1} - \gamma_{I,1} \, \gamma_{R,3} ) } \cdot 
-	G_3 ^ {  \, ( \gamma_{I,1} \, \gamma_{R,2} - \gamma_{I,2} \, \gamma_{R,1} ) }\right)^{ \frac{1}{\gamma_{RBI}} }
-\end{equation}
-\begin{equation}
+	G_3 ^ {  \, ( \gamma_{I,1} \, \gamma_{R,2} - \gamma_{I,2} \, \gamma_{R,1} ) }\right)^{ \frac{1}{\gamma_{RBI}} } \\	
 	\label{eq:case_1_I}
 	I_P( \overline T) = \left( 
 	G_1 ^ {  \, ( \gamma_{R,2} \, \gamma_{B,3} - \gamma_{R,3} \, \gamma_{B,2} ) } \cdot 
 	G_2 ^ {  \, ( \gamma_{R,3} \, \gamma_{B,1} - \gamma_{R,1} \, \gamma_{B,3} ) } \cdot 
 	G_3 ^ {  \, ( \gamma_{R,1} \, \gamma_{B,2} - \gamma_{R,2} \, \gamma_{B,1} ) }\right)^{ \frac{1}{\gamma_{RBI}} }
-\end{equation}
+\end{gather}
 \begin{gather}
 	\label{eq:case_1_gamma}
 	\gamma_{RBI} = ( \gamma_{R,1} \, \gamma_{B,2} \, \gamma_{I,3} +  \gamma_{R,2} \, \gamma_{B,3} \, \gamma_{I,1} + \gamma_{R,3} \, \gamma_{B,1} \, \gamma_{I,2} ) - \\
@@ -202,24 +204,23 @@ Concretely, the root solve for the temperature  scenario is for the current, whe
 
 \subsubsection{Scenario II -- Solve for $I_P$}
 
-\begin{equation}
+\begin{gather}
 	\label{eq:case_2_R}
 	R_0( \overline T) = \left( 
 	G_1 ^ {  \, \gamma_{B,2} } \cdot 
 	G_2 ^ {  \, -\gamma_{B,1} } \cdot 
-	I_P ^ {  \, ( \gamma_{B,1} \, \gamma_{I,2} - \gamma_{B,2} \, \gamma_{I,1} ) }\right)^{ \frac{1}{\gamma_{RBT}} }
-\end{equation}
-\begin{equation}
+	I_P ^ {  \, ( \gamma_{B,1} \, \gamma_{I,2} - \gamma_{B,2} \, \gamma_{I,1} ) }\right)^{ \frac{1}{\gamma_{RBT}} } \\
 	\label{eq:case_2_B}
 	B_0( \overline T) = \left( 
 	G_1 ^ {  \, -\gamma_{R,2} } \cdot 
 	G_2 ^ {  \, \gamma_{R,1} } \cdot 
 	I_P ^ {  \, ( \gamma_{I,1} \, \gamma_{R,2} - \gamma_{I,2} \, \gamma_{R,1} ) }\right)^{ \frac{1}{\gamma_{RBT}} }
-\end{equation}
+\end{gather}
 \begin{equation}
 	\label{eq:case_2_gamma}
 	\gamma_{RBT} = \gamma_{R,1} \, \gamma_{B,2} - \gamma_{R,2} \, \gamma_{B,1}
 \end{equation}
+\myequations{ General Model Solution -- $\gamma_{RB\{I,T\}}$}
 
 \section{Wrapping up the Logic} 
 

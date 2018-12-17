@@ -11,33 +11,27 @@ The analysis is based on an expression for the bootstrap current valid for arbit
 	\label{eq:jbs}
 	J_{BS} = -3.32 f_T R_0 n T \left( \frac{1}{n} \frac{dn}{d\psi} + 0.054 \, \frac{1}{T} \frac{dT}{d\psi} \right)
 \end{equation}
-
 Here, $f_T \approx 1.46 ( r / R_0 )^{1/2}$ is an approximate expression for the trapped particle fraction and $\psi$ is the poloidal flux.
 
 The analysis next section shows that \cref{eq:jbs} leads to an expression for the bootstrap fraction, assuming for simplicity elliptical flux surfaces, that can be written as:
-\begin{equation}
-	f_{BS} = \frac{I_{BS}}{I} = \frac{ 2 \pi a^2 \kappa }{I} \int_0^1 J_{BS} \, \rho \, d\rho = \frac{ K_{BS} }{ K_n } \frac{\overline n \, \overline T R_0^2}{I_P^2}
-\end{equation}
-\begin{equation}
-  K_{BS} = 4.879 \cdot  K_n \cdot \left( \, \frac{1+\kappa^2}{2} \, \right) \cdot \epsilon^{5/2} \cdot H_{BS}
-\end{equation}
-\begin{equation}
-  H_{BS} = ( 1 + \nu_n ) ( 1 + \nu_T ) ( \nu_n + 0.054 \nu_T ) \int_0^1 \frac{ \rho^{\,5/2} \, ( \, 1 - \rho^{\,2} \, )^{\, \nu_n + \nu_T - 1} }{b_p} \, d\rho
-\end{equation}
-\begin{equation}
-	b_p(\rho) = \frac{ -e^{\gamma\rho^2} ( \gamma\rho^2 - 1 - \gamma ) - 1 - \gamma }{\rho \,( e^\gamma - 1 - \gamma ) }
-\end{equation}
-\begin{equation}
+\begin{gather}
+	f_{BS} = \frac{I_{BS}}{I} = \frac{ 2 \pi a^2 \kappa }{I} \int_0^1 J_{BS} \, \rho \, d\rho = \frac{ K_{BS} }{ K_n } \frac{\overline n \, \overline T R_0^2}{I_P^2} \\
+  K_{BS} = 4.879 \cdot  K_n \cdot \left( \, \frac{1+\kappa^2}{2} \, \right) \cdot \epsilon^{5/2} \cdot H_{BS} \\
+  H_{BS} = ( 1 + \nu_n ) ( 1 + \nu_T ) ( \nu_n + 0.054 \nu_T ) \int_0^1 \frac{ \rho^{\,5/2} \, ( \, 1 - \rho^{\,2} \, )^{\, \nu_n + \nu_T - 1} }{b_p} \, d\rho \\
+	b_p(\rho) = \frac{ -e^{\gamma\rho^2} ( \gamma\rho^2 - 1 - \gamma ) - 1 - \gamma }{\rho \,( e^\gamma - 1 - \gamma ) } \\
 	\overline J_\phi (\rho ) = - \frac{ I }{ \pi a^2 \kappa } \left[ \frac{\gamma^2 ( 1 - \rho ^2 ) e^{\gamma \rho^2}}{e^\gamma - 1 - \gamma} \right]
-\end{equation}
+\end{gather}
 
 In this expression $b_p$ is a normalized form of the poloidal magnetic field derived from a prescribed model for the \emph{total} flux surface averaged current density profile $\overline J_\phi(\rho)$. The $\overline J_\phi(\rho)$ profile, in analogy with the density and temperature profiles, is not self-consistent but is chosen to have a plausible experimental shape characterized by the parameter $\gamma$. The profile can have either an on-axis ($\gamma < 1$) or off-axis peak ($\gamma > 1 $).
 
 The normalized internal inductance $l_i$ and radial location of the current peak $\rho_m$ are related to the value of $\gamma$ by:
-
 \begin{equation}
+	\label{eq:l_i}
+	\tcboxmath{
 	l_i = \frac{ 4 \kappa }{ 1 + \kappa^2 } \int_0^1 b_p^2 \, \rho \, d\rho
+	}
 \end{equation}
+\myequations{Internal Inductance -- $l_i$}
 \begin{equation}
 	\rho_m = 
 \begin{cases}
@@ -48,22 +42,19 @@ The normalized internal inductance $l_i$ and radial location of the current peak
 
 \section{Detailed Analysis}
 
-The starting point for the analysis is the general expression for the bootstrap current in a tokamak with arbitrary cross section.\cite{wesson,sauter} This expression can be simplified by assuming (1) equal temperature electrons and ions $T_e = T_i = T$, (2) large aspect ratio $\epsilon \ll 1$, and (3) negligible collisionality $\nu_* \rightarrow 0$. The bootstrap current $\vec J_{BS} \approx J_{BS} \vec e_\phi$ reduces to
+The starting point for the analysis is the general expression for the bootstrap current in a tokamak with arbitrary cross section.\cite{wesson} This expression can be simplified by assuming (1) equal temperature electrons and ions $T_e = T_i = T$, (2) large aspect ratio $\epsilon \ll 1$, and (3) negligible collisionality $\nu_* \rightarrow 0$. The bootstrap current $\vec J_{BS} \approx J_{BS} \vec e_\phi$ reduces to
 \begin{equation}
 	J_{BS} = -3.32 f_T R_0 n T \left( \frac{1}{n} \frac{dn}{d\psi} + 0.054 \, \frac{1}{T} \frac{dT}{d\psi} \right)
 \end{equation}
-
 Several values of the trapped particle fraction $f_T$ have been given in the literature.\cite{kessel_bootstrap} For simplicity we use a form valid for large aspect ratio. This is a slightly optimistic value but saves a large amount of detailed calculation. It can be written as,
 \begin{equation}
 	f_T \approx 1.46 ( r / R_0 )^{1/2} = 1.46 \epsilon^{1/2} \rho^{1/2}
 \end{equation}
-
 Here, as in the main text, $\rho$ is a radial-like flux surface label that varies between $0 \le \rho \le 1 $. In other words $\psi = \psi(\rho)$. Under these assumptions the bootstrap current reduces to:
 \begin{equation}
 	\label{eq:bs_start}
 	J_{BS} = -4.85 \, R_0 \epsilon^{1/2} \left( \frac{ \rho^{1/2} n T }{ \sfrac{d\psi}{d\rho}} \right) \left( \frac{1}{n} \frac{dn}{d\rho} + 0.054 \, \frac{1}{T} \frac{dT}{d\rho} \right)
 \end{equation}
-
 Since we have specified profiles for $n(\rho)$ and $T(\rho)$ all that remains in order to be able to evaluate $J_{BS}(\rho)$ is to determine $\psi' = \sfrac{d\psi}{d\rho}$. Keep in mind that at this point, in spite of the approximations that have been made, the expression for $J_{BS}(\rho)$ is still valid for arbitrary cross section.
 
 The analysis that follows shows how to calculate $\psi'$ for an arbitrary cross section including finite aspect ratio. As an example an explicit expression for large aspect ratio, finite elongation ellipse is obtained. Consider the Grad-Shafranov equation for the flux: $\Delta^* \psi = -\mu_0 R J_\psi$. We integrate this equation over the volume of an arbitrary flux surface making use of Gauss' theorem, which leads to:
@@ -71,134 +62,94 @@ The analysis that follows shows how to calculate $\psi'$ for an arbitrary cross 
 	\label{eq:gauss}
 	\int_S \frac{ \vec n \cdot \nabla \psi }{R^2} dS = -\mu_0 \int_V \frac{ J_\phi}{R} d \vec r
 \end{equation}
-
 Next, assume that the coordinates of the flux surface can be expressed in terms of $\rho$ and an angular-like parameter $\alpha$ with $0 \le \alpha \le 2 \pi$. In other words, the flux surface coordinates can be written as $R = R(\rho,\alpha) = R_0 + a x(\rho, \alpha)$ and $Z = Z(\rho,\alpha) = a y(\rho, \alpha)$. The functions $R(\rho,\alpha)$ and $Z(\rho,\alpha)$ are assumed to be known. The term on the left hand side can be evaluated by noting that
-\begin{equation}
-	d \vec l = dl \vec t
-\end{equation}
-\begin{equation}
-	dl = ( R_\alpha^2 + Z_\alpha^2 )^{1/2} d\alpha
-\end{equation}
-\begin{equation}
-	\vec t = \frac{R_\alpha \vec e_R + Z_\alpha \vec e_Z }{ ( R_\alpha^2 + Z_\alpha^2 )^{1/2} }
-\end{equation}
-\begin{equation}
-	\vec n = \vec e_\phi \times \vec t = \frac{ Z_\alpha \vec e_R - R_\alpha \vec e_Z }{ ( R_\alpha^2 + Z_\alpha^2 )^{1/2} }
-\end{equation}
-\begin{equation}
+\begin{gather}
+	d \vec l = dl \vec t \\
+	dl = ( R_\alpha^2 + Z_\alpha^2 )^{1/2} d\alpha \\
+	\vec t = \frac{R_\alpha \vec e_R + Z_\alpha \vec e_Z }{ ( R_\alpha^2 + Z_\alpha^2 )^{1/2} } \\
+	\vec n = \vec e_\phi \times \vec t = \frac{ Z_\alpha \vec e_R - R_\alpha \vec e_Z }{ ( R_\alpha^2 + Z_\alpha^2 )^{1/2} } \\
 	dS = R d \phi d l  = 2 \pi R ( R_\alpha^2 + Z_\alpha^2 )^{1/2} d \alpha
-\end{equation}
-
+\end{gather}
 It then follows that
 \begin{equation}
 	\mathbf { n } \cdot \nabla \psi = \frac { 1 } { \left( R _ { \alpha } ^ { 2 } + Z _ { \alpha } ^ { 2 } \right) ^ { 1 / 2 } } \left( Z _ { \alpha } \frac { \partial \psi } { \partial R } - R _ { \alpha } \frac { \partial \psi } { \partial Z } \right) = \frac { 1 } { \left( R _ { \alpha } ^ { 2 } + Z _ { \alpha } ^ { 2 } \right) ^ { 1 / 2 } } \frac { d \psi } { d \rho } Z _ { \alpha } \rho _ { R } - R _ { \alpha } \rho _ { Z }
 \end{equation}
-
 We can rewrite the last term by noting that
 \begin{equation}
 	\begin{aligned} 
 	d R & = R _ { \rho } d \rho + R _ { \alpha } d \alpha \quad \rightarrow \quad d \rho = \left( Z _ { \alpha } d R - R _ { \alpha } d Z \right) / \left( R _ { \rho } Z _ { \alpha } - R _ { \alpha } Z _ { \rho } \right) \\ d Z & = Z _ { \rho } d \rho + Z _ { \alpha } d \alpha \quad \rightarrow \quad d \alpha = \left( - Z _ { \rho } d R + R _ { \rho } d Z \right) / \left( R _ { \rho } Z _ { \alpha } - R _ { \alpha } Z _ { \rho } \right) 
 	\end{aligned}
 \end{equation}
-
 from which follows
 \begin{equation}
 	\begin{aligned} 
 		\rho _ { R } & = \frac { Z _ { \alpha } } { \left( R _ { \rho } Z _ { \alpha } - R _ { \alpha } Z _ { \rho } \right) } \\ \rho _ { Z } & = - \frac { R _ { \alpha } } { \left( R _ { \rho } Z _ { \alpha } - R _ { \alpha } Z _ { \rho } \right) } 
 	\end{aligned}
 \end{equation}
-
 the normal gradient reduces to
 \begin{equation}
 	\mathbf { n } \cdot \nabla \psi = \frac { R _ { \alpha } ^ { 2 } + Z _ { \alpha } ^ { 2 } } { \left( R _ { \rho } Z _ { \alpha } - R _ { \alpha } Z _ { \rho } \right) } \frac { d \psi } { d \rho }
 \end{equation}
-
 Using this relation we see that the left hand side of \cref{eq:gauss} can now be written as:
 \begin{equation}
 	\label{eq:bs_part1}
 	\int _ { S } \frac { \mathbf { n } \cdot \nabla \psi } { R ^ { 2 } } d S = 2 \pi \frac { d \psi } { d \rho } \int _ { 0 } ^ { 2 \pi } \frac { R _ { \alpha } ^ { 2 } + Z _ { \alpha } ^ { 2 } } { \left( R _ { \rho } Z _ { \alpha } - R _ { \alpha } Z _ { \rho } \right) } \frac { d \alpha } { R }
 \end{equation}
-
 Consider now the right hand side of \cref{eq:gauss}. The critical assumption is that the current density is approximated by its flux surface averaged value, $J _ { \phi } ( \rho , \alpha ) \approx \overline { J } _ { \phi } ( \rho )$. This is obviously not self-consistent with the Grad-Shafranov equation. Even so, it should suffice for present purposes where we only need to evaluate global volume integrals. Also, in the same spirit as prescribing $n(\rho)$ and $T(\rho)$ we assume that $\overline { J } _ { \phi } ( \rho )$ is also prescribed. Under these assumptions the right hand side of \cref{eq:gauss} simplifies to:
-
 \begin{equation}
 	\label{eq:bs_part2}
 	\begin{aligned} - \mu _ { 0 } \int _ { V } \frac { J _ { \phi } } { R } d \mathbf { r } & = - 2 \pi \mu _ { 0 } \int _ { A } J _ { \phi } d A \\ & = - 2 \pi \mu _ { 0 } \int _ { 0 } ^ { \rho } d \rho \int _ { 0 } ^ { 2 \pi } J _ { \phi } \left( R _ { \rho } Z _ { \alpha } - R _ { \alpha } Z _ { \rho } \right) d \alpha \\ & \approx - 2 \pi \mu _ { 0 } \int _ { 0 } ^ { \rho } d \rho \left[ \overline { J } _ { \diamond } \int _ { 0 } ^ { 2 \pi } \left( R _ { \rho } Z _ { \alpha } - R _ { \alpha } Z _ { \rho } \right) d \alpha \right] \end{aligned}
 \end{equation}
-
 Combining the results in \cref{eq:bs_part1,eq:bs_part2} leads to the required general expression for $\sfrac{ d\psi }{ d \rho }$,
-
 \begin{equation}
 \label{eq:bs_parta}
 \frac { d \psi } { d \rho } \int _ { 0 } ^ { 2 \pi } \frac { R _ { \alpha } ^ { 2 } + Z _ { \alpha } ^ { 2 } } { \left( R _ { \rho } Z _ { \alpha } - R _ { \alpha } Z _ { \rho } \right) } \frac { d \alpha } { R } = - \mu _ { 0 } \int _ { 0 } ^ { \rho } d \rho \left[ \overline { J } _ { \omega } \int _ { 0 } ^ { 2 \pi } \left( R _ { \rho } Z _ { \alpha } - R _ { \alpha } Z _ { \rho } \right) d \alpha \right]
 \end{equation}
-
 Next, to help specify a plausible choice for $\overline { J } _ { \phi } $ it is useful to define the kink safety factor and the actual local safety factor. The kink safety factor is defined by
 \begin{equation}
 q _ { * } = \frac { 2 \pi a ^ { 2 } B _ { 0 } } { \mu _ { 0 } R _ { 0 } I } \left( \frac { 1 + \kappa ^ { 2 } } { 2 } \right)
 \end{equation}
-
 where
-
 \begin{equation}
 I = \int J _ { o } d A = \int _ { 0 } ^ { 1 } d \rho \left[ \overline { J } _ { o } \int _ { 0 } ^ { 2 \pi } \left( R _ { \rho } Z _ { \alpha } - R _ { a } Z _ { \rho } \right) d \alpha \right]
 \end{equation}
-
 This leads to 
-
 \begin{equation}
 \label{eq:bs_partb}
 \frac { 1 } { q _ { * } } = \frac { \mu _ { 0 } R _ { 0 } } { 2 \pi a ^ { 2 } B _ { 0 } } \left( \frac { 2 } { 1 + \kappa ^ { 2 } } \right) \int _ { 0 } ^ { 1 } d \rho \left[ \overline { J } _ { \phi } \int _ { 0 } ^ { 2 \pi } \left( R _ { \rho } Z _ { \alpha } - R _ { \alpha } Z _ { \rho } \right) d \alpha \right]
 \end{equation}
-
 Similarly, the local safety factor can be expressed as
-
 \begin{equation}
 q ( \rho ) = \frac { F ( \rho ) } { 2 \pi } \int \frac { d l } { R B _ { p } }
 \end{equation}
-
 Here, $F ( \rho ) = R B _ { o }$. Substituting $R B _ { p } = \mathbf { n } \cdot \nabla \psi$ then yields
-
 \begin{equation}
 \label{eq:bs_partc}
 q ( \rho ) = \frac { F ( \rho ) } { 2 \pi \psi ^ { \prime } } \int _ { 0 } ^ { 2 \pi } \frac { 1 } { R } \left( R _ { \rho } Z _ { \alpha } - R _ { \alpha } Z _ { \rho } \right) d \alpha	
 \end{equation}
-
-with $psi ^ { \prime } = d \psi / d \rho$.
+with $\psi ^ { \prime } = d \psi / d \rho$.
 
 For present purposes we can obtain relatively simple analytic expressions for all the quantities of interest by assuming the flux surfaces are concentric ellipses, characterized by $R = R _ { 0 } + a \rho \cos \alpha$ and $Z = \kappa a \rho \sin \alpha$. We assume low $\beta$ so that $F ( \rho ) \approx R _ { 0 } B _ { 0 }$. This model accounts for elongation but neglects the effects of triangularity and finite aspect ratio. The derivatives in \cref{eq:bs_parta,eq:bs_partb,eq:bs_partc} can now be easily evaluated. Also, after some trial and error we chose $\overline { J } _ { \phi } ( \rho )$ to be a plausible profile which is peaked off-axis at $\rho = \rho_m$.
-
 \begin{equation}
 	\overline { J } _ { \phi } ( \rho ) = - \frac { I } { \pi a ^ { 2 } \kappa } \left[ \frac { \gamma ^ { 2 } \left( 1 - \rho ^ { 2 } \right) e ^ { \gamma \rho ^ { 2 } } } { e ^ { \gamma } - 1 - \gamma } \right]
 \end{equation}
 Here, $\gamma = 1 / ( 1 - \rho_m^2 )$. 
 
 These profiles are substituted into \cref{eq:bs_parta} after which each of the integrals can be evaluated analytically. A straightforward calculation yields:
-
 \begin{equation}
 \label{eq:bs_done}
 \begin{aligned} \rho \frac { d \psi } { d \rho } & = - 2 \mu _ { 0 } R _ { 0 } a ^ { 2 } \left( \frac { \kappa ^ { 2 } } { 1 + \kappa ^ { 2 } } \right) \int _ { 0 } ^ { \rho } \overline { J } _ { \phi } \rho d \rho \\ & = \frac { \mu _ { 0 } R _ { 0 } I } { \pi } \left( \frac { \kappa } { 1 + \kappa ^ { 2 } } \right) \frac { \left( 1 + \gamma - \gamma \rho ^ { 2 } \right) e ^ { \gamma \rho ^ { 2 } } - 1 - \gamma } { e ^ { \gamma } - 1 - \gamma } \end{aligned}
 \end{equation}
-
 The safety factors are given by
-
 \begin{equation}
 \begin{aligned} \frac { 1 } { q _ { * } } & = \frac { \psi ^ { \prime } ( 1 ) } { \kappa a ^ { 2 } B _ { 0 } } \\ \frac { q ( \rho ) } { q _ { * } } & = \frac { \rho \psi ^ { \prime } ( 1 ) } { \psi ^ { \prime } ( \rho ) } \end{aligned}
 \end{equation}
-
 \cref{eq:bs_done} is now substituted into the expression for the bootstrap current given by \cref{eq:bs_start}. The resulting expression can then be integrated over the plasma cross section to yield the bootstrap fraction. A straightforward calculation leads to:
-
-\begin{equation}
-	f_{BS} = \frac{I_{BS}}{I} = \frac{ 2 \pi a^2 \kappa }{I} \int_0^1 J_{BS} \, \rho \, d\rho = \frac{ K_{BS} }{ K_n } \frac{\overline n \, \overline T R_0^2}{I_P^2}
-\end{equation}
-\begin{equation}
-  K_{BS} = 4.879 \cdot  K_n \cdot \left( \, \frac{1+\kappa^2}{2} \, \right) \cdot \epsilon^{5/2} \cdot H_{BS}
-\end{equation}
-\begin{equation}
-  H_{BS} = ( 1 + \nu_n ) ( 1 + \nu_T ) ( \nu_n + 0.054 \nu_T ) \int_0^1 \frac{ \rho^{\,5/2} \, ( \, 1 - \rho^{\,2} \, )^{\, \nu_n + \nu_T - 1} }{b_p} \, d\rho
-\end{equation}
-\begin{equation}
-	b_p(\rho) = \frac{ -e^{\gamma\rho^2} ( \gamma\rho^2 - 1 - \gamma ) - 1 - \gamma }{\rho \,( e^\gamma - 1 - \gamma ) }
-\end{equation}
+\begin{gather}
+	f_{BS} = \frac{I_{BS}}{I} = \frac{ 2 \pi a^2 \kappa }{I} \int_0^1 J_{BS} \, \rho \, d\rho = \frac{ K_{BS} }{ K_n } \frac{\overline n \, \overline T R_0^2}{I_P^2} \\
+  K_{BS} = 4.879 \cdot  K_n \cdot \left( \, \frac{1+\kappa^2}{2} \, \right) \cdot \epsilon^{5/2} \cdot H_{BS} \\
+  H_{BS} = ( 1 + \nu_n ) ( 1 + \nu_T ) ( \nu_n + 0.054 \nu_T ) \int_0^1 \frac{ \rho^{\,5/2} \, ( \, 1 - \rho^{\,2} \, )^{\, \nu_n + \nu_T - 1} }{b_p} \, d\rho \\
+	b_p(\rho) = \frac{ -e^{\gamma\rho^2} ( \gamma\rho^2 - 1 - \gamma ) - 1 - \gamma }{\rho \,( e^\gamma - 1 - \gamma ) } 
+\end{gather}
 
 This is the desired result.

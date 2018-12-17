@@ -20,14 +20,16 @@ Currently the Fussy.jl codebase is written using \texttt{v0.6}, but should be \t
 
 {\centering \href{https://github.com/djsegal/Fussy.jl.git}{https://github.com/djsegal/Fussy.jl.git} \par }
 
-Once the Fussy.jl package has been cloned into your Julia package library, you should be able to access it through the Julia REPL or a Jupyter notebook. You can now reproduce every plot in this text. A quick test to see if your code works is: \\
-
+Once the Fussy.jl package has been cloned into your Julia package library, you should be able to access it through the Julia REPL or a Jupyter notebook. You can now reproduce every plot in this text. A quick test to see if your code works is:
 \begin{addmargin}[1.5em]{1.5em}
 \texttt{using Fussy \\
-cur\_reactor = Reactor(15) \\ \\
-@assert cur\_reactor.T\_bar == 15
+cur\_reactor = Reactor(15) \\
+@assert cur\_reactor.T\_bar == 15 \\
+println("It works!")
 }
 \end{addmargin}
+
+If the code works, you should get a "It works!" message as output.
 
 \section{Sorting out the Codebase}
 
@@ -53,7 +55,7 @@ This is the data structure that produces the various comparison plots in the res
 
 \subsubsection{The Sensitivity Structure}
 
-Sensitivity studies are how computationalists test the effect of changing a variable over multiple values -- i.e.\ do a 20\% sensitivity around the H factor. Like Scans, Sensitivities store various lists of reactors, each corresponding to an interesting data point. These include limit reactors where the beta limit and kink limit are just satisfied or when the beta limit and wall loading are just satisfied. Additionally, they include the minimum capital cost reactors and the minimum cost-per-watt ones. 
+Sensitivity studies are how computationalists test the effect of changing a variable over multiple values -- i.e.\ do a 20\% sensitivity around the H factor. Like Scans, Sensitivities store various lists of reactors, each corresponding to an interesting data point. These include limit reactors where the beta limit and kink limit are just satisfied or when the beta limit and wall loading are just satisfied. Additionally, they include the minimum capital cost reactors and the minimum cost-per-watt ones.
 
 \subsubsection{The Sampling Structure}
 
@@ -62,12 +64,10 @@ The Sampling struct was created to do simple Monte Carlo runs over a reactor's \
 \subsubsection{The Equation Structure}
 
 In order to store the various equations from \cref{table:eq} is the Equation Struct. It stores the $\gamma$ exponents for: $R_0$, $B_0$, and $I_P$. -- as well as the function representing G($\overline T$). Repeated these are the unknowns in:
-
 \begin{equation}
 	\tag{\ref{eq:rbi}}
 	R_0^{\, \gamma_R} \cdot B_0^{\, \gamma_B} \cdot I_P^{\, \gamma_I} = G( \overline T )
 \end{equation}
-
 Concretely, there are 16 objects that use this struct -- one for each equation (e.g.\ for fusion power, the beta limit, and temperature assignment).
 
 \subsubsection{The Equation Set Structure}
@@ -76,11 +76,11 @@ The step up from the Equation struct are the Equation Sets. These collections of
 
 \subsection{Referencing Input Decks and Solutions}
 
-With more than twenty \replaced{static}{fixed} variables in the model, the range of tokamak reactors is basically infinite. To help users build a net of designs to explore reactor space are seven input decks. These are the ones given in the results: Arc, Act I /II, Demo Steady/Pulsed, Proteus and Charybdis. Coupled with the non-prototype reactors are solution reactors that store various quantities from the original papers (e.g.\ $P_F$, $f_{BS}$, $R_0$). These are how the comparison tables were constructed.
+With more than twenty \replaced{static}{fixed} variables in the model, the range of tokamak reactors is basically infinite. To help users build a net of designs to explore reactor space are seven input decks. These are the ones given in the results: ARC, ACT I /II, DEMO Steady/Pulsed, Proteus and Charybdis. Coupled with the non-prototype reactors are solution reactors that store various quantities from the original papers (e.g.\ $P_F$, $f_{BS}$, $R_0$). These are how the comparison tables were constructed.
 
 \subsection{Acknowledging Utility Functions}
 
-For the uninitiated, utility functions are grab bag functions that do not really belong in a codebase -- but do anyway. This sentiment does not mean they are worthless, just not fusion related at all. In Fussy.jl, the most notable are a normalized integral calculator, a filter that includes numeric tolerances, and a robust root solver. 
+For the uninitiated, utility functions are grab bag functions that do not really belong in a codebase -- but do anyway. This sentiment does not mean they are worthless, just not fusion related at all. In Fussy.jl, the most notable are a normalized integral calculator, a filter that includes numeric tolerances, and a robust root solver.
 
 Although since incorporated into the official Roots.jl package, \texttt{find\_roots} allows finding an arbitrary number of roots within a bounded range. This was needed because many roots can be found at various levels of the reactor solving problem -- i.e.\ for $I_P$, $\overline T$, $\eta_{CD}$, etc.
 
@@ -90,7 +90,7 @@ In addition to subdirectories within the \texttt{src} folder are three files: Fu
 
 Finally, defaults.jl stores various default values that are important to the codebase. For example, this is where the various scaling law exponents are stored. It is also where the bounding values for the different root solving problems live. These include minimum and maximum values for: $I_P$, $\overline T$, $\eta_{CD}$.
 
-Now that a majority of the files have been discussed, we can turn to the reactor methods. These constitute most of the interesting functionality within the codebase. 
+Now that a majority of the files have been discussed, we can turn to the reactor methods. These constitute most of the interesting functionality within the codebase.
 
 \section{Delving into Reactor Methods}
 
@@ -98,7 +98,7 @@ The reactor is the most atomic data structure in this model. It therefore makes 
 
 \subsubsection{Calculations}
 
-The calculation subdirectory of reactor methods are used to set various important values in the solver. For \replaced{dynamic}{floating} variables, these include: $\overline n$, $R_0$, $B_0$, and $I_P$. This folder also includes the calculation of the Bosch-Hale reactivity and the Ehst-Karney current drive efficiency. 
+The calculation subdirectory of reactor methods are used to set various important values in the solver. For \replaced{dynamic}{floating} variables, these include: $\overline n$, $R_0$, $B_0$, and $I_P$. This folder also includes the calculation of the Bosch-Hale reactivity and the Ehst-Karney current drive efficiency.
 
 \subsubsection{Coefficients and Composites}
 
@@ -106,7 +106,7 @@ The coefficients and composites directories correspond to the model's \replaced{
 
 \subsubsection{Fluxes and Powers}
 
-Within flux balance and power balance were around a dozen terms or sub-terms. Although not directly used in the conservation equations, sub-terms are used to compare the model to ones from the literature. For clarity, fluxes include: $\Phi_{CS}$, $\Phi_{PF}$, $\Phi_{RU}$, $\Phi_{FT}$, $\Phi_{res}$, and $\Phi_{ind}$. The powers, then, include: $P_F$, $P_{BR}$, $P_\kappa$, $P_{src}$, $P_W$, etc. 
+Within flux balance and power balance were around a dozen terms or sub-terms. Although not directly used in the conservation equations, sub-terms are used to compare the model to ones from the literature. For clarity, fluxes include: $\Phi_{CS}$, $\Phi_{PF}$, $\Phi_{RU}$, $\Phi_{FT}$, $\Phi_{res}$, and $\Phi_{ind}$. The powers, then, include: $P_F$, $P_{BR}$, $P_\kappa$, $P_{src}$, $P_W$, etc.
 
 \subsubsection{Profiles}
 
@@ -133,7 +133,7 @@ Our goal will be to make a cost curve for the ARC reactor as a function of H -- 
 The first step for any Fussy.jl Jupyter notebook is loading the required packages -- i.e.\ the Fussy.jl and Plots.jl packages. This can be done using the following commands:\footnote{The \texttt{addprocs} and \texttt{@everywhere} commands are to parallelize the code. This is because \texttt{addprocs(6)} activates 6 worker processes and \texttt{@everywhere Fussy.jl} adds Fussy.jl to the main kernel and worker processes.}
 
 \begin{addmargin}[1.5em]{1.5em}
-\texttt{addprocs(6) \\ ~ \\
+\texttt{addprocs(6) \\
 @everywhere using Fussy \\
 using Plots
 }
@@ -149,9 +149,9 @@ Pkg.add("Plots")
 
 \subsection{Running a Study}
 
-Now that the necessary packages have been loaded, we can move on to actually running the sensitivity study. We will split this command into two steps to make it more explicit. 
+Now that the necessary packages have been loaded, we can move on to actually running the sensitivity study. We will split this command into two steps to make it more explicit.
 
-The first step will be making several variables that store: boolean flags, numbers, and symbols -- which are like strings, but prefaced with a colon (\texttt{:}) instead of surrounded by double quotes (\texttt{"}). 
+The first step will be making several variables that store: boolean flags, numbers, and symbols -- which are like strings, but prefaced with a colon (\texttt{:}) instead of surrounded by double quotes (\texttt{"}).
 
 \begin{addmargin}[1.5em]{1.5em}
 \texttt{cur\_param = :H \\
@@ -163,7 +163,7 @@ cur\_num\_points = 41
 }
 \end{addmargin}
 
-These six variables almost completely describe a sensitivity study. The first two saw we are using the Arc reactor deck and running a sensitivity over the H-factor parameter. Next, the two boolean values refer to the reactor (1) being treated as pulsed or steady-state and (2) wether to handle $\eta_{CD}$ self-consistently.\footnote{Note that, currently, a pulsed reactor cannot be self-consistent in $\eta_{CD}$ -- it therefore causes an error.} Ergo, what these two flags do is make sure ARC is being handled as a steady-state reactor with a self-consistent $\eta_{CD}$. The last two variables are then ways to change the sensitivity of the study (with $1.0 \rightarrow 100\%$) and the number of reactors it will produce (i.e.\ 41).
+These six variables almost completely describe a sensitivity study. The first two saw we are using the ARC reactor deck and running a sensitivity over the H-factor parameter. Next, the two boolean values refer to the reactor (1) being treated as pulsed or steady-state and (2) wether to handle $\eta_{CD}$ self-consistently.\footnote{Note that, currently, a pulsed reactor cannot be self-consistent in $\eta_{CD}$ -- it therefore causes an error.} Ergo, what these two flags do is make sure ARC is being handled as a steady-state reactor with a self-consistent $\eta_{CD}$. The last two variables are then ways to change the sensitivity of the study (with $1.0 \rightarrow 100\%$) and the number of reactors it will produce (i.e.\ 41).
 
 Now all six of these variables can be piped into a call to the \texttt{Study} struct to start running the sensitivity study:
 
@@ -224,14 +224,14 @@ After execution, this should produce the plank 2-D plot shown in \cref{fig:examp
 	\centering
 	\includegraphics[width=0.7\textwidth]{images/example_1}
 	\caption{A Blank Plot} ~\\
-	\small A simple 2-D plot with no labels or data. 
+	\small A simple 2-D plot with no labels or data.
 	\label{fig:example_1}
 \end{figure}
 
 Next we will add a simple title and labels for the axes:
 
 \begin{addmargin}[1.5em]{1.5em}
-\texttt{title!("Arc") \\ ~ \\
+\texttt{title!("ARC") \\ ~ \\
 xlabel!("H") \\
 ylabel!("Cost")
 }
@@ -243,7 +243,7 @@ The exclamation marks ensure this title and the labels are added to the \texttt{
 	\centering
 	\includegraphics[width=0.7\textwidth]{images/example_2}
 	\caption{An Empty Plot} ~\\
-	\small A simple 2-D plot with labels, but no data. 
+	\small A simple 2-D plot with labels, but no data.
 	\label{fig:example_2}
 \end{figure}
 
@@ -265,7 +265,7 @@ This results in the not very useful plot shown in \cref{fig:example_3}. Note tha
 	\centering
 	\includegraphics[width=0.7\textwidth]{images/example_3}
 	\caption{An Unscaled Plot} ~\\
-	\small A simple 2-D plot with Bad Limits. 
+	\small A simple 2-D plot with Bad Limits.
 	\label{fig:example_3}
 \end{figure}
 
@@ -279,7 +279,7 @@ The final step is adding proper limits to make what is going on obvious to the r
 	\centering
 	\includegraphics[width=0.7\textwidth]{images/example_4}
 	\caption{A Scaled Plot} ~\\
-	\small An example plot showing cost as a function of the H factor. 
+	\small An example plot showing cost as a function of the H factor.
 	\label{fig:example_4}
 \end{figure}
 

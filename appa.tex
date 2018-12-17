@@ -30,58 +30,43 @@
 \section{Density -- $n$}
 
 The Density is important to us. We use it in the Greenwald density limit, so it should be clean in both line-averaged and volume-averaged forms. Because of its flat profile, a parabola is a good approximation for H-mode pulses:
-
 \begin{equation}
 	n(\rho) = \overline{n} \cdot \left(1 + \nu_n \right) \cdot \left( 1 - \rho^2  \right)^{\nu_n}
 \end{equation}
-
 The line average density is related to $\overline{n}$ through:
-
 \begin{equation}
 	\hat{n} =  \overline{n} \cdot \left( \frac{\pi ^ { \, 1/2} }{2} \right)  \cdot \, \frac{ \Gamma( \, \nu_n + 2 \, ) }{ \Gamma( \, \nu_n + 3/2 \, ) }
 \end{equation}
-
 The convenience of this function comes from how the volumetric average comes out.
 
 To relate this to the volume integral, we use:
-
 \begin{equation}
 	\overline{x} = \frac{1}{\volume} \int x(\rho) \, d\volume
 \end{equation}
-
 For a normalized radial profile that does not depend on angle,
-
 \begin{equation}
 	\volume = \int_0^1 \rho \, d\rho = \sfrac{1}{2}
 \end{equation}
-
 Then, when $x = n$,
-
 \begin{equation}
 	\overline{n} = 2 \int_0^1 n(\rho) \rho \, d\rho = \overline{n}
 \end{equation}
-
 Additionally, the Greenwald Density limit that we will use throughout,
 \begin{equation}
 	\hat{n} = N_G \cdot \left( \frac{I_M}{\pi a^2} \right) 
 \end{equation} 
-
 can now be written in the following form:
-\begin{equation}
-	\overline{n} =K_{n} \cdot \left( \frac{I_M}{R_0^{\,2}} \right)
-\end{equation} 
-\begin{equation}
+\begin{gather}
+	\overline{n} =K_{n} \cdot \left( \frac{I_M}{R_0^{\,2}} \right) \\
 	K_n = \frac{2 \, N_G}{\epsilon^2 \pi ^ { \, 3/2} }\cdot \left( \frac{ \Gamma( \, \nu_n + 3/2 \, ) }{ \Gamma( \, \nu_n + 2 \, ) } \right)
-\end{equation}
+\end{gather}
 
 \section{Temperature -- $T$}
 
 The Temperature is the swept variable in our model framework. Therefore, it's the one we can allow people to be the most cavalier with. Additionally, as temperature profiles are highly peaked, their pedestal region is sometimes wrongfully neglected with a parabola.
-
 \begin{equation}
 	T(\rho) = \overline{T} \cdot \left(1 + \nu_T \right) \cdot \left( 1 - \rho^2  \right)^{\nu_T}
 \end{equation}
-
 Therefore, our model sometimes treats the system as if it had a pedestal region. This is mainly for the bootstrap current and fusion power, which were previously known to misalign and overshoot, respectively.
 \begin{equation}
 	\tcboxmath{
@@ -92,58 +77,41 @@ Therefore, our model sometimes treats the system as if it had a pedestal region.
 	\end{cases}
 	}	
 \end{equation}
-
 Where the piecewise functions are given by,
-\begin{equation}
-	T_{para} = T_{ped} + ( T_{0} - T_{ped} ) \cdot \left( 1 - \left( \frac{\rho}{\rho_{ped}} \right)^{\lambda_T} \right)^{\nu_T}
-\end{equation}
-\begin{equation}
+\begin{gather}
+	T_{para} = T_{ped} + ( T_{0} - T_{ped} ) \cdot \left( 1 - \left( \frac{\rho}{\rho_{ped}} \right)^{\lambda_T} \right)^{\nu_T} \\
 	T_{line} = T_{sep} + ( T_{ped} - T_{sep} ) \cdot \left( \frac{ 1 - \rho }{ 1 - \rho_{ped} } \right)
-\end{equation}
-
+\end{gather}
 This temperature profile is related to the volume-averaged temperature through,
-
 \begin{equation}
 	\overline{T} \cdot \volume = \int_0^{\rho_{ped}} T_{para}(\rho) \, \rho \, d\rho + \int_{\rho_{ped}}^1 T_{line}(\rho) \, \rho \, d\rho
 \end{equation}
-
 Starting with the second integral,
-
 \begin{equation}
 	\int_{\rho_{ped}}^1 T_{line}(\rho) \, \rho \, d\rho = \frac{1}{3} \cdot ( 1 - \rho_{ped} ) \cdot \left( \left( T_{sep} + \sfrac{ T_{ped} }{2} \right) + \rho_{ped} \cdot \left( T_{ped} + \sfrac{ T_{sep} }{2}  \right)  \right)
 \end{equation}
-
 The first integral can be handled by breaking it into to,
 \begin{multline}
 	\int_0^{\rho_{ped}} T_{para}(\rho) \, \rho \, d\rho = T_{ped} \cdot \int_0^{\rho_{ped}} \rho \, d\rho \ + \\ ( T_{0} - T_{ped} ) \cdot \int_0^{\rho_{ped}} \left( 1 - \left( \frac{\rho}{\rho_{ped}} \right)^{\lambda_T} \right)^{\nu_T}  \cdot \rho \, d\rho \ \ \  \
 \end{multline}
-
 The first sub-integral is then,
 \begin{equation}
 	T_{ped} \cdot \int_0^{\rho_{ped}} \rho \, d\rho = \frac{ T_{ped} \, \rho_{ped}^{\,2} }{2}
 \end{equation}
-
 Utilizing the following transformation,
-\begin{equation}
-	u = \frac{\rho}{\rho_{ped}}
-\end{equation}
-\begin{equation}
-	d\rho = \rho_{ped} \, du
-\end{equation}
-\begin{equation}
+\begin{gather}
+	u = \frac{\rho}{\rho_{ped}} \\
+	d\rho = \rho_{ped} \, du \\
 	u( \rho=\rho_{ped} ) = 1
-\end{equation}
-
+\end{gather}
 The second sub-integral becomes (assuming independence from $T_0$ and $T_{ped}$),
 \begin{equation}
 	( T_{0} - T_{ped} ) \cdot \rho_{ped}^2 \cdot \int_0^{1} \left( 1 - u^{\,\lambda_T} \right)^{\nu_T}  \cdot u \, du
 \end{equation}
-
 Where:
 \begin{equation}
 	\int_0^{1} \left( 1 - u^{\,\lambda_T} \right)^{\nu_T}  \cdot u \, du =  \frac{ \Gamma \left( 1 + \nu_T  \right) \Gamma \left( \frac{2}{\lambda_T} \right) }{ \lambda_T \cdot \Gamma \left( 1 + \nu_T + \frac{2}{\lambda_T} \right) }
 \end{equation}
-
 We are now in a position to solve for $T_0$ in terms of $\overline{T}$:
 \begin{equation}
 	\tcboxmath{
@@ -155,7 +123,6 @@ We are now in a position to solve for $T_0$ in terms of $\overline{T}$:
 \begin{equation}
 	K_{TD} = \rho_{ped}^2 \cdot \left( \frac{ 2 }{ \lambda_T } \right) \, \cdot \frac{ \Gamma \left( 1 + \nu_T  \right) \Gamma \left( \frac{2}{\lambda_T} \right) }{ \Gamma \left( 1 + \nu_T + \frac{2}{\lambda_T} \right) }
 \end{equation}
-
 Which although not pretty, can be plugged into the original equation.
 
 \section{Pressure -- $p$}
@@ -163,7 +130,6 @@ Which although not pretty, can be plugged into the original equation.
 The first point to make is that we are not using the same temperature profile for the pressure as for the temperature. This is because it would lead to hypergeometric functions that are not worth the headache.
 
 As most of the pressure is at the center, we use simple parabolic profile. This leads to:
-
 \begin{equation}
 	\overline{p} = 0.1581 \, ( 1 + f_D ) \, \frac{ (1 + \nu_n) \, (1 + \nu_T) }{1 + \nu_n + \nu_T } \, \overline{n} \, \overline{T} \ \ [atm]
 \end{equation}
@@ -173,11 +139,9 @@ As most of the pressure is at the center, we use simple parabolic profile. This 
 \label{section:pedestalbootstrap}
 
 We start with,
-
 \begin{equation}
 	f_{BS} = \frac{I_{BS}}{I_P} = \frac{ 2 \pi a^2 \kappa }{I_P} \int_0^1 J_B \, \rho \, d\rho
 \end{equation}
-
 Expanding the previous equation using the following relations,
 \begin{equation}
 	J_B = -4.85 \cdot R_0 \epsilon^{1/2} \cdot \left( \frac{ \rho^{1/2} n T }{ \sfrac{ \textnormal{d}\psi }{ \textnormal{d}\rho } } \right) \cdot \left( \frac{ \sfrac{ \textnormal{d}n }{ \textnormal{d}\rho } }{ n } + 0.54 \cdot \frac{ \sfrac{ \textnormal{d}T }{ \textnormal{d}\rho } }{ T } \right)
@@ -185,7 +149,6 @@ Expanding the previous equation using the following relations,
 \begin{equation}
 	\frac{ \textnormal{d}\psi }{ \textnormal{d}\rho } = \frac{ \mu_0 R_0 I_P }{ \pi } \cdot \left( \frac{ \kappa}{1+\kappa^2} \right) \cdot b_p(\rho)
 \end{equation}
-
 Yields:
 \begin{equation}
 	f_{BS} = -K_{BS} \int_0^1 \left( 1 - \rho^2  \right)^{\nu_n} \cdot \left( \frac{ \rho^{3/2} }{ b_p(\rho) } \right) \cdot \left( \frac{T}{ n } \cdot  \frac{ \textnormal{d}n }{ \textnormal{d}\rho } + 0.54 \cdot  \frac{ \textnormal{d}T }{ \textnormal{d}\rho }  \right)
@@ -194,23 +157,18 @@ Yields:
 \begin{equation}
 	K_{BS} = K_n \cdot \left( \frac{ 2 \pi^2 \cdot 4.85 \cdot \epsilon^{5/2} }{\mu_0} \right) \cdot ( 1 + \nu_n ) \cdot ( 1 + \kappa^2 )
 \end{equation}
-
 Here, $b_p$ comes from:
 \begin{equation}
 	b_p(\rho) = \frac{ -e^{\gamma\rho^2} ( \gamma\rho^2 - 1 - \gamma ) - 1 - \gamma }{\rho \,( e^\gamma - 1 - \gamma ) }
 \end{equation}
-
 And the value of $\gamma$ comes from the the normalized internal inductance:
-
 \begin{equation}
 	l_i = \frac{4 \kappa}{1+\kappa^2}	 \int_0^1 b_p^2 \ \frac{d\rho}{\rho}
 \end{equation}
-
 With our profiles,
 \begin{equation}
 	-\left( \frac{T}{n} \cdot \frac{ \textnormal{d}n }{ \textnormal{d}\rho } \right) = 2 \nu_n \cdot \left( \frac{ T \cdot \rho }{ 1 - \rho^2 } \right)
 \end{equation}
-
 While treating temperature differently results in,
 \begin{equation}
 	-\left( \frac{ \textnormal{d}T }{ \textnormal{d}\rho } \right)_{para} =  \left( \frac{ T_0 - T_{ped} }{ \rho_{ped}^{ \, \lambda_T} } \right) \cdot ( \nu_T \lambda_T ) \cdot \rho^{\,\lambda_T-1} \cdot \left( 1 - \left( \frac{\rho}{\rho_{ped}} \right)^{\lambda_T} \right)^{\nu_T-1}
@@ -218,72 +176,52 @@ While treating temperature differently results in,
 \begin{equation}
 	-\left( \frac{ \textnormal{d}T }{ \textnormal{d}\rho } \right)_{line} =  \left( \frac{ T_{ped} - T_{sep} }{1 - \rho_{ped} } \right) 
 \end{equation}
-
 Where we will be using the new symbol definition,
 \begin{equation}
 	\partial{T} = -\left( \frac{ \textnormal{d}T }{ \textnormal{d}\rho } \right)
 \end{equation}
-
 Which ultimately allows us to write,
 \begin{empheq}[box=\tcbhighmath]{gather}
 	f_{BS} = K_{BS} \int_0^1 H_{BS} \, d\rho \\
 	H_{BS} = \left( 1 - \rho^2  \right)^{\nu_n-1} \cdot \left( \frac{ \rho^{3/2} }{ b_p(\rho) } \right) \cdot \bigg( 2 \nu_n \cdot \rho \cdot T + 0.54 \cdot \left( 1 - \rho^2 \right) \cdot \partial{T}   \bigg)
 \end{empheq}
-
 Where the values of $T$ are determined through,
-\begin{equation}
-	T_{para} = T_{ped} + ( T_{0} - T_{ped} ) \cdot \left( 1 - \left( \frac{\rho}{\rho_{ped}} \right)^{\lambda_T} \right)^{\nu_T}
-\end{equation}
-\begin{equation}
+\begin{gather}
+	T_{para} = T_{ped} + ( T_{0} - T_{ped} ) \cdot \left( 1 - \left( \frac{\rho}{\rho_{ped}} \right)^{\lambda_T} \right)^{\nu_T} \\
 	T_{line} = T_{sep} + ( T_{ped} - T_{sep} ) \cdot \left( \frac{ 1 - \rho }{ 1 - \rho_{ped} } \right)
-\end{equation}
-
+\end{gather}
 And the values of $\partial{T}$ are:
-\begin{equation}
-	\partial{T}_{para} =  \left( \frac{ T_0 - T_{ped} }{ \rho_{ped}^{ \, \lambda_T} } \right) \cdot ( \nu_T \lambda_T ) \cdot \rho^{\,\lambda_T-1} \cdot \left( 1 - \left( \frac{\rho}{\rho_{ped}} \right)^{\lambda_T} \right)^{\nu_T-1}
-\end{equation}
-\begin{equation}
+\begin{gather}
+	\partial{T}_{para} =  \left( \frac{ T_0 - T_{ped} }{ \rho_{ped}^{ \, \lambda_T} } \right) \cdot ( \nu_T \lambda_T ) \cdot \rho^{\,\lambda_T-1} \cdot \left( 1 - \left( \frac{\rho}{\rho_{ped}} \right)^{\lambda_T} \right)^{\nu_T-1} \\
 	\partial{T}_{line} =  \left( \frac{ T_{ped} - T_{sep} }{1 - \rho_{ped} } \right) 
-\end{equation}
+\end{gather}
+
 \section{Volume Averaged Powers}
 
 The first thing to consider in a fusion reactor is power balance. \replaced{It is what separates a net power producing reactor from a power-consuming research device.}{ \\ It is what separates a profitable device from a toaster. It's given by:}
-
 \label{pwr_bal}
 \begin{equation}
 \tcboxmath{
 P_\alpha + P_H = P_\kappa + P_B }
 \end{equation}
-\begin{equation}
-	P_\alpha = \frac{P_F}{5}
-\end{equation}
-\begin{equation}
-	P_H = \frac{P_F}{Q}
-\end{equation}
-\begin{equation}
-	P_\kappa = \frac{3}{2 \, \tau_E} \int p \, d\textbf{r} \ \ \ \ [ \, 3D \, ]
-\end{equation}
-\begin{equation}
+\begin{gather}
+	P_\alpha = \frac{P_F}{5} \\
+	P_H = \frac{P_F}{Q} \\
+	P_\kappa = \frac{3}{2 \, \tau_E} \int p \, d\textbf{r} \ \ \ \ [ \, 3D \, ] \\
 	P_B = 5.35e3 \, Z_{eff} \int n_{\overline{n}}^2 \, \sqrt{T} \, d\textbf{r} \ \ \ \ [ \, 3D \, ]
-\end{equation}
-
+\end{gather}
 As mentioned before, $P_F$ is handled by $(\sigma v)$ and therefore the lefthand-side uses the pedestal temperature profiles. However, for the same reasons as discussed earlier, the righthand-side ($P_\kappa$ and $P_B$) need to use the parabolic temperature profiles.
 
 Using the parabolic profiles (for $n$ and $T$) gives for the Bremsstrahlung radiation,
-\begin{equation}
-	P_B = K_B \cdot \left( R_0^3 \ \overline{n}^2 \, \sqrt{\,\overline{T}} \ \right) \ \ [MW]
-\end{equation}
-\begin{equation}
+\begin{gather}
+	P_B = K_B \cdot \left( R_0^3 \ \overline{n}^2 \, \sqrt{\,\overline{T}} \ \right) \ \ [MW] \\
 	K_B = 0.1056 \cdot Z_{eff} \cdot ( \, \epsilon^2 \, \kappa \, g \, ) \cdot \frac{ (1+\nu_n)^2 \, (1+\nu_T)^{1/2} }{1+2 \, \nu_n + 0.5 \, \nu_T}
-\end{equation}
-
+\end{gather}
 And a similar exercise for the thermal conduction losses results in:
-\begin{equation}
-	P_\kappa = K_\kappa \cdot \left( \frac{ R_0 ^ 3 \ \overline{n}  \, \overline{T} }{\tau_E} \right) \ \ [MW]
-\end{equation}
-\begin{equation}
+\begin{gather}
+	P_\kappa = K_\kappa \cdot \left( \frac{ R_0 ^ 3 \ \overline{n}  \, \overline{T} }{\tau_E} \right) \ \ [MW] \\
 	K_\kappa = 0.4744 \cdot  ( 1 + f_D ) \cdot ( \, \epsilon^2 \, \kappa \, g \, ) \cdot \frac{ (1 + \nu_n) \, (1 + \nu_T) }{1 + \nu_n + \nu_T }
-\end{equation}
+\end{gather}
 
 \clearpage
 \newpage

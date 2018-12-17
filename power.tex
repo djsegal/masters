@@ -10,10 +10,10 @@ The natural place to start when introducing fusion energy is the binding energy 
 \begin{equation}
 	{}^2H+ {}^3H \rightarrow {}^4 He + {}^1 n + E_F
 \end{equation}
-\myequations{Fusion Energy -- $E_F$}
 \begin{equation}
 	E_F = 17.6 \ \textnormal{MeV}
 \end{equation}
+\myequations{Fusion Energy -- $E_F$}
 
 \begin{figure}
 	\centering
@@ -56,23 +56,18 @@ The formula for fusion power used in this model makes use of a reactivity term -
 \begin{equation}
 	P_F = \int E_F \, n_D \, n_T \, \langle \sigma v \rangle \, d \textbf{r}
 \end{equation}
-
 Summarizing the work of \cref{subsection:fusion_derive}, this fusion power volume integral can be reduced to a 0-D form -- assuming the geometry prescribed by this model:
-\begin{equation}
-	P_F = K_F \cdot ( \, \overline{n}^2 \, R_0^3 \, ) \cdot (\sigma v) \ \ \ [MW]
-\end{equation}
-\begin{equation}
-	 (\sigma v) = 10^{21} \, (1+\nu_n)^2 \int\limits_0^1 ( 1 - \rho^2 ) ^ { \, 2 \nu_n} \langle \sigma v \rangle \, \rho \, d\rho
-\end{equation}
-\begin{equation}
+\begin{gather}
+	P_F = K_F \cdot ( \, \overline{n}^2 \, R_0^3 \, ) \cdot (\sigma v) \ \ \ [MW] \\
+	 (\sigma v) = 10^{21} \, (1+\nu_n)^2 \int\limits_0^1 ( 1 - \rho^2 ) ^ { \, 2 \nu_n} \langle \sigma v \rangle \, \rho \, d\rho \\
 	K_F = 278.3 \, ( f_D^2 \, \epsilon^2 \kappa \, g )
-\end{equation}
-
+\end{gather}
 This reactivity term (or volumetric fusion reaction rate) can then be approximated by the Bosch-Hale parameterization, with coefficients given in \cref{table:rrParam}.\cite{boschhale,zach}
 \begin{equation}
 	\tcboxmath{
 	\langle \sigma v \rangle = C_1 \cdot \theta \cdot \textnormal{exp}(-3 \xi) \cdot \sqrt{ \frac{\xi  }{m_\mu  c^2 T^3} }  \ \ \, [ \, \sfrac{ \textnormal{m}^3 }{ \textnormal{s} } \, ] }
 \end{equation}
+\myequations{ Bosch-Hale Reactivity -- $\langle \sigma v \rangle$ }
 \begin{equation}
 	\theta = T \cdot \left(1-\frac{T(C_2+T(C_4+TC_6))}{1+T(C_3+T(C_5+TC_7))}\right) ^{-1}
 \end{equation}

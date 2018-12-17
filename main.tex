@@ -74,23 +74,12 @@
 \usepackage{hyperref}
 \usepackage[capitalise]{cleveref}
 
-%\includeonly{contents,biblio,intro,steady,model}
-%\includeonly{contents,biblio}
-%\includeonly{contents,biblio,intro}
-%\includeonly{contents,biblio,steady}
-%\includeonly{contents,biblio,model}
-\includeonly{contents,biblio,pulsed}
-%\includeonly{contents,biblio,code}
-%\includeonly{contents,biblio,results}
-%\includeonly{contents,biblio,future}
-%\includeonly{contents,biblio,conclusion}
-%\includeonly{contents,biblio,variables}
-%\includeonly{contents,biblio,fussy}
-%\includeonly{contents,biblio,power}
-%\includeonly{contents,biblio,appa}
-%\includeonly{contents,biblio,surfaces}
-%\includeonly{contents,biblio,bootstrap}
-%\includeonly{contents,biblio,extra}
+\setlength{\jot}{2.25ex}
+
+\includeonly{contents,biblio,bootstrap,lhcd} 
+
+\interfootnotelinepenalty=10000
+
 \begin{document}
 
 %\listofchanges
@@ -116,6 +105,7 @@
 \include{appa}
 \include{surfaces}
 \include{bootstrap}
+\include{lhcd}
 \include{extra}
 
 \include{biblio}

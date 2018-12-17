@@ -76,7 +76,7 @@ Acknowledging that temperature is the most difficult to handle parameter prompts
 	\tag{\ref{eq:greenwald}}
 	\overline n = K_n \cdot \frac{I_P}{R_0^2}
 \end{equation}
-This is an exceptionally simple relationship and why it guided the model. Unlike the next three variables, it is actually used in their derivations. \deleted{Therefore, any reactor found through this model is considered a \emph{Greenwaldian Reactor} -- one held at the Greenwald density limit.}
+Where $K_n$ is given by \cref{eq:kn}. This is an exceptionally simple relationship and why it guided the model. Unlike the next three variables, it is actually used in their derivations. \deleted{Therefore, any reactor found through this model is considered a \emph{Greenwaldian Reactor} -- one held at the Greenwald density limit.}
 
 \subsubsection{The Plasma Current -- $I_P$}
 
@@ -186,7 +186,7 @@ All nuclear reactors emit radiation. From a power balance perspective, this mean
 
 \replaced{This}{Without going into too much detail, this} model chooses to only model Bremsstrahlung radiation -- as it usually dominates within the plasma's core. \added{Within most designs, Bremsstrahlung radiation outweighs the other two's contribution, to core power balance, two-to-one.\cite{ussteady,inputfile} } However, adding the effects of line-radiation and synchrotron radiation would drive results closer to real-world experiments. For example, line-radiation would better account for the \added{effects of} heavy impurities that \replaced{are emitted from the divertor plate and first wall}{appear as pieces of a tokamak fall into the plasma.}
 
-For clarity, Bremsstrahlung -- or breaking -- radiation is what occurs when a charged particle (e.g.\ an electron) is accelerated by some means. In a tokamak, this happens all the time as \replaced{electrons collide with the ion species.\cite{hutch}}{charged particles are flung around and around the machine.} \replaced{This term can be}{As given in Jeff Freidberg's book, this term is} described by the volume integral:\added{\cite{jeff}}
+For clarity, Bremsstrahlung -- or braking -- radiation is what occurs when a charged particle (e.g.\ an electron) is accelerated by some means. In a tokamak, this happens all the time as \replaced{electrons collide with the ion species.\cite{hutch}}{charged particles are flung around and around the machine.} \replaced{This term can be}{As given in Jeff Freidberg's book, this term is} described by the volume integral:\added{\cite{jeff}}
 \begin{equation}
 	P_{BR} = \int S_{BR} \, d \vec{r}
 \end{equation}
@@ -216,7 +216,7 @@ This power term represents the radiation power losses involved in power balance.
 
 Heat is energy that \replaced{moves about randomly}{lacks direction} on a microscopic level. Macroscopically, it generally moves from hotter areas to colder ones. As hinted by the plasma profile for temperature, heat emanates from the center of a plasma and migrates towards the walls of its tokamak enclosure. It therefore \replaced{is a critical}{seems an important} quantity to calculate when balancing power in a plasma's core.
 
-The difficulty of estimating heat conduction, though, lies in the \replaced{nonlinear behaviors}{chaotic nature} of plasmas -- no theory or \replaced{quick-running code}{computation today} can properly model it. As such, reactor designers have turned towards experimentalists for empirical scaling laws based on the dozen or so strongest tokamaks in the world. These are collectively referred to as confinement time scalings, i.e.\ the ELMy H-Mode Scaling Law.
+The difficulty of estimating heat conduction, though, lies in the \replaced{nonlinear behaviors}{chaotic nature} of plasmas -- no quick-running computation today can properly model it. As such, reactor designers have turned towards experimentalists for empirical scaling laws based on the dozen or so strongest tokamaks in the world. These are collectively referred to as confinement time scalings, i.e.\ the ELMy H-Mode Scaling Law.
 
 The derivation of this heat conduction loss term ($P_\kappa$) starts in a manner similar to the previous powers. To begin, an equation for $P_\kappa$ \replaced{can be found using the following volume integral:\cite{jeff}}{sis given in Jeff Freidberg's book as:}
 \begin{equation}
@@ -459,10 +459,10 @@ Substituting the plasma $\beta$ from eq. \ref{eq:beta}, into this relation resul
 \begin{equation}
   \label{eq:r_beta}
   \tcbhighmath{ R_0 = \frac{ K_{TB} \overline{T} }{ B_0 } }
-\end{equation} 
+\end{equation}
 \begin{equation}
   K_{TB} = 4.027 \times 10^{-2} \cdot  \left( \frac{K_n \, \epsilon}{\beta_N} \right) \cdot ( 1 + f_D ) \cdot \frac{ (1 + \nu_n) \, (1 + \nu_T) }{1 + \nu_n + \nu_T }
-\end{equation} 
+\end{equation}
 \myequations{Troyon Beta Limit -- $\beta_N$}
 As mentioned, this is often the dominating constraint in a steady-state reactor. The often dominating constraint for pulsed designs -- the kink safety factor -- will be the focus of the next subsection.
 
@@ -483,7 +483,7 @@ Combined, the kink safety factor can now be written in standardized units as:
 \begin{equation}
 	\label{eq:r_kink}
    \tcbhighmath{ R_0 = \frac{ K_{SF} I_P }{ B_0 } }
-\end{equation} 
+\end{equation}
 \begin{equation}
   K_{SF} = \frac{q_{\replaced{*}{95}}}{5 \epsilon^2} \cdot \left( \frac{2}{1 + \kappa^2 \cdot ( 1 + 2 \delta^2 - 1.2 \delta^3 ) } \right)
 \end{equation}
@@ -512,11 +512,11 @@ Finishing this \replaced{limiting}{secondary} constraint, the Wall Loading limit
 \begin{equation}
 	\label{eq:r_wall}
 	\tcbhighmath{ R_0 = K_{WL} \cdot I_P^{ \, \frac{2}{3} } \cdot (\sigma v) ^{ \, \frac{1}{3} } }
-\end{equation} 
+\end{equation}
 \begin{equation}
 	K_{WL} = \left( \frac{ K_F K_n^2 }{ 5 \pi^2 P_W } \cdot \frac{\kappa}{\epsilon} \cdot \frac{1}{1 + \frac{2}{\pi} \cdot ( \kappa^2 - 1 ) } \right) ^ { \frac{1}{3} }
-\end{equation} 
-\myequations{Wall Loading Limit -- $P_W$} 
+\end{equation}
+\myequations{Wall Loading Limit -- $P_W$}
 \subsection{Setting a Maximum Power Cap}
 
 As opposed to the previous three \replaced{limiting}{secondary} constraints, the maximum power cap is more of a \replaced{constraint set by economic competitiveness.}{rule of thumb.} Because no reactor -- coal, solar, or otherwise -- has a 4000 MW reactor, neither should fusion.\footnote{\added{Note that this 4000 MW (electric) is a maximum. A 1000 MW reactor would obviously not violate this constraint. Instead it would likely be pressing on either the kink or beta limit.}} It makes sense from a practical position after realizing the long history of tokamaks being delayed, underfunded, or completely canceled. Mathematically, this has the simple form:
@@ -542,15 +542,15 @@ Substituting in fusion power and solving for the major radius results in:
 \begin{equation}
 	\label{eq:r_pcap}
 	\tcbhighmath{ R_0 = K_{PC} \cdot I_P^{\,2} \cdot (\sigma v) }
-\end{equation} 
+\end{equation}
 \begin{equation}
 	K_{PC} = K_F K_n^2 \cdot \left( \frac{ 1.273 \, \eta_T }{ P_{max} } \right)
-\end{equation} 
+\end{equation}
 \myequations{Maximum Power Limit -- $P_{max}$}
 This \replaced{limiting}{secondary} constraint can be used to create curves of reactors, although it is mainly used as a stopping point for designs -- i.e.\ if you get to the power-cap regime, you have gone too far. This is different than the next constraint, which is \replaced{fundamentally an unsolved problem within}{basically a glorified warning sign in} the \replaced{modern}{contemporary} tokamak design paradigm.\added{\cite{adx}}
 \subsection{Listing the Heat Loading Limit}
 
-\replaced{Fusion plasmas}{Plasmas} are hot. The commonly given \replaced{relation}{fact} is one electron volt is around $20\textnormal{,}000 \, {}^\circ$F\replaced{ -- which makes 15 keV around a quarter-billion Fahrenheit.}{.}Although \replaced{slightly}{a tad} deceptive, \replaced{heat damage to}{melting} a tokamak is an all too real concern. The problem is there is currently no solution to the problem. Although researchers have explored various types of heat divertors, none have been shown to withstand the gigawatts\added{-per-square-meter} of heat emitted from a reactor-size tokamak.\replaced{\cite{adx}}{ Further, as it is not as glamorous as plasma physics, attempts to tackle the problem head-on have often gone unfunded.\cite{adx}}
+\replaced{Fusion plasmas}{Plasmas} are hot. The commonly given \replaced{relation}{fact} is one electron volt is around $20\textnormal{,}000 \, {}^\circ$F\replaced{ -- which makes 15 keV around a quarter-billion Fahrenheit.}{.} Although \replaced{this connotation of temperature is slightly}{a tad} deceptive, \replaced{heat damage to}{melting} a tokamak is an all too real concern. The problem is there is currently no solution to the problem. Although researchers have explored various types of heat divertors, none have been shown to withstand the gigawatts\added{-per-square-meter} of heat emitted from a reactor-size tokamak.\replaced{\cite{adx}}{ Further, as it is not as glamorous as plasma physics, attempts to tackle the problem head-on have often gone unfunded.\cite{adx}}
 
 \replaced{As such, this model takes an approach similar to the research community, calculating it at the end as a manual check on the difficulty of building such a device -- but not using it to explicitly guide design.}{As such, this model takes the approach that we are no worse than the rest of the field. We almost completely ignore the heat loading limit and just refer to it at the end, saying "and then this magic divertor will have to deal with solar corona levels of heat." After which, discussion will quickly be redirected to happier concerns.} For \replaced{completeness}{thoroughness} though, a \replaced{limiting}{secondary} constraint will still be derived. The first step is giving the heat load limit commonly found in the literature: \cite{minervini}
 \begin{equation}
@@ -564,10 +564,10 @@ This \replaced{limiting}{secondary} constraint can be used to create curves of r
 \begin{equation}
 	\label{eq:r_heat}
 	\tcbhighmath{ R_0 = K_{DH} \cdot I_P \cdot (\sigma v)^ {\frac{1}{3.2}} }
-\end{equation} 
+\end{equation}
 \begin{equation}
 	K_{DH} = \left( \, \frac{ K_{DV} K_n^2 }{ q_{DV} } \, \right) ^ {\frac{1}{3.2}}
-\end{equation} 
+\end{equation}
 \myequations{Heat Loading Limit -- $q_{DV}$}
 At this point all the \replaced{limiting}{secondary} constraints have been defined. The next step is taking a step back and motivating the derivation of a current equation suitable for pulsed tokamaks.
 
@@ -587,7 +587,7 @@ The next variable handled was the steady current:
 \begin{equation}
 	\tag{\ref{eq:steady}}
 	I_P = \frac{K_{BS} \overline T}{1 - K_{CD} ( \sigma v ) }
-\end{equation} 
+\end{equation}
 
 As was mentioned then, this only directly depends on temperature, but is strongly affected by a tokamak's configuration -- $R_0$ and $B_0$ - through the current drive efficiency ($\eta_{CD}$). For pulsed reactors, this equation proves too simple as it ignores inductive current. To remedy the situation, current balance will be revisited next chapter. The main point to make now, though, is that the $R_0$ and $B_0$ dependence will be made explicit.
 
