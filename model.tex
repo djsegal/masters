@@ -46,12 +46,12 @@ $I_P$ & Plasma Current & MA \\
 $\overline{T}$ & Plasma Temperature & keV \\
 $\overline{n}$ & Electron Density & $10^{20} \, \textnormal{m}^{-3}$ \\
 $R_0$ &  Major Radius & m \\
-$B_0$ &  Magnetic Field & T
+$B_0$ &  Magnet Strength & T
 \end{tabular}
 \label{table:dynamic}
 \end{table}
 
-Bluntly, this fusion systems model is a simple algebra problem: solve five equations with five unknowns (i.e.\ $\overline T$, $\overline n$, $I_P$, $R_0$, $B_0$). Although this naive approach would work, we can do a little better by \replaced{collapsing}{wrangling} these five equations down to just one. This was already done while deriving the steady current. It just happened that the current was not directly dependent on the tokamak size ($R_0$) or magnet strength ($B_0$).
+Bluntly, this fusion systems model is a simple algebra problem: solve five equations with five unknowns (i.e.\ $\overline T$, $\overline n$, $I_P$, $R_0$, $B_0$). Although this naive approach would work, we can do a little better by \replaced{collapsing}{wrangling} these five equations down to just one. This was already done while deriving the steady current. It just happened that the current was not directly dependent on the tokamak size ($R_0$) or magnet strength ($B_0$).\footnote{Note that the magnet strength ($B_0$) used throughout this text refers particularly to the strength of the toroidal magnetic field on axis -- i.e. at $\rho = 0$.} 
 
 This will prove more challenging for the generalized current needed for pulsed operation. Even so, this equation will still be \replaced{reduced}{boiled down} to one equation with a single unknown -- $I_P$. A solution to which can be solved much faster than the naive 5 equation approach. This is one reason the model is so fast.
 
@@ -59,7 +59,7 @@ This will prove more challenging for the generalized current needed for pulsed o
 
 The plasma temperature, measured in keV (kilo-electron-volts), is one of the most \replaced{nonlinear}{finicky} variables in the fusion systems \replaced{framework}{model}. It first proved troublesome when it was shown that a pedestal profile -- not a parabolic one used here -- would be needed for an accurate calculation of bootstrap current. The \replaced{black-box}{unusual} tabulation for reactivity -- ($\sigma v$) -- which appeared in fusion power only further exposed this nonlinearity.
 
-Acknowledging that temperature is the most difficult to handle parameter prompts its use as the scanned variable. What this means practically is scanning temperatures \replaced{is the most straightforward method to produce}{produces} curves of reactors. By example, a scan may be run over the average temperatures ($\overline T$): 10, 15, 20, 25, and 30 keV -- \added{where} each \replaced{corresponds}{corresponding} to its own reactor \added{with its own field strength ($B_0$), plasma current ($I_P$), etc}. In equation form, this becomes:
+Acknowledging that temperature is the most difficult to handle parameter prompts its use as the scanned variable. What this means practically is scanning temperatures \replaced{is the most straightforward method to produce}{produces} curves of reactors. By example, a scan may be run over the average temperatures ($\overline T$): 10, 15, 20, 25, and 30 keV -- \added{where} each \replaced{corresponds}{corresponding} to its own reactor \added{with its own toroidal field strength ($B_0$), plasma current ($I_P$), etc}. In equation form, this becomes:
 \begin{equation}
 	\label{eq:tbar}
 	\tcboxmath{
@@ -188,15 +188,17 @@ All nuclear reactors emit radiation. From a power balance perspective, this mean
 
 For clarity, Bremsstrahlung -- or braking -- radiation is what occurs when a charged particle (e.g.\ an electron) is accelerated by some means. In a tokamak, this happens all the time as \replaced{electrons collide with the ion species.\cite{hutch}}{charged particles are flung around and around the machine.} \replaced{This term can be}{As given in Jeff Freidberg's book, this term is} described by the volume integral:\added{\cite{jeff}}
 \begin{equation}
-	P_{BR} = \int S_{BR} \, d \vec{r}
+	P_{BR} = \int S_{BR} \ d \vec{\,r}
 \end{equation}
 \replaced{Where}{Here,} the radiation power density ($S_{BR}$) is given by:
 \begin{equation}
 	S_{BR} = \left( \frac{\sqrt{2}}{3 \sqrt{\pi^5}} \cdot \frac{e^6}{\epsilon_0^2 c^3 h m_e^{3/2}} \right) \cdot \left( Z_{eff} \, n^2 \, T^{1/2} \right)
 \end{equation}
-The constants in the left set of parentheses all have their usual physics meanings (i.e.\ c is the speed of light and $m_e$ is the mass of an electron). What is new is the effective charge: $Z_{eff}$.
-
-The effective charge is a scheme for \replaced{reducing}{collapsing} the charge \replaced{each ion}{that each particle} has to a \replaced{single representative}{collective} value. Fundamental charge, here, is what: neutrons lack, electrons and hydrogen have one of, and helium has two. As such, a plasma with a purely deuterium and tritium fuel would have an effective charge of one. This value would then quickly rise if a Tungsten tile -- with 74 units of charge -- were to fall into the plasma core from the walls of the tokamak.
+The constants in the left set of parentheses all have their usual physics meanings (i.e.\ c is the speed of light and $m_e$ is the mass of an electron). What is new is the effective charge: $Z_{eff}$.\cite{jeff}
+\begin{equation}
+	Z_{eff} = \frac{1}{n_e} \sum_j n_j Z_j^2
+\end{equation}
+The effective charge is a scheme for \replaced{reducing}{collapsing} the charge \replaced{each ion}{that each particle} has to a \replaced{single representative}{collective} value. Fundamental charge, here, is what: neutrons lack, electrons and hydrogen have one of, and helium has two. As such, a plasma with a purely deuterium and tritium fuel would have an effective charge of one. This value would then quickly rise if a Tungsten tile -- with 74 units of charge -- were to fall into the plasma core from the walls of the tokamak.\footnote{Typical effective charges ($Z_{eff}$) for a reactor are expected to be between 1 and 3.\cite{ussteady,inputfile,arc}} 
 
 Using the volume integral -- seen in the derivation of fusion power -- allows the Bremsstrahlung power to be written in standardized units as:
 \begin{equation}

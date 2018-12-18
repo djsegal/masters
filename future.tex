@@ -103,7 +103,7 @@ Before moving on to the final conclusions, we will give a quick recap of \replac
 
 \replaced{One of the biggest shortcomings of this model is not handling plasma profiles self-consistently -- instead replacing them with simple parabolas.}{The most dubious simplification in the code at this point is modeling temperature profiles as parabolas.} Although these parabolas work for densities and L-Mode plasma temperatures, the same cannot be said about H-Mode temperatures. This is because they have a distinct pedestal region on the outer edge of the plasma.
 
-The usage of pedestal temperatures -- discussed in \cref{chapter:profiles} -- improves two aspects of the model: the fusion power and the bootstrap current. These were shown in the results to be over-calculated and underestimated, respectively. Pedestals, having a lower core temperature, would decrease the total fusion power. As well, they would boost bootstrap current due to the quick drop near the plasma's edge (i.e.\ they have a large derivative there).
+The usage of pedestal temperatures -- discussed in \cref{chapter:profiles} -- improves two aspects of the model: the fusion power and the bootstrap current. These were shown in the results to be over-calculated and underestimated, respectively. First, pedestals have a lower core temperature than parabolic profiles with the same average value. This would cause a decrease in the total fusion power. Additionally, the pedestal's quick drop near the plasma's edge would boost the bootstrap current, due to the steep derivative there. 
 
 These improvements could easily be added to the code, because temperature was addressed as a difficult parameter to handle from the beginning.
 

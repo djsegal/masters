@@ -19,7 +19,7 @@
 
 \chapter{Designing a Steady-State Tokamak}
 
-This chapter explores a simple model for designing steady-state tokamaks. In the next couple chapters, the model is first formalized for use in a systems code and then generalized to handle pulsed operation. These derivations highlight that the only difference between the two modes \added{of operation} is how they generate their auxiliary plasma current: LHCD for steady-state operation and inductive sources for when a reactor is purely pulsed.
+This chapter explores a simple model for designing steady-state tokamaks. In the next couple chapters, the model is first formalized for use in a systems code and then generalized to handle pulsed operation. These derivations highlight that the only difference between the two modes \added{of operation} is how they generate their auxiliary plasma current: lower-hybrid current drive (LHCD) for steady-state operation and inductive sources for when a reactor is purely pulsed.
 
 Along the way, equations will be derived that get rather complicated. To remedy the situation, a distinction between \replaced{dynamic}{floating} and \replaced{static}{fixed} values is now given, which will allow splitting most equations into \replaced{static}{fixed} and \replaced{dynamic}{floating} parts. \replaced{Dynamic}{Fixed} values -- i.e.\ the tokamak's major radius ($R_0$) and magnet strength ($B_0$), as well as the plasma's current ($I_P$), temperature ($\overline T$), and density ($\overline n$) -- are first-class variables in the model \added{(see \cref{table:dynamic})}. Everything is derived to relate them. \replaced{Static}{Fixed} values, on the other hand, can be treated as code inputs, which remain constant throughout a reactor solve.  These most obviously include the various geometric and profile parameters introduced next section.
 
@@ -150,7 +150,7 @@ To begin, density has the simplest profile. This is because it is relatively fla
 	n(\rho) = \overline n \cdot ( 1 + \nu_n ) \, \cdot ( 1 - \rho ^ 2 ) ^ {\nu_n}
 \end{equation}
 \myequations{Density Profile -- $n$}
-\added{The reason $\overline n$ is referred to as the volume-averaged density is because using the volume integral -- given by \cref{eq:qv} -- over the density profile results in that value after dividing through by the volume ($\volume$):}
+\added{Here, $\rho$ is a normalized radial-like flux label, with $\rho = 0$ at the magnetic axis and $\rho = 1$ at the outer plasma surface (i.e.\ the 95\% surface). While $\overline n$ is referred to as the volume-averaged density because using the volume  integral -- given by \cref{eq:qv} -- over the density profile results in that value after dividing through by the volume ($\volume$):} 
 \begin{equation}
 	\overline n = \frac{ \int n(\vec{\bold{r}}) \, d\vec{\bold{r}}  }{\volume}
 \end{equation}
@@ -316,7 +316,7 @@ The first term to define in current balance, \cref{eq:ibal}, is the bootstrap cu
 \end{equation}
 
 \added{
-The second definition for the bootstrap current density -- $J_{BS}$ -- comes from using well known theoretical results plus several simplifying assumptions, including the large aspect limit. The value of $\sfrac{d\psi}{d\rho}$ is given in \cref{chapter:bootstrap}.
+Here, g is a geometric factor (of order 1) given by \cref{eq:gg}. While the second definition for the bootstrap current density -- $J_{BS}$ -- comes from using well known theoretical results plus several simplifying assumptions, including the large aspect limit. The value of $\sfrac{d\psi}{d\rho}$ is given in \cref{chapter:bootstrap}.
  }
 
 \deleted{For a more formal look into this $J_{BS}$ function, check the appendix section on pedestal temperatures. The point to make now is that it depends on the the profiles' derivatives, leading to one major discrepancy in the model.}
@@ -417,7 +417,7 @@ Quickly noting, this $H_{BS}$ term serves as the analogue of \replaced{static}{f
   	\tag{\ref{eq:qv}}
  	Q_V = 4 \pi^2 R_0 a^2 \kappa g \int_0^1 Q(\rho) \rho \, d\rho
  \end{equation}
- Where again, Q is an arbitrary function of $\rho$ and g is a geometric factor approximately equal to one. The fusion power can now be rewritten as:
+ Where Q is an arbitrary function of $\rho$ and g is a geometric factor approximately equal to one -- both described in \cref{chapter:flux}. The fusion power can now be rewritten as:
  \begin{equation}
  	P_F = \pi^2 E_F f_D^2 R_0 a^2 \kappa g \int_0^1 n^2 \langle \sigma v \rangle \rho \, d\rho
  \end{equation}
@@ -459,7 +459,7 @@ In standardized units, the equation for current drive is often given in the lite
 	I_{CD} = \eta_{CD} \cdot \left( \frac{P_H}{\overline n R_0} \right)
 \end{equation}
 Here, $\eta_{CD}$ is the current drive efficiency with units $ \left(
-\frac{ \textnormal{MA} }{ \textnormal{MW-m}^2 } \right) $ and $P_H$ is the heating power in megawatts driven by LHCD (and absorbed by the plasma).
+\frac{ \textnormal{MA} }{ \textnormal{MW-m}^2 } \right) $ and $P_H$ is the heating power in megawatts driven by LHCD (and absorbed by the plasma).\footnote{A more formal introduction to LHCD, as well as the reasoning behind selecting it over neutral beam (NBCD) and electron cyclotron current drive (ECCD), are given in \cref{chapter:lhcd}. }
 
 Let it be known, though, that driving current in a plasma is hard! In fact, pulsed reactor designers (i.e.\ European fusion researchers) think it is so difficult, they may choose to forego it completely -- focusing only on inductive sources that necessitate reactor fatigue and downtime.
 
@@ -528,9 +528,9 @@ As has become a mantra, though, the subtlety of this behavior lies in the self-c
 
 Although a thorough description of the wave theory behind lower-hybrid current drive (LHCD) is well outside the scope of this text, it does motivate the solving of a tokamak's major radius ($R_0$) and field strength ($B_0$). It also shows how what was once a simple problem has now transformed into a rather complex one -- a common occurrence with plasmas.
 
-The logic behind finding a self-consistent current-drive efficiency is starting at some plausible value (i.e.\ $\eta_{CD} = 0.3$), solving for the steady current -- i.e.\ $I_P = f(\overline T)$ -- and then somehow iteratively creeping towards a value deemed self-consistent. What this means is that in addition to the solver described in the last section, there needs to be a black-box function that solutions are \replaced{sent}{piped} through to get better guesses at $\eta_{CD}$. The black-box function we use is a variation of the Ehst-Karney model. \cite{ehstkarney}
+The logic behind finding a self-consistent current-drive efficiency is starting at some plausible value (i.e.\ $\eta_{CD} = 0.3$), solving for the steady current -- i.e.\ $I_P = f(\overline T)$ -- and then somehow iteratively creeping towards a value deemed self-consistent. What this means is that in addition to the solver described in the last section, there needs to be a black-box function that solutions are \replaced{sent}{piped} through to get better guesses at $\eta_{CD}$. The black-box function we use is a variation of the Ehst-Karney model. \cite{ehstkarney} \added{A thorough description of this algorithm is given in \cref{chapter:lhcd}.}
 
-As mentioned, a self-consistent $\eta_{CD}$ is found once a trip through the Ehst-Karney black-box results in the same $\eta_{CD}$ as was \replaced{sent}{piped} in -- to some tolerable level of error. This consistency incorporates an explicit dependence on the tokamak configuration. Mathematically,
+As mentioned, \added{though,} a self-consistent $\eta_{CD}$ is found once a trip through the Ehst-Karney black-box results in the same $\eta_{CD}$ as was \replaced{sent}{piped} in -- to some tolerable level of error. This consistency incorporates an explicit dependence on the tokamak configuration. Mathematically,
 \begin{equation}
 	\tilde \eta_{CD} = f( R_0, B_0, \overline n, \overline T, I_P )
 \end{equation}
