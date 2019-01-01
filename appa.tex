@@ -4,7 +4,7 @@
 
 \begin{figure*}[h]
     \centering
-    \hfill 
+    \hfill
     \begin{subfigure}[t]{0.45\textwidth}
         \centering
 		\begin{adjustbox}{width=\textwidth}
@@ -53,12 +53,12 @@ Then, when $x = n$,
 \end{equation}
 Additionally, the Greenwald Density limit that we will use throughout,
 \begin{equation}
-	\hat{n} = N_G \cdot \left( \frac{I_M}{\pi a^2} \right) 
-\end{equation} 
+	\hat{n} = N_G \cdot \left( \frac{I_M}{\pi a^2} \right)
+\end{equation}
 can now be written in the following form:
 \begin{gather}
 	\overline{n} =K_{n} \cdot \left( \frac{I_M}{R_0^{\,2}} \right) \\
-	K_n = \frac{2 \, N_G}{\epsilon^2 \pi ^ { \, 3/2} }\cdot \left( \frac{ \Gamma( \, \nu_n + 3/2 \, ) }{ \Gamma( \, \nu_n + 2 \, ) } \right)
+	K_n = \frac{2 \, N_G}{\varepsilon^2 \pi ^ { \, 3/2} }\cdot \left( \frac{ \Gamma( \, \nu_n + 3/2 \, ) }{ \Gamma( \, \nu_n + 2 \, ) } \right)
 \end{gather}
 
 \section{Temperature -- $T$}
@@ -70,12 +70,12 @@ The Temperature is the swept variable in our model framework. Therefore, it's th
 Therefore, our model sometimes treats the system as if it had a pedestal region. This is mainly for the bootstrap current and fusion power, which were previously known to misalign and overshoot, respectively.
 \begin{equation}
 	\tcboxmath{
-	T(\rho) = 
+	T(\rho) =
 	\begin{cases}
 	    T_{para} \ , & x \in [0, \rho_{ped} ] \\
 	    T_{line}   \ , & x \in ( \rho_{ped}, 1 ]
 	\end{cases}
-	}	
+	}
 \end{equation}
 Where the piecewise functions are given by,
 \begin{gather}
@@ -118,7 +118,7 @@ We are now in a position to solve for $T_0$ in terms of $\overline{T}$:
 	T_0 = T_{ped} + \frac{ \overline{T} - K_{TU} }{K_{TD}} }
 \end{equation}
 \begin{equation}
-	K_{TU}  =  T_{ped} \, \rho_{ped}^{\,2}  \ +  \frac{ \left( 1 - \rho_{ped} \right ) }{3} \cdot \left( \left( 2 T_{sep} + T_{ped} \right) + \rho_{ped} \cdot \left( 2 T_{ped} + T_{sep}   \right)  \right) 
+	K_{TU}  =  T_{ped} \, \rho_{ped}^{\,2}  \ +  \frac{ \left( 1 - \rho_{ped} \right ) }{3} \cdot \left( \left( 2 T_{sep} + T_{ped} \right) + \rho_{ped} \cdot \left( 2 T_{ped} + T_{sep}   \right)  \right)
 \end{equation}
 \begin{equation}
 	K_{TD} = \rho_{ped}^2 \cdot \left( \frac{ 2 }{ \lambda_T } \right) \, \cdot \frac{ \Gamma \left( 1 + \nu_T  \right) \Gamma \left( \frac{2}{\lambda_T} \right) }{ \Gamma \left( 1 + \nu_T + \frac{2}{\lambda_T} \right) }
@@ -144,7 +144,7 @@ We start with,
 \end{equation}
 Expanding the previous equation using the following relations,
 \begin{equation}
-	J_B = -4.85 \cdot R_0 \epsilon^{1/2} \cdot \left( \frac{ \rho^{1/2} n T }{ \sfrac{ \textnormal{d}\psi }{ \textnormal{d}\rho } } \right) \cdot \left( \frac{ \sfrac{ \textnormal{d}n }{ \textnormal{d}\rho } }{ n } + 0.54 \cdot \frac{ \sfrac{ \textnormal{d}T }{ \textnormal{d}\rho } }{ T } \right)
+	J_B = -4.85 \cdot R_0 \varepsilon^{1/2} \cdot \left( \frac{ \rho^{1/2} n T }{ \sfrac{ \textnormal{d}\psi }{ \textnormal{d}\rho } } \right) \cdot \left( \frac{ \sfrac{ \textnormal{d}n }{ \textnormal{d}\rho } }{ n } + 0.54 \cdot \frac{ \sfrac{ \textnormal{d}T }{ \textnormal{d}\rho } }{ T } \right)
 \end{equation}
 \begin{equation}
 	\frac{ \textnormal{d}\psi }{ \textnormal{d}\rho } = \frac{ \mu_0 R_0 I_P }{ \pi } \cdot \left( \frac{ \kappa}{1+\kappa^2} \right) \cdot b_p(\rho)
@@ -155,7 +155,7 @@ Yields:
  \, d\rho
 \end{equation}
 \begin{equation}
-	K_{BS} = K_n \cdot \left( \frac{ 2 \pi^2 \cdot 4.85 \cdot \epsilon^{5/2} }{\mu_0} \right) \cdot ( 1 + \nu_n ) \cdot ( 1 + \kappa^2 )
+	K_{BS} = K_n \cdot \left( \frac{ 2 \pi^2 \cdot 4.85 \cdot \varepsilon^{5/2} }{\mu_0} \right) \cdot ( 1 + \nu_n ) \cdot ( 1 + \kappa^2 )
 \end{equation}
 Here, $b_p$ comes from:
 \begin{equation}
@@ -174,7 +174,7 @@ While treating temperature differently results in,
 	-\left( \frac{ \textnormal{d}T }{ \textnormal{d}\rho } \right)_{para} =  \left( \frac{ T_0 - T_{ped} }{ \rho_{ped}^{ \, \lambda_T} } \right) \cdot ( \nu_T \lambda_T ) \cdot \rho^{\,\lambda_T-1} \cdot \left( 1 - \left( \frac{\rho}{\rho_{ped}} \right)^{\lambda_T} \right)^{\nu_T-1}
 \end{equation}
 \begin{equation}
-	-\left( \frac{ \textnormal{d}T }{ \textnormal{d}\rho } \right)_{line} =  \left( \frac{ T_{ped} - T_{sep} }{1 - \rho_{ped} } \right) 
+	-\left( \frac{ \textnormal{d}T }{ \textnormal{d}\rho } \right)_{line} =  \left( \frac{ T_{ped} - T_{sep} }{1 - \rho_{ped} } \right)
 \end{equation}
 Where we will be using the new symbol definition,
 \begin{equation}
@@ -193,7 +193,7 @@ Where the values of $T$ are determined through,
 And the values of $\partial{T}$ are:
 \begin{gather}
 	\partial{T}_{para} =  \left( \frac{ T_0 - T_{ped} }{ \rho_{ped}^{ \, \lambda_T} } \right) \cdot ( \nu_T \lambda_T ) \cdot \rho^{\,\lambda_T-1} \cdot \left( 1 - \left( \frac{\rho}{\rho_{ped}} \right)^{\lambda_T} \right)^{\nu_T-1} \\
-	\partial{T}_{line} =  \left( \frac{ T_{ped} - T_{sep} }{1 - \rho_{ped} } \right) 
+	\partial{T}_{line} =  \left( \frac{ T_{ped} - T_{sep} }{1 - \rho_{ped} } \right)
 \end{gather}
 
 \section{Volume Averaged Powers}
@@ -215,12 +215,12 @@ As mentioned before, $P_F$ is handled by $(\sigma v)$ and therefore the lefthand
 Using the parabolic profiles (for $n$ and $T$) gives for the Bremsstrahlung radiation,
 \begin{gather}
 	P_B = K_B \cdot \left( R_0^3 \ \overline{n}^2 \, \sqrt{\,\overline{T}} \ \right) \ \ [MW] \\
-	K_B = 0.1056 \cdot Z_{eff} \cdot ( \, \epsilon^2 \, \kappa \, g \, ) \cdot \frac{ (1+\nu_n)^2 \, (1+\nu_T)^{1/2} }{1+2 \, \nu_n + 0.5 \, \nu_T}
+	K_B = 0.1056 \cdot Z_{eff} \cdot ( \, \varepsilon^2 \, \kappa \, g \, ) \cdot \frac{ (1+\nu_n)^2 \, (1+\nu_T)^{1/2} }{1+2 \, \nu_n + 0.5 \, \nu_T}
 \end{gather}
 And a similar exercise for the thermal conduction losses results in:
 \begin{gather}
 	P_\kappa = K_\kappa \cdot \left( \frac{ R_0 ^ 3 \ \overline{n}  \, \overline{T} }{\tau_E} \right) \ \ [MW] \\
-	K_\kappa = 0.4744 \cdot  ( 1 + f_D ) \cdot ( \, \epsilon^2 \, \kappa \, g \, ) \cdot \frac{ (1 + \nu_n) \, (1 + \nu_T) }{1 + \nu_n + \nu_T }
+	K_\kappa = 0.4744 \cdot  ( 1 + f_D ) \cdot ( \, \varepsilon^2 \, \kappa \, g \, ) \cdot \frac{ (1 + \nu_n) \, (1 + \nu_T) }{1 + \nu_n + \nu_T }
 \end{gather}
 
 \clearpage

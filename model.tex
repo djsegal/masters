@@ -29,7 +29,7 @@ The goal of this chapter is to take a step back from the steady current derivati
 
 \section{Explaining \replaced{Static}{Fixed} Variables}
 
-In this model, \replaced{static}{fixed} variables are ones that remain constant while solving for a reactor. These include geometric scalings (i.e.\ $\epsilon$, $\delta$, $\kappa$), profile parameters (i.e.\ $\nu_n$, $\nu_T$, $l_i$), and a \replaced{couple dozen}{slew} of physics constants related to pulsed and steady-state design (e.g.\ Q, $N_G$, $f_D$). For a complete list of \replaced{static}{fixed} variables, consult \replaced{\cref{chapter:var_table}}{the appendix}. The point to make now is that this model treats \replaced{static}{fixed} variables as \replaced{immutable}{second-class} objects. As such they often reside in \replaced{static}{fixed} coefficients -- $K_\square$ -- which are treated as constants.
+In this model, \replaced{static}{fixed} variables are ones that remain constant while solving for a reactor. These include geometric scalings (i.e.\ $\varepsilon$, $\delta$, $\kappa$), profile parameters (i.e.\ $\nu_n$, $\nu_T$, $l_i$), and a \replaced{couple dozen}{slew} of physics constants related to pulsed and steady-state design (e.g.\ Q, $N_G$, $f_D$). For a complete list of \replaced{static}{fixed} variables, consult \replaced{\cref{chapter:var_table}}{the appendix}. The point to make now is that this model treats \replaced{static}{fixed} variables as \replaced{immutable}{second-class} objects. As such they often reside in \replaced{static}{fixed} coefficients -- $K_\square$ -- which are treated as constants.
 
 \section{Connecting \replaced{Dynamic}{Floating} Variables}
 
@@ -51,7 +51,7 @@ $B_0$ &  Magnet Strength & T
 \label{table:dynamic}
 \end{table}
 
-Bluntly, this fusion systems model is a simple algebra problem: solve five equations with five unknowns (i.e.\ $\overline T$, $\overline n$, $I_P$, $R_0$, $B_0$). Although this naive approach would work, we can do a little better by \replaced{collapsing}{wrangling} these five equations down to just one. This was already done while deriving the steady current. It just happened that the current was not directly dependent on the tokamak size ($R_0$) or magnet strength ($B_0$).\footnote{Note that the magnet strength ($B_0$) used throughout this text refers particularly to the strength of the toroidal magnetic field on axis -- i.e. at $\rho = 0$.} 
+Bluntly, this fusion systems model is a simple algebra problem: solve five equations with five unknowns (i.e.\ $\overline T$, $\overline n$, $I_P$, $R_0$, $B_0$). Although this naive approach would work, we can do a little better by \replaced{collapsing}{wrangling} these five equations down to just one. This was already done while deriving the steady current. It just happened that the current was not directly dependent on the tokamak size ($R_0$) or magnet strength ($B_0$).\footnote{Note that the magnet strength ($B_0$) used throughout this text refers particularly to the strength of the toroidal magnetic field on axis -- i.e. at $\rho = 0$.}
 
 This will prove more challenging for the generalized current needed for pulsed operation. Even so, this equation will still be \replaced{reduced}{boiled down} to one equation with a single unknown -- $I_P$. A solution to which can be solved much faster than the naive 5 equation approach. This is one reason the model is so fast.
 
@@ -165,7 +165,7 @@ The final source term then is the ohmic power ($P_\Omega$). This is identical to
 \end{equation}
 \myequations{Plasma Resistance -- $R_P$}
 \begin{equation}
-	K_{RP} = 5.6e{-8} \cdot \left( \frac{ Z_{eff} }{ \epsilon^2 \kappa } \right) \cdot \left( \frac{1}{ 1 - 1.31 \sqrt{ \epsilon } + 0.46 \epsilon } \right)
+	K_{RP} = 5.6e{-8} \cdot \left( \frac{ Z_{eff} }{ \varepsilon^2 \kappa } \right) \cdot \left( \frac{1}{ 1 - 1.31 \sqrt{ \varepsilon } + 0.46 \varepsilon } \right)
 \end{equation}
 Combined with the Greenwald limit, ohmic power can be written more compactly as,
 \begin{equation}
@@ -192,13 +192,13 @@ For clarity, Bremsstrahlung -- or braking -- radiation is what occurs when a cha
 \end{equation}
 \replaced{Where}{Here,} the radiation power density ($S_{BR}$) is given by:
 \begin{equation}
-	S_{BR} = \left( \frac{\sqrt{2}}{3 \sqrt{\pi^5}} \cdot \frac{e^6}{\epsilon_0^2 c^3 h m_e^{3/2}} \right) \cdot \left( Z_{eff} \, n^2 \, T^{1/2} \right)
+	S_{BR} = \left( \frac{\sqrt{2}}{3 \sqrt{\pi^5}} \cdot \frac{e^6}{\varepsilon_0^2 c^3 h m_e^{3/2}} \right) \cdot \left( Z_{eff} \, n^2 \, T^{1/2} \right)
 \end{equation}
 The constants in the left set of parentheses all have their usual physics meanings (i.e.\ c is the speed of light and $m_e$ is the mass of an electron). What is new is the effective charge: $Z_{eff}$.\cite{jeff}
 \begin{equation}
 	Z_{eff} = \frac{1}{n_e} \sum_j n_j Z_j^2
 \end{equation}
-The effective charge is a scheme for \replaced{reducing}{collapsing} the charge \replaced{each ion}{that each particle} has to a \replaced{single representative}{collective} value. Fundamental charge, here, is what: neutrons lack, electrons and hydrogen have one of, and helium has two. As such, a plasma with a purely deuterium and tritium fuel would have an effective charge of one. This value would then quickly rise if a Tungsten tile -- with 74 units of charge -- were to fall into the plasma core from the walls of the tokamak.\footnote{Typical effective charges ($Z_{eff}$) for a reactor are expected to be between 1 and 3.\cite{ussteady,inputfile,arc}} 
+The effective charge is a scheme for \replaced{reducing}{collapsing} the charge \replaced{each ion}{that each particle} has to a \replaced{single representative}{collective} value. Fundamental charge, here, is what: neutrons lack, electrons and hydrogen have one of, and helium has two. As such, a plasma with a purely deuterium and tritium fuel would have an effective charge of one. This value would then quickly rise if a Tungsten tile -- with 74 units of charge -- were to fall into the plasma core from the walls of the tokamak.\footnote{Typical effective charges ($Z_{eff}$) for a reactor are expected to be between 1 and 3.\cite{ussteady,inputfile,arc}}
 
 Using the volume integral -- seen in the derivation of fusion power -- allows the Bremsstrahlung power to be written in standardized units as:
 \begin{equation}
@@ -209,7 +209,7 @@ Using the volume integral -- seen in the derivation of fusion power -- allows th
 \end{equation}
 \myequations{Bremsstrahlung Power -- $P_{BR}$}
 \begin{equation}
-	K_{BR} = 0.1056 \, \frac{ (1+\nu_n)^2 \, (1+\nu_T)^{1/2} }{1+2 \, \nu_n + 0.5 \, \nu_T} \, Z_{eff} \, \epsilon^2 \, \kappa \, g
+	K_{BR} = 0.1056 \, \frac{ (1+\nu_n)^2 \, (1+\nu_T)^{1/2} }{1+2 \, \nu_n + 0.5 \, \nu_T} \, Z_{eff} \, \varepsilon^2 \, \kappa \, g
 \end{equation}
 
 This power term represents the radiation power losses involved in power balance. All that is needed now is a formula for heat conduction losses -- \replaced{one of the most difficult plasma behaviors}{the hardest plasma behavior} to model to date.
@@ -244,7 +244,7 @@ Here again, $n_D$ and $n_T$ -- the density of deuterium and tritium, respectivel
 \end{equation}
 \myequations{Heat Conduction Losses -- $P_\kappa$}
 \begin{equation}
-	K_\kappa = 0.4744 \, ( 1 + f_D ) \, \frac{ (1 + \nu_n) \, (1 + \nu_T) }{1 + \nu_n + \nu_T } \, ( \, \epsilon^2 \, \kappa \, g \, )
+	K_\kappa = 0.4744 \, ( 1 + f_D ) \, \frac{ (1 + \nu_n) \, (1 + \nu_T) }{1 + \nu_n + \nu_T } \, ( \, \varepsilon^2 \, \kappa \, g \, )
 \end{equation}
 
 Now that all five terms have been defined in power balance, the next step is expanding it and solving for the tokamak's toroidal magnetic field strength: $B_0$.
@@ -363,7 +363,7 @@ For ELMy H-Mode, this confinement scaling law can be written as:
 \replaced{However, similar scaling laws}{Where similar ones} can be \replaced{written}{given} for L-Mode, I-Mode, etc. One final remark to make before moving on is that even these fits have subtleties. The value of $\kappa$, for example, may have a slightly different geometric meaning from tokamak to tokamak. And the exact definition of loss power -- $P_{src}$ -- introduces an even larger area of discrepancy.  \deleted{Although not actually used, a better fit for our model might be one from the author:}
 %\begin{equation}
 %	\tilde \tau_E = 0.08 \, H \frac{
-%		\left( R_0^{1.49} B_0 ^ {0.3} I_P^{0.93} \right) \cdot \left( \epsilon ^ {0.17} A^{0.23}  \kappa ^ {0.56} \right) }{ \tilde P_{src} ^ {\, 0.54} }
+%		\left( R_0^{1.49} B_0 ^ {0.3} I_P^{0.93} \right) \cdot \left( \varepsilon ^ {0.17} A^{0.23}  \kappa ^ {0.56} \right) }{ \tilde P_{src} ^ {\, 0.54} }
 %\end{equation}
 
 Returning to the problem at hand, though, this model's Lawson \replaced{Parameter}{Criterion} (eq. \ref{eq:ntaue}) can be simplified after expanding the left-hand side using the Greenwald density and substituting in a confinement time scaling law. \replaced{After a few lines of algebra, this can be transformed}{Albeit a little cumbersome, this can be wrangled} into \replaced{a formula}{an equation} for $B_0$!
@@ -379,7 +379,7 @@ Returning to the problem at hand, though, this model's Lawson \replaced{Paramete
 \end{equation}
 \begin{equation}
 	K_{PB} = H \cdot \left( \frac{ K_\tau K_n^{\alpha_n^*}}{K_\kappa } \right) \cdot \left(
-     \epsilon^{\,\alpha_a} \, \kappa^{\,\alpha_\kappa} \, A^{\,\alpha_A}\right)
+     \varepsilon^{\,\alpha_a} \, \kappa^{\,\alpha_\kappa} \, A^{\,\alpha_A}\right)
 \end{equation}
 
 Where we have added new starred alpha values for the density, current, and radius:
@@ -463,7 +463,7 @@ Substituting the plasma $\beta$ from eq. \ref{eq:beta}, into this relation resul
   \tcbhighmath{ R_0 = \frac{ K_{TB} \overline{T} }{ B_0 } }
 \end{equation}
 \begin{equation}
-  K_{TB} = 4.027 \times 10^{-2} \cdot  \left( \frac{K_n \, \epsilon}{\beta_N} \right) \cdot ( 1 + f_D ) \cdot \frac{ (1 + \nu_n) \, (1 + \nu_T) }{1 + \nu_n + \nu_T }
+  K_{TB} = 4.027 \times 10^{-2} \cdot  \left( \frac{K_n \, \varepsilon}{\beta_N} \right) \cdot ( 1 + f_D ) \cdot \frac{ (1 + \nu_n) \, (1 + \nu_T) }{1 + \nu_n + \nu_T }
 \end{equation}
 \myequations{Troyon Beta Limit -- $\beta_N$}
 As mentioned, this is often the dominating constraint in a steady-state reactor. The often dominating constraint for pulsed designs -- the kink safety factor -- will be the focus of the next subsection.
@@ -474,11 +474,11 @@ Just like how the Troyon Beta Limit set a fluids-based maximum on plasma pressur
 
 The starting point, again, is an equation from the literature for the kink condition: \cite{process,oldpaper}
 \begin{equation}
-	q_{\replaced{*}{95}} = 5 \epsilon^2 \cdot  \frac{ R_0 B_0 }{ I_P } \cdot \left( \frac{1 + \kappa^2 \cdot ( 1 + 2 \delta^2 - 1.2 \delta^3 ) }{2} \right)
+	q_{\replaced{*}{95}} = 5 \varepsilon^2 \cdot  \frac{ R_0 B_0 }{ I_P } \cdot \left( \frac{1 + \kappa^2 \cdot ( 1 + 2 \delta^2 - 1.2 \delta^3 ) }{2} \right)
 \end{equation}
 Here the safety factor -- $q_{\replaced{*}{95}}$ -- \deleted{is subscripted by 95, an identifier that this value is taken at the 95\% flux surface (i.e.\ near the statistically drawn edge of the plasma). It} typically has values around 3. \deleted{Next, the $f_q$ variable is a geometric scaling factor:\added{\cite{process}}}
 %\begin{equation}
-%  f_q = \frac{1.17 - 0.65 \epsilon}{2 ( 1 - \epsilon^2 )^2} \cdot  \left( 1 + \kappa^2 * ( 1 + 2 \delta^2 - 1.2 \delta^3 ) \right)
+%  f_q = \frac{1.17 - 0.65 \varepsilon}{2 ( 1 - \varepsilon^2 )^2} \cdot  \left( 1 + \kappa^2 * ( 1 + 2 \delta^2 - 1.2 \delta^3 ) \right)
 %\end{equation}
 
 Combined, the kink safety factor can now be written in standardized units as:
@@ -487,7 +487,7 @@ Combined, the kink safety factor can now be written in standardized units as:
    \tcbhighmath{ R_0 = \frac{ K_{SF} I_P }{ B_0 } }
 \end{equation}
 \begin{equation}
-  K_{SF} = \frac{q_{\replaced{*}{95}}}{5 \epsilon^2} \cdot \left( \frac{2}{1 + \kappa^2 \cdot ( 1 + 2 \delta^2 - 1.2 \delta^3 ) } \right)
+  K_{SF} = \frac{q_{\replaced{*}{95}}}{5 \varepsilon^2} \cdot \left( \frac{2}{1 + \kappa^2 \cdot ( 1 + 2 \delta^2 - 1.2 \delta^3 ) } \right)
 \end{equation}
 \myequations{Kink Safety Factor -- $q_*$}
 This relation is the \replaced{limiting}{secondary} constraint important for most pulsed reactor designs. As with the Beta Limit, the two are derived through plasma physics alone. The remaining \replaced{limiting}{secondary} constraints, however, are engineering-based in origin -- these include: the Wall Loading Limit, the Power Cap Constraint, and the Heat Loading Limit. Each will be defined shortly.
@@ -516,7 +516,7 @@ Finishing this \replaced{limiting}{secondary} constraint, the Wall Loading limit
 	\tcbhighmath{ R_0 = K_{WL} \cdot I_P^{ \, \frac{2}{3} } \cdot (\sigma v) ^{ \, \frac{1}{3} } }
 \end{equation}
 \begin{equation}
-	K_{WL} = \left( \frac{ K_F K_n^2 }{ 5 \pi^2 P_W } \cdot \frac{\kappa}{\epsilon} \cdot \frac{1}{1 + \frac{2}{\pi} \cdot ( \kappa^2 - 1 ) } \right) ^ { \frac{1}{3} }
+	K_{WL} = \left( \frac{ K_F K_n^2 }{ 5 \pi^2 P_W } \cdot \frac{\kappa}{\varepsilon} \cdot \frac{1}{1 + \frac{2}{\pi} \cdot ( \kappa^2 - 1 ) } \right) ^ { \frac{1}{3} }
 \end{equation}
 \myequations{Wall Loading Limit -- $P_W$}
 \subsection{Setting a Maximum Power Cap}
@@ -559,7 +559,7 @@ This \replaced{limiting}{secondary} constraint can be used to create curves of r
   q_{DV} = \frac{ K_{DV} }{ K_F} \cdot \frac{ P_F \, I_P^{\,1.2} }{ R_0^{\,2.2} }
 \end{equation}
 \begin{equation}
-	K_{DV} = \frac{18.31 \times 10^{-3}}{\epsilon^{1.2}} \cdot K_P \cdot \left( \frac{2}{1+\kappa^2} \right) ^ {0.6}
+	K_{DV} = \frac{18.31 \times 10^{-3}}{\varepsilon^{1.2}} \cdot K_P \cdot \left( \frac{2}{1+\kappa^2} \right) ^ {0.6}
 \end{equation}
 
 \added{This is the heat load that impinges on an extended leg, double null divertor -- primarily from the outer midplane of the plasma core.} After a simple rearrangement and substitution for fusion power, this becomes:

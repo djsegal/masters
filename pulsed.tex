@@ -294,15 +294,15 @@ The plasma inductance is a composite of several different terms, but overall sca
 	L_2 = K_{LP} R_0
 \end{equation}
 \myequations{Plasma Inductance -- $L_2$}
-This \replaced{static}{fixed} coefficient -- $K_{LP}$ -- then combines three inductive behaviors of the plasma. The first is its own self inductance (through $l_i$). \cite{jeff} The next is a resistive component through the Ejima coefficient, $C_{ejima}$, which is usually set to $\sim \frac{1}{3}$. \cite{process} And lastly, a geometric component -- involving $\epsilon$ and $\kappa$ -- is given by the Hirshman-Neilson model. \cite{hn85} Mathematically,
+This \replaced{static}{fixed} coefficient -- $K_{LP}$ -- then combines three inductive behaviors of the plasma. The first is its own self inductance (through $l_i$). \cite{jeff} The next is a resistive component through the Ejima coefficient, $C_{ejima}$, which is usually set to $\sim \frac{1}{3}$. \cite{process} And lastly, a geometric component -- involving $\varepsilon$ and $\kappa$ -- is given by the Hirshman-Neilson model. \cite{hn85} Mathematically,
 \begin{equation}
-	K_{LP} = \mu_0 \cdot \left( \frac{l_i}{2} + C_{ejima} + \frac{ ( b_{HN} - a_{HN} ) \, ( 1 - \epsilon ) }{ ( 1 - \epsilon ) + \kappa \, d_{HN} } \right)
+	K_{LP} = \mu_0 \cdot \left( \frac{l_i}{2} + C_{ejima} + \frac{ ( b_{HN} - a_{HN} ) \, ( 1 - \varepsilon ) }{ ( 1 - \varepsilon ) + \kappa \, d_{HN} } \right)
 \end{equation}
 Here the HN values come from the 1985 Hirshman-Neilson paper:
 \begin{gather}
-	a_{HN}(\epsilon) = 2.0 + 9.25 \sqrt{\epsilon} - 1.21 \, \epsilon \\
-	b_{HN}(\epsilon) = \textnormal{ln} (8/\epsilon) \cdot ( 1 + 1.81 \sqrt{\epsilon} + 2.05 \, \epsilon ) \\
-	d_{HN}(\epsilon) = 0.73 \sqrt{\epsilon}  \cdot ( 1 + 2 \epsilon^4 - 6 \epsilon^5 +3.7 \epsilon^6 )
+	a_{HN}(\varepsilon) = 2.0 + 9.25 \sqrt{\varepsilon} - 1.21 \, \varepsilon \\
+	b_{HN}(\varepsilon) = \textnormal{ln} (8/\varepsilon) \cdot ( 1 + 1.81 \sqrt{\varepsilon} + 2.05 \, \varepsilon ) \\
+	d_{HN}(\varepsilon) = 0.73 \sqrt{\varepsilon}  \cdot ( 1 + 2 \varepsilon^4 - 6 \varepsilon^5 +3.7 \varepsilon^6 )
 \end{gather}
 
 \subsubsection{The Mutual Inductance -- M}
@@ -400,7 +400,7 @@ Where again $R_{CS}$ and $d$ are the inner radius and thickness of the central s
 
 Moving forward, the vertical field -- $B_V$ -- is a magnetic field oriented up-and-down with the ground. It is needed to prevent a tokamak plasma from \replaced{drifting radially}{spinning} out of the machine. From the literature, the magnitude of this vertical field \added{(valid for a circular plasma)} is given by:\cite{process}
 \begin{equation}
-  |B_V| = \frac{\mu_0 I_P}{4 \pi R_0} \cdot \left( \,\textnormal{ln} \left(\frac{8}{\epsilon}\right) + \beta_{\,p} + \frac{l_i}{2} - \frac{3}{2} \, \right)
+  |B_V| = \frac{\mu_0 I_P}{4 \pi R_0} \cdot \left( \,\textnormal{ln} \left(\frac{8}{\varepsilon}\right) + \beta_{\,p} + \frac{l_i}{2} - \frac{3}{2} \, \right)
 \end{equation}
 Analogous to the previously covered plasma beta, the poloidal beta can be represented by: \cite{elongation}
 \begin{equation}
@@ -425,10 +425,10 @@ Here, $g_p$ is another geometric scaling factor,
 \end{equation}
 \myequations{Vertical Field Strength -- $B_V$}
 \begin{equation}
-	K_{VT} = K_{n} \cdot ( \epsilon ^ 2 \, g_P ) \cdot ( 1 + f_D ) \, \frac{ (1 + \nu_n) \, (1 + \nu_T) }{1 + \nu_n + \nu_T }
+	K_{VT} = K_{n} \cdot ( \varepsilon ^ 2 \, g_P ) \cdot ( 1 + f_D ) \, \frac{ (1 + \nu_n) \, (1 + \nu_T) }{1 + \nu_n + \nu_T }
 \end{equation}
 \begin{equation}
-	K_{VI} = \textnormal{ln} \left(\frac{8}{\epsilon}\right) + \frac{l_i}{2} - \frac{3}{2}
+	K_{VI} = \textnormal{ln} \left(\frac{8}{\varepsilon}\right) + \frac{l_i}{2} - \frac{3}{2}
 \end{equation}
 For clarity, this will be plugged into the new PF coil flux contribution ($\Phi_{PF}$):
 \begin{equation}
@@ -447,7 +447,7 @@ The $R_{CS}$ and $d$ terms found in $\Phi_{PF}$ will now be discussed as they ar
 
 \section{Improving Tokamak Geometry}
 
-From before, this fusion systems model has been said to depend on the major and minor radius -- $R_0$ and $a$, respectively -- and along the way, various geometric parameters have been defined (e.g.\ $\epsilon$, $\kappa$, $\delta$) to describe the geometry further. Now three more thicknesses will be added: $b$, $c$, and $d$. Additionally, two fundamental dimension corresponding to the solenoid will be given: the radius ($R_{CS}$) and height ($h_{CS}$). These are the topics of this section.
+From before, this fusion systems model has been said to depend on the major and minor radius -- $R_0$ and $a$, respectively -- and along the way, various geometric parameters have been defined (e.g.\ $\varepsilon$, $\kappa$, $\delta$) to describe the geometry further. Now three more thicknesses will be added: $b$, $c$, and $d$. Additionally, two fundamental dimension corresponding to the solenoid will be given: the radius ($R_{CS}$) and height ($h_{CS}$). These are the topics of this section.
 
 \subsection{Defining Central Solenoid Dimensions}
 
@@ -476,10 +476,10 @@ In between the inner surface of the central solenoid and the major radius of the
 
 \subsubsection{The Minor Radius -- $a$}
 
-The minor radius was the first of these thicknesses we encountered. To calculate it, we introduced the inverse aspect ratio ($\epsilon$) to relate it to the major radius ($R_0$):
+The minor radius was the first of these thicknesses we encountered. To calculate it, we introduced the inverse aspect ratio ($\varepsilon$) to relate it to the major radius ($R_0$):
 \begin{equation}
 	\tag{\ref{eq:a}}
-	a = \epsilon \cdot R_0
+	a = \varepsilon \cdot R_0
 \end{equation}
 
 \subsubsection{The Blanket Thickness -- $b$}
@@ -507,12 +507,12 @@ The thickness of the TF coils -- $c$ -- is a little beyond the scope of this pap
 \end{equation}
 \myequations{TF Coil Thickness -- $c$}
 \begin{gather}
-	G_{CI} = \frac{B_{0}^2}{ 4 \mu_0 \sigma_{TF} } \cdot \frac{1}{ ( 1 - \epsilon_b )}  \cdot \left( \frac{ 4 \, \epsilon_b}{1+\epsilon_b} + \ \textnormal{ln} \left( \frac{1+\epsilon_b}{1-\epsilon_b} \right) \right) \\
-	G_{CO} = \frac{B_{0}}{ \mu_0 J_{TF} } \cdot \frac{1}{ ( 1 - \epsilon_b )}
+	G_{CI} = \frac{B_{0}^2}{ 4 \mu_0 \sigma_{TF} } \cdot \frac{1}{ ( 1 - \varepsilon_b )}  \cdot \left( \frac{ 4 \, \varepsilon_b}{1+\varepsilon_b} + \ \textnormal{ln} \left( \frac{1+\varepsilon_b}{1-\varepsilon_b} \right) \right) \\
+	G_{CO} = \frac{B_{0}}{ \mu_0 J_{TF} } \cdot \frac{1}{ ( 1 - \varepsilon_b )}
 \end{gather}
-The critical stress -- $\sigma_{TF}$ in $G_{CI}$ implies it depends on the structural component, whereas the maximum current density -- $J_{TF}$ -- implies a magnetic predisposition in $G_{CO}$. The use of $G_\square$ in these quantities, instead of $K_\square$ is because they include the toroidal magnetic field strength -- $B_0$. For this reason, they are referred to as \replaced{dynamic}{floating} coefficients. Lastly, the term $\epsilon_b$ represents the blanket inverse aspect ratio that combines the minor radius with the blanket thickness:
+The critical stress -- $\sigma_{TF}$ in $G_{CI}$ implies it depends on the structural component, whereas the maximum current density -- $J_{TF}$ -- implies a magnetic predisposition in $G_{CO}$. The use of $G_\square$ in these quantities, instead of $K_\square$ is because they include the toroidal magnetic field strength -- $B_0$. For this reason, they are referred to as \replaced{dynamic}{floating} coefficients. Lastly, the term $\varepsilon_b$ represents the blanket inverse aspect ratio that combines the minor radius with the blanket thickness:
 \begin{equation}
-	\epsilon_b = \frac{ a + b }{R_0}
+	\varepsilon_b = \frac{ a + b }{R_0}
 \end{equation}
 
 \subsubsection{The Central Solenoid Thickness -- $d$}
@@ -579,7 +579,7 @@ Now that the various thicknesses have been defined (i.e.\ $a$, $b$, $c$, and $d$
 Utilizing the four thicknesses from before, these can now be expanded to simple formulas. Repeating the thicknesses:
 \begin{align}
 	\tag{\ref{eq:a}}
-	a &= \epsilon \cdot R_0 \\
+	a &= \varepsilon \cdot R_0 \\
 	\tag{\ref{eq:bb}}
 	b &= 1.23 + 0.074 \ \textnormal{ln} \, P_W \\
 	\tag{\ref{eq:cc}}
@@ -590,13 +590,13 @@ Utilizing the four thicknesses from before, these can now be expanded to simple 
 Plugging these into the central solenoid's dimensions results in:
 \begin{equation}
 	\tcbhighmath{
-	h_{CS} = 2 \cdot \left( R_0 \cdot \left( \epsilon \kappa + G_{CI} \right) + \left( b + G_{CO} \right) \right)
+	h_{CS} = 2 \cdot \left( R_0 \cdot \left( \varepsilon \kappa + G_{CI} \right) + \left( b + G_{CO} \right) \right)
 	}
 \end{equation}
 \myequations{Central Solenoid Height -- $h_{CS}$}
 \begin{equation}
 	\tcbhighmath{
-	R_{CS} = \frac{ 1 }{ 1 + K_{DR} } \cdot \left( R_0 \cdot \left( 1 - \epsilon - G_{CI}  \right) - \left( K_{DO} + b + G_{CO}  \right) \right)
+	R_{CS} = \frac{ 1 }{ 1 + K_{DR} } \cdot \left( R_0 \cdot \left( 1 - \varepsilon - G_{CI}  \right) - \left( K_{DO} + b + G_{CO}  \right) \right)
 	}
 \end{equation}
 \myequations{Central Solenoid Inner Radius -- $R_{CS}$}
@@ -605,24 +605,24 @@ These are the complete central solenoid dimension formulas. To make them more tr
 
 The first simplification to make while estimating central solenoid dimensions is to neglect the magnetic current-carrying portions of the central solenoid and TF coils. This results in:
 \begin{equation}
-	\underset{K_{DO} \to 0}{\underset{G_{CO} \to 0}{\lim}} \ h_{CS} = h_{CS}^{\,\dagger} = 2 R_0 \cdot \left( K_{EK} + \epsilon_b + G_{CI} \right)
+	\underset{K_{DO} \to 0}{\underset{G_{CO} \to 0}{\lim}} \ h_{CS} = h_{CS}^{\,\dagger} = 2 R_0 \cdot \left( K_{EK} + \varepsilon_b + G_{CI} \right)
 \end{equation}
 \begin{equation}
-	\underset{K_{DO} \to 0}{\underset{G_{CO} \to 0}{\lim}} \ R_{CS} = R_{CS}^{\,\dagger} = \frac{ R_0 }{ 1 + K_{DR} } \cdot \left( 1 - \epsilon_b - G_{CI}  \right)
+	\underset{K_{DO} \to 0}{\underset{G_{CO} \to 0}{\lim}} \ R_{CS} = R_{CS}^{\,\dagger} = \frac{ R_0 }{ 1 + K_{DR} } \cdot \left( 1 - \varepsilon_b - G_{CI}  \right)
 \end{equation}
 
 The new \replaced{static}{fixed} coefficient, here, is:
 \begin{equation}
-	K_{EK} = \epsilon \cdot \left( \kappa - 1 \right)
+	K_{EK} = \varepsilon \cdot \left( \kappa - 1 \right)
 \end{equation}
 The next simplification is ignoring the TF coil thickness -- and thus magnetic field dependence -- altogether:
 \begin{equation}
 	\label{eq:hcs_simple}
-	\underset{G_{CI} \to 0}{\lim} \ h_{CS}^{\,\dagger} = h_{CS}^{\,\ddagger} = 2 R_0 \cdot \left( K_{EK} + \epsilon_b \right)
+	\underset{G_{CI} \to 0}{\lim} \ h_{CS}^{\,\dagger} = h_{CS}^{\,\ddagger} = 2 R_0 \cdot \left( K_{EK} + \varepsilon_b \right)
 \end{equation}
 \begin{equation}
 	\label{eq:rcs_simple}
-	\underset{G_{CI} \to 0}{\lim} \ R_{CS}^{\,\dagger} = R_{CS}^{\,\ddagger} = \frac{ R_0 }{ 1 + K_{DR} } \cdot \left( 1 - \epsilon_b  \right)
+	\underset{G_{CI} \to 0}{\lim} \ R_{CS}^{\,\dagger} = R_{CS}^{\,\ddagger} = \frac{ R_0 }{ 1 + K_{DR} } \cdot \left( 1 - \varepsilon_b  \right)
 \end{equation}
 
 These oversimplifications will be used later this chapter while simplifying the generalized current equation to something more tractable. For now, they highlight how the dimensions change as different components are neglected. The next step is bringing plasma physics back into the flux balance equation and solving for the generalized current.
@@ -721,20 +721,20 @@ As this is not quite simple enough, these previous simplifications will be incor
 \end{equation}
 \begin{equation}
 	\tag{\ref{eq:hcs_simple}}
-	h_{CS}^{\,\ddagger} = 2 R_0 \cdot \left( K_{EK} + \epsilon_b \right)
+	h_{CS}^{\,\ddagger} = 2 R_0 \cdot \left( K_{EK} + \varepsilon_b \right)
 \end{equation}
 \begin{equation}
 	\tag{\ref{eq:rcs_simple}}
-	R_{CS}^{\,\ddagger} = \frac{ R_0 }{ 1 + K_{DR} } \cdot \left( 1 - \epsilon_b  \right)
+	R_{CS}^{\,\ddagger} = \frac{ R_0 }{ 1 + K_{DR} } \cdot \left( 1 - \varepsilon_b  \right)
 \end{equation}
 Taking these into consideration results in the following current formula:
 \begin{equation}
-	I_P^\ddagger = K_{BS} \, \overline T + \left( \frac{ K_{CS} R_0^3 }{ K_{LP} R_0^2 + K_{RP} \, \tau_{FT} \, \overline T ^ {-3/2} } \cdot \frac{ ( 1 - \epsilon_b ) \cdot \sqrt{ 2 ( K_{EK} + \epsilon_b ) } }{ 1 + K_{DR} } \right)
+	I_P^\ddagger = K_{BS} \, \overline T + \left( \frac{ K_{CS} R_0^3 }{ K_{LP} R_0^2 + K_{RP} \, \tau_{FT} \, \overline T ^ {-3/2} } \cdot \frac{ ( 1 - \varepsilon_b ) \cdot \sqrt{ 2 ( K_{EK} + \varepsilon_b ) } }{ 1 + K_{DR} } \right)
 \end{equation}
 In the limit that the pulse length drops to zero (and bootstrap current is negligible),
 \begin{equation}
 	\label{eq:tau_zero}
-	\lim_{ \tau_{FT} \to 0 } I_P^\ddagger = R_0 \cdot \left( \frac{ K_{CS} }{ K_{LP} } \cdot \frac{ ( 1 - \epsilon_b ) \cdot \sqrt{ 2 ( K_{EK} + \epsilon_b ) } }{ 1 + K_{DR} } \right)
+	\lim_{ \tau_{FT} \to 0 } I_P^\ddagger = R_0 \cdot \left( \frac{ K_{CS} }{ K_{LP} } \cdot \frac{ ( 1 - \varepsilon_b ) \cdot \sqrt{ 2 ( K_{EK} + \varepsilon_b ) } }{ 1 + K_{DR} } \right)
 \end{equation}
 This implies that a purely pulsed current scales with major radius to leading order.
 
@@ -747,7 +747,7 @@ From the previous two subsections, we arrived at equations for infinitely large 
 \end{equation}
 \begin{equation}
 	\tag{\ref{eq:tau_zero}}
-	\lim_{ \tau_{FT} \to 0 } I_P^\ddagger = R_0 \cdot \left( \frac{ K_{CS} }{ K_{LP} } \cdot \frac{ ( 1 - \epsilon_b ) \cdot \sqrt{ 2 ( K_{EK} + \epsilon_b ) } }{ 1 + K_{DR} } \right)
+	\lim_{ \tau_{FT} \to 0 } I_P^\ddagger = R_0 \cdot \left( \frac{ K_{CS} }{ K_{LP} } \cdot \frac{ ( 1 - \varepsilon_b ) \cdot \sqrt{ 2 ( K_{EK} + \varepsilon_b ) } }{ 1 + K_{DR} } \right)
 \end{equation}
 What these imply at an intuitive level is that at small pulses, current scales with the major radius. While for long pulses, current scales with plasma temperature. In the general case, of course, the problem becomes much harder to predict. \added{-- as shown by the code's results using \cref{eq:gen_ip}}.
 

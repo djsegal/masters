@@ -12,10 +12,11 @@ We assume that current drive is provided by lower hybrid waves because of the co
 \end{equation}
 Here, for simplicity and slightly optimistically, we assume that 100\% of the klystron RF power, $P_H$, is absorbed in the plasma.
 
-The current drive fraction -- $f_{CD} = I_{CD}/I_P$ -- can then be written as,
-\begin{equation}
-	\begin{array} { c } { f _ { C D } = K _ { C D } \frac { \eta _ { C D } \overline { n } _ { 20 } R _ { 0 } ^ { 2 } ( \hat { \sigma } v ) } { I _ { M } } } \\ { K _ { C D } = 278 \frac { f _ { D } ^ { 2 } \varepsilon ^ { 2 } \kappa } { Q } = 0.634 } \end{array}
-\end{equation}
+The current drive fraction $f_{CD} = I_{CD}/I_P$ can then be written as,
+\begin{gather}
+	f _ { C D } = K _ { C D } \frac { \eta _ { C D } \overline { n } _ { 20 } R _ { 0 } ^ { 2 } ( \hat { \sigma } v ) } { I _ { P } } \\
+	K _ { C D } = 278 \, \frac { f _ { D } ^ { 2 } \varepsilon ^ { 2 } \kappa } { Q }
+\end{gather}
 Typical values for $\eta_{CD}$ are around 0.3.\cite{itercd} However, this current drive efficiency is actually a function of: $\overline n$, $\overline T$, and $B_0$. This dependence must be included in the design to obtain reliable results. A self consistent calculation of $\eta_{CD} = \eta_{CD}(\overline n, \overline T, B_0)$ requires considerable analysis, the details of which are presented next section.
 
 \section{Detailed Analysis}
@@ -25,37 +26,38 @@ To design a steady state fusion reactor, it is necessary to calculate $\eta_{CD}
 \label{eq:lhcd_1}
 I _ { C D } = \eta _ { C D } \frac { P _ { H } } { n _ { 20 } R }
 \end{equation}
-Here, $P_H = \eta_{RF} P_{RF}$, with $P_{RF}$ equal to the total wall power used for current drive (plus heating) and $\eta_{RF} \approx 0.5$ is the conversion efficiency from wall power to RF absorbed power. Also, $n_{20} = n_{20}(\rho_j)$ and $R = R(\rho_j, \theta)$ are the density and major radius evaluated at the minor radius $\rho = \rho_j$ and launch angle $\theta$ with $\rho_j$ corresponding to the location of the peak driven current density: $J_{max} = J_{CD}(\rho_j, \theta)$. The angle $\theta$ is a known quantity set by the experimental configuration while $\rho_j$ is yet to be determined.
 
-The value of $\eta_{CD}$ is related to a normalized quantity $\tilde \eta$, the efficiency usually calculated in the literature, by a series of connecting formulas. The inter-relations start with 
+Here, $P_H = \eta_{RF} P_{RF}$, with $P_{RF}$ equal to the total wall power used for current drive (plus heating) and $\eta_{RF} \approx 0.5$ is the conversion efficiency from wall power to RF absorbed power. Also, $n_{20} = n_{20}(\rho_J)$ and $R = R(\rho_J, \theta)$ are the density and major radius evaluated at the minor radius $\rho = \rho_J$ and launch angle $\theta$ with $\rho_J$ corresponding to the location of the peak driven current density: $J_{\textnormal{max}} = J_{CD}(\rho_J, \theta)$. The angle $\theta$ is a known quantity set by the experimental configuration while $\rho_J$ is yet to be determined.
+
+The value of $\eta_{CD}$ is related to a normalized quantity $\tilde \eta$, the efficiency usually calculated in the literature, by a series of connecting formulas. The inter-relations start with
 \begin{equation}
- \eta_I = \frac { \int _ { A } J _ { C D } d A } { \int _ { V } S _ { H } d V } \approx \frac { 1 } { 2 \pi } \left[ \frac { J _ { C D } } { R S _ { H } } \right] _ { \rho _ { j } , \theta } = \frac { \eta _ { L H } } { 2 \pi R } \left[ \frac { J _ { C D } } { R S _ { L H } } \right] _ { \rho _ { J } , \theta }	
+ \eta_I = \frac { \int _ { A } J _ { C D } d A } { \int _ { V } S _ { H } d V } \approx \frac { 1 } { 2 \pi } \left[ \frac { J _ { C D } } { R S _ { H } } \right] _ { \rho _ { j } , \theta } = \frac { \eta _ { L H } } { 2 \pi R } \left[ \frac { J _ { C D } } { R S _ { L H } } \right] _ { \rho _ { J } , \theta }
 \end{equation}
-where $\eta_I = I_{CD} = P_H$ A/W is the overall current drive efficiency measuring how many delivered watts of klystron RF power are required to drive one ampere of current. For simplicity and slightly optimistically all delivered power is assumed to be absorbed by the plasma. Also, $S_H(\rho,\theta)$ is the klystron power density delivered to the plasma, whose absorption is localized around $\rho = \rho_j$.
+where $\eta_I = I_{CD} / P_H$\, A/W is the overall current drive efficiency measuring how many delivered watts of klystron RF power are required to drive one ampere of current. For simplicity and slightly optimistically all delivered power is assumed to be absorbed by the plasma. Also, $S_H(\rho,\theta)$ is the klystron power density delivered to the plasma, whose absorption is localized around $\rho = \rho_J$.
 
 Due to various losses, only a fraction of the absorbed klystron power, $\eta_{LH} \approx 0.75$, actually drives current. These losses have to do with the fact that the power spectrum arising from a realistic waveguide array has both positive and negative lobes -- it is not an ideal positive delta function. The combination of finite spectral width plus oppositely driven current from the negative lobe implies that only a portion of the total absorbed power actually drives a net positive current. The result of this discussion is that the power density, $S_{LH}$, driving lower hybrid current is related to the delivered klystron power density by $S_{LH} = \eta_{LH} S_H$.
 
 Now, the efficiency, $\tilde \eta$ usually calculated in the literature is defined by:
 \begin{gather}
-	\tilde { \eta } \left( \rho _ { J } , \theta \right) = \left[ \frac { J _ { C D } / e n v _ { T _ { e } } } { S _ { L H } / m _ { e } n \nu _ { 0 } v _ { T e } ^ { 2 } } \right] _ { \rho _ { j } , \theta } \\
-	v _ { T _ { e } } \left( \rho _ { J } \right) = \left[ \frac { 2 T _ { e } } { m _ { e } } \right] _ { \rho _ { J } } ^ { 1 / 2 } \\
+	\tilde { \eta } \left( \rho _ { J } , \theta \right) = \left[ \frac { J _ { C D } / e n v _ { Te } } { S _ { L H } / m _ { e } n \nu _ { 0 } v _ { T e } ^ { 2 } } \right] _ { \rho _ { j } , \theta } \\
+	v _ { Te } \left( \rho _ { J } \right) = \left[ \frac { 2 T _ { e } } { m _ { e } } \right] _ { \rho _ { J } } ^ { 1 / 2 } \\
 	\nu _ { 0 } \left( \rho _ { J } \right) = \left[ \frac { \omega _ { p e } ^ { 4 } \ln \Lambda } { 2 \pi n _ { e } v _ { T e } ^ { 3 } } \right] _ { \rho _ { J } }
 \end{gather}
 It then follows that
 \begin{equation}
 	\eta _ { I } = \frac { \eta _ { L H } } { 2 \pi } \left[ \frac { e } { R m _ { e } \nu _ { 0 } v _ { T e } } \right] _ { \rho _ { j } , \theta } \tilde { \eta } \left( \rho _ { J } , \theta \right)
 \end{equation}
-From \cref{eq:lhcd_1}, we see that $\eta _ { C D } = \eta _ { I } \left[ n _ { 20 } R \right] _ { \rho _ { j } , \theta }$, which leads to the desired conversion relation:
+From \cref{eq:lhcd_1}, we see that $\eta _ { C D } = \eta _ { I } \left[ n _ { 20 } R \right] _ { \rho _ { j } , \theta }$, which leads to the desired conversion relation: 
 \begin{equation}
-	\eta _ { C D } = \frac { \eta _ { L H } } { 2 \pi } \left[ \frac { e n _ { 20 } } { m _ { e } \nu _ { 0 } v _ { T _ { e } } } \right] _ { \rho _ { j } } \tilde { \eta } \left( \rho _ { J } , \theta \right) = 0.06108 \frac { \eta _ { L H } } { \ln \Lambda } T _ { k } \tilde { \eta }
+	\eta _ { C D } = \frac { \eta _ { L H } } { 2 \pi } \left[ \frac { e n _ { 20 } } { m _ { e } \nu _ { 0 } v _ { Te } } \right] _ { \rho _ { j } } \tilde { \eta } \left( \rho _ { J } , \theta \right) = 0.06108 \frac { \eta _ { L H } } { \ln \Lambda } T _ { k } \tilde { \eta }
 \end{equation}
 
 \subsubsection{An expression for $\tilde \eta$}
 
-Needed for the design code is an expression for $\tilde \eta(\rho_j, \theta)$. Such an expression, valid for arbitrary $\rho$, has been determined by Ehst and Karney\cite{ehstkarney} -- based on a sophisticated theoretical analysis combined with extensive numerical results. Once $\rho_j$ is determined we set $\rho = \rho_j$ in the expression for $\tilde \eta(\rho,\theta).$ Ehst and Karney find that a good fit for $\tilde \eta(\rho,\theta)$ can be written as:
+Needed for the design code is an expression for $\tilde \eta(\rho_J, \theta)$. Such an expression, valid for arbitrary $\rho$, has been determined by Ehst and Karney\cite{ehstkarney} -- based on a sophisticated theoretical analysis combined with extensive numerical results. Once $\rho_J$ is determined we set $\rho = \rho_J$ in the expression for $\tilde \eta(\rho,\theta).$ Ehst and Karney find that a good fit for $\tilde \eta(\rho,\theta)$ can be written as:
 \begin{equation}
 	\label{eq:lhcd_2}
-	\tilde { \eta } = C M R \eta _ { 0 }
+	\tilde { \eta } = C M R \, \eta _ { 0 }
 \end{equation}
 
 For LHCD, the parameters appearing in \cref{eq:lhcd_2} have the form:
@@ -66,9 +68,9 @@ For LHCD, the parameters appearing in \cref{eq:lhcd_2} have the form:
 	\eta _ { 0 } ( \rho , \theta ) &= \frac { K } { w } + D + \frac { 8 w ^ { 2 } } { 5 + Z _ { c f f } } & K = \frac { 2.12 } { Z _ { eff } } &\qquad D = \frac { 3.83 } { Z _ { eff } ^ { 0.707 } }
 \end{align}
 
-All quantities have been defined except for $x_t^2(\rho,\theta)$ and $w(\rho,\theta)$. The quantity w is a normalized form of the resonant particle velocity which absorbs energy and momentum from the lower hybrid wave,
+All quantities have been defined except for $x_t^2(\rho,\theta)$ and $w(\rho,\theta)$. The quantity $w$ is a normalized form of the resonant particle velocity which absorbs energy and momentum from the lower hybrid wave,
 \begin{equation}
-	w ( \rho , \theta ) = \frac { \omega } { k _ { \| } v _ { T e } } = \frac { c } { v _ { T _ { e } } } \frac { 1 } { n _ { \| } }
+	w ( \rho , \theta ) = \frac { \omega } { k _ { \| } v _ { T e } } = \frac { c } { v _ { Te } } \frac { 1 } { n _ { \| } }
 \end{equation}
 with $n_\parallel$ the parallel index of refraction. The value of $n_\parallel(\rho,\theta)$ will be discussed shortly.
 
@@ -76,7 +78,7 @@ The quantity $x_t^2$ is a toroidal correction associated with the fact that trap
 \begin{equation}
 	x _ { t } ^ { 2 } ( \rho , \theta ) = w ^ { 2 } \left( \frac { B } { B _ { M } - B } \right)
 \end{equation}
-where from simple guiding center theory assuming that $B \approx B_\phi$
+where from simple guiding center theory assuming that $B \approx B_\phi$,
 \begin{gather}
 	B _ { M } = \frac { B _ { 0 } } { 1 - \varepsilon \rho } \\
 	B = \frac { B _ { 0 } } { 1 + \varepsilon \rho \cos \theta }
@@ -84,39 +86,41 @@ where from simple guiding center theory assuming that $B \approx B_\phi$
 
 \subsubsection{Calculation of $n_\parallel^2(\rho,\theta)$}
 
-The next step in the evaluation of $\eta_{CD}$ is the calculation of $n_\parallel^2(\rho,\theta)$. Its value is determined by the requirements for accessibility from the plasma edge into the absorption layer. The relevant physics follows from an analysis of the cold plasma dispersion relation given by
+The next step in the evaluation of $\eta_{CD}$ is the calculation of $n_\parallel^2(\rho,\theta)$. Its value is determined by the requirements for accessibility from the plasma edge into the absorption layer. The relevant physics follows from an analysis of the cold plasma dispersion relation given by 
 \begin{equation}
 \small
 \label{eq:lhcd_4}
-n _ { \perp } ^ { 2 } ( \rho , \theta ) = - \frac { K _ { \| } } { 2 K _ { \perp } } \left\{ n _ { \| } ^ { 2 } - K _ { \perp } + \frac { K _ { A } ^ { 2 } } { K _ { \| } } \pm \left[ \left( n _ { \| } ^ { 2 } - K _ { \perp } + \frac { K _ { A } ^ { 2 } } { K _ { \| } } \right) ^ { 2 } + \frac { 4 K _ { \perp } K _ { A } ^ { 2 } } { K _ { \| } } \right] ^ { 1 / 2 } \right\}	
+n _ { \perp } ^ { 2 } ( \rho , \theta ) = - \frac { K _ { \| } } { 2 K _ { \perp } } \left\{ n _ { \| } ^ { 2 } - K _ { \perp } + \frac { K _ { A } ^ { 2 } } { K _ { \| } } \pm \left[ \left( n _ { \| } ^ { 2 } - K _ { \perp } + \frac { K _ { A } ^ { 2 } } { K _ { \| } } \right) ^ { 2 } + \frac { 4 K _ { \perp } K _ { A } ^ { 2 } } { K _ { \| } } \right] ^ { 1 / 2 } \right\}
 \end{equation}
 The plus sign corresponds to the desired root and is often referred to as the slow wave.
 
 In the lower hybrid regime the relevant ordering of parameters is
 \begin{equation}
-\begin{array} { c } { \omega _ { p e } / \Omega _ { e } \sim \omega _ { p i } / \omega \sim n _ { \| } \sim 1 } \\ { \omega _ { p i } / \Omega _ { i } \sim \omega / \Omega _ { i } \sim \Omega _ { e } / \omega \sim n _ { \perp } \sim m _ { i } / m _ { e } ^ { 1 / 2 } \gg 1 } \end{array}
+\begin{array} { c } { \omega _ { p e } / \Omega _ { e } \sim \omega _ { p i } / \omega \sim n _ { \| } \sim 1 } \\ { \omega _ { p i } / \Omega _ { i } \sim \omega / \Omega _ { i } \sim \Omega _ { e } / \omega \sim n _ { \perp } \sim \sqrt{ m _ { i } / m _ { e } }  \, \gg 1 } \end{array}
 \end{equation}
 leading to the following simple forms for the elements of the dielectric tensor
 \begin{equation}
-	\begin{aligned} K _ { \perp } ( \rho , \theta ) & = 1 + \frac { \omega _ { p e } ^ { 2 } } { \Omega _ { e } ^ { 2 } } - \frac { \omega _ { p i } ^ { 2 } } { \omega ^ { 2 } } \sim 1 \\ K _ { A } ( \rho , \theta ) & = \frac { \omega _ { p e } ^ { 2 } } { \omega \Omega _ { e } } \sim m _ { i } / m _ { e } ^ { 1 / 2 } \\ K _ { \| } ( \rho ) & = - \frac { \omega _ { p e } ^ { 2 } } { \omega ^ { 2 } } \sim m _ { i } / m _ { e } \end{aligned}
+	\begin{aligned} K _ { \perp } ( \rho , \theta ) & = 1 + \frac { \omega _ { p e } ^ { 2 } } { \Omega _ { e } ^ { 2 } } - \frac { \omega _ { p i } ^ { 2 } } { \omega ^ { 2 } } \sim 1 \\ K _ { A } ( \rho , \theta ) & = \frac { \omega _ { p e } ^ { 2 } } { \omega \Omega _ { e } } \sim \sqrt{ m _ { i } / m _ { e } } \\ K _ { \| } ( \rho ) & = - \frac { \omega _ { p e } ^ { 2 } } { \omega ^ { 2 } } \sim m _ { i } / m _ { e } \end{aligned}
 \end{equation}
-The first requirement for accessibility is that the function under the square root be positive. When this function passes through zero there is a double root for $n_\perp^2$ causing a mode conversion from the slow wave to the fast wave. The fast wave does not propagate into the plasma. It is reflected back out through the plasma surface, obviously an undesirable result. Avoiding mode conversion requires a sufficiently large value of $n_\parallel^2$ to keep to keep the function under the square root positive. This value must satisfy
+The first requirement for accessibility is that the function under the square root be positive. When this function passes through zero there is a double root for $n_\perp^2$ causing a mode conversion from the slow wave to the fast wave. The fast wave does not propagate into the plasma. It is reflected back out through the plasma surface, obviously an undesirable result. Avoiding mode conversion requires a sufficiently large value of $n_\parallel^2$ to keep the function under the square root positive. This value must satisfy
 \begin{equation}
 	\label{eq:lhcd_3}
 	n _ { \| } ^ { 2 } ( \rho , \theta ) \geq \left[ K _ { \perp } ^ { 1 / 2 } + \left( - \frac { K _ { A } ^ { 2 } } { K _ { \| } } \right) ^ { 1 / 2 } \right] ^ { 2 }
 \end{equation}
 Since $\eta_{CD} \propto 1 / n_\parallel^2$ we see that current drive efficiency is maximized when $n_\parallel^2(\rho,\theta)$ is minimized -- the inequality in \cref{eq:lhcd_3} must be set to equality.
- 
-At this point there is an important subtlety that must be taken into account. The issue is that the wavelength spectrum of the applied klystron source is not a delta function -- it has a finite half width, $\Delta n _ { \| } \approx 0.2$ and a negative lobe. For simplicity, we have modeled the spectrum as rectangular and ignore the negative lobe. The negative lobe is accounted for through the value of $\eta_{LH}$, since this power obviously does not drive current in the desired direction. Now, \cref{eq:lhcd_3} is an inequality and we want to minimize $n_\parallel^2 (\rho,\theta)$ over all $\rho$ for the given $\theta$ where the power is absorbed. Therefore, we must use the equality sign in \cref{eq:lhcd_3} for the strictest case -- that $n _ { \| } \left( \hat { \rho } _ { J } , \theta \right) = n _ { \| } \left( \rho _ { J } , \theta \right) - \Delta n _ { \| }$ -- where $\hat \rho_J$ and $\rho_J$ (both as yet undetermined) are the corresponding strictest and average radii where power is absorbed.
+
+At this point there is an important subtlety that must be taken into account. The issue is that the wavelength spectrum of the applied klystron source is not a delta function -- it has a finite half width, $\Delta n _ { \| } \approx 0.2$, and a negative lobe. For simplicity, we have modeled the spectrum as rectangular and ignore the negative lobe. The negative lobe is accounted for through the value of $\eta_{LH}$, since this power obviously does not drive current in the desired direction. Now, \cref{eq:lhcd_3} is an inequality and we want to minimize $n_\parallel^2 (\rho,\theta)$ over all $\rho$ for the given $\theta$ where the power is absorbed. Therefore, we must use the equality sign in \cref{eq:lhcd_3} for the strictest case -- that $n _ { \| } \left( \hat { \rho } _ { J } , \theta \right) = \left( n _ { \| } \left( \rho _ { J } , \theta \right) - \Delta n _ { \| } \right) $ -- where $\hat \rho_J$ and $\rho_J$ (both as yet undetermined) are the corresponding strictest and average radii where power is absorbed.
 
 With this in mind, after substituting the simplified expressions for the elements of the dielectric tensor we obtain
-\begin{equation}
+\begin{gather}
 	\label{eq:lhcd_6}
-	\begin{array} { c } { n _ { \| } ^ { 2 } \left( \hat { \rho } _ { J } , \theta \right) = \left[ \left( 1 - \frac { 1 - \hat { \omega } ^ { 2 } } { \hat { \omega } ^ { 2 } } X \right) ^ { 1 / 2 } + X ^ { 1 / 2 } \right] ^ { 2 } } \\ { X \left( \hat { \rho } _ { J } , \theta \right) = \omega _ { p e } ^ { 2 } \left( \hat { \rho } _ { J } \right) / \Omega _ { e } ^ { 2 } \left( \hat { \rho } _ { J } , \theta \right) } \\ { \hat { \omega } ^ { 2 } \left( \hat { \rho } _ { J } , \theta \right) = \omega ^ { 2 } / \Omega _ { e } \left( \hat { \rho } _ { J } , \theta \right) \Omega _ { i } \left( \hat { \rho } _ { J } , \theta \right) } \end{array}
-\end{equation}
+	 n _ { \| } ^ { 2 } \left( \hat { \rho } _ { J } , \theta \right) = \left[ \left( 1 - \frac { 1 - \hat { \omega } ^ { 2 } } { \hat { \omega } ^ { 2 } } X \right) ^ { 1 / 2 } + X ^ { 1 / 2 } \right] ^ { 2 } \\
+	 X \left( \hat { \rho } _ { J } , \theta \right) = \frac{ \omega _ { p e } ^ { 2 } \left( \hat { \rho } _ { J } \right) }{\Omega _ { e } ^ { 2 } \left( \hat { \rho } _ { J } , \theta \right) } \\
+	 \hat { \omega } ^ { 2 } \left( \hat { \rho } _ { J } , \theta \right) = \frac{ \omega ^ { 2 } }{ \Omega _ { e } \left( \hat { \rho } _ { J } , \theta \right) \Omega _ { i } \left( \hat { \rho } _ { J } , \theta \right) }
+\end{gather}
 The question now is how do we choose the frequency: $\hat \omega$? There are actually three constraints on the frequency and we must choose the strictest one to determine $\hat \omega^2$. The constraints are as follows:
 \begin{equation}
-	\begin{array} { l l } { \omega ^ { 2 } > \omega _ { L H } ^ { 2 } \left( \hat { \rho } _ { J } , \theta \right) } & { \text { Avoid mode conversion before reaching } \hat { \rho } _ { J } , \theta } \\ { \omega ^ { 2 } > 4 \omega _ { L H } ^ { 2 } \left( \hat { \rho } _ { J } , \theta \right) } & { \text { Avoid the PDI before reacing } \hat { \rho } _ { J } , \theta } \\ { \omega ^ { 2 } > k _ { \perp } ^ { 2 } \left( \hat { \rho } _ { J } , \theta \right) v _ { \alpha } ^ { 2 } } & { \text { Avoid coupling to } \alpha \text { particles before reaching } \hat { \rho } _ { J } , \theta } \end{array}
+	\begin{array} { l l } { \omega ^ { 2 } > \omega _ { L H } ^ { 2 } \left( \hat { \rho } _ { J } , \theta \right) } & { \text { Avoid mode conversion before reaching } \hat { \rho } _ { J } , \theta } \\ { \omega ^ { 2 } > 4 \omega _ { L H } ^ { 2 } \left( \hat { \rho } _ { J } , \theta \right) } & { \text { Avoid the PDI before reaching } \hat { \rho } _ { J } , \theta } \\ { \omega ^ { 2 } > k _ { \perp } ^ { 2 } \left( \hat { \rho } _ { J } , \theta \right) v _ { \alpha } ^ { 2 } } & { \text { Avoid coupling to } \alpha \text { particles before reaching } \hat { \rho } _ { J } , \theta } \end{array}
 \end{equation}
 Here, $\omega _ { L H } ^ { 2 } \left( \hat { \rho } _ { J } , \theta \right) = \omega _ { p i } ^ { 2 } / \left( 1 + \omega _ { p e } ^ { 2 } / \Omega _ { e } ^ { 2 } \right)$ is the square of the lower hybrid frequency and $v _ { \alpha } = \left( 2 E _ { \alpha } / m _ { \alpha } \right) ^ { 1 / 2 }$ is the alpha particle speed. Also, PDI denotes  parametric decay instability. The second and third constraints are approximate values, used here for simplicity.
 
@@ -126,41 +130,44 @@ Each of these constraints is substituted into the expression for $n_\parallel^2$
 \end{equation}
 This expression is simplified by evaluating $n_\perp^2$ using \cref{eq:lhcd_4} coupled with $n_\parallel^2$ given by \cref{eq:lhcd_3}
 \begin{equation}
-	n _ { \perp } ^ { 2 } \left( \hat { \rho } _ { J } , \theta \right) = - \frac { K _ { \| } } { K _ { \perp } ^ { 1 / 2 } } \left( - \frac { K _ { A } ^ { 2 } } { K _ { \| } } \right) ^ { 1 / 2 } = \frac { m _ { i } } { m _ { e } } \frac { X ^ { 3 / 2 } } { \hat { \omega } \left[ \hat { \omega } ^ { 2 } ( 1 + X ) - X \right] ^ { 1 / 2 } }
+	n _ { \perp } ^ { 2 } \left( \hat { \rho } _ { J } , \theta \right) = - \frac { K _ { \| } } { K _ { \perp } ^ { 1 / 2 } } \left( - \frac { K _ { A } ^ { 2 } } { K _ { \| } } \right) ^ { 1 / 2 } = \frac { m _ { i } } { m _ { e } } \, \frac { X ^ { 3 / 2 } } { \hat { \omega } \left[ \hat { \omega } ^ { 2 } ( 1 + X ) - X \right] ^ { 1 / 2 } }
 	\label{eq:lhcd_5}
 \end{equation}
 \cref{eq:lhcd_5} is a quadratic equation for $\hat \omega ^2$, which can be easily solved, yielding:
-\begin{equation}
-\begin{array} { c } { \hat { \omega } ^ { 2 } \left( \hat { \rho } _ { J } , \theta \right) = \frac { 1 } { 2 } \frac { X } { 1 + X } + \frac { 1 } { 2 } \left[ \frac { X ^ { 2 } } { ( 1 + X ) ^ { 2 } } + 4 \gamma ^ { 2 } \frac { X ^ { 3 } } { 1 + X } \right] ^ { 1 / 2 } } \\ { \gamma = \frac { m _ { i } } { m _ { e } } \frac { 1 } { n _ { \perp } ^ { 2 } } = \frac { 2 m _ { i } E _ { \alpha } } { m _ { e } m _ { \alpha } c ^ { 2 } } = 8.562 } \end{array}
-\end{equation}
+\begin{gather} 
+	\hat { \omega } ^ { 2 } \left( \hat { \rho } _ { J } , \theta \right) = \frac { 1 } { 2 } \frac { X } { 1 + X } + \frac { 1 } { 2 } \left[ \frac { X ^ { 2 } } { ( 1 + X ) ^ { 2 } } + 4 \gamma ^ { 2 } \frac { X ^ { 3 } } { 1 + X } \right] ^ { 1 / 2 }  \\
+	 \gamma = \frac { m _ { i } } { m _ { e } } \frac { 1 } { n _ { \perp } ^ { 2 } } = \frac { 2 m _ { i } E _ { \alpha } } { m _ { e } m _ { \alpha } c ^ { 2 } } = 8.562 
+\end{gather}
 This value of $\hat \omega ^2$ is substituted into \cref{eq:lhcd_6} to obtain the desired expression for $n _ { \| } ^ { 2 } = n _ { \| } ^ { 2 } ( X )$.
 
-\subsubsection{Calculation of $\hat \rho_j$}
+\subsubsection{Calculation of $\hat \rho_J$}
 
-The calculation of $\hat \rho_j$ requires a very lengthy analysis of Landau damping. We can bypass this complication by making use of a simple rule of thumb that is reasonably accurate. This rule states that lower hybrid power is absorbed and driven current produced in a somewhat narrow layer of the plasma profile whose location is determined by the requirement that the parallel phase velocity be approximately equal to three times the electron thermal speed,
+The calculation of $\hat \rho_J$ requires a very lengthy analysis of Landau damping. We can bypass this complication by making use of a simple rule of thumb that is reasonably accurate. This rule states that lower hybrid power is absorbed and driven current produced in a somewhat narrow layer of the plasma profile whose location is determined by the requirement that the parallel phase velocity be approximately equal to three times the electron thermal speed,
 \begin{equation}
 	\frac { \omega } { k _ { \| } } \approx 3 v _ { T }
 \end{equation}
 %Observe that absorption takes place on the tail of the distribution function.
-The equation can be rewritten in terms of $\hat n_\parallel$ leading to a transcendental algebraic equation for $\hat \rho_j$,
+The equation can be rewritten in terms of $\hat n_\parallel$ leading to a transcendental algebraic equation for $\hat \rho_J$,
 \begin{equation}
 	\left( 1 + \nu _ { T } \right) \left( 1 - \hat { \rho } _ { J } ^ { 2 } \right) ^ { \nu _ { T } } n _ { \| } ^ { 2 } \left( \hat { \rho } _ { J } , \theta \right) = \frac { m _ { e } c ^ { 2 } } { 18 \overline { T } } = \frac { 28.39 } { \overline { T } _ { k } }
 \end{equation}
 This is a simple equation to solve numerically.
 
-\subsubsection{Calculation of $\rho_j$}
-The last step in the analysis is to map the results at the strictest absorption location -- $(\rho, \theta)$ -- to the center of the absorption layer -- $(\rho_J, \theta)$ where the current drive efficiency is defined. This is easily done by noting that power is always absorbed in at the local radius where $\omega / k _ { \| } = 3 v _ { T e }$. Consequently, the relations at $\rho_J$ are related to those at $\hat \rho_J$ by:
-\begin{equation}
-	\begin{array} { r } { \left( 1 + \nu _ { T } \right) \left( 1 - \hat { \rho } _ { J } ^ { 2 } \right) ^ { \nu _ { T } } n _ { \| } ^ { 2 } \left( \hat { \rho } _ { J } , \theta \right) = \frac { 28.39 } { \overline { T } _ { k } } } \\ { \left( 1 + \nu _ { T } \right) \left( 1 - \rho _ { J } ^ { 2 } \right) ^ { \nu _ { T } } n _ { \| } ^ { 2 } \left( \rho _ { J } , \theta \right) = \frac { 28.39 } { \overline { T } _ { k } } } \end{array}
-\end{equation}
+\subsubsection{Calculation of $\rho_J$}
+The last step in the analysis is to map the results at the strictest absorption location -- $(\rho, \theta)$ -- to the center of the absorption layer -- $(\rho_J, \theta)$ -- where the current drive efficiency is defined. This is easily done by noting that power is always absorbed in at the local radius where $\omega / k _ { \| } = 3 v _ { T e }$. Consequently, the relations at $\rho_J$ are related to those at $\hat \rho_J$ by:
+\begin{gather}
+	\left( 1 + \nu _ { T } \right) \left( 1 - \hat { \rho } _ { J } ^ { 2 } \right) ^ { \nu _ { T } } n _ { \| } ^ { 2 } \left( \hat { \rho } _ { J } , \theta \right) = \frac { 28.39 } { \overline { T } _ { k } } \\
+	\left( 1 + \nu _ { T } \right) \left( 1 - \rho _ { J } ^ { 2 } \right) ^ { \nu _ { T } } n _ { \| } ^ { 2 } \left( \rho _ { J } , \theta \right) = \frac { 28.39 } { \overline { T } _ { k } } 
+\end{gather}
 Since $n _ { \| } \left( \hat { \rho } _ { J } , \theta \right) = n _ { \| } \left( \rho _ { J } , \theta \right) - \Delta n _ { \| }$, it follows that $\hat \rho_J$ and $\rho_J$ are related by:
 \begin{equation}
 	\small
-	\frac { \left( 1 - \rho _ { J } ^ { 2 } \right) ^ { \nu _ { T } } } { \left( 1 - \hat { \rho } _ { J } ^ { 2 } \right) ^ { \nu _ { T } } } = \left[ 1 - \frac { \Delta n _ { \| } } { n _ { \| } \left( \rho _ { J } , \theta \right) } \right] ^ { 2 } \rightarrow \rho _ { J } ^ { 2 } = 1 - \left( 1 - \hat { \rho } _ { J } ^ { 2 } \right) \left[ 1 - \frac { \Delta n _ { \| } } { n _ { \| } \left( \rho _ { J } , \theta \right) } \right] ^ { 2 / \nu _ { T } }
+	\frac { \left( 1 - \rho _ { J } ^ { 2 } \right) ^ { \nu _ { T } } } { \left( 1 - \hat { \rho } _ { J } ^ { 2 } \right) ^ { \nu _ { T } } } = \left[ 1 - \frac { \Delta n _ { \| } } { n _ { \| } \left( \rho _ { J } , \theta \right) } \right] ^ { 2 } \rightarrow \ \rho _ { J } ^ { 2 } = 1 - \left( 1 - \hat { \rho } _ { J } ^ { 2 } \right) \left[ 1 - \frac { \Delta n _ { \| } } { n _ { \| } \left( \rho _ { J } , \theta \right) } \right] ^ { \frac{2}{\nu _ { T }} }
 \end{equation}
+
 Note that in general: $\rho_J > \hat \rho_J$. The strictest location determining $n_\parallel(\hat \rho_J, \theta)$ is the innermost radial point on the temperature profile where power is absorbed.
 
-\subsubsection{Abridged Modus Operandi}
+\subsubsection{Abridged Algorithm}
 
 Assume the following quantities are given as inputs: $B _ { 0 } , \theta , \overline { n } _ { 20 } , \overline { T } _ { k } , \varepsilon , \Delta n _ { \| } , \eta _ { L H }$. Carry out the following steps:
 
@@ -168,25 +175,26 @@ Assume the following quantities are given as inputs: $B _ { 0 } , \theta , \over
 	\item Solve the equations below simultaneously to determine $n _ { \| } ^ { 2 } \left( \hat { \rho } _ { J } , \theta \right) , \hat { \omega } ^ { 2 } \left( \hat { \rho } _ { J } , \theta \right) , \text { and } \hat { \rho } _ { J }$ \\
 \begin{equation}
 	\begin{array} { l } { n _ { \| } ^ { 2 } \left( \hat { \rho } _ { J } , \theta \right) = \left[ \left( 1 - \frac { 1 - \hat { \omega } ^ { 2 } } { \hat { \omega } ^ { 2 } } X \right) ^ { 1 / 2 } + X ^ { 1 / 2 } \right] ^ { 2 } } \\ { \hat { \omega } ^ { 2 } \left( \hat { \rho } _ { J } , \theta \right) = \frac { 1 } { 2 } \frac { X } { 1 + X } + \frac { 1 } { 2 } \left[ \frac { X ^ { 2 } } { ( 1 + X ) ^ { 2 } } + 4 \gamma ^ { 2 } \frac { X ^ { 3 } } { 1 + X } \right] ^ { 1 / 2 } } \\ { \left( 1 + \nu _ { T } \right) \left( 1 - \hat { \rho } _ { J } ^ { 2 } \right) ^ { \nu _ { T } } n _ { \| } ^ { 2 } \left( \hat { \rho } _ { J } , \theta \right) = \frac { m _ { e } c ^ { 2 } } { 2 \overline { T } } = \frac { 28.39 } { \overline { T } _ { k } } } \end{array}
-\end{equation}
+\end{equation} ~
 	\item Solve for $\tilde { \eta } \left( \hat { \rho } _ { J } , \theta \right)$
 	\begin{equation}
 		\label{eq:lhcd_7}
-		\tilde { \eta } \left( \hat { \rho } _ { J } , \theta \right) = C M R \eta _ { 0 }
+		\tilde { \eta } \left( \hat { \rho } _ { J } , \theta \right) = C M R \, \eta _ { 0 }
 	\end{equation}
 	\item Solve for $n _ { \| } \left( \rho _ { J } , \theta \right)$
 	\begin{equation}
 		n _ { \| } \left( \rho _ { J } , \theta \right) = n _ { \| } \left( \hat { \rho } _ { J } , \theta \right) + \Delta n _ { \| }
 	\end{equation}
-	\item Solve for $\rho_J$ 
+	\item Solve for $\rho_J$
 	\begin{equation}
 		\rho _ { J } ^ { 2 } = 1 - \left( 1 - \hat { \rho } _ { J } ^ { 2 } \right) \left[ 1 - \frac { \Delta n _ { \| } } { n _ { \| } \left( \rho _ { J } , \theta \right) } \right] ^ { 2 / \nu _ { T } }
 	\end{equation}
-	\item Re-evaluate $\tilde { \eta } \left( \rho _ { J } , \theta \right)$ by substituting the values of $\rho _ { J } , n _ { \| } \left( \rho _ { J } , \theta \right)$ into \cref{eq:lhcd_7}.
+	\item Re-evaluate $\tilde { \eta } \left( \rho _ { J } , \theta \right)$ by substituting the values of $\rho _ { J } , n _ { \| } \left( \rho _ { J } , \theta \right)$ into \cref{eq:lhcd_7}
 	\item Solve for $\eta_{CD}$
 	\begin{equation}
-		\eta _ { C D } = \frac { 1 } { 2 \pi } \left( \frac { e n _ { 20 } } { m _ { e } \nu _ { 0 } v _ { T e } } \right) \tilde { \eta } = 0.06108 \frac { \eta _ { L H } } { \ln \Lambda } \left( 1 + \nu _ { T } \right) \overline { T } _ { k } \left( 1 - \rho _ { J } ^ { 2 } \right) ^ { \nu _ { r } } \tilde { \eta } \left( \rho _ { J } , \theta \right)
-	\end{equation} 
+		\small 
+		\eta _ { C D } = \frac { 1 } { 2 \pi } \left( \frac { e n _ { 20 } } { m _ { e } \nu _ { 0 } v _ { T e } } \right) \tilde { \eta } = 0.06108 \, \frac { \eta _ { L H } } { \ln \Lambda } \left( 1 + \nu _ { T } \right) \overline { T } _ { k } \left( 1 - \rho _ { J } ^ { 2 } \right) ^ { \nu _ { r } } \tilde { \eta } \left( \rho _ { J } , \theta \right)
+	\end{equation}
 \end{enumerate}
-In the end there will have to be some iteration with the rest of the analysis to make sure the values of $\overline n_20$ and $\overline T_k$ are self-consistent.
+In the end there will have to be some iteration with the rest of the analysis to make sure the values of $\overline n_{20}$ and $\overline T_k$ are self-consistent.
 

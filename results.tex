@@ -172,7 +172,7 @@ Input            & Value           \\
 $H$              & 1.8             \\
 $Q$              & 13.6            \\
 $N_{G}$          & 0.67            \\
-$\epsilon$       & 0.333          \\
+$\varepsilon$       & 0.333          \\
 $\kappa_{95}$    & 1.84            \\
 $\delta_{95}$    & 0.333           \\
 $\nu_{n}$        & 0.385           \\
@@ -255,7 +255,7 @@ Input            & Value           \\
 $H$              & 1.65            \\
 $Q$              & 42.5            \\
 $N_{G}$          & 1.0             \\
-$\epsilon$       & 0.25            \\
+$\varepsilon$       & 0.25            \\
 $\kappa_{95}$    & 2.1             \\
 $\delta_{95}$    & 0.4             \\
 $\nu_{n}$        & 0.27            \\
@@ -338,7 +338,7 @@ Input            & Value           \\
 $H$              & 1.22            \\
 $Q$              & 25.0            \\
 $N_{G}$          & 1.3             \\
-$\epsilon$       & 0.25            \\
+$\varepsilon$       & 0.25            \\
 $\kappa_{95}$    & 1.964           \\
 $\delta_{95}$    & 0.42            \\
 $\nu_{n}$        & 0.41            \\
@@ -421,7 +421,7 @@ Input            & Value           \\
 $H$              & 1.4             \\
 $Q$              & 24.46           \\
 $N_{G}$          & 1.2             \\
-$\epsilon$       & 0.385           \\
+$\varepsilon$       & 0.385           \\
 $\kappa_{95}$    & 1.8             \\
 $\delta_{95}$    & 0.333           \\
 $\nu_{n}$        & 0.3972          \\
@@ -504,7 +504,7 @@ Input            & Value           \\
 $H$              & 1.1             \\
 $Q$              & 39.86           \\
 $N_{G}$          & 1.2             \\
-$\epsilon$       & 0.3226          \\
+$\varepsilon$       & 0.3226          \\
 $\kappa_{95}$    & 1.59            \\
 $\delta_{95}$    & 0.333           \\
 $\nu_{n}$        & 0.27            \\
@@ -619,7 +619,7 @@ Input            & Value           \\
 $H$              & 1.7              \\
 $Q$              & 25.0             \\
 $N_{G}$          & 0.9              \\
-$\epsilon$       & 0.3              \\
+$\varepsilon$       & 0.3              \\
 $\kappa_{95}$    & 1.8              \\
 $\delta_{95}$    & 0.35             \\
 $\nu_{n}$        & 0.4              \\
@@ -702,7 +702,7 @@ Input            & Value           \\
 $H$              & 1.0              \\
 $Q$              & 25.0             \\
 $N_{G}$          & 0.9              \\
-$\epsilon$       & 0.3              \\
+$\varepsilon$       & 0.3              \\
 $\kappa_{95}$    & 1.8              \\
 $\delta_{95}$    & 0.35             \\
 $\nu_{n}$        & 0.4              \\
@@ -1069,7 +1069,7 @@ The more interesting result is that pulsed reactors gain no real benefit from us
 
 \replaced{Summarizing this subsection,}{Rehashing this section,} HTS tape is \added{one of} the best \replaced{ways}{way} to lower the cost of fusion reactors at a commercial scale. For steady-state reactors, HTS works best in the toroidal field coils ($B_0$), while the tape would fare better in the central solenoid ($B_{CS}$) of pulsed reactors. Further, both effects saturate within the range of this HTS tape, rendering more sophisticated magnetic technology unnecessary. HTS is \replaced{thus one technological advancement that could help usher in an era of}{truly the answer to} affordable fusion energy.\footnote{This notion of HTS technology leading the way to affordable fusion energy is in line with the 2018 FESAC TEC\cite{fesac} and NAS burning plasma\cite{nas} reports.}
 
-\subsection{Looking at Design Alternatives} 
+\subsection{Looking at Design Alternatives}
 
 Even in this relatively simple fusion model, there are more than twenty \replaced{static}{fixed}/input variable knobs a designer can tune to improve reactor feasibility. Many have practical limits, such as being physically realizable or fitting within the ELMy H-Mode database. Thus, the goal of this subsection is to investigate some of the more interesting results. Although many more plots are available in \cref{chapter:extra}.
 
@@ -1121,7 +1121,7 @@ Quickly reasoning this \deleted{camp's} thought process are two sets of plots. T
     \hfill \hfill ~\\ ~\\ ~\\
     \caption{Bootstrap Current Monte Carlo Sampling}
     \label{fig:bootstrap_samplings} ~ \\
-    \added{\small The purpose of these plots is to show that a high bootstrap current always reduces the cost of a steady state reactor -- highly independent of actual input quantities (i.e. $\epsilon$, $l_i$, etc.)}
+    \added{\small The purpose of these plots is to show that a high bootstrap current always reduces the cost of a steady state reactor -- highly independent of actual input quantities (i.e. $\varepsilon$, $l_i$, etc.)}
 \end{figure*}
 
 The next plot \added{(\cref{fig:inductance_sensitivities})} is the parameter that determines a current profile's peak radius: $l_i$. As can be seen, the current peak approaches the outer edge of the plasma as $l_i$ decreases. This in turn boosts the bootstrap fraction closer to one -- leading to inexpensive reactors.

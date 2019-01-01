@@ -52,13 +52,13 @@ Here, g is a shaping parameter approximately equal to one:
 The plasma cross-sectional area and volume can be evaluated by straightforward calculations,
 \begin{gather}
 \begin{split}
-	A & = \int \int dR dZ = a^2 \int \int dx dy = a^2 \int_0^{2 \pi} x \frac{dy}{d\alpha} d\alpha \\ & = \pi a^2 \kappa g
+	A & = \iint dR dZ = a^2 \iint dx dy = a^2 \int_0^{2 \pi} x \frac{dy}{d\alpha} d\alpha \\ & = \pi a^2 \kappa g
 \end{split} \\
 \begin{split}
-	\volume & = \int \int \int R dR dZ d\Phi = 2 \pi a^2 \int \int R dx dy \\ & = 2 \pi a^2 R_0 \int_0^{2 \pi} \left( x + \epsilon \frac{ x^2 }{ 2} \right) \frac{dy}{d\alpha} d\alpha \approx 2 \pi a^2 R_0 \int_0^{2 \pi} x \frac{dy}{d\alpha} d\alpha \\ & = 2 \pi^2 R_0 a^2 \kappa g
+	\volume & = \iiint R dR dZ d\Phi = 2 \pi a^2 \iint R dx dy \\ & = 2 \pi a^2 R_0 \int_0^{2 \pi} \left( x + \varepsilon \frac{ x^2 }{ 2} \right) \frac{dy}{d\alpha} d\alpha \approx 2 \pi a^2 R_0 \int_0^{2 \pi} x \frac{dy}{d\alpha} d\alpha \\ & = 2 \pi^2 R_0 a^2 \kappa g
 \end{split}
 \end{gather}
-The second form of the volume integral makes use of the small inverse aspect ratio expansion, $\epsilon \ll 1 $, which is a good approximation and used throughout the analysis.
+The second form of the volume integral makes use of the small inverse aspect ratio expansion, $\varepsilon \ll 1 $, which is a good approximation and used throughout the analysis.
 
 \begin{figure*}[b]
 \centering
@@ -82,28 +82,30 @@ with $\sigma$ being the shift of the magnetic axis. Usually, $\sigma \sim 0.1$ f
 
 Lastly, we note that in the course of the work it will be necessary to integrate functions of $\rho$ over the volume and cross-sectional area of the plasma. Specifically we will need to evaluate:
 \begin{gather}
-	Q_V = \int \int \int Q(\rho) R dR dZ d\Phi \approx 2 \pi R_0 a^2 \int \int Q(\rho) dx dy \\
-	Q_A = \int \int Q(\rho) dR dZ = a^2 \int \int Q(\rho) dx dy
+	Q_V = \iiint Q(\rho) R dR dZ d\Phi \approx 2 \pi R_0 a^2 \iint Q(\rho) dx dy \\
+	Q_A = \iint Q(\rho) dR dZ = a^2 \iint Q(\rho) dx dy
 \end{gather}
 Here, $Q(\rho)$ is an arbitrary function of $\rho$ such as pressure or temperature. In the large aspect ratio limit, both integrals require the evaluation of the same quantity:
 \begin{equation}
-	K = \int \int Q(\rho) dx dy
+	K = \iint Q(\rho) dx dy
 \end{equation}
 To evaluate this integral, we need to convert from $x, y$ coordinates to $\rho, \alpha$ coordinates. Using the Jacobian of the transformation leads to
 \begin{equation}
-	K = \int \int Q(\rho) (x_\rho y_\alpha - x_\alpha y_\rho ) d\rho d\alpha
+	K = \iint Q(\rho) (x_\rho y_\alpha - x_\alpha y_\rho ) d\rho d\alpha
 \end{equation}
-Here,
+Here, ~
 \begin{equation}
 \begin{split}
+	\small
 	x_\rho y_\alpha - x_\alpha y_\rho & = \kappa \sin(\alpha) \cdot \left( c_1 \rho \sin(\alpha) + 2 c_2 \rho^2 \sin(2\alpha)  + 3 c_3 \rho^3 \sin(3\alpha)  \right) \\
 		& + \kappa \rho \cos(\alpha) \cdot \Big[ \\
-		& \ \ \ \ \ \ -2 \rho \sigma + 4 \rho^3 c_0 + c_1 \cos(\alpha) \\
-		& \ \ \ \ \ \ + 2 c_2 \rho \cos(2\alpha) + 3 c_3 \rho^2 \cos(3\alpha) \\
+		& \ \ \ -2 \rho \sigma + 4 \rho^3 c_0 + c_1 \cos(\alpha) + 2 c_2 \rho \cos(2\alpha) + 3 c_3 \rho^2 \cos(3\alpha) \\
 		& \ \ \Big]
 \end{split}
-\end{equation}
+\end{equation} ~ 
+
 Since Q is only a function of $\rho$, the $\alpha$ integral can be carried out analytically. The only term that survives the averaging are the ones containing $c_1$. A simple integration over $\alpha$ then yields the desired results:
+
 \begin{equation}
   	\label{eq:qv}
   	\tcboxmath{
