@@ -47,7 +47,7 @@ It then follows that
 \begin{equation}
 	\eta _ { I } = \frac { \eta _ { L H } } { 2 \pi } \left[ \frac { e } { R m _ { e } \nu _ { 0 } v _ { T e } } \right] _ { \rho _ { j } , \theta } \tilde { \eta } \left( \rho _ { J } , \theta \right)
 \end{equation}
-From \cref{eq:lhcd_1}, we see that $\eta _ { C D } = \eta _ { I } \left[ n _ { 20 } R \right] _ { \rho _ { j } , \theta }$, which leads to the desired conversion relation: 
+From \cref{eq:lhcd_1}, we see that $\eta _ { C D } = \eta _ { I } \left[ n _ { 20 } R \right] _ { \rho _ { j } , \theta }$, which leads to the desired conversion relation:
 \begin{equation}
 	\eta _ { C D } = \frac { \eta _ { L H } } { 2 \pi } \left[ \frac { e n _ { 20 } } { m _ { e } \nu _ { 0 } v _ { Te } } \right] _ { \rho _ { j } } \tilde { \eta } \left( \rho _ { J } , \theta \right) = 0.06108 \frac { \eta _ { L H } } { \ln \Lambda } T _ { k } \tilde { \eta }
 \end{equation}
@@ -86,7 +86,7 @@ where from simple guiding center theory assuming that $B \approx B_\phi$,
 
 \subsubsection{Calculation of $n_\parallel^2(\rho,\theta)$}
 
-The next step in the evaluation of $\eta_{CD}$ is the calculation of $n_\parallel^2(\rho,\theta)$. Its value is determined by the requirements for accessibility from the plasma edge into the absorption layer. The relevant physics follows from an analysis of the cold plasma dispersion relation given by 
+The next step in the evaluation of $\eta_{CD}$ is the calculation of $n_\parallel^2(\rho,\theta)$. Its value is determined by the requirements for accessibility from the plasma edge into the absorption layer. The relevant physics follows from an analysis of the cold plasma dispersion relation given by
 \begin{equation}
 \small
 \label{eq:lhcd_4}
@@ -134,9 +134,9 @@ This expression is simplified by evaluating $n_\perp^2$ using \cref{eq:lhcd_4} c
 	\label{eq:lhcd_5}
 \end{equation}
 \cref{eq:lhcd_5} is a quadratic equation for $\hat \omega ^2$, which can be easily solved, yielding:
-\begin{gather} 
+\begin{gather}
 	\hat { \omega } ^ { 2 } \left( \hat { \rho } _ { J } , \theta \right) = \frac { 1 } { 2 } \frac { X } { 1 + X } + \frac { 1 } { 2 } \left[ \frac { X ^ { 2 } } { ( 1 + X ) ^ { 2 } } + 4 \gamma ^ { 2 } \frac { X ^ { 3 } } { 1 + X } \right] ^ { 1 / 2 }  \\
-	 \gamma = \frac { m _ { i } } { m _ { e } } \frac { 1 } { n _ { \perp } ^ { 2 } } = \frac { 2 m _ { i } E _ { \alpha } } { m _ { e } m _ { \alpha } c ^ { 2 } } = 8.562 
+	 \gamma = \frac { m _ { i } } { m _ { e } } \frac { 1 } { n _ { \perp } ^ { 2 } } = \frac { 2 m _ { i } E _ { \alpha } } { m _ { e } m _ { \alpha } c ^ { 2 } } = 8.562
 \end{gather}
 This value of $\hat \omega ^2$ is substituted into \cref{eq:lhcd_6} to obtain the desired expression for $n _ { \| } ^ { 2 } = n _ { \| } ^ { 2 } ( X )$.
 
@@ -157,7 +157,7 @@ This is a simple equation to solve numerically.
 The last step in the analysis is to map the results at the strictest absorption location -- $(\rho, \theta)$ -- to the center of the absorption layer -- $(\rho_J, \theta)$ -- where the current drive efficiency is defined. This is easily done by noting that power is always absorbed in at the local radius where $\omega / k _ { \| } = 3 v _ { T e }$. Consequently, the relations at $\rho_J$ are related to those at $\hat \rho_J$ by:
 \begin{gather}
 	\left( 1 + \nu _ { T } \right) \left( 1 - \hat { \rho } _ { J } ^ { 2 } \right) ^ { \nu _ { T } } n _ { \| } ^ { 2 } \left( \hat { \rho } _ { J } , \theta \right) = \frac { 28.39 } { \overline { T } _ { k } } \\
-	\left( 1 + \nu _ { T } \right) \left( 1 - \rho _ { J } ^ { 2 } \right) ^ { \nu _ { T } } n _ { \| } ^ { 2 } \left( \rho _ { J } , \theta \right) = \frac { 28.39 } { \overline { T } _ { k } } 
+	\left( 1 + \nu _ { T } \right) \left( 1 - \rho _ { J } ^ { 2 } \right) ^ { \nu _ { T } } n _ { \| } ^ { 2 } \left( \rho _ { J } , \theta \right) = \frac { 28.39 } { \overline { T } _ { k } }
 \end{gather}
 Since $n _ { \| } \left( \hat { \rho } _ { J } , \theta \right) = n _ { \| } \left( \rho _ { J } , \theta \right) - \Delta n _ { \| }$, it follows that $\hat \rho_J$ and $\rho_J$ are related by:
 \begin{equation}
@@ -192,7 +192,7 @@ Assume the following quantities are given as inputs: $B _ { 0 } , \theta , \over
 	\item Re-evaluate $\tilde { \eta } \left( \rho _ { J } , \theta \right)$ by substituting the values of $\rho _ { J } , n _ { \| } \left( \rho _ { J } , \theta \right)$ into \cref{eq:lhcd_7}
 	\item Solve for $\eta_{CD}$
 	\begin{equation}
-		\small 
+		\small
 		\eta _ { C D } = \frac { 1 } { 2 \pi } \left( \frac { e n _ { 20 } } { m _ { e } \nu _ { 0 } v _ { T e } } \right) \tilde { \eta } = 0.06108 \, \frac { \eta _ { L H } } { \ln \Lambda } \left( 1 + \nu _ { T } \right) \overline { T } _ { k } \left( 1 - \rho _ { J } ^ { 2 } \right) ^ { \nu _ { r } } \tilde { \eta } \left( \rho _ { J } , \theta \right)
 	\end{equation}
 \end{enumerate}

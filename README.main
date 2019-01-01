@@ -15,7 +15,7 @@ You can add options in the documentclass line as follows:
 	o  singlespace
 
 	\documentclass[12pt,singlespace]{mitthesis}
-	
+
 	o  twoside
 
 	\documentclass[12pt,twoside]{mitthesis}
@@ -37,7 +37,7 @@ Any options you would use for report.sty will work here as well.
 You should not need to change the first three lines and last two lines
 below.  Be sure to include an \include command for each file you are
 including in your thesis.
-  
+
 \include{cover}
 \pagestyle{plain}
 \include{contents}

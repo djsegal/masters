@@ -24,7 +24,7 @@
 
 \label{chapter:complete}
 
-As opposed to previous chapters, this one will focus on the numerics behind the fusion systems model.  \added{A simple algebra will lead to a generalized solver for exploring reactor space for low cost and interesting machines.} This will then naturally segue into a discussion of how plots are made and should be interpreted. The remaining chapters will then decouple the presentation of results from their analytic conclusions. 
+As opposed to previous chapters, this one will focus on the numerics behind the fusion systems model.  \added{A simple algebra will lead to a generalized solver for exploring reactor space for low cost and interesting machines.} This will then naturally segue into a discussion of how plots are made and should be interpreted. The remaining chapters will then decouple the presentation of results from their analytic conclusions.
 
 \section{Describing a Simple Algebra}
 
@@ -37,11 +37,11 @@ As opposed to previous chapters, this one will focus on the numerics behind the 
 	\end{adjustbox}
 %	\includegraphics[width=0.75\textwidth]{images/test_image}
 	\caption{Equation Selection for Fusion System} ~\\
-	\small This systems model selects five variables to solve for all the dynamic variables. These are the Greenwald limit for density, current balance for the plasma current, and three generalized formulas for the temperature, major radius, and toroidal field strength.	
+	\small This systems model selects five variables to solve for all the dynamic variables. These are the Greenwald limit for density, current balance for the plasma current, and three generalized formulas for the temperature, major radius, and toroidal field strength.
 	\label{fig:equation_breakdown}
 \end{figure}
 
-The logical place to start in a discussion of this algebra problem is with the three equations fundamental to all reactor-grade tokamaks -- both in steady-state and pulsed operation. These are: the Greenwald density limit, power balance, and current balance. The Greenwald density's importance was hinted early on when it was used to simplify every equation derived thereafter. 
+The logical place to start in a discussion of this algebra problem is with the three equations fundamental to all reactor-grade tokamaks -- both in steady-state and pulsed operation. These are: the Greenwald density limit, power balance, and current balance. The Greenwald density's importance was hinted early on when it was used to simplify every equation derived thereafter.
 \begin{equation}
 	\tag{\ref{eq:greenwald}}
 	\overline n = K_n \cdot \frac{I_P}{R_0^2}
@@ -89,7 +89,7 @@ Magnet Strength ($B_0$) & D & $(B_0)_{const}$ & 0 & 1 & 0 \\
 Plasma Current ($I_P$) & D & $(I_P)_{const}$ & 0 & 0 & 1 \\
 Plasma Temperature ($\overline T$) & D & $\sfrac{ (\overline T)_{const} }{ \, \overline T }$ & 0 & 0 & 0 \\
 Electron Density ($\overline n$) & D & $\sfrac{ (\overline n)_{const} }{ K_n }$ & -2 & 0 & 1 \\
-Plasma Pressure ($\overline p$) & I & $\sfrac{ (\overline p)_{const} }{ K_n K_{nT} \overline T }$ & -2 & 0 & 1 
+Plasma Pressure ($\overline p$) & I & $\sfrac{ (\overline p)_{const} }{ K_n K_{nT} \overline T }$ & -2 & 0 & 1
 \\
 Bootstrap Current ($f_{BS}$) & I & $\sfrac{ ( f_{BS} )_{const} }{ K_{BS} \overline T }$ & 0 & 0 & -1 \\
 Fusion Power ($P_F$) & I & $\sfrac{ (P_F)_{const} }{ K_F K_n ^ 2 ( \sigma v ) }$ & -1 & 0 & 2 \\
@@ -112,7 +112,7 @@ While the maximum power cap informally sets a maximum major radius for a machine
 
 At this point, we can now explain how various quantities in the systems model can be set to user-given constant values. This basically allows users to treat one \replaced{dynamic}{floating} variable as a \replaced{static}{fixed} one (e.g.\ the temperature and bootstrap fraction).
 
-\subsection{Minimizing \replaced{Intermediate}{Derived} Quantities} 
+\subsection{Minimizing \replaced{Intermediate}{Derived} Quantities}
 
 Whereas the limits from the previous section represented constraints with real physics and engineering repercussions, the \replaced{intermediate}{derived} quantities here are just used to find when reactors reach certain user-supplied values. Most notable are the capital cost (through the magnetic energy -- $W_M$) and the cost-per-watt ($C_W$). The model also, however, allows easily setting values for the bootstrap fraction, plasma pressure, and fusion power. As mentioned previously, they are given in \cref{table:eq} through a generalized representation of the form:
 \begin{equation}
@@ -141,8 +141,8 @@ After a valid reactor is found, its cost is recorded leading to a drill-down sta
 			\input{images/step_two}
 		\end{adjustbox}
         \caption{ Minimize Step II }
-    \end{subfigure} 
-    \par \bigskip \par \bigskip 
+    \end{subfigure}
+    \par \bigskip \par \bigskip
     \begin{subfigure}[t]{0.725\textwidth}
         \centering
 		\begin{adjustbox}{width=\textwidth}
@@ -151,13 +151,13 @@ After a valid reactor is found, its cost is recorded leading to a drill-down sta
 		\end{adjustbox}
         \caption{ Minimize Step III }
     \end{subfigure}
-    \par \bigskip \par \bigskip    
+    \par \bigskip \par \bigskip
     \caption{Minimize Cost Step II/III -- Optimize Reactor}
     \label{fig:minimize} ~ \\
     \small{ After a valid reactor has been found, it is a simple process to find the minimum cost reactor. This involves first continually searching for reactors that are half the cost until a valid one can no longer be found. After the costing interval has been bounded by a valid and invalid reactor, the interval is bisected until there is negligible error.}
 \end{figure*}
 
-\subsection{Pinning \replaced{Dynamic}{Floating} Variables} 
+\subsection{Pinning \replaced{Dynamic}{Floating} Variables}
 
 The remaining collection of closure equations is for the five \replaced{dynamic}{floating} variables in the systems model: $R_0$, $B_0$, $\overline n$, $\overline T$, and $I_P$. As we are making equations of the following form, the formulas for $R_0$, $B_0$, and $I_P$ are trivial.
 \begin{equation}
@@ -173,7 +173,7 @@ As was assumed earlier, this is sort of a default equation for the systems model
 
 \subsection{Detailing the Equation Solver}
 
-The algorithm that motivated this generalized equation approach most notably bifurcates in the situation where the closure equation does not depend on $R_0$, $B_0$, or $I_P$ (i.e.\ \added{for} the temperature equation). The two scenarios are given in \cref{eq:case_1_R,eq:case_1_B,eq:case_1_I,eq:case_1_gamma,eq:case_2_R,eq:case_2_B,eq:case_2_gamma} -- where at least $R_0$ and $B_0$ are substituted out of the system. In the temperature case, $I_P$ is not needed to be explicitly removed. 
+The algorithm that motivated this generalized equation approach most notably bifurcates in the situation where the closure equation does not depend on $R_0$, $B_0$, or $I_P$ (i.e.\ \added{for} the temperature equation). The two scenarios are given in \cref{eq:case_1_R,eq:case_1_B,eq:case_1_I,eq:case_1_gamma,eq:case_2_R,eq:case_2_B,eq:case_2_gamma} -- where at least $R_0$ and $B_0$ are substituted out of the system. In the temperature case, $I_P$ is not needed to be explicitly removed.
 
 Concretely, the root solve for the temperature  scenario is for the current, whereas it is for the temperature in all other cases. The nomenclature in the code is a \emph{match} for Scenario I (i.e.\ root solving for plasma temperature), and a \emph{solve} for Scenario II (i.e.\ root solving for plasma current).
 
@@ -181,19 +181,19 @@ Concretely, the root solve for the temperature  scenario is for the current, whe
 
 \begin{gather}
 	\label{eq:case_1_R}
-	R_0( \overline T) = \left( 
-	G_1 ^ {  \, ( \gamma_{B,2} \, \gamma_{I,3} - \gamma_{B,3} \, \gamma_{I,2} ) } \cdot 
-	G_2 ^ {  \, ( \gamma_{B,3} \, \gamma_{I,1} - \gamma_{B,1} \, \gamma_{I,3} ) } \cdot 
+	R_0( \overline T) = \left(
+	G_1 ^ {  \, ( \gamma_{B,2} \, \gamma_{I,3} - \gamma_{B,3} \, \gamma_{I,2} ) } \cdot
+	G_2 ^ {  \, ( \gamma_{B,3} \, \gamma_{I,1} - \gamma_{B,1} \, \gamma_{I,3} ) } \cdot
 	G_3 ^ {  \, ( \gamma_{B,1} \, \gamma_{I,2} - \gamma_{B,2} \, \gamma_{I,1} ) }\right)^{ \frac{1}{\gamma_{RBI}} } \\
 	\label{eq:case_1_B}
-	B_0( \overline T) = \left( 
-	G_1 ^ {  \, ( \gamma_{I,2} \, \gamma_{R,3} - \gamma_{I,3} \, \gamma_{R,2} ) } \cdot 
-	G_2 ^ {  \, ( \gamma_{I,3} \, \gamma_{R,1} - \gamma_{I,1} \, \gamma_{R,3} ) } \cdot 
-	G_3 ^ {  \, ( \gamma_{I,1} \, \gamma_{R,2} - \gamma_{I,2} \, \gamma_{R,1} ) }\right)^{ \frac{1}{\gamma_{RBI}} } \\	
+	B_0( \overline T) = \left(
+	G_1 ^ {  \, ( \gamma_{I,2} \, \gamma_{R,3} - \gamma_{I,3} \, \gamma_{R,2} ) } \cdot
+	G_2 ^ {  \, ( \gamma_{I,3} \, \gamma_{R,1} - \gamma_{I,1} \, \gamma_{R,3} ) } \cdot
+	G_3 ^ {  \, ( \gamma_{I,1} \, \gamma_{R,2} - \gamma_{I,2} \, \gamma_{R,1} ) }\right)^{ \frac{1}{\gamma_{RBI}} } \\
 	\label{eq:case_1_I}
-	I_P( \overline T) = \left( 
-	G_1 ^ {  \, ( \gamma_{R,2} \, \gamma_{B,3} - \gamma_{R,3} \, \gamma_{B,2} ) } \cdot 
-	G_2 ^ {  \, ( \gamma_{R,3} \, \gamma_{B,1} - \gamma_{R,1} \, \gamma_{B,3} ) } \cdot 
+	I_P( \overline T) = \left(
+	G_1 ^ {  \, ( \gamma_{R,2} \, \gamma_{B,3} - \gamma_{R,3} \, \gamma_{B,2} ) } \cdot
+	G_2 ^ {  \, ( \gamma_{R,3} \, \gamma_{B,1} - \gamma_{R,1} \, \gamma_{B,3} ) } \cdot
 	G_3 ^ {  \, ( \gamma_{R,1} \, \gamma_{B,2} - \gamma_{R,2} \, \gamma_{B,1} ) }\right)^{ \frac{1}{\gamma_{RBI}} }
 \end{gather}
 \begin{gather}
@@ -206,14 +206,14 @@ Concretely, the root solve for the temperature  scenario is for the current, whe
 
 \begin{gather}
 	\label{eq:case_2_R}
-	R_0( \overline T) = \left( 
-	G_1 ^ {  \, \gamma_{B,2} } \cdot 
-	G_2 ^ {  \, -\gamma_{B,1} } \cdot 
+	R_0( \overline T) = \left(
+	G_1 ^ {  \, \gamma_{B,2} } \cdot
+	G_2 ^ {  \, -\gamma_{B,1} } \cdot
 	I_P ^ {  \, ( \gamma_{B,1} \, \gamma_{I,2} - \gamma_{B,2} \, \gamma_{I,1} ) }\right)^{ \frac{1}{\gamma_{RBT}} } \\
 	\label{eq:case_2_B}
-	B_0( \overline T) = \left( 
-	G_1 ^ {  \, -\gamma_{R,2} } \cdot 
-	G_2 ^ {  \, \gamma_{R,1} } \cdot 
+	B_0( \overline T) = \left(
+	G_1 ^ {  \, -\gamma_{R,2} } \cdot
+	G_2 ^ {  \, \gamma_{R,1} } \cdot
 	I_P ^ {  \, ( \gamma_{I,1} \, \gamma_{R,2} - \gamma_{I,2} \, \gamma_{R,1} ) }\right)^{ \frac{1}{\gamma_{RBT}} }
 \end{gather}
 \begin{equation}
@@ -222,7 +222,7 @@ Concretely, the root solve for the temperature  scenario is for the current, whe
 \end{equation}
 \myequations{ General Model Solution -- $\gamma_{RB\{I,T\}}$}
 
-\section{Wrapping up the Logic} 
+\section{Wrapping up the Logic}
 
 As stated at the beginning of the chapter, this systems model basically \replaced{reduces}{boils down} to a simple 5 equation/5 unknown algebra problem. The Greenwald density was implicitly used in the initial derive to simplify the logic. The current balance was then delegated to be the root solve equation. Lastly, three equations were needed to remove the major radius and magnet strength, as well as either the current or temperature. These 16 equations were given in \cref{table:eq} with the generalized solution given in \cref{eq:case_1_R,eq:case_1_B,eq:case_1_I,eq:case_1_gamma,eq:case_2_R,eq:case_2_B,eq:case_2_gamma}.
 
@@ -231,5 +231,5 @@ This now sets the stage for the most interesting part of the document -- the res
 \replaced{The}{Moving onto examples of the} Scenario I matcher \replaced{will then be used to create}{are} sensitivity studies and Monte Carlo samplings. The simple one variable sensitivities will reveal local trends from sweeping various \replaced{static}{fixed} (i.e.\ input) variables -- namely H, $\kappa$, $B_{CS}$, etc.\ \added{-- one at a time.} Whereas the samplings will highlight global trends as many \replaced{static}{fixed}/input variables are allowed to vary simultaneously.
 
  These Scenario I \replaced{matchers}{flavors} are further subdivided in regards to the nature of their closure equation. The first \replaced{type}{flavor} comes from finding so called two limit solutions, which live at the point where the beta and kink (or wall) limits are just marginally satisfied. The second main type is then minimum cost reactors -- measured in either a capital cost or cost-per-watt context. These will be used in depth next chapter.
- 
+
 %\end{document}
