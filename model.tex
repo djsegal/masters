@@ -21,7 +21,7 @@
 
 \label{chapter:model}
 
-The goal of this chapter is to take a step back from the steady current derivation and see the larger picture behind reactor design. As such, a more in-depth description of \replaced{static}{fixed} and \replaced{dynamic}{floating} variables is given. This discussion of \replaced{dynamic}{floating} variables will then lend itself to a description of the framework underpinning the fusion systems model. As such, we will now need formulas for the radius and magnet strength of the tokamak. Moving forward, the current will \deleted{then} remain a connecting piece as we \replaced{redirect focus}{switch gears} to pulsed tokamaks and compare \replaced{the underlying solvers of the two schemes.}{the two schemes' underlying solvers.}
+The goal of this chapter is to take a step back from the steady current derivation and see the larger picture behind reactor design. As such, a more in-depth description of \replaced{static}{fixed} and \replaced{dynamic}{floating} variables is given. This discussion of \replaced{dynamic}{floating} variables will then lend itself to a description of the framework underpinning the fusion systems model. As such, we will now need formulas for the radius and magnet strength of the tokamak. Moving forward, the current will \deleted{then}remain a connecting piece as we \replaced{redirect focus}{switch gears} to pulsed tokamaks and compare \replaced{the underlying solvers of the two schemes.}{the two schemes' underlying solvers.}
 
 \added{The end result of this analysis will then be equations that allow the density ($\overline n$), current ($I_P$), major radius ($R_0$), and magnet strength ($B_0$) to be written as functions of the temperature ($\overline T$) and  static variables (e.g.\ $\nu_n$, $N_G$, $f_D$). These formulas are the product of applying constraints required for all tokamak reactors with several other limiting constraints. The constraints relevant to all tokamak reactors are: the Greenwald limit, current balance, and power balance. Limit constraints then include: the Troyon beta limit, the kink safety factor, the wall loading limit, the maximum power constraint, and the heat loading limit.}
 
@@ -119,7 +119,7 @@ The tokamak magnet strength has no \replaced{unique}{obvious} equation to elimin
 
 \subsubsection{The Tokamak Major Radius -- $R_0$}
 
-Much like the magnet strength, the major radius has no \replaced{unique}{obvious} relation to express it. \replaced{The model therefore uses this equation to handle a reactor's various}{This is convenient, because the model still has yet to resolve one of its most pressing issues:} physical and engineering-based constraints. This \deleted{laundry} list of requirements further restricts reactor space to the curves shown in the results section. Collectively, these are referred to as the \replaced{limiting}{secondary} constraints -- discussed later this chapter. \replaced{These}{By miracle, these} constraints all just happen to depend on the size of the reactor -- the reason they are chosen to \replaced{represent}{substitute out} the radius.
+Much like the magnet strength, the major radius has no \replaced{unique}{obvious} relation to express it. \replaced{The model therefore uses this equation to handle a reactor's various}{This is convenient, because the model still has yet to resolve one of its most pressing issues:} physical and engineering-based constraints. This \deleted{laundry}list of requirements further restricts reactor space to the curves shown in the results section. Collectively, these are referred to as the \replaced{limiting}{secondary} constraints -- discussed later this chapter. \replaced{These}{By miracle, these} constraints all just happen to depend on the size of the reactor -- the reason they are chosen to \replaced{represent}{substitute out} the radius.
 
 \section{Enforcing Power Balance}
 
@@ -453,7 +453,7 @@ Using this model's temperature and density profiles, the volume-averaged pressur
   }
 \end{equation}
 \myequations{Plasma Pressure -- $\overline p$}
-Moving forward, the final step is plugging this definition for plasma beta into the \deleted{physics-based} Troyon Beta \replaced{Limit derived using standard MHD stability analysis.}{Limit. Although outside the scope of this text, it is a stability limit set by treating plasmas as charge-carrying fluids.} This equation can be written in the following form, where $\beta_N$ is the normalized plasma beta -- i.e.\ a \replaced{static}{fixed} variable usually set between 2\% and 4\%. \cite{hartmann}
+Moving forward, the final step is plugging this definition for plasma beta into the \deleted{physics-based}Troyon Beta \replaced{Limit derived using standard MHD stability analysis.}{Limit. Although outside the scope of this text, it is a stability limit set by treating plasmas as charge-carrying fluids.} This equation can be written in the following form, where $\beta_N$ is the normalized plasma beta -- i.e.\ a \replaced{static}{fixed} variable usually set between 2\% and 4\%. \cite{hartmann}
 \begin{equation}
 	\beta = \beta_N \frac{ I_P }{ a B_0 }
 \end{equation}
@@ -577,7 +577,7 @@ At this point all the \replaced{limiting}{secondary} constraints have been defin
 
 \replaced{Stepping back, this}{This} chapter focused on the bigger picture behind designing a zero-dimension fusion systems model. It started with a description of various design parameters and then \replaced{moved onto}{segued into} explaining the five relations needed to close the model -- i.e.\ for $\overline T$, $\overline n$, $I_P$, $B_0$, and $R_0$.
 
-Before \deleted{moving onto} generalizing the steady current to \replaced{allow modeling}{model} pulsed reactors, \added{though,} a quick recap of the equations will prove beneficial. The first variable \replaced{described}{tackled} was temperature -- i.e.\ scan five evenly-spaced $\overline T$ values between 10 and 30 keV. This was then quickly followed by the Greenwald density limit -- the \replaced{a simple relation assumed to apply to all fusion reactors.}{cornerstone of this framework.} Through equations, these two were written as:
+Before \deleted{moving onto}generalizing the steady current to \replaced{allow modeling}{model} pulsed reactors, \added{though,} a quick recap of the equations will prove beneficial. The first variable \replaced{described}{tackled} was temperature -- i.e.\ scan five evenly-spaced $\overline T$ values between 10 and 30 keV. This was then quickly followed by the Greenwald density limit -- the \replaced{a simple relation assumed to apply to all fusion reactors.}{cornerstone of this framework.} Through equations, these two were written as:
 \begin{gather}
 	\tag{\ref{eq:tbar}}
 	\overline T = const. \\

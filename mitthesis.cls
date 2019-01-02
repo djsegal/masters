@@ -437,7 +437,7 @@ reserved.\par\permission}}
 \def\supervisor#1#2{\setbox\@titlesupervisor\vbox
   {\unvbox\@titlesupervisor \vskip 10pt% plus 1fil minus 1fil
   \def\baselinestretch{1}\large
-  \signature{Certified by}{#1 \\ #2 \\ Thesis Supervisor}}
+  \signature{Certified by}{#1 \\ \normalsize #2 \\ Thesis Supervisor}}
   \setbox\@abstractsupervisor\vbox{\unvbox\@abstractsupervisor
   \vskip\baselineskip \def\baselinestretch{1}\@normalsize
   \par\noindent Thesis Supervisor: #1 \\ Title: Professor of Nuclear Science and Engineering (Emeritus)}}
@@ -447,7 +447,7 @@ reserved.\par\permission}}
 \def\reader#1#2{\setbox\@titlereader\vbox
   {\unvbox\@titlereader \vskip 10pt% plus 1fil minus 1fil
   \def\baselinestretch{1}\large
-  \signature{Certified by}{#1 \\ #2 \\ Thesis Reader}}
+  \signature{Certified by}{#1 \\ \normalsize #2 \\ Thesis Reader}}
   \setbox\@abstractreader\vbox{\unvbox\@abstractreader
   \vskip\baselineskip \def\baselinestretch{1}\@normalsize
   \par\noindent Thesis Reader: #1 \\ Title: #2}}
@@ -460,7 +460,7 @@ reserved.\par\permission}}
 \def\chairman#1#2{\setbox\@titlechairman\vbox
   {\unvbox\@titlechairman \vskip 10pt% plus 1fil minus 1fil
   \def\baselinestretch{1}\large
-  \signature{Accepted by}{#1 \\ #2 \\ Chair, Department Committee on Graduate Students}}
+  \signature{Accepted by}{#1 \\ \normalsize #2 \\ Chair, Department Committee on Graduate Students}}
   \setbox\@abstracchairman\vbox{\unvbox\@abstracchairman
   \vskip\baselineskip \def\baselinestretch{1}\@normalsize
   \par\noindent Chairman: #1 \\ Title: #2}}
@@ -488,8 +488,8 @@ at the
 \par
 \@copyrightnotice
 \par
-\vskip 3\baselineskip
-\signature{Author}{\@department \\ \@thesisdate}
+\vskip 2.5\baselineskip
+\signature{Author}{\normalsize \@department \\ \@thesisdate}
 \par
 \vfill
 \unvbox\@titlesupervisor
@@ -500,7 +500,6 @@ at the
 \vfill
 \unvbox\@titlechairman
 \par
-\vfill
 \end{titlepage}}
 
 % this environment should probably be called abstract,

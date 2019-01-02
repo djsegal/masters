@@ -29,7 +29,7 @@ This chapter will then conclude with a discussion on how best to lower \replaced
 
 \section{\replaced{Testing the}{Validating} Code \replaced{against}{with} other Models}
 
-\replaced{After developing a new model, the first next step is to make sure its results are sensical.}{When you develop a new model, the first thing you have to do is check that it makes sensical results.} The \replaced{goal, however,}{goal} is \added{to} not \deleted{to} go \replaced{too far, i.e.\ }{overboard, though,} by: comparing it with too many models or requiring perfect matches with \deleted{all} their results. To this, we will compare Fussy.jl with five designs \deleted{coming} from \replaced{the literature}{three separate research teams} -- hopefully casting a wide enough net through reactor-space to prove sufficient. It should be noted that for how simple this model is, it does a remarkable job matching \replaced{the other group's}{these} more sophisticated frameworks. It also highlights how discrepancies arise in this highly non-linear computational problem.
+\replaced{After developing a new model, the first next step is to make sure its results are sensical.}{When you develop a new model, the first thing you have to do is check that it makes sensical results.} The \replaced{goal, however,}{goal} is \added{to} not \deleted{to}go \replaced{too far, i.e.\ }{overboard, though,} by: comparing it with too many models or requiring perfect matches with \deleted{all}their results. To this, we will compare Fussy.jl with five designs \deleted{coming}from \replaced{the literature}{three separate research teams} -- hopefully casting a wide enough net through reactor-space to prove sufficient. It should be noted that for how simple this model is, it does a remarkable job matching \replaced{the other group's}{these} more sophisticated frameworks. It also highlights how discrepancies arise in this highly non-linear computational problem.
 
 The first reactor design that will provide a basis for comparison is the ARC reactor.\cite{arc} As it was also designed by MIT researchers, the fit is shown to be almost exact. This of course probably involves a fair amount of inherent biases stemming from \replaced{shared scientific philosophies and knowledge base.}{how this ecosystem operates and produces engineers -- most notably as the core of this code comes from Jeff's ongoing interest in the problem.}
 
@@ -1077,7 +1077,7 @@ Even in this relatively simple fusion model, there are more than twenty \replace
 
 Besides artificially enhancing a plasmas confinement with the H-factor, steady-state reactor designers may also heavily rely on high bootstrap currents. This is because bootstrap current is the portion of current you do not have to pay for. The research \replaced{groups}{camp} most focused on this \replaced{technological advancement are}{miracle is} General Atomic's DIII-D\cite{iterdb} in San \replaced{Diego and PPPL's NSTX-U in New Jersey.\cite{nstx}}{Diego.} This \replaced{advancement}{miracle} relies on tailoring current profiles to be \replaced{much more}{extremely} hollow.
 
-Quickly reasoning this \deleted{camp's} thought process are two sets of plots. The first plot (\cref{fig:bootstrap_samplings}) highlights how the cheapest possible steady-state designs have bootstrap fractions approaching unity -- they use almost no current drive. This makes sense as current drive is extremely cost prohibitive (i.e.\ why people consider pulsed tokamaks).
+Quickly reasoning this \deleted{camp's}thought process are two sets of plots. The first plot (\cref{fig:bootstrap_samplings}) highlights how the cheapest possible steady-state designs have bootstrap fractions approaching unity -- they use almost no current drive. This makes sense as current drive is extremely cost prohibitive (i.e.\ why people consider pulsed tokamaks).
 
 \begin{figure*}
     \centering
@@ -1353,9 +1353,9 @@ In a similar fashion as the bootstrap fraction results, the variable that most c
     \hfill \hfill ~\\ ~\\ ~\\
     \caption{Current Drive Efficiency vs Launch Angle}
     \label{fig:launch_angle} ~ \\
-    \small{ These plots show that the Ehst-Karney model does have an optimum angle, but most likely understates its importance -- sources suggest inside launch is preferable for multiple reasons./cite{adx} }
+    \small{ These plots show that the Ehst-Karney model does have an optimum angle, but most likely understates its importance -- sources suggest inside launch is preferable for multiple reasons.\cite{adx} }
 \end{figure*}
 
-It should be noted that the launch angle was not found to have a major impact. This may be a due to an oversimplification of the \replaced{model, as sources suggest inside launch is preferable for multiple reasons./cite{adx} }{model.}
+It should be noted that the launch angle was not found to have a major impact. This may be a due to an oversimplification of the \replaced{model, as sources suggest inside launch is preferable for multiple reasons.\cite{adx} }{model.}
 
 %\end{document}
