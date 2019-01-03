@@ -163,7 +163,7 @@ Here, $b_p$ comes from:
 \end{equation}
 And the value of $\gamma$ comes from the the normalized internal inductance:
 \begin{equation}
-	l_i = \frac{4 \kappa}{1+\kappa^2}	 \int_0^1 b_p^2 \ \frac{d\rho}{\rho}
+	l_i = \frac{4 \kappa}{1+\kappa^2}	 \int_0^1 b_p^2 \ \rho\, d\rho
 \end{equation}
 With our profiles,
 \begin{equation}
@@ -223,10 +223,7 @@ And a similar exercise for the thermal conduction losses results in:
 	K_\kappa = 0.4744 \cdot  ( 1 + f_D ) \cdot ( \, \varepsilon^2 \, \kappa \, g \, ) \cdot \frac{ (1 + \nu_n) \, (1 + \nu_T) }{1 + \nu_n + \nu_T }
 \end{gather}
 
-\clearpage
-\newpage
-
-
+This concludes an exploration into a slightly more accurate profile construction. It should be noted that these pedestals are still not self-consistent. A true description of profiles would result in a much slower model.
 
 
 
