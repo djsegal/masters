@@ -47,7 +47,7 @@ As mentioned, this model matches the results from the ARC design almost \replace
 
 \added{Once these curves are created, a design point is chosen on them that has the least distance to the marked point (from the original model's paper). These two points -- or reactors -- are then compared in detail in \cref{table:arc}. Note that the input variables are shared between the original model and this model's input file. The output between the two is what is different. For clarity, $\volume$ is the volume of a tokamak in cubic meters, and the dash on the inductive current fraction $f_{ID}$ implies it makes up $0\%$ of the current.}
 
-\added{The use of a dash for $\beta_N$ brings up the final piece of information needed to understand the plots and table creation process -- limiting constraints. Note that in \cref{fig:arc_comparison}, the solid curve has two portions: \texttt{beta} and \texttt{wall}. These are the portions where the beta limit and the wall loading limit are the driving constraints, respectively. For example at $B_0$ = 5T, the wall loading ($P_W$) will be much less than the maximum allowed $2.5 \, \textnormal{MW}/\textnormal{m}^2$. This is why the dash is next to $\beta_N$ in \cref{table:arc}, as it is held at the maximum allowed value (i.e. $\beta_N = 0.026$.)}
+\added{The use of a dash for $\beta_N$ brings up the final piece of information needed to understand the plots and table creation process -- limiting constraints. Note that in \cref{fig:arc_comparison}, the solid curve has two portions: \texttt{beta} and \texttt{wall}. These are the portions where the beta limit and the wall loading limit are the driving constraints, respectively. For example at $B_0$ = 5T, the wall loading ($P_W$) will be much less than the maximum allowed $2.5 \, \textnormal{MW}/\textnormal{m}^2$. This is why the dash is next to $\beta_N$ in \cref{table:arc}, as it is held at the maximum allowed value (i.e.\ $\beta_N = 0.026$.)}
 
 \added{Finally, the reason there is a dashed \texttt{pulsed} curve and a solid \texttt{steady} one is because this reactor was run in both modes of operation. The pulsed label is actually a slight misnomer as it implies the generalized current balance formula is used (over the simple steady current from \cref{eq:steady}). Because pulses are set to 50 years, they are functionally steady-state regardless. The real reason the two curves diverge is because the steady current has a self-consistent current drive efficiency ($\eta_{CD}$).}
 
@@ -121,13 +121,13 @@ For pulsed designs, on the other hand, kink curves start to appear for low magne
 
 \added{As shown in \cref{fig:demo_steady_comparison,table:demo_steady}, the DEMO steady reactor is the design captured worst by the Fussy.jl model. Some discrepancy, however can be removed by using the PROCESS team's modified version of heat loss, as given by \cref{eq:pl_demo}.\cite{process} Although not supported by the official ITER database fit,\cite{iter_confinement} the PROCESS team reduces the absorbed power by the Bremsstrahlung power\cite{process_rad} -- which can lengthen $\tau_E$ by more than 25\%.\cite{inputfile} }
 
-\added{With this correction, the $R_0$ -- $B_0$ curve is drawn to be right on top of their model's design. The same cannot be said for the $I_P$ -- $\overline T$ curve as steady current was shown to have little dependence on tokamak configuration ($R_0$ and $B_0$) and, correspondingly, the limiting constraint (e.g. \texttt{beta} and \texttt{wall}). }
+\added{With this correction, the $R_0$ -- $B_0$ curve is drawn to be right on top of their model's design. The same cannot be said for the $I_P$ -- $\overline T$ curve as steady current was shown to have little dependence on tokamak configuration ($R_0$ and $B_0$) and, correspondingly, the limiting constraint (e.g.\ \texttt{beta} and \texttt{wall}). }
 
-\added{Note that the labels of \texttt{modified} and \texttt{pulsed} are slightly obscure in this context. Pulsed, for starters, is actually the generalized solver that does not rely on self-consistent current drive (i.e. in $\eta_{CD}$). The modified label is then when the pulsed solver uses the $P_L^{DEMO}$ value in approximating heat conductive losses.}
+\added{Note that the labels of \texttt{modified} and \texttt{pulsed} are slightly obscure in this context. Pulsed, for starters, is actually the generalized solver that does not rely on self-consistent current drive (i.e.\ in $\eta_{CD}$). The modified label is then when the pulsed solver uses the $P_L^{DEMO}$ value in approximating heat conductive losses.}
 
 \subsubsection{DEMO Pulsed -- A Pulsed ITER Successor}
 
-This pulsed version of DEMO is the only reactor in our collection that is not run in steady-state. As such, it may be the most important one \added{(i.e. it is the only pulsed reactor)}. The first \replaced{observation from \cref{fig:demo_pulsed_comparison}}{thing that is abundantly clear} is that this design actually has no valid wall loading portion -- only a kink and beta curve exist! Even so, the results match pretty well (see \cref{table:demo_pulsed}). It should be noted, though, that this current drive is treated as an input and not solved self-consistently.
+This pulsed version of DEMO is the only reactor in our collection that is not run in steady-state. As such, it may be the most important one \added{(i.e.\ it is the only pulsed reactor)}. The first \replaced{observation from \cref{fig:demo_pulsed_comparison}}{thing that is abundantly clear} is that this design actually has no valid wall loading portion -- only a kink and beta curve exist! Even so, the results match pretty well (see \cref{table:demo_pulsed}). It should be noted, though, that this current drive is treated as an input and not solved self-consistently.
 
 \clearpage
 
@@ -1121,7 +1121,7 @@ Quickly reasoning this \deleted{camp's}thought process are two sets of plots. Th
     \hfill \hfill ~\\ ~\\ ~\\
     \caption{Bootstrap Current Monte Carlo Sampling}
     \label{fig:bootstrap_samplings} ~ \\
-    \added{\small The purpose of these plots is to show that a high bootstrap current always reduces the cost of a steady state reactor -- highly independent of actual input quantities (i.e. $\varepsilon$, $l_i$, etc.)}
+    \added{\small The purpose of these plots is to show that a high bootstrap current always reduces the cost of a steady state reactor -- highly independent of actual input quantities (i.e.\ $\varepsilon$, $l_i$, etc.)}
 \end{figure*}
 
 The next plot \added{(\cref{fig:inductance_sensitivities})} is the parameter that determines a current profile's peak radius: $l_i$. As can be seen, the current peak approaches the outer edge of the plasma as $l_i$ decreases. This in turn boosts the bootstrap fraction closer to one -- leading to inexpensive reactors.
