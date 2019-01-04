@@ -28,23 +28,23 @@
 
 \section{Incorporating Stellarator Technology -- Ladon}
 
-A stellarator is, at a basic level, a tokamak helically twisted along the length of its major circle (see \cref{fig:stellar_cutaway}). For a long time they were dismissed because of \replaced{their poor transport properties.}{the difficulty involved in building spiraled magnets.}  Recent technological improvements, though, have eased this situation -- as seen with the Wendelstein 7-X device in Germany. The problem now is engrained in the \replaced{underdeveloped}{missing} scaling laws stemming from a lack of machines and, more fundamentally, data points.\cite{tau_stellar}
+A stellarator is, at a basic level, a tokamak helically twisted along the length of its major circle (see \cref{fig:stellar_cutaway}). For a long time they were dismissed due to \replaced{their poor transport properties.\cite{jeff}}{the difficulty involved in building spiraled magnets.}  Recent technological improvements, however, have eased this burden -- as seen with the recent Wendelstein 7-X device in Germany. The problem now is the \replaced{underdeveloped}{missing} scaling laws that stem from a lack of machines and, more fundamentally, data points.\cite{tau_stellar}
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.725\textwidth]{images/stellarator}
+	\includegraphics[width=0.75\textwidth]{images/stellarator}
 	\caption{Cut-Away of Stellarator Reactor} ~\\
 	\label{fig:stellar_cutaway} ~\\
 	\small{A stellarator has a geometry similar to a tokamak, except it twists around its major axis. This eliminates the need for net current to keep the device in equilibrium.}
 \end{figure}
 
-\added{To model Ladon, this paper's proposed stellarator, one would need to replace at least: the Greenwald density limit and the confinement time scaling law. In place of the Greenwald density will likely be some other density or current limit, possibly the Bremsstrahlung density limit.\cite{stellar} This may require the density to be carried throughout analysis -- thus appearing explicitly in one column of \cref{table:eq}.}
+\added{To use this model to properly prototype our stellarator prototype, Ladon, one would need to replace at least: the Greenwald density limit and the confinement time scaling law. In place of the Greenwald limit will likely be some other density or current limit, possibly the Bremsstrahlung density limit.\cite{stellar} This would likely require the density to be carried throughout analysis -- and consequently appear as a column in \cref{table:eq}.}
 
 \deleted{Optimistically, expanding this model would just involve developing a new confinement time scaling law and replacing the Greenwald density limit. The reason the Greenwald density limit is no longer important is because stability is much easier to maintain in a stellarator. Most likely, the density limit will now be governed by Bremsstrahlung radiation. If this were the case, each equation would need to be redivided using it. Ladon would be the reactor built using this enhancement.}
 
-\section{Making a \replaced{Composite}{Hybrid} Reactor -- Janus}
+\section{Making a \replaced{Composite}{Hybrid} Reactor -- Janus} 
 
-The next interesting reactor would be a \replaced{composite}{hybrid} tokamak incorporating pulsed and steady-state operation: Janus. Fundamentally, this would involve current coming from both LHCD (steady-state), as well as inductive (pulsed) sources. How the two can coexist is shown in \cref{fig:cur_balance_final}. This was actually used in DEMO Pulsed, but the current drive was not handled self-consistently. Coupling these two current sources could reduce reliance on bootstrap current and lead to much more compact machines.
+The next interesting reactor would be a \replaced{composite}{hybrid} tokamak incorporating pulsed and steady-state operation: Janus. Fundamentally, this would involve current coming from both LHCD (steady-state), as well as inductive (pulsed) sources. How the two can coexist is shown in \cref{fig:cur_balance_final}. This scheme was actually already used in DEMO Pulsed, but the current drive was not handled self-consistently. Coupling the two current sources could reduce reliance on bootstrap current and lead to much more compact machines.
 
 \begin{figure}
 	\centering
@@ -57,33 +57,27 @@ The next interesting reactor would be a \replaced{composite}{hybrid} tokamak inc
 	\label{fig:cur_balance_final}
 \end{figure}
 
-The arguments against this are mainly technical: why build two difficult auxiliary systems when one is needed -- especially when they probably work against each other. Although rational, \replaced{it may turn out that the larger current achievable with two sources leads to a smaller, more economic machine.}{the argument implicitly assumes a current is achievable through only one source (i.e.\ either through LHCD or from a central solenoid). Using two may allow for stronger plasma currents.}
+The arguments against this are mainly technical: why build two difficult auxiliary systems when one is needed -- especially when they probably work against each other. Although rational, \replaced{it may turn out that the larger current achievable with two sources may still lead to more economically competitive reactors.}{the argument implicitly assumes a current is achievable through only one source (i.e.\ either through LHCD or from a central solenoid). Using two may allow for stronger plasma currents.}
 
 \section{Bridging Confinement Scalings -- Daedalus}
 
 The final potential reactor -- Daedalus -- is designed \replaced{so that it can be}{to collect as many scaling laws as possible. As a baseline, it should be able to} run in H-Mode, L-Mode, and I-Mode. Up until now, only H-Mode (high confinement) has been discussed due to its use in conventional reactor design. However, L-Mode (low) and I-Mode\cite{imode} (intermediate) may prove to produce more favorable scalings -- in terms of cost -- as more of reactor space is explored.
 
-Because L-Mode is available on any machine, the first step is \added{actually} building under H-Mode. The goal then is to find reactors that can also reach I-Mode -- \replaced{simultaneously}{thus} improving the scaling law's fit and \added{possibly} making the actual reactor more \replaced{economic}{cost effective}.
+To design Daedalus, the first step is \added{actually} building under H-Mode. This is because L-Mode is available on every machine. The goal then is to find reactors that can also reach I-Mode -- \replaced{simultaneously}{thus} improving that scaling law's fit and \added{possibly} making the actual reactor more \replaced{economic}{cost effective}.
 
-Presented below are the three confinement scaling laws, as well as the generalized formula. As should be noted, the I-Mode scaling currently lacks a true radial dependence -- as it has only been found on two machines.\cite{imode} This is one reason Daedalus would be so valuable.\footnote{In H-Mode and L-Mode's favor, they have been found on every machine that should see them. }
-
-\begin{equation}
+Presented below are the three confinement scaling laws, as well as the generalized formula. As should be noted, the I-Mode scaling currently lacks a true radial dependence -- as it has only been found on two machines.\cite{imode} This is one reason Daedalus would be so valuable.\footnote{In H-Mode and L-Mode's favor, they have been found on every machine that should see them. } 
+\begin{gather}
   \tau_E = K_\tau \, H \, \frac{
     I_P^{\,\alpha_I} \, R_0^{\,\alpha_R} \, a^{\,\alpha_a} \, \kappa^{\,\alpha_\kappa} \ \overline{n}^{\,\alpha_n} \, B_0^{\,\alpha_B} \, A^{\,\alpha_A}
   }{ P_{src} ^ {\,\alpha_P} }
-  \tag{\ref{eq:tau_gen}}
-\end{equation}
-
-\begin{equation}
+  \tag{\ref{eq:tau_gen}} \\
   \tau_E^H = 0.145 \, H \, \frac{
     I_P^{0.93} \, R_0^{1.39} \, a^{0.58} \, \kappa^{0.78} \ \overline{n}^{\, 0.41} \, B_0^{0.15} \, A^{0.19}
   }{ P_{src} ^ {\,0.69} }
-  \tag{\ref{eq:tau_h}}
-\end{equation}
-\begin{equation}
+  \tag{\ref{eq:tau_h}} \\
   \tau_E^L = 0.048\, H \, \frac{
     I_P^{0.85} \, R_0^{1.2} \, a^{0.3} \, \kappa^{0.5} \ \overline{n}^{\, 0.1} \, B_0^{0.2} \, A^{0.5} }{ P_{src} ^ {\,0.5} }
-\end{equation}
+\end{gather}
 \myequations{ L-Mode Confinement Time Scaling Law -- $\tau_E^L$ }
 \begin{equation}
   \tau_E^I = \frac{ 0.014 \, H }{ 0.68 ^ {\lambda_R} \cdot 0.22 ^ {\lambda_a} } \cdot \frac{ I_P^{0.69} \, R_0^{\lambda_R} \, a^{\lambda_a} \, \kappa^{0.0} \ \overline{n}^{\, 0.17} \, B_0^{0.77} \, A^{0.0} }{ P_{src} ^ {\,0.29} }
@@ -97,15 +91,15 @@ A final point to make is reemphasizing that the I-Mode scaling law -- developed 
 
 \section{Addressing Model Shortcomings}
 
-Before moving on to the final conclusions, we will give a quick recap of \replaced{several of the more overly simplified phenomena in}{the more audacious simplifications used within} this fusion systems framework. These include: approximating temperature profiles as simple parabolas, neglecting all radiation except Bremsstrahlung, and handling flux sources at too basic a level. \added{This list is non-comprehensive, as more sophisticated analysis would also help: the divertor heat load, the neutron wall loading, etc.}
+Before moving on to the final conclusions, we will give a quick recap of \replaced{several of the more overly simplified phenomena in}{the more audacious simplifications used within} this fusion systems framework. These include: approximating temperature profiles as simple parabolas, neglecting all radiation except Bremsstrahlung, and handling flux sources at too basic a level. \added{This list is non-comprehensive, as more sophisticated analysis would also improve the physics behind: divertor heat loading, neutron wall loading, etc.}
 
 \subsection{Integrating Pedestal Temperature Profiles}
 
-\replaced{One of the biggest shortcomings of this model is not handling plasma profiles self-consistently -- instead replacing them with simple parabolas.}{The most dubious simplification in the code at this point is modeling temperature profiles as parabolas.} Although these parabolas work for densities and L-Mode plasma temperatures, the same cannot be said about H-Mode temperatures. This is because they have a distinct pedestal region on the outer edge of the plasma.
+\replaced{One of the largest shortcomings of this model is not handling plasma profiles self-consistently. It instead treats them as simple parabolas.}{The most dubious simplification in the code at this point is modeling temperature profiles as parabolas.} Although these parabolas work for densities and L-Mode plasma temperatures, the same cannot be said for H-Mode temperatures. This is because they have a distinct pedestal region on the outer edge of the plasma.
 
-The usage of pedestal temperatures -- discussed in \cref{chapter:profiles} -- improves two aspects of the model: the fusion power and the bootstrap current. These were shown in the results to be over-calculated and underestimated, respectively. First, pedestals have a lower core temperature than parabolic profiles with the same average value. This would cause a decrease in the total fusion power. Additionally, the pedestal's quick drop near the plasma's edge would boost the bootstrap current, due to the steep derivative there.
+The usage of pedestal temperatures -- discussed in \cref{chapter:profiles} -- therefore improves two aspects of the model: the fusion power and the bootstrap current. These were shown in the results to be over-calculated and underestimated, respectively. First, pedestals lower the total fusion power because they have a lower core temperature than parabolic profiles with the same average value. Conversely, the pedestal's quick drop near the plasma's edge would boost the bootstrap current, as it has a steep derivative there.
 
-These improvements could easily be added to the code, because temperature was addressed as a difficult parameter to handle from the beginning.
+These improvements could easily be added to the code, because temperature was addressed to be a difficult-to-handle parameter from the beginning.
 
 \subsection{Expanding the Radiation Loss Term}
 
@@ -113,10 +107,10 @@ The next area that would be improved by more sophisticated theory would be the r
 
 \subsection{Taking Flux Sources Seriously}
 
-The final oversimplification in the model deals with the flux sources involved in a pulsed reactor -- existing at multiple level. First, the derivation of flux balance started with a simple transformer between a solenoid primary and a plasma secondary. \deleted{Even this initial step is probably too simple.}
+The final oversimplification in the model deals with the flux sources involved in a pulsed reactor -- which exist at multiple levels. First, the derivation of flux balance started with a simple transformer between a solenoid primary and a plasma secondary. \deleted{Even this initial step is probably too simple.}
 
-After we developed an equation for flux balance, we compared it to ones in the literature (i.e.\ PROCESS) to build confidence in the model. To draw this equation closer to theirs, we then added a PF coil contribution a posteriori. This implicitly ignored coupling between most of the components. Thus leading to another source of error for the model. Moreover, this formula for PF coil contribution was much simpler than ones found in other fusion systems codes.
+After we developed an equation for flux balance, we compared it to ones in the literature (i.e.\ PROCESS) to build confidence in the model. To draw this equation closer to theirs, we then added a PF coil contribution a posteriori. This implicitly ignored coupling between most of the components. Thus leading to another source of error for the model. Moreover, this formula for the PF coil contribution was much simpler than ones found in other fusion systems codes.
 
-Even though this model may be extremely simple, it does remarkably well at matching more sophisticated codes -- and does so at a much faster pace. These suggestions were \deleted{all}just ways to \replaced{account for more realistic physics.}{draw results closer to real world values.}
+Even though this model may be extremely simple, it still matches more sophisticated frameworks at a much faster pace. These suggestions were \deleted{all}just ways to \replaced{account for more realistic physics.}{draw results closer to real world values.}
 
 %\end{document}

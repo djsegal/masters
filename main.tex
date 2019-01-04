@@ -76,7 +76,7 @@
 
 \setlength{\jot}{2.25ex}
 
-\includeonly{pulsed,cover,contents}
+%\includeonly{conclusion,cover,contents}
 
 \interfootnotelinepenalty=10000
 
@@ -89,6 +89,8 @@
     \stepcounter{section}
     \section*{\Alph{chapter}.\arabic{section}\hspace{1em}{#1}}
 }
+
+\hyphenpenalty=250
 
 \begin{document}
 
@@ -120,5 +122,12 @@
 
 \include{biblio}
 
+%\newpage
+%\vspace*{\fill}
+%\begin{center}
+%This page intentionally left blank.
+%\end{center} ~
+%\vspace{\fill}
+ 
 \end{document}
 

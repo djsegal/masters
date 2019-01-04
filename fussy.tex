@@ -2,9 +2,9 @@
 
 \label{chapter:fussy}
 
-Fussy.jl is a 0-D \underline{fus}ion \underline{sy}stems code written using the Julia language. The reason for choosing Julia over say Matlab and Python was due to metaprogramming concerns and its tight-knit  computational community, respectively. Incorporating the model used throughout this paper, the code is quick to run and matches more sophisticated frameworks with high fidelity.
+Fussy.jl is a 0-D \underline{fus}ion \underline{sy}stems code written using the Julia language. The reason for choosing Julia over say Matlab or Python was due to metaprogramming concerns and its tight-knit  computational community, respectively. Incorporating the model used throughout this paper, the code is both quick to run and matches more sophisticated frameworks with high fidelity.
 
-This chapter will be broken down into three steps. The first is getting a user up and running with the code. Once the user gets to this point, hopefully they will wonder how the code is structured. This will be the second step. The final step will be explaining the various functions callable on reactor objects -- the atomic data structure for Fussy.jl.
+This chapter will be broken down into four steps. The first is getting a user up and running with the code. Once the user gets to this point, hopefully they will wonder how the code is structured -- this is the second step. Next, we will explain the various functions callable on reactor objects -- the atomic data structure for Fussy.jl. And lastly, there will be a quick tutorial.
 
 \section{Getting the Code to Work}
 
@@ -16,7 +16,7 @@ Although \href{http://fusion.codes}{fusion.codes} is a nice tool for viewing thi
 
 {\centering \href{https://julialang.org/downloads}{julialang.org/downloads} \par }
 
-Currently the Fussy.jl codebase is written using \texttt{v0.6}, but should be \texttt{v1.0} compatible by 2019. Using Julia nomenclature, Fussy.jl is a Julia package. It can be cloned using Julia conventions from the following Github repository:
+Currently the Fussy.jl codebase is written using \texttt{v0.6}, but should be \texttt{v1.0} compatible by 2020. Using Julia nomenclature, Fussy.jl is a Julia package. It can be cloned using Julia conventions from the following Github repository:
 
 {\centering \href{https://github.com/djsegal/Fussy.jl.git}{https://github.com/djsegal/Fussy.jl.git} \par }
 
@@ -33,7 +33,7 @@ If the code works, you should get a "It works!" message as output.
 
 \section{Sorting out the Codebase}
 
-Assuming the user got to this section, the code works and now you want to know what you can do with it. The place to start is in the \texttt{src} folder, again viewable online at:
+Assuming the user got to this section, the code works and now you want to know what you can do with it. The place to start is in the \texttt{src} folder, again viewable at:
 
 {\centering \href{http://git.io/tokamak}{git.io/tokamak} \par }
 
@@ -76,7 +76,7 @@ The step up from the Equation struct are the Equation Sets. These collections of
 
 \subsection{Referencing Input Decks and Solutions}
 
-With more than twenty \replaced{static}{fixed} variables in the model, the range of tokamak reactors is basically infinite. To help users build a net of designs to explore reactor space are seven input decks. These are the ones given in the results: ARC, ACT I /II, DEMO Steady/Pulsed, Proteus and Charybdis. Coupled with the non-prototype reactors are solution reactors that store various quantities from the original papers (e.g.\ $P_F$, $f_{BS}$, $R_0$). These are how the comparison tables were constructed.
+With more than twenty \replaced{static}{fixed} variables in the model, the range of tokamak reactors is basically infinite. To help users build a net of designs to explore reactor space are seven input decks. These are the ones given in the results: ARC, ACT I/II, DEMO Steady/Pulsed, Proteus and Charybdis. Coupled with the non-prototype reactors are solution reactors that store various quantities from the original papers (e.g.\ $P_F$, $f_{BS}$, $R_0$). These are how the comparison tables were constructed.
 
 \subsection{Acknowledging Utility Functions}
 
@@ -110,11 +110,11 @@ Within flux balance and power balance were around a dozen terms or sub-terms. Al
 
 \subsubsection{Profiles}
 
-The next collection of reactor methods are the various profiles. Most obviously, these include radial plasma profiles for density, temperature, and current. However, this folder also includes the magnetic field strength as a function of radius -- as was used within current drive efficiency calculations.
+The next collection of reactor methods are the various profiles. Most obviously, these include radial plasma profiles for density, temperature, and current density. However, this folder also includes the magnetic field strength as a function of radius -- as was used within current drive efficiency calculations.
 
 \subsubsection{Geometries}
 
-Additionally, there are many geometric relations. These include the various tokamak thicknesses: a, b, c, d -- as well as the radius and height of the central solenoid. This group also includes the volume, perimeter, surface area, and cross-sectional area. It also includes the many subscripted fields. For example, the elongation (i.e.\ $\kappa_{95}$) includes the following alternative definitions: $\kappa_X$, $\kappa_P$, and $\kappa_\tau$
+Additionally, there are many geometric relations. These include the various tokamak thicknesses: a, b, c, d -- as well as the radius and height of the central solenoid. This group also includes the volume, perimeter, surface area, and cross-sectional area. It also includes the many subscripted fields. For example, the elongation (i.e.\ $\kappa_{95}$) includes the following alternative definitions: $\kappa_X$, $\kappa_P$, and $\kappa_\tau$.
 
 \subsubsection{Formulas}
 
@@ -163,7 +163,7 @@ cur\_num\_points = 41
 }
 \end{addmargin}
 
-These six variables almost completely describe a sensitivity study. The first two saw we are using the ARC reactor deck and running a sensitivity over the H-factor parameter. Next, the two boolean values refer to the reactor (1) being treated as pulsed or steady-state and (2) wether to handle $\eta_{CD}$ self-consistently.\footnote{Note that, currently, a pulsed reactor cannot be self-consistent in $\eta_{CD}$ -- it therefore causes an error.} Ergo, what these two flags do is make sure ARC is being handled as a steady-state reactor with a self-consistent $\eta_{CD}$. The last two variables are then ways to change the sensitivity of the study (with $1.0 \rightarrow 100\%$) and the number of reactors it will produce (i.e.\ 41).
+These six variables almost completely describe a sensitivity study. The first two say we are using the ARC reactor deck and running a sensitivity over the H-factor parameter. Next, the two boolean values refer to the reactor (1) being treated as pulsed or steady-state and (2) wether to handle $\eta_{CD}$ self-consistently.\footnote{Note that, currently, a pulsed reactor cannot be self-consistent in $\eta_{CD}$ -- it therefore causes an error.} Ergo, what these two flags do is make sure ARC is being handled as a steady-state reactor with a self-consistent $\eta_{CD}$. The last two variables are then ways to change the sensitivity of the study (with $1.0 \rightarrow 100\%$) and the number of reactors it will produce (i.e.\ 41).
 
 Now all six of these variables can be piped into a call to the \texttt{Study} struct to start running the sensitivity study:
 
@@ -218,7 +218,7 @@ The first step is simply making a plot object
 \texttt{cur\_plot = plot()}
 \end{addmargin}
 
-After execution, this should produce the plank 2-D plot shown in \cref{fig:example_1}.
+After execution, this should produce the blank 2-D plot shown in \cref{fig:example_1}.
 
 \begin{figure}
 	\centering
@@ -283,6 +283,6 @@ The final step is adding proper limits to make what is going on obvious to the r
 	\label{fig:example_4}
 \end{figure}
 
-The addition of which can be seen in \cref{fig:example_4}.
+The addition of this can be seen in \cref{fig:example_4}.
 
 This completes the example. At this point, you should now be able to use every feature of Fussy.jl. Good luck!
