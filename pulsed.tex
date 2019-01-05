@@ -161,7 +161,7 @@ The last step in discussing ramp-up is giving the two important formulas that co
 
 \subsubsection{The Flattop Phase -- FT}
 
-The most important phase in any reactor's pulse is flattop: the quasi-steady-state time when the tokamak is making \replaced{electricity.}{electricity (and money).} Flattops are assumed to last a few hours for a profitable machine, during which the central solenoid completely discharges to overcome a plasma's resistive losses -- thus, keeping it in a quasi-steady-state mode of operation. For a steady-state reactor, this phases constitutes the entirety of the pulse.
+The most important phase in any reactor's pulse is flattop: the quasi-steady-state time when the tokamak is making \replaced{electricity.}{electricity (and money).} Flattops are assumed to last a few hours for a profitable machine, during which the central solenoid almost completely discharges to overcome a plasma's resistive losses -- thus, keeping it in a quasi-steady-state mode of operation. For a steady-state reactor, this phases constitutes the entirety of the pulse.
 
 Although the resistance cannot be safely neglected for the flattop -- as it was for ramp-up -- the plasma's inductive current ($I_{ID}$) is assumed constant. This leads to its derivative in equations cancelling out! Mathematically,
 \begin{align}
@@ -362,7 +362,7 @@ This equation is flux balance, where the left-hand side are the sources (e.g.\ t
 	}
 \end{equation}
 \myequations{Central Solenoid Flux -- $\Phi_{CS}$}
-The sinks, namely the ramp-up inductive losses ($\Phi_{RU}$) and the flattop resistive losses ($\Phi_{FT}$), are what drain the flux. Here, again, ramp-down and dwell are not included as sinks because flux balance only tracks until the end of flattop. They come into play when measuring the cost of electricity -- through the duty factor from \cref{eq:duty}.
+The sinks, namely the ramp-up inductive losses ($\Phi_{RU}$) and the flattop resistive losses ($\Phi_{FT}$), are what drain this flux. Here, again, ramp-down and dwell are not included as sinks because flux balance only tracks until the end of flattop. They come into play when measuring the cost of electricity -- through the duty factor from \cref{eq:duty}.
 
 Relabeling terms, flux balance can now be rewritten as:
 \begin{equation}
@@ -431,6 +431,7 @@ Here, $g_p$ is another geometric scaling factor,
 \begin{equation}
 	K_{VI} = \textnormal{ln} \left(\frac{8}{\varepsilon}\right) + \frac{l_i}{2} - \frac{3}{2}
 \end{equation}
+
 For clarity, this will be plugged into the new PF coil flux contribution ($\Phi_{PF}$):
 \begin{equation}
 	\tag{\ref{eq:phipf}}
@@ -448,7 +449,7 @@ The $R_{CS}$ and $d$ terms found in $\Phi_{PF}$ will now be discussed as they ar
 
 \section{Improving Tokamak Geometry}
 
-From before, this fusion systems model has been said to depend on the major and minor radius: $R_0$ and $a$, respectively. Along the way, various geometric parameters have been defined (e.g.\ $\varepsilon$, $\kappa$, $\delta$) to describe the geometry further. Now three more thicknesses will be added -- $b$, $c$, and $d$ -- as well as two fundamental dimension related to to the solenoid: its inner radius ($R_{CS}$) and height ($h_{CS}$). These are the topics of this section.
+From before, this fusion systems model has been said to depend on the major and minor radius: $R_0$ and $a$, respectively. Along the way, various geometric parameters have been defined (e.g.\ $\varepsilon$, $\kappa$, $\delta$) to describe the geometry further. Now three more thicknesses will be added -- i.e. $b$, $c$, and $d$ -- as well as two fundamental dimension related to to the solenoid: its inner radius ($R_{CS}$) and height ($h_{CS}$). These are the topics of this section.
 
 \subsection{Defining Central Solenoid Dimensions}
 
@@ -462,7 +463,7 @@ The best way to conceptualize tokamak geometry is through cartoon -- see \cref{f
 \small{Geometrically, a tokamak consists mainly of four components: the plasma, its metallic blanket, the toroidal field magnets surrounding them, and the central solenoid. These have thicknesses of a, b, c and d, respectively. $R_{CS}$ is where the solenoid begins.}
 \end{figure*}
 
-The blanket and TF coils have thicknesses of $b$ and $c$, respectively. Before defining $b$, $c$, and $d$, however, it proves useful to relate them all inside equations for the inner radius ($R_{CS}$) and height ($h_{CS}$) of the central solenoid.
+The blanket and TF coils have thicknesses of $b$ and $c$, respectively. Before defining them, however, it proves useful to relate them inside equations for the inner radius ($R_{CS}$) and height ($h_{CS}$) of the central solenoid.
  \begin{gather}
  	\label{eq:rcs1}
  	R_{CS} = R_0 - ( a + b + c + d ) \\
@@ -493,7 +494,7 @@ The blanket is an area between the TF coils and the torus that is \deleted{stron
 	}
 \end{equation}
 \myequations{Blanket Thickness -- $b$}
-\replaced{Here, $P_W$}{Here, the constant term (i.e.\ 1.23) is approximately the mean-free-path of fusion neutrons through lithium-7 -- the thickness of lithium needed to reduce the population of neutrons by $\sim 65\%$. While the second term, which includes $P_W$,} is a small correction to account for extra wall loading (as discussed in \replaced{\cref{subsection:wall_loading}}{the secondary constraint section}). Most blankets are usually around a meter.\cite{minervini,arc}
+\replaced{Here, $P_W$}{Here, the constant term (i.e.\ 1.23) is approximately the mean-free-path of fusion neutrons through lithium-7 -- the thickness of lithium needed to reduce the population of neutrons by $\sim 65\%$. While the second term, which includes $P_W$,} is a small correction to account for extra wall loading (as discussed in \replaced{\cref{subsection:wall_loading}}{the secondary constraint section}). Most blankets are, therefore, usually around a meter.\cite{minervini,arc}
 
 Moving forward, the remaining two thicknesses -- $c$ and $d$ -- are handled differently: estimating structural steel portions as well as magnetic current-carrying ones.
 
@@ -673,7 +674,7 @@ This section focuses on making various simplifications to the generalized curren
 	\tag{\ref{eq:gen_ip}}
 	I_P = \frac{ \left( K_{BS} + \sfrac{ G_{IU} }{ G_{IP} } \right) \cdot \overline T }{ 1 - K_{CD} ( \sigma v ) - \sfrac{ G_{ID} }{ G_{IP} } }
 \end{equation}
-As promised, this will start with the trivial simplification of the generalized current into steady state. Next it will move on to a basic simplification for the purely pulsed case. These two activities should shed some light on how to interpret the equation in the more complicated hybrid case (actually used by the model).
+As promised, this will start with the trivial simplification of the generalized current into steady state. Next it will move on to a basic simplification for the purely pulsed case. These two activities should shed some light on how to interpret the equation in the more complicated hybrid case (that is actually used by the model).
 
 \subsection{Recovering the Steady Current}
 

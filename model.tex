@@ -23,9 +23,9 @@
 
 The goal of this chapter is to take a step back from the steady current derivation and see the larger picture behind reactor design. As such, a more in-depth description of \replaced{static}{fixed} and \replaced{dynamic}{floating} variables is given. This discussion of \replaced{dynamic}{floating} variables will then lend itself to a description of the framework underpinning the fusion systems model. As such, we will now need formulas for the radius and magnet strength of the tokamak. Moving forward, the current will \deleted{then}remain a connecting piece as we \replaced{redirect focus}{switch gears} to pulsed tokamaks and compare \replaced{the underlying solvers of the two schemes.}{the two schemes' underlying solvers.}
 
-\added{The end result of this analysis will then be equations that allow the density ($\overline n$), current ($I_P$), major radius ($R_0$), and magnet strength ($B_0$) to be written as functions of the temperature ($\overline T$) and  static variables (e.g.\ $\nu_n$, $N_G$, $f_D$). These formulas are the product of applying constraints required for all tokamak reactors with several other limiting constraints. The constraints relevant to all tokamak reactors are: the Greenwald limit, current balance, and power balance. Limit constraints then include: the Troyon beta limit, the kink safety factor, the wall loading limit, the maximum power constraint, and the heat loading limit.}
+\added{The end result of this analysis will then be equations that allow the density ($\overline n$), current ($I_P$), major radius ($R_0$), and magnet strength ($B_0$) to be written as functions of the temperature ($\overline T$) and  static variables (e.g.\ $\nu_n$, $N_G$, $f_D$). These formulas are the product of applying constraints required for all tokamak reactors with several other limiting constraints. The constraints relevant to all tokamak reactors are: the Greenwald limit, current balance, and power balance. Limiting constraints then include: the Troyon beta limit, the kink safety factor, the wall loading limit, the maximum power constraint, and the heat loading limit.}
 
-\added{Actual methodologies for solving for the five dynamic variables simultaneously -- i.e.\ $\overline T$, $\overline n$, $I_P$, $R_0$, $B_0$ -- are put off until \cref{chapter:complete} when current balance is in a generalized form.}
+\added{Actual methodologies for solving for the five dynamic variables simultaneously -- i.e.\ for $\overline T$, $\overline n$, $I_P$, $R_0$, $B_0$ -- are put off until \cref{chapter:complete} when current balance is in a generalized form.}
 
 \section{Explaining \replaced{Static}{Fixed} Variables}
 
@@ -33,7 +33,7 @@ In this model, \replaced{static}{fixed} variables are ones that remain constant 
 
 \section{Connecting \replaced{Dynamic}{Floating} Variables}
 
-\replaced{Dynamic}{Floating} variables -- $\overline T$, $\overline n$, $I_P$, $R_0$, $B_0$ -- are the first-class variables of this fusion systems model. They represent the fundamental properties of a plasma and tokamak (which constitute a fusion reactor). As such, they will be reintroduced one at a time, explaining how they fit into the model -- and which \replaced{equations are}{equation is} capable of representing \replaced{them}{it}.
+\replaced{Dynamic}{Floating} variables -- i.e.\ $\overline T$, $\overline n$, $I_P$, $R_0$, $B_0$ -- are the first-class variables of this fusion systems model. They represent the fundamental properties of a plasma and tokamak (which constitute a fusion reactor). As such, they will be reintroduced one at a time, explaining how they fit into the model -- with the equations capable of representing \replaced{them}{it}. 
 
 \begin{table}[h!]
 \centering
@@ -57,7 +57,7 @@ This will prove more challenging for the generalized current needed for pulsed o
 
 \subsubsection{The Plasma Temperature -- $\overline T$}
 
-The plasma temperature, measured in keV (kilo-electron-volts), is one of the most \replaced{nonlinear}{finicky} variables in the fusion systems \replaced{framework}{model}. It first proved troublesome when it was shown that a pedestal profile -- not a parabolic one used here -- would be needed for an accurate calculation of bootstrap current. The \replaced{black-box}{unusual} tabulation for reactivity -- ($\sigma v$) -- which appeared in fusion power only further exposed this nonlinearity.
+The plasma temperature, measured in keV (kilo-electron-volts), is one of the most \replaced{nonlinear}{finicky} variables in the fusion systems \replaced{framework}{model}. It first proved troublesome when it was shown that a pedestal profile -- not a parabolic one used here -- would be needed for an accurate calculation of bootstrap current. The \replaced{black-box}{unusual} tabulation for reactivity -- ($\sigma v$) -- which appeared inside the fusion power only further exposed this nonlinearity.
 
 Acknowledging that temperature is the most difficult to handle parameter prompts its use as the scanned variable. What this means practically is scanning temperatures \replaced{is the most straightforward method to produce}{produces} curves of reactors. By example, a scan may be run over the average temperatures ($\overline T$): 10, 15, 20, 25, and 30 keV -- \added{where} each \replaced{corresponds}{corresponding} to its own reactor \added{with its own toroidal field strength ($B_0$), plasma current ($I_P$), etc}. In equation form, this becomes:
 \begin{equation}
@@ -71,7 +71,7 @@ Acknowledging that temperature is the most difficult to handle parameter prompts
 
 \subsubsection{The Plasma Density -- $\overline n$}
 
-\replaced{The Greenwald density limit is a constraint with a simple form that applies to all tokamak reactors.\cite{greenwald}}{The cornerstone of this fusion systems model has always been the application of the Greenwald density limit from square one.} It is for this reason -- as well as being a good approximation -- that a parabolic profile was rationalized over a pedestal (H-Mode) one. Repeated, the Greenwald density limit is:
+\replaced{The Greenwald density limit is a constraint with a simple form that applies to all tokamak reactors.\cite{greenwald}}{The cornerstone of this fusion systems model has always been the application of the Greenwald density limit from square one.} It is for this reason -- as well as being a good approximation -- that a parabolic profile was rationalized over a pedestal (H-Mode) one for the density. Repeated, the Greenwald limit is:
 \begin{equation}
 	\tag{\ref{eq:greenwald}}
 	\overline n = K_n \cdot \frac{I_P}{R_0^2}
@@ -151,7 +151,7 @@ Additionally, it was determined that the heating power is what was eventually am
 	\tag{\ref{eq:ph}}
 	P_H = \frac{P_F}{Q}
 \end{equation}
-The final source term is then the ohmic power ($P_\Omega$). This contribution term is the same as that occurs when current is run through a copper wire. From a simple circuits picture, the power across the plasma is related to its current and resistance -- in our standardized units -- through:\cite{process}
+The final source term is then the ohmic power ($P_\Omega$). This contribution term is the same as what occurs when current is run through a copper wire. From a simple circuits picture, the power across the plasma is related to its current and resistance -- in our standardized units -- through:\cite{process}
 \begin{equation}
 	\label{eq:pohmic_basic}
 	P_\Omega = 10^6 \cdot I_P^2 \cdot R_P
@@ -256,7 +256,7 @@ An equation for the Lawson \replaced{Parameter}{Criterion} -- sometimes referred
 	\label{eq:lawson}
 	n \cdot T \cdot \tau_E = \frac{ 60 }{ E_F } \cdot \frac{ T ^ 2 }{ \langle \sigma v \rangle }
 \end{equation}
-Similar to the steady current derived earlier, the right-hand side is only dependent on temperature. Further, as the left-hand side is a measure of difficult to achieve parameters, the goal is to minimize both sides. \replaced{As shown in \cref{fig:lawson}, this}{This} occurs when the plasma temperature is around 15 keV -- a fact \replaced{well known by}{memorized by} many fusion engineers. As will be seen, this is a simplified result of our model. This is why $\overline T$ = 15 keV is not always the optimum temperature -- but is usually in the right neighborhood of a reasonable reactor design.
+Similar to the steady current derived earlier, the right-hand side is only dependent on temperature. Further, as the left-hand side is a measure of difficult to achieve parameters, the goal is to minimize both sides. \replaced{As shown in \cref{fig:lawson}, this}{This} occurs when the plasma temperature is around 15 keV -- a fact \replaced{well known by}{memorized by} many fusion engineers. As will be seen, this is a simplified result of our model. This is why \linebreak $\overline T$ = 15 keV is not always the optimum temperature -- but is usually in the right neighborhood of a reasonable reactor design.
 
 \begin{figure}
 	\centering
@@ -265,7 +265,7 @@ Similar to the steady current derived earlier, the right-hand side is only depen
 	\end{adjustbox}
 %	\includegraphics[width=0.75\textwidth]{images/test_image}
 	\caption{Power Balance in a Reactor} ~\\
-	\small Power balance is what differentiates a reactor from a net power loss experiment. When cast as the Lawson \replaced{Parameter}{Criterion} for fusion, it explains why D-T plasmas often have a temperature around 15 keV.
+	\small Power balance is what differentiates a reactor from a net power loss experiment. When cast as the Lawson \replaced{Parameter}{Criterion} for fusion, it explains why D-T fusion plasmas often have a temperature around 15 keV.
 	\label{fig:lawson}
 \end{figure}
 
@@ -309,7 +309,7 @@ After a couple lines of algebra, power balance can be rewritten in a form analog
 	\tag{\ref{eq:lawson}}
 	n \cdot T \cdot \tau_E = \frac{ 60 }{ E_F } \cdot \frac{ T ^ 2 }{ \langle \sigma v \rangle }
 \end{equation}
-The main difference is this model does not ignore ohmic power and radiation losses completely. The inclusion of radiation for example sometimes bars a range of temperatures from being physically realizable.\footnote{The denominator of Eq \ref{eq:ntaue} has discontinuities when the $K_{BR} \, \overline{T}^{  \,1/2 }$ term exactly equals the parenthesised one. Therefore, valid reactors only exist outside the discontinuities, when the entire triple product is finite and positive. } With this intermediate relation in place, the goal is now to give a formula for the confinement time and solve it for the magnetic field strength ($B_0$) -- thus giving the Primary Constraint.
+The main difference is that this model does not ignore ohmic power and radiation losses completely. The inclusion of radiation for example sometimes bars a range of temperatures from being physically realizable.\footnote{The denominator of Eq \ref{eq:ntaue} has discontinuities when the $K_{BR} \, \overline{T}^{  \,1/2 }$ term exactly equals the parenthesised one. Therefore, valid reactors only exist outside the discontinuities, when the entire triple product is finite and positive. } With this intermediate relation in place, the goal is now to give a formula for the confinement time and solve it for the magnetic field strength ($B_0$) -- thus giving the Primary Constraint.
 
 \subsection{Finalizing the Primary Constraint}
 
@@ -481,7 +481,7 @@ Here the safety factor -- $q_{\replaced{*}{95}}$ -- \deleted{is subscripted by 9
 %  f_q = \frac{1.17 - 0.65 \varepsilon}{2 ( 1 - \varepsilon^2 )^2} \cdot  \left( 1 + \kappa^2 * ( 1 + 2 \delta^2 - 1.2 \delta^3 ) \right)
 %\end{equation}
 
-Combined, the kink safety factor can now be written in standardized units as:
+Rearranged, the kink safety factor can now be written in standardized units as:
 \begin{equation}
 	\label{eq:r_kink}
    \tcbhighmath{ R_0 = \frac{ K_{SF} I_P }{ B_0 } }
@@ -508,7 +508,7 @@ The first step in deriving a \replaced{limiting}{secondary} constraint for wall 
 	}
 \end{equation}
 \myequations{Surface Area -- $S_P$}
-Here, $S_P$ is the surface area of the tokamak's inner wall and $P_n$ is the neutron power derived in \cref{chapter:power}. The quantity, $P_W$, then serves a role analogous to: $\beta_N$ for the beta limit and $q_{\replaced{*}{95}}$ for the kink safety factor -- it is a \replaced{static}{fixed} variable representing the maximum allowed wall loading. For fusion reactors, $P_W$ is assumed to be around 2-4 $\frac{\textnormal{MW}}{\textnormal{m}^2}$. It will be shown that the wall loading limit is important in any tokamak -- regardless of operating mode (i.e.\ steady-state or pulsed).
+Here, $S_P$ is the surface area of the tokamak's inner wall and $P_n$ is the neutron power derived in \cref{chapter:power}. The quantity, $P_W$, then serves a role analogous to: $\beta_N$ for the beta limit and $q_{\replaced{*}{95}}$ for the kink safety factor -- it is a \replaced{static}{fixed} variable representing the maximum allowed wall loading. For fusion reactors, $P_W$ is assumed to be around 2-4 $\frac{\textnormal{MW}}{\textnormal{m}^2}$. It will be shown that the wall loading limit is important in any tokamak, however -- regardless of operating mode (i.e.\ steady-state or pulsed).
 
 Finishing this \replaced{limiting}{secondary} constraint, the Wall Loading limit can be written in standardized units as:
 \begin{equation}
@@ -552,7 +552,7 @@ This \replaced{limiting}{secondary} constraint can be used to create curves of r
 
 \replaced{Fusion plasmas}{Plasmas} are hot. The commonly given \replaced{relation}{fact} is one electron volt is around $20\textnormal{,}000 \, {}^\circ$F\replaced{ -- which would make 15 keV equate to around a quarter-billion Fahrenheit.}{.} Although \replaced{this connotation of temperature is slightly}{a tad} deceptive, \replaced{heat damage to}{melting} a tokamak is an all too real concern. The problem is there is currently no solution to the problem. Although researchers have explored various types of heat divertors, none have been shown to withstand the gigawatts\added{-per-square-meter} of heat emitted from a reactor-size tokamak.\replaced{\cite{adx}}{ Further, as it is not as glamorous as plasma physics, attempts to tackle the problem head-on have often gone unfunded.\cite{adx}}
 
-\replaced{As such, this model takes an approach similar to the research community, calculating it at the end as a manual check on the difficulty of building such a device -- but not using it to explicitly guide design.}{As such, this model takes the approach that we are no worse than the rest of the field. We almost completely ignore the heat loading limit and just refer to it at the end, saying "and then this magic divertor will have to deal with solar corona levels of heat." After which, discussion will quickly be redirected to happier concerns.} For \replaced{completeness}{thoroughness} though, a \replaced{limiting}{secondary} constraint will still be derived. The first step is giving the heat load limit commonly found in the literature: \cite{minervini}
+\replaced{As such, this model takes an approach similar to the research community, calculating it at the end as a manual check on the difficulty of building such a device -- but not using it to explicitly guide design.}{As such, this model takes the approach that we are no worse than the rest of the field. We almost completely ignore the heat loading limit and just refer to it at the end, saying "and then this magic divertor will have to deal with solar corona levels of heat." After which, discussion will quickly be redirected to happier concerns.} For \replaced{completeness}{thoroughness} though, a \replaced{limiting}{secondary} constraint will still be derived. The first step is giving the heat loading limit commonly found in the literature: \cite{minervini}
 \begin{equation}
   q_{DV} = \frac{ K_{DV} }{ K_F} \cdot \frac{ P_F \, I_P^{\,1.2} }{ R_0^{\,2.2} }
 \end{equation}
@@ -587,7 +587,7 @@ The next variable handled was the steady current:
 	\tag{\ref{eq:steady}}
 	I_P = \frac{K_{BS} \overline T}{1 - K_{CD} ( \sigma v ) }
 \end{equation}
-As was mentioned then, this equation only depends directly on the temperature, but is strongly affected by a tokamak's configuration -- $R_0$ and $B_0$ - through the current drive efficiency ($\eta_{CD}$). For pulsed reactors, this equation proves too simple as it ignores inductive current. To remedy the situation, current balance will be revisited next chapter. The main point to make now, though, is that the $R_0$ and $B_0$ dependence will be made explicit.
+As was mentioned then, this equation only depends directly on the temperature, but is strongly affected by a tokamak's configuration -- $R_0$ and $B_0$ -- through the current drive efficiency ($\eta_{CD}$). For pulsed reactors, this equation proves too simple as it ignores inductive current. To remedy the situation, current balance will be revisited next chapter. The main point to make now, though, is that the $R_0$ and $B_0$ dependence will be made explicit.
 
 Moving on, the remaining equations were, then, the primary and \replaced{limiting}{secondary} constraints for $B_0$ and $R_0$, respectively. It was through these relations that a tokamak's configuration was brought back into the fold. The choice of solving the two constraints for their respective variables was \replaced{not completely unique}{completely arbitrary} -- as it was motivated by the foresight of how they fit into the model. Repeated below, they served as the proper vehicles for closing the system of equations. \deleted{The next step now is to learn how to generalize the current formula and design a pulsed tokamak reactor.}
 \begin{equation}

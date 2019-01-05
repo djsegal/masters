@@ -28,7 +28,7 @@ As opposed to previous chapters, this one will focus on the numerics behind the 
 
 \section{Describing a Simple Algebra}
 
-\replaced{In essence,}{Boiled down,} the systems model used here is a simple algebra problem -- given five equations, solve for five unknowns. The goal is then to pick the five equations that best represent modern fusion reactor design (as shown in \cref{fig:equation_breakdown}). Moreover, this selection should be done in such a way that actually reduces the system of equations to a simple univariate root solving equation (i.e.\ one equation with one unknown). As will be shown in the results, this model does \replaced{reasonably}{remarkably} well: matching \replaced{other}{year-long} modeling campaigns in seconds.
+\replaced{In essence,}{Boiled down,} the systems model used here is a simple algebra problem -- given five equations, solve for five unknowns. The goal is then to pick the five equations that best represent modern fusion reactor design (as shown in \cref{fig:equation_breakdown}). Moreover, this selection should be done in such a way that actually reduces the system of equations to a simple univariate root solving problem (i.e.\ one equation with one unknown). As will be shown in the results, this model does \replaced{reasonably}{remarkably} well: matching \replaced{other}{year-long} modeling campaigns in seconds.
 
 \begin{figure}
 	\centering
@@ -46,7 +46,7 @@ The logical place to start in a discussion of this algebra problem is with the t
 	\tag{\ref{eq:greenwald}}
 	\overline n = K_n \cdot \frac{I_P}{R_0^2}
 \end{equation}
-The two balance equations \replaced{proved to be}{prove} slightly more \replaced{complicated.}{dubious.} As was \replaced{shown,}{shown previously,} current balance \deleted{-- the stability requirement for tokamaks --} was \replaced{the more difficult of the two -- bringing}{most peculiar. It brought} forth the notion of self-consistency for steady-state machines and a highly-coupled multi-root equation for pulsed ones. As such, \replaced{current balance}{this equation} stands as the \replaced{equation}{one} everything \replaced{is substituted}{else will be substituted} into to \replaced{do a final}{setup for a} univariate root solve.
+The two balance equations \replaced{proved to be}{prove} slightly more \replaced{complicated.}{dubious.} As was \replaced{shown,}{shown previously,} current balance\deleted{ -- the stability requirement for tokamaks --} was \replaced{the more difficult of the two -- bringing}{most peculiar. It brought} forth the notion of self-consistency for steady-state machines and a highly-coupled multi-root equation for pulsed ones. As such, \replaced{current balance}{this equation} stands as the \replaced{equation}{one} everything \replaced{is substituted}{else will be substituted} into to \replaced{do a final}{setup for a} univariate root solve.
 \begin{equation}
 	\tag{\ref{eq:gen_ip}}
 	I_P = \frac{ \left( K_{BS} + \sfrac{ G_{IU} }{ G_{IP} } \right) \cdot \overline T }{ 1 - K_{CD} ( \sigma v ) - \sfrac{ G_{ID} }{ G_{IP} } }
@@ -60,7 +60,7 @@ The remaining equation common to all reactor-grade tokamaks is, then, power bala
 	\label{eq:freidberg}
 	R_0^{ \alpha_R^* } \cdot B_0^{\,\alpha_B} \cdot I_P^{\,\alpha_I^*} = \frac{ G_{PB} }{ K_{PB} }
 \end{equation}
-Although being rather cumbersome, this equation actually remains relatively simple in that all three quantities on the left-hand side are separable. To close the system, two more equations of this form are needed. These have the following form and will be described next.
+Although rather cumbersome, this equation actually remains relatively simple in that all three quantities on the left-hand side are separable. To close the system, two more equations of this form are needed. These have the following form and will be described next.
 \begin{equation}
 	\label{eq:rbi}
 	\tcbhighmath{
@@ -103,7 +103,7 @@ Cost-per-Watt ($C_W$) & I & $ (C_W)_{const} \cdot \left( \sfrac{ K_F K_n ^ 2 ( \
 
 \subsection{\replaced{Including Limiting Constraints}{Rehashing the Limits}}
 
-The limits category is \replaced{composed of the limiting constraints given in \cref{chapter:model}.}{simply a rebranding of the secondary constraints given previously.} These include the physics derived limits from MHD theory -- i.e.\ the beta limit ($\beta_N$) and the kink safety factor ($q_{\replaced{*}{95}}$). For clarity, these set maximums on the allowed plasma pressure and \replaced{current,}{velocity,} respectively. Additionally, there were several engineering limits that described: wall loading, heat loading, and maximum power capacity. For this paper, wall loading from neutrons ($P_W$) is assumed to be important, whereas the other two engineering limits are assumed to not explicitly guide design.
+The limits category is \replaced{composed of the limiting constraints given in \cref{chapter:model}.}{simply a rebranding of the secondary constraints given previously.} These include the physics derived limits from MHD theory -- i.e.\ the beta limit ($\beta_N$) and the kink safety factor ($q_{\replaced{*}{95}}$). Where for clarity, these set maximums on the allowed plasma pressure and \replaced{current,}{velocity,} respectively. There were, also, several engineering limits that described: wall loading, heat loading, and maximum power capacity. For this paper, wall loading from neutrons ($P_W$) is assumed to be important, whereas the other two engineering limits are assumed to not explicitly guide design.
 
 Combined all these limits, as well as the yet to be defined \replaced{dynamic}{float} and \replaced{intermediate}{derived} equations, are given in \cref{table:eq}. These share a remarkably similar form to power balance when put into a generalized, separable state. This hints at why the major radius ($R_0$), the toroidal field strength ($B_0$), and the plasma current ($I_P$) can easily be separated and substituted out of the current balance equation.
 
@@ -111,7 +111,7 @@ Before moving on, it proves useful to explain the two limits not used to explici
 
 While the maximum power cap informally sets a maximum major radius for a machine, there also exists an implicit minimum major radius. This minimum radius occurs due to the hole-size constraint -- i.e.\ at some point there is no longer enough room on the inside of the machine to store the central solenoid, blanket, and TF coils.
 
-At this point, we can now explain how various quantities in the systems model can be set to user-given constant values. This basically allows users to treat one \replaced{dynamic}{floating} -- or intermediate -- variable as a \replaced{static}{fixed} one (e.g.\ the temperature and bootstrap fraction).
+At this point, we can now explain how various quantities in the systems model can be set to user-given constant values. This basically allows users to treat one \replaced{dynamic}{floating} -- or intermediate -- variable as a \replaced{static}{fixed} one (e.g.\ the temperature or bootstrap fraction).
 
 \subsection{Minimizing \replaced{Intermediate}{Derived} Quantities}
 
@@ -131,7 +131,7 @@ What this collection of variables is really useful for, though, is finding minim
 %\label{fig:step_one}
 %\end{figure}
 
-After a valid reactor is found, its cost is recorded leading to a drill-down stage. In this step, the cost is continuously halved until a valid reactor cannot be found. Once this invalid reactor is reached, it sets a bound on the minimum cost reactor. As such, the final stage is a simple bisection step where the minimum cost is honed down to some acceptable margin of error -- see \cref{fig:minimize}.
+After a valid reactor is found, its cost is recorded -- leading to a drill-down stage. In this step, the cost is continuously halved until a valid reactor cannot be found. Once this invalid reactor is reached, it sets a bound on the minimum cost reactor. As such, the final stage is a simple bisection step where the minimum cost is honed down to some acceptable margin of error. This process is illustrated in \cref{fig:minimize}.
 
 \begin{figure*}
     \centering
@@ -158,7 +158,7 @@ After a valid reactor is found, its cost is recorded leading to a drill-down sta
     \small{ After a valid reactor has been found, it is a simple process to find the minimum cost reactor. This involves first continually searching for reactors that are half the cost until a valid one can no longer be found (a). After the costing interval has been bounded by a valid and invalid reactor, the interval is bisected until there is negligible error (b).}
 \end{figure*}
 
-\subsection{Pinning \replaced{Dynamic}{Floating} Variables}
+\subsection{Assigning \replaced{Dynamic}{Floating} Variables}
 
 The remaining collection of closure equations is for the five \replaced{dynamic}{floating} variables in the systems model: $R_0$, $B_0$, $\overline n$, $\overline T$, and $I_P$. As we are making equations of the following form, the formulas for $R_0$, $B_0$, and $I_P$ are trivial.
 \begin{equation}
@@ -223,7 +223,7 @@ Concretely, the root solve for the temperature  scenario is for the current, whe
 	\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ( \gamma_{R,1} \, \gamma_{B,3} \, \gamma_{I,2} +  \gamma_{R,2} \, \gamma_{B,1} \, \gamma_{I,3} + \gamma_{R,3} \, \gamma_{B,2} \, \gamma_{I,1} ) \nonumber
 \end{gather}
 
-~ \\ 
+~ \\
 
 \section{Wrapping up the Logic}
 
