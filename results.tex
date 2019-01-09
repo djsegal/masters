@@ -35,7 +35,7 @@ The first reactor design that will provide a basis for comparison is the ARC rea
 
 The next set of reactor designs come from the ARIES four-act study.\cite{ussteady} This ARIES team is a United States effort to reevaluate the problem of designing a fusion reactor around once a decade. The most recent study focused on how tokamaks \replaced{would look}{shape up} as you assume optimistic and conservative \added{values for} physics and engineering parameters. Although our model recovers their results, it does highlight one peculiarity of their algorithm -- reliance on the minimum achievable value of H.
 
-The final series of reactors comes from the major codebase used among European fusion systems experts: PROCESS.\cite{process} As such, this group actually gives an example for pulsed vs.\ steady-state tokamaks. Although these designs have the most discrepancies with our model, discussion will be given that remedy some of the shortcomings. These basically \replaced{amount}{boil down} to: alternative definitions for heat loss appearing in the ELMy H-Mode Scaling, as well as the simplified nature of our flux balance equation -- which only accounts for central solenoid and PF coil source terms.
+The final series of reactors comes from the major codebase used among European fusion systems experts: PROCESS.\cite{process} As such, this group actually gives an example for pulsed vs.\ steady-state tokamaks. Although these designs have the most discrepancies with our model, discussion will be given that remedy some of the shortcomings. These basically \replaced{amount}{boil down} to: alternative definitions for heat loss appearing in the ELMy H-Mode Scaling Law, as well as the simplified nature of our flux balance equation -- which only accounts for central solenoid and PF coil source terms.
 
 \added{The most important detail to take from the comparisons done in \cref{table:arc,table:act_1,table:act_2,table:demo_steady}, however, is that each steady state design from the literature has H factors and Greenwald densities ($N_G$) that violate standard values (i.e.\ 1.0). What this means practically is steady-state reactors are not possible in the current tokamak paradigm -- some technological advancement is needed.}
 
@@ -49,7 +49,7 @@ As mentioned, this model matches the results from the ARC design almost \replace
 
 \added{The use of a dash for $\beta_N$ brings up the final piece of information needed to understand the plots and table creation process -- limiting constraints. Note that in \cref{fig:arc_comparison}, the solid curve has two portions: \texttt{beta} and \texttt{wall}. These are the portions where the beta limit and the wall loading limit are the driving constraints, respectively. For example at $B_0$ = 5\,T, the wall loading ($P_W$) will be much less than the maximum allowed $2.5 \, \textnormal{MW}/\textnormal{m}^2$. This is why the dash is next to $\beta_N$ in \cref{table:arc}, as it is held at the maximum allowed value (i.e.\ $\beta_N = 0.026$.)}
 
-\added{Finally, the reason there is a dashed \texttt{pulsed} curve and a solid \texttt{steady} one is because this reactor was run in both modes of operation. The pulsed label is actually a slight misnomer as it implies the generalized current balance formula is used -- over the simple steady current from \cref{eq:steady}. Because pulses are set to 50 years, they are functionally steady-state regardless. The real reason the two curves diverge is because the steady current has a self-consistent current drive efficiency ($\eta_{CD}$).}
+\added{Finally, the reason there is a dashed \texttt{pulsed} curve and a solid \texttt{steady} one is because this reactor was run in both modes of operation. The pulsed label is actually a slight misnomer as it implies the generalized current balance formula is used -- over the simple steady current given by \cref{eq:steady}. Because pulses are set to 50 years, they are functionally steady-state regardless. The real reason the two curves diverge is because the steady current has a self-consistent current drive efficiency ($\eta_{CD}$).}
 
 \subsection{Contrasting with the ARIES ACT Studies}
 
@@ -564,9 +564,9 @@ The final difference creates the largest change in the twin reactors: the choice
 
 \deleted{Opposite the order of how they were designed, the goal now is to lock down a value of $B_{CS}$ for Proteus and then use it to set the H factor for Charybdis. This selection algorithm is depicted in Fig.\ \ref{fig:selection}. For Proteus, the point locked down was $B_{CS} = 20 \ \textnormal{T}$, which occurred at a fusion power ($P_F$) of around 1250 MW. As shown in the cost curve, this was at a point where the ratio between the minimum capital cost and the minimum cost-per-watt saturated. This choice of a 1250 MW reactor then led to Charybdis having an H factor of 1.7.}
 
-\added{The goal now is to impose a constraint on both reactors' economic competitiveness by setting their fusion power to a relatively low value -- i.e.\ 1250 MW. As \cref{fig:selection} shows, this results in Charybdis having an H factor of 1.7 and Proteus having a $B_{CS}$ of around 20 T. As shown in the Proteus cost curve, this was at a point where the ratio between the minimum capital cost and the minimum cost-per-watt leveled off. }
+\added{The goal now is to impose a constraint on both reactors' economic competitiveness by setting their fusion power to a relatively low value -- i.e.\ 1250 MW. As \cref{fig:selection} shows, this results in Charybdis having an $H$ factor of 1.7 and Proteus having a $B_{CS}$ of around 20\,T. As shown in the Proteus cost curve, this was at a point where the ratio between the minimum capital cost and the minimum cost-per-watt leveled off. }
 
-\added{Note that these technological advancements (in H and $B_{CS}$) are necessary to get economic -- or even physically realizable -- reactors. This is the same reason why all the literature reactors used values for H and $N_G$ that violate standard values.\cite{ussteady,arc} }
+\added{Note that these technological advancements (in $H$ and $B_{CS}$) are necessary to get economic -- or even physically realizable -- reactors. This is the same reason why all the literature reactors used values for $H$ and $N_G$ that violate standard values.\cite{ussteady,arc} }
 
 \begin{figure}[b!]
 \centering
@@ -761,7 +761,7 @@ The pulsed twin reactor, Proteus, highlights the effects of a high field central
 \begin{table}[b!]
 \centering
 \caption{Proteus and Charybdis Comparison} ~ \\
-\small{ The twin pulsed and steady-state prototypes show general trends in terms of what value values the dynamic variables will have. As can be seen, the radius ($R_0$) of the pulsed prototype (Proteus) is two meters larger than its steady-state twin (Charybdis). }
+\small{ The twin pulsed and steady-state prototypes show general trends in terms of what values the dynamic variables will have. As can be seen, the radius ($R_0$) of the pulsed prototype (Proteus) is two meters larger than its steady-state twin (Charybdis). }
 \hfill
 \begin{subtable}[t]{0.45\textwidth}
 \centering
@@ -836,7 +836,7 @@ Regardless of reactor type, most \replaced{economic}{efficient} tokamaks operate
 	\input{images/limit_regimes}
 \end{adjustbox}
 \caption{\replaced{Limiting Constraint Regimes}{Limit Regimes as function of $B_0$}} ~ \\
-\added{\small At a simple level, a reactor has around three regimes of design limiting constraints. At low fields, the kink safety factor -- through $q_*$ and \cref{eq:r_kink} -- drives design. Then at high fields, wall loading -- through $P_W$ and \cref{eq:r_wall} -- guide reactors. And between the two, the beta limit -- through $\beta_N$ and \cref{eq:r_beta} -- are the limiting constraint. }
+\added{\small At a simple level, a reactor has around three regimes of design limiting constraints. At low fields, the kink safety factor -- through $q_*$ and \cref{eq:r_kink} -- drives design. Then at high fields, wall loading -- through $P_W$ and \cref{eq:r_wall} -- guide reactors. And between the two, the beta limit -- through $\beta_N$ and \cref{eq:r_beta} -- is the limiting constraint. }
 \label{fig:limit_regimes}
 \end{figure}
 
@@ -1067,7 +1067,7 @@ The more interesting result is that pulsed reactors gain no real benefit from us
     \label{fig:pulsed_samplings}
 \end{figure*}
 
-\replaced{Summarizing this subsection,}{Rehashing this section,} HTS tape is \added{one of} the best \replaced{ways}{way} to lower the cost of fusion reactors at a commercial scale. For steady-state reactors, HTS works best in the toroidal field coils ($B_0$), whereas the tape fares far better in the central solenoid ($B_{CS}$) of pulsed reactors. As both effects saturate within the range of HTS tape, more sophisticated magnetic technology would be unnecessary. HTS is \replaced{thus one technological advancement that could help usher in an era of}{truly the answer to} affordable fusion energy.\footnote{This notion of HTS technology leading the way to affordable fusion energy is in line with the 2018 FESAC TEC\cite{fesac} and NAS Burning Plasma\cite{nas} reports.}
+\replaced{Summarizing this subsection,}{Rehashing this section,} HTS tape is \added{one of} the best \replaced{ways}{way} to lower the cost of fusion reactors at a commercial scale. For steady-state reactors, HTS works best in the toroidal field coils ($B_0$), whereas the tape fares far better in the central solenoid ($B_{CS}$) of pulsed reactors. As both effects saturate within the range of HTS tape, more sophisticated magnetic technology may not be necessary. HTS is \replaced{thus one technological advancement that could help usher in an era of}{truly the answer to} affordable fusion energy.\footnote{This notion of HTS technology leading the way to affordable fusion energy is in line with the 2018 FESAC TEC\cite{fesac} and NAS Burning Plasma\cite{nas} reports.}
 
 \subsection{Looking at Design Alternatives}
 

@@ -36,7 +36,7 @@ The first step in deriving a current equation is to determine the circuit equati
 
 \subsection{Drawing the Circuit Diagram}
 
-Understanding a circuit always starts with drawing a simple diagram, see \cref{fig:circuit_diagram}. This figure depicts the transformer governing a pulsed reactor. The left sub-circuit is, therefore, the transformer's primary: the central solenoid which provides most of the inductive current. Whereas, the right sub-circuit is the plasma acting as the transformer's secondary.\footnote{The central solenoid is a coiled metal structure that fits within the inner ring of the tokamak enclosure. For now, every other flux source (besides this central solenoid) is neglected.}
+Understanding a circuit always starts with drawing a simple diagram, see \cref{fig:circuit_diagram}. This figure depicts the transformer governing a pulsed reactor. The left sub-circuit is, therefore, the transformer's primary: the central solenoid which provides most of the inductive current.\footnote{The central solenoid is a coiled metal structure that fits within the inner ring of the tokamak enclosure. For now, every other flux source (besides this central solenoid) is neglected.} Whereas, the right sub-circuit is the plasma acting as the transformer's secondary.
 
 \begin{figure}
 \centering
@@ -96,7 +96,7 @@ Along the way, we will approximate derivatives with linear piecewise functions. 
 \small{A circuit pulse involves four phases: (1) Ramp-Up, (2) Flattop, (3) Ramp-Down, and (4) Dwell. In reality, flattop can last more than 90\% of the pulse.\cite{inputfile} This makes the slope of the primary current during this phase much shallower than depicted. } ~ \\ ~ \\ ~ \\
 \end{figure}
 
-\cref{table:piecewise} shows how this data from \cref{fig:circuit_profiles} can be written in this piecewise fashion.
+\cref{table:piecewise} shows how the data from \cref{fig:circuit_profiles} can be written in this piecewise fashion.
 
 \begin{table}[b!]
 \centering
@@ -163,7 +163,7 @@ The last step in discussing ramp-up is giving the two important formulas that co
 
 The most important phase in any reactor's pulse is flattop: the quasi-steady-state time when the tokamak is making \replaced{electricity.}{electricity (and money).} Flattops are assumed to last a few hours for a profitable machine, during which the central solenoid almost completely discharges to overcome a plasma's resistive losses -- thus, keeping it in a quasi-steady-state mode of operation. For a steady-state reactor, this phases constitutes the entirety of the pulse.
 
-Although the resistance cannot be safely neglected for the flattop -- as it was for ramp-up -- the plasma's inductive current ($I_{ID}$) is assumed constant. This leads to its derivative in equations cancelling out! Mathematically,
+Although the resistance cannot safely be neglected for the flattop -- as it was for ramp-up -- the plasma's inductive current ($I_{ID}$) is assumed constant. This leads to its derivative in equations cancelling out! Mathematically,
 \begin{align}
 	\tilde V = \frac{L_1}{\tau_{FT}} \cdot \left( I_{max} + \tilde I \right) \\
 	I_{ID} R_P = \frac{M}{\tau_{FT}} \cdot \left( I_{max} + \tilde I \right)
@@ -325,8 +325,8 @@ Starting at the end, our goal is to find the pulse length of a tokamak reactor i
 
 With the pulse length defined, we are now in a position to justify neglecting the duty factor for pulsed reactors in this model. Using \replaced{expected}{ballpark} reactor values -- while assuming a central solenoid with around 4000 turns -- leads to the following scalings:
 \begin{gather}
-	\tau_{FT} \sim \tau_{pulse} \sim \textnormal{O(hours)} \\
-	\tau_{RU} \sim \tau_{RD} \sim \tau_{DW} \sim \textnormal{O(mins)}
+	\tau_{FT} \sim \tau_{pulse} \sim O(\textnormal{hours}) \\
+	\tau_{RU} \sim \tau_{RD} \sim \tau_{DW} \sim O(\textnormal{mins})
 \end{gather}
 As such, even pulsed tokamak reactors should have a duty factor of around unity:
 \begin{equation}
@@ -494,7 +494,7 @@ The blanket is an area between the TF coils and the torus that is \deleted{stron
 	}
 \end{equation}
 \myequations{Blanket Thickness -- $b$}
-\replaced{Here, $P_W$}{Here, the constant term (i.e.\ 1.23) is approximately the mean-free-path of fusion neutrons through lithium-7 -- the thickness of lithium needed to reduce the population of neutrons by $\sim 65\%$. While the second term, which includes $P_W$,} is a small correction to account for extra wall loading (as discussed in \replaced{\cref{subsection:wall_loading}}{the secondary constraint section}). Most blankets are, therefore, usually around a meter.\cite{minervini,arc}
+\replaced{Here, $P_W$}{Here, the constant term (i.e.\ 1.23) is approximately the mean-free-path of fusion neutrons through lithium-7 -- the thickness of lithium needed to reduce the population of neutrons by $\sim 65\%$. While the second term, which includes $P_W$,} is part of a small correction to account for extra wall loading (as discussed in \replaced{\cref{subsection:wall_loading}}{the secondary constraint section}). Most blankets are, therefore, usually around a meter.\cite{minervini,arc}
 
 Moving forward, the remaining two thicknesses -- $c$ and $d$ -- are handled differently: estimating structural steel portions as well as magnetic current-carrying ones.
 
@@ -674,7 +674,7 @@ This section focuses on making various simplifications to the generalized curren
 	\tag{\ref{eq:gen_ip}}
 	I_P = \frac{ \left( K_{BS} + \sfrac{ G_{IU} }{ G_{IP} } \right) \cdot \overline T }{ 1 - K_{CD} ( \sigma v ) - \sfrac{ G_{ID} }{ G_{IP} } }
 \end{equation}
-As promised, this will start with the trivial simplification of the generalized current into steady state. Next it will move on to a basic simplification for the purely pulsed case. These two activities should shed some light on how to interpret the equation in the more complicated hybrid case (that is actually used by the model).
+As promised, this will start with the trivial simplification of the generalized current into the steady state one. Next it will move on to a basic simplification for the purely pulsed case. These two activities should shed some light on how to interpret the equation in the more complicated hybrid case (that is actually used by the model).
 
 \subsection{Recovering the Steady Current}
 

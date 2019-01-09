@@ -51,13 +51,13 @@ $B_0$ &  Magnet Strength & T
 \label{table:dynamic}
 \end{table}
 
-At its core, this fusion systems model is a simple algebra problem: solve five equations with five unknowns (i.e.\ $\overline T$, $\overline n$, $I_P$, $R_0$, $B_0$). Although this naive approach would work, we can do a little better by \replaced{collapsing}{wrangling} these five equations down to just one. This was already done while deriving the steady current. It just happened that the current was not directly dependent on the tokamak size ($R_0$) or magnet strength ($B_0$).\footnote{Note that the magnet strength ($B_0$) used throughout this text refers particularly to the strength of the toroidal magnetic field on axis -- i.e.\ at $\rho = 0$.}
+At its core, this fusion systems model is a simple algebra problem: solve five equations with five unknowns (i.e.\ $\overline T$, $\overline n$, $I_P$, $R_0$, $B_0$). Although this naive approach would work, we can do a little better by \replaced{reducing}{wrangling} these five equations down to just one. This was already done while deriving the steady current. It just happened that the current was not directly dependent on the tokamak size ($R_0$) or magnet strength ($B_0$).\footnote{Note that the magnet strength ($B_0$) used throughout this text refers particularly to the strength of the toroidal magnetic field on axis -- i.e.\ at $\rho = 0$.}
 
 This will prove more challenging for the generalized current needed for pulsed operation. Even so, this equation will still be \replaced{reduced}{boiled down} to one equation with a single unknown -- $I_P$. A solution to which can be solved much faster than the naive 5 equation approach. This is one reason the model is so fast.
 
 \subsubsection{The Plasma Temperature -- $\overline T$}
 
-The plasma temperature, measured in keV (kilo-electron-volts), is one of the most \replaced{nonlinear}{finicky} variables in the fusion systems \replaced{framework}{model}. It first proved troublesome when it was shown that a pedestal profile -- not a parabolic one used here -- would be needed for an accurate calculation of bootstrap current. The \replaced{black-box}{unusual} tabulation for reactivity -- ($\sigma v$) -- which appeared inside the fusion power only further exposed this nonlinearity.
+The plasma temperature, measured in keV (kilo-electron-volts), is one of the most \replaced{nonlinear}{finicky} variables in the fusion systems \replaced{framework}{model}. It first proved troublesome when it was shown that a pedestal profile -- not the parabolic one used here -- would be needed for an accurate calculation of bootstrap current. The \replaced{black-box}{unusual} tabulation for reactivity -- ($\sigma v$) -- which appeared inside the fusion power only further exposed this nonlinearity.
 
 Acknowledging that temperature is the most difficult to handle parameter prompts its use as the scanned variable. What this means practically is scanning temperatures \replaced{is the most straightforward method to produce}{produces} curves of reactors. By example, a scan may be run over the average temperatures ($\overline T$): 10, 15, 20, 25, and 30 keV -- \added{where} each \replaced{corresponds}{corresponding} to its own reactor \added{with its own toroidal field strength ($B_0$), plasma current ($I_P$), etc}. In equation form, this becomes:
 \begin{equation}
@@ -349,7 +349,7 @@ First, the loss power is a metric used in the engineering community to quantify 
 %	\tilde P_{src} \approx P_\kappa = P_\alpha + P_H + P_\Omega - P_{BR}
 %\end{equation}
 
-Moving on, $K_\tau$ is simply a constant fit-makers use in their scalings. Whereas H is the \replaced{enhancement factor over the empirical fit.}{(H-Mode) scaling factor -- the analogue of $K_\tau$ used by reactor designers. This H factor can be used to artificially boost the confinement of a machine (i.e.\ it adds a little bit of magic).} \replaced{Next,}{Continuing,} A is the average mass number of the fuel source, in atomic mass units. Where for a 50-50 D-T fuel, this is 2.5, as deuterium weighs two amus and tritium weighs three. Lastly, the alpha factors (e.g.\ $\alpha_n$, $\alpha_a$, $\alpha_P$) are fitting parameters that represent each variable's relative importance in the scaling.
+Moving on, $K_\tau$ is simply a constant fit-makers use in their scalings. Whereas H is the \replaced{enhancement factor over this empirical fit.}{(H-Mode) scaling factor -- the analogue of $K_\tau$ used by reactor designers. This H factor can be used to artificially boost the confinement of a machine (i.e.\ it adds a little bit of magic).} \replaced{Next,}{Continuing,} A is the average mass number of the fuel source, in atomic mass units. Where for a 50-50 D-T fuel, this is 2.5, as deuterium weighs two amus and tritium weighs three. Lastly, the alpha factors (e.g.\ $\alpha_n$, $\alpha_a$, $\alpha_P$) are fitting parameters that represent each variable's relative importance in the scaling.
 
 For ELMy H-Mode, this confinement scaling law can be written as:
 \begin{equation}
@@ -453,7 +453,7 @@ Using this model's temperature and density profiles, the volume-averaged pressur
   }
 \end{equation}
 \myequations{Plasma Pressure -- $\overline p$}
-Moving forward, the final step is plugging this definition for plasma beta into the \deleted{physics-based}Troyon Beta \replaced{Limit derived using standard MHD stability analysis.}{Limit. Although outside the scope of this text, it is a stability limit set by treating plasmas as charge-carrying fluids.} This equation can be written in the following form, where $\beta_N$ is the normalized plasma beta -- i.e.\ a \replaced{static}{fixed} variable usually set between 2\% and 4\%. \cite{hartmann}
+Moving forward, the final step is plugging this definition for the plasma beta into the \deleted{physics-based}Troyon Beta \replaced{Limit derived using standard MHD stability analysis.}{Limit. Although outside the scope of this text, it is a stability limit set by treating plasmas as charge-carrying fluids.} This equation can be written in the following form, where $\beta_N$ is the normalized plasma beta -- i.e.\ a \replaced{static}{fixed} variable usually set between 2\% and 4\%. \cite{hartmann}
 \begin{equation}
 	\beta = \beta_N \frac{ I_P }{ a B_0 }
 \end{equation}
